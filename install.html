@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Установка — Фон карточки сделки</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 24px; max-width: 600px; }
+    .ok { color: #15803d; }
+    .err { color: #b91c1c; }
+    .warn { color: #b45309; }
+    li { margin: 6px 0; }
+    code { font-size: 13px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Фон карточки сделки</h1>
+  <p>Локальный сервер: <code id="origin"></code></p>
+  <p id="status">Инициализация…</p>
+  <ul id="log"></ul>
+  <script>
+    const TAB_TITLE = 'Цвет фона';
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const USER_TYPE = 'deal_card_bg';
+
+    function appUrls() {
+      const o = location.origin;
+      return {
+        install: o + '/install.html',
+        fieldHandler: o + '/field-handler.html',
+        tab: o + '/tab.html',
+      };
+    }
+
+    const urls = appUrls();
+    document.getElementById('origin').textContent = urls.install;
+
+    function log(msg, ok) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.className = ok === true ? 'ok' : ok === false ? 'err' : 'warn';
+      document.getElementById('log').appendChild(li);
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error() + ': ' + r.error_description()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function normalizeTypeList(raw) {
+      if (Array.isArray(raw)) return raw;
+      if (raw && typeof raw === 'object') return Object.values(raw);
+      return [];
+    }
+
+    function isWidgetType(id) {
+      if (!id) return false;
+      const s = String(id);
+      return s === USER_TYPE || s.endsWith('_' + USER_TYPE) || s.includes('deal_card_bg');
+    }
+
+    function isCrmWidgetType(id) {
+      if (!id) return false;
+      const s = String(id);
+      return s.startsWith('rest_') && s.includes('deal_card_bg');
+    }
+
+    function crmWidgetTypeId(appId, rawTypeId) {
+      const raw = String(rawTypeId || '').trim();
+      if (raw.startsWith('rest_') && raw.includes('deal_card_bg')) return raw;
+      if (appId) return 'rest_' + appId + '_' + USER_TYPE;
+      if (raw && raw !== USER_TYPE) return raw;
+      return null;
+    }
+
+    async function registerWidgetType() {
+      const handler = urls.fieldHandler;
+      const payload = {
+        USER_TYPE_ID: USER_TYPE,
+        HANDLER: handler,
+        TITLE: 'Цвет фона карточки',
+        DESCRIPTION: 'Палитра фона сделки',
+        OPTIONS: { height: 0 },
+      };
+      try {
+        await call('userfieldtype.update', payload);
+        log('Обработчик виджета обновлён → ' + handler, true);
+      } catch (e) {
+        const msg = e.message || '';
+        if (!/not found|не найден/i.test(msg)) {
+          try {
+            await call('userfieldtype.add', payload);
+            log('Тип поля зарегистрирован', true);
+            return;
+          } catch (e2) {
+            const msg2 = e2.message || '';
+            if (/binded|already|exist/i.test(msg2)) log('Тип поля уже был в реестре', true);
+            else throw e2;
+          }
+        } else {
+          await call('userfieldtype.add', payload);
+          log('Тип поля зарегистрирован', true);
+        }
+      }
+    }
+
+    async function resolveWidgetTypeId() {
+      await registerWidgetType();
+      let appId = null;
+      try {
+        const app = await call('app.info', {});
+        appId = app.ID || app.id || app.APP_ID;
+        if (appId) log('ID приложения: ' + appId, true);
+      } catch (e) {
+        log('app.info: ' + (e.message || e), null);
+      }
+
+      const list = normalizeTypeList(await call('userfieldtype.list'));
+      const hit = list.find((t) => isWidgetType(t.USER_TYPE_ID || t.userTypeId));
+      const rawType = hit ? (hit.USER_TYPE_ID || hit.userTypeId) : USER_TYPE;
+      const typeId = crmWidgetTypeId(appId, rawType);
+
+      if (!typeId) {
+        throw new Error(
+          'Не удалось собрать ID типа rest_<app>_deal_card_bg. '
+          + 'Проверьте scope: crm + placement + userfieldconfig.',
+        );
+      }
+
+      log('ID типа в реестре: ' + rawType, true);
+      log('ID типа для CRM: ' + typeId, true);
+      return typeId;
+    }
+
+    async function ensureDealField(widgetTypeId) {
+      const rows = await call('crm.deal.userfield.list', {});
+      let field = (rows || []).find((f) => f.FIELD_NAME === UF);
+
+      if (!field) {
+        await call('crm.deal.userfield.add', {
+          fields: {
+            FIELD_NAME: 'DEAL_CARD_BG',
+            USER_TYPE_ID: widgetTypeId,
+            XML_ID: 'DEAL_CARD_BG',
+            MANDATORY: 'N',
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон карточки',
+          },
+        });
+        log('Создано поле ' + UF, true);
+        return;
+      }
+
+      if (isCrmWidgetType(field.USER_TYPE_ID)) {
+        log('Поле ' + UF + ' уже виджет (' + field.USER_TYPE_ID + ')', true);
+        return;
+      }
+
+      if (isWidgetType(field.USER_TYPE_ID) && !isCrmWidgetType(field.USER_TYPE_ID)) {
+        log('Поле с типом «' + field.USER_TYPE_ID + '» — нужен ' + widgetTypeId, null);
+      }
+
+      log('Сейчас поле — «' + field.USER_TYPE_ID + '», переводим на виджет…', null);
+      try {
+        await call('crm.deal.userfield.update', {
+          id: field.ID,
+          fields: { USER_TYPE_ID: widgetTypeId },
+        });
+      } catch (e) {
+        log('Смена типа не поддерживается — пересоздаём поле…', null);
+      }
+
+      let check = await call('crm.deal.userfield.list', {});
+      field = (check || []).find((f) => f.FIELD_NAME === UF);
+      if (field && !isCrmWidgetType(field.USER_TYPE_ID)) {
+        await call('crm.deal.userfield.delete', { id: field.ID });
+        log('Старое поле-список удалено (ID ' + field.ID + ')', true);
+        await call('crm.deal.userfield.add', {
+          fields: {
+            FIELD_NAME: 'DEAL_CARD_BG',
+            USER_TYPE_ID: widgetTypeId,
+            XML_ID: 'DEAL_CARD_BG',
+            MANDATORY: 'N',
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон карточки',
+          },
+        });
+        log('Создано поле ' + UF + ' с виджетом', true);
+        return;
+      }
+
+      check = await call('crm.deal.userfield.list', {});
+      field = (check || []).find((f) => f.FIELD_NAME === UF);
+      if (!isCrmWidgetType(field?.USER_TYPE_ID)) {
+        throw new Error(
+          'Поле осталось «' + (field?.USER_TYPE_ID || '?') + '». '
+          + 'Удалите поле UF_CRM_DEAL_CARD_BG в CRM → Настройки → Поля сделок и переустановите приложение.',
+        );
+      }
+      log('Поле ' + UF + ' переведено на виджет', true);
+    }
+
+    async function bindPlacement(placement, handler, title) {
+      try {
+        await call('placement.bind', {
+          PLACEMENT: placement,
+          HANDLER: handler,
+          TITLE: title || undefined,
+          DESCRIPTION: title || undefined,
+          LANG_ALL: title ? { ru: { TITLE: title, DESCRIPTION: title } } : undefined,
+        });
+        log(placement + ' привязан', true);
+      } catch (e) {
+        const msg = e.message || '';
+        if (/binded|bind/i.test(msg)) log(placement + ' уже привязан', true);
+        else throw e;
+      }
+    }
+
+    BX24.init(async () => {
+      const status = document.getElementById('status');
+      try {
+        const widgetTypeId = await resolveWidgetTypeId();
+        await ensureDealField(widgetTypeId);
+        await bindPlacement('CRM_DEAL_DETAIL_TAB', urls.tab, TAB_TITLE);
+        status.textContent = 'Готово. Добавьте поле «Цвет фона карточки» в вид карточки (⚙).';
+        if (location.hostname.endsWith('.surge.sh')) {
+          log('Статический хостинг — ПК и туннель не нужны', true);
+        } else if (location.hostname.endsWith('.github.io')) {
+          log('GitHub Pages — ПК и туннель не нужны', true);
+        } else if (location.hostname.endsWith('.loca.lt') || location.hostname.endsWith('.trycloudflare.com')) {
+          log('Туннель: для автономной работы — npm run publish:github', null);
+        } else {
+          log('Локальный сервер — для продакшена: npm run publish:surge', null);
+        }
+        BX24.installFinish();
+      } catch (e) {
+        status.textContent = 'Ошибка установки — прочитайте список ниже';
+        log(e.message || String(e), false);
+        log('Scope: crm + placement + userfieldconfig. Затем Сохранить → Переустановить', false);
+      }
+    });
+  </script>
+</body>
+</html>

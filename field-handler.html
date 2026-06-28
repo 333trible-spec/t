@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: system-ui, sans-serif; padding: 6px 8px 8px; background: #fff; }
+    .bar {
+      min-height: 40px; display: flex; align-items: center;
+      padding: 0 12px; font-size: 14px; font-weight: 600; color: #374151;
+      border-radius: 8px; border: 1px solid rgba(0,0,0,.08); margin-bottom: 8px;
+    }
+    .edit { display: flex; flex-wrap: wrap; gap: 6px; }
+    .edit button {
+      min-width: 72px; border: 2px solid #e5e7eb; border-radius: 8px;
+      cursor: pointer; padding: 6px 4px; font-size: 11px; background: #fff;
+    }
+    .edit button .sw { display: block; height: 18px; border-radius: 4px; margin-bottom: 3px; border: 1px solid rgba(0,0,0,.08); }
+    .edit button.on { border-color: #2563eb; box-shadow: 0 0 0 2px #93c5fd; }
+    .hint { margin: 6px 0 0; font-size: 11px; color: #6b7280; line-height: 1.35; }
+    .err { color: #b91c1c; font-size: 12px; padding: 8px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const MSG_TYPE = 'b24-deal-card-bg';
+    const PALETTE = [
+      { label: 'Без фона', hex: '' },
+      { label: 'Бронь', hex: '#FFF8E1' },
+      { label: 'Оформление', hex: '#E3F2FD' },
+      { label: 'Рассрочка', hex: '#F3E5F5' },
+      { label: 'VIP', hex: '#FFFDE7' },
+      { label: 'Срочно', hex: '#FFEBEE' },
+      { label: 'Успех', hex: '#E8F5E9' },
+      { label: 'Провал', hex: '#F5F5F5' },
+    ];
+
+    let dealId = null;
+    let editMode = false;
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function hexFromLabel(label) {
+      return PALETTE.find((p) => p.label === label)?.hex || '';
+    }
+
+    function labelFromRaw(value) {
+      if (value === null || value === undefined || value === '') return 'Без фона';
+      const s = String(value).trim();
+      const byLabel = PALETTE.find((p) => p.label === s);
+      if (byLabel) return byLabel.label;
+      return 'Без фона';
+    }
+
+    function isEditMode(opts) {
+      return String(opts.MODE || opts.mode || '').toLowerCase() === 'edit';
+    }
+
+    function broadcast(hex) {
+      try { window.top.postMessage({ type: MSG_TYPE, hex: hex || '' }, '*'); } catch (_) {}
+    }
+
+    async function persist(label) {
+      BX24.placement.call('setValue', label);
+      if (dealId) {
+        try {
+          await call('crm.deal.update', { id: dealId, fields: { [UF]: label } });
+        } catch (_) {
+          /* в режиме просмотра REST может быть недоступен — setValue достаточно до сохранения карточки */
+        }
+      }
+      broadcast(hexFromLabel(label));
+      renderUI(label);
+    }
+
+    function renderUI(label) {
+      const hex = hexFromLabel(label);
+      const root = document.getElementById('root');
+      root.innerHTML =
+        '<div class="bar" style="background:' + (hex || '#f9fafb') + '">' + label + '</div>' +
+        '<div class="edit" id="edit"></div>' +
+        '<p class="hint" id="hint"></p>';
+      const hint = document.getElementById('hint');
+      hint.textContent = editMode
+        ? 'Выберите цвет и нажмите «Сохранить» на карточке сделки.'
+        : 'Нажмите «Изменить» (карандаш) на карточке — затем выберите цвет ниже.';
+
+      const edit = document.getElementById('edit');
+      PALETTE.forEach((item) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.innerHTML = '<span class="sw" style="background:' + (item.hex || '#fff') + '"></span>' + item.label;
+        if (item.label === label) btn.classList.add('on');
+        btn.onclick = () => persist(item.label);
+        edit.appendChild(btn);
+      });
+      BX24.fitWindow();
+    }
+
+    BX24.init(() => {
+      try {
+        const opts = BX24.placement.info().options || BX24.getPlacementOptions() || {};
+        dealId = opts.ENTITY_VALUE_ID || opts.entityValueId || opts.ID;
+        editMode = isEditMode(opts);
+        renderUI(labelFromRaw(opts.VALUE));
+      } catch (e) {
+        document.getElementById('root').innerHTML =
+          '<div class="err">Виджет: ' + (e.message || e) + '</div>';
+      }
+    }, () => {
+      document.getElementById('root').innerHTML =
+        '<div class="err">Нет связи с приложением. Запустите npm run start и обновите страницу (F5).</div>';
+    });
+  </script>
+</body>
+</html>

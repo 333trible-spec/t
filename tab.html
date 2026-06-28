@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Цвет фона</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; padding: 16px; background: #f9fafb; }
+    h2 { margin: 0 0 12px; font-size: 16px; }
+    .preview { height: 120px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #374151; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+    button { border: 2px solid #e5e7eb; border-radius: 8px; padding: 12px 8px; cursor: pointer; background: #fff; font-size: 13px; }
+    button:hover { border-color: #2563eb; }
+    button.active { border-color: #2563eb; box-shadow: 0 0 0 2px #93c5fd; }
+    .swatch { width: 100%; height: 28px; border-radius: 4px; margin-bottom: 6px; border: 1px solid rgba(0,0,0,.08); }
+    #msg { margin-top: 12px; font-size: 13px; min-height: 1.2em; }
+    #msg.ok { color: #15803d; }
+    #msg.warn { color: #b45309; }
+    .hint { font-size: 12px; color: #6b7280; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Превью фона карточки</h2>
+  <div class="preview" id="preview">Загрузка…</div>
+  <div class="grid" id="grid"></div>
+  <p id="msg"></p>
+  <p class="hint" id="hint"></p>
+  <script>
+    const PALETTE = [
+      { label: 'Без фона', hex: '' },
+      { label: 'Бронь', hex: '#FFF8E1' },
+      { label: 'Оформление', hex: '#E3F2FD' },
+      { label: 'Рассрочка', hex: '#F3E5F5' },
+      { label: 'VIP', hex: '#FFFDE7' },
+      { label: 'Срочно', hex: '#FFEBEE' },
+      { label: 'Успех', hex: '#E8F5E9' },
+      { label: 'Провал', hex: '#F5F5F5' },
+    ];
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const MSG_TYPE = 'b24-deal-card-bg';
+    const STYLE_ID = 'b24-deal-card-bg-style';
+    const CARD_SELECTORS = [
+      '.crm-entity-widget-content',
+      '.ui-entity-editor-column-content',
+      '.ui-side-panel-wrap',
+      '.ui-side-panel-content',
+      '.ui-page-slider-wrapper',
+      '.ui-page-slider-content',
+      '[data-role="entity-editor"]',
+      '.crm-entity-card-container',
+    ];
+    let dealId = null;
+    let fieldList = [];
+    let currentEnumId = null;
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function enumIdForLabel(label) {
+      const row = fieldList.find((r) => r.VALUE === label);
+      return row ? row.ID : null;
+    }
+
+    function labelForEnumId(id) {
+      const row = fieldList.find((r) => String(r.ID) === String(id));
+      return row ? row.VALUE : 'Без фона';
+    }
+
+    function hexForLabel(label) {
+      return PALETTE.find((p) => p.label === label)?.hex || '';
+    }
+
+    function applyParentCardBg(hex) {
+      let doc;
+      try {
+        doc = window.parent.document;
+        if (!doc || doc === document) return false;
+        void doc.body;
+      } catch (_) {
+        return false;
+      }
+      let style = doc.getElementById(STYLE_ID);
+      if (!hex) {
+        style?.remove();
+        CARD_SELECTORS.forEach((sel) => {
+          doc.querySelectorAll(sel).forEach((el) => { el.style.backgroundColor = ''; });
+        });
+        return true;
+      }
+      if (!style) {
+        style = doc.createElement('style');
+        style.id = STYLE_ID;
+        doc.head.appendChild(style);
+      }
+      style.textContent = CARD_SELECTORS.map(
+        (sel) => `${sel}{background-color:${hex}!important;transition:background-color .25s ease}`,
+      ).join('');
+      return true;
+    }
+
+    function setMsg(text, ok) {
+      const el = document.getElementById('msg');
+      el.textContent = text;
+      el.className = ok ? 'ok' : 'warn';
+    }
+
+    function setPreview(label) {
+      const hex = hexForLabel(label);
+      const el = document.getElementById('preview');
+      el.style.background = hex || '#ffffff';
+      el.textContent = label;
+      document.querySelectorAll('#grid button').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.label === label);
+      });
+      return hex;
+    }
+
+    function broadcastPaint(hex) {
+      try {
+        window.top.postMessage({ type: MSG_TYPE, hex: hex || '' }, '*');
+      } catch (_) {}
+      return applyParentCardBg(hex);
+    }
+
+    function refreshCardForm() {
+      try {
+        BX24.placement.call('reloadData');
+      } catch (_) {}
+    }
+
+    function labelFromDealValue(raw) {
+      if (raw === null || raw === undefined || raw === '') return 'Без фона';
+      const s = String(raw).trim();
+      if (PALETTE.some((p) => p.label === s)) return s;
+      const row = fieldList.find((r) => String(r.ID) === String(raw));
+      return row?.VALUE || 'Без фона';
+    }
+
+    async function saveColor(label) {
+      if (!dealId) return;
+      await call('crm.deal.update', {
+        id: dealId,
+        fields: { [UF]: label },
+      });
+      const hex = setPreview(label);
+      broadcastPaint(hex);
+      refreshCardForm();
+      setMsg('Сохранено: «' + label + '».', true);
+      document.getElementById('hint').textContent =
+        'Поле на форме обновится после перезагрузки карточки (F5).';
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      PALETTE.forEach((item) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.label = item.label;
+        btn.innerHTML = '<div class="swatch" style="background:' + (item.hex || '#fff') + '"></div>' + item.label;
+        btn.onclick = () => saveColor(item.label);
+        grid.appendChild(btn);
+      });
+    }
+
+    BX24.init(async () => {
+      const placement = BX24.placement.info();
+      let opts = placement.options || {};
+      if (typeof opts === 'string') {
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+      }
+      dealId = opts.ID || opts.id;
+      if (!dealId) {
+        document.getElementById('preview').textContent = 'Откройте вкладку из карточки сделки';
+        return;
+      }
+      const fields = await call('crm.deal.userfield.list');
+      const field = (fields || []).find((f) => f.FIELD_NAME === UF);
+      fieldList = field?.LIST || [];
+
+      const deal = await call('crm.deal.get', { id: dealId, select: [UF] });
+      const label = labelFromDealValue(deal[UF]);
+      renderGrid();
+      const hex = setPreview(label);
+      broadcastPaint(hex);
+      BX24.fitWindow();
+    });
+  </script>
+</body>
+</html>
