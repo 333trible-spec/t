@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 0;
+      background: transparent;
+    }
+    .wrap { padding: 8px 10px 10px; }
+    .bar {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #374151;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.08);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .edit { display: flex; flex-wrap: wrap; gap: 6px; }
+    .edit button {
+      min-width: 72px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 6px 4px;
+      font-size: 11px;
+      background: #fff;
+    }
+    .edit button .sw {
+      display: block;
+      height: 18px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .edit button.on { border-color: #2563eb; box-shadow: 0 0 0 2px #93c5fd; }
+    .hint { margin: 6px 0 0; font-size: 11px; color: #6b7280; line-height: 1.35; }
+    .err { color: #b91c1c; font-size: 12px; padding: 8px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const MSG_TYPE = 'b24-deal-card-bg';
+    const CACHE_KEY = 'b24-deal-card-bg-v4';
+    const STYLE_ID = 'b24-deal-card-bg-style';
+    const PAINTER_VERSION = '5.0.0-field';
+    const PALETTE = [
+      { label: 'Без фона', hex: '' },
+      { label: 'Бронь', hex: '#FFF8E1' },
+      { label: 'Оформление', hex: '#E3F2FD' },
+      { label: 'Рассрочка', hex: '#F3E5F5' },
+      { label: 'VIP', hex: '#FFFDE7' },
+      { label: 'Срочно', hex: '#FFEBEE' },
+      { label: 'Успех', hex: '#E8F5E9' },
+      { label: 'Провал', hex: '#F5F5F5' },
+    ];
+    const LABEL_HEX = {
+      'Без фона': '', Бронь: '#FFF8E1', Оформление: '#E3F2FD', Рассрочка: '#F3E5F5',
+      VIP: '#FFFDE7', Срочно: '#FFEBEE', Успех: '#E8F5E9', Провал: '#F5F5F5',
+    };
+    const CARD_SELECTORS = [
+      '.ui-page-slider-wrapper',
+      '.ui-page-slider-content',
+      '#ui-page-slider-content',
+      '.ui-page-slider-workarea',
+      '.ui-page-slider-mask',
+      '.ui-side-panel-wrap',
+      '.ui-side-panel-content',
+      '.ui-side-panel-slider-content',
+      '.ui-side-panel',
+      '.ui-side-panel-container',
+      '.ui-slider-page',
+      '.crm-entity-card-container',
+      '.crm-entity-card-widget',
+      '.crm-entity-widget-content',
+      '.ui-entity-wrap',
+      '.ui-entity-editor',
+      '.ui-entity-editor-content',
+      '.ui-entity-editor-column-content',
+      '.ui-entity-editor-section',
+      '.ui-entity-editor-section-content',
+      '.ui-entity-editor-block',
+      '.ui-entity-editor-field-container',
+      '.ui-entity-editor-field-description',
+      '[data-role="entity-editor"]',
+    ];
+
+    let dealId = null;
+    let lastHex = '';
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function portalWindow() {
+      let win = window;
+      for (let i = 0; i < 20; i += 1) {
+        if (!win.parent || win.parent === win) break;
+        try { void win.parent.document.body; win = win.parent; } catch (_) { break; }
+      }
+      return win;
+    }
+
+    function portalDocument() {
+      try { return portalWindow().document; } catch (_) { return null; }
+    }
+
+    function forEachCardDocument(fn) {
+      const seen = new Set();
+      const stack = [];
+      const topDoc = portalDocument();
+      if (topDoc) stack.push(topDoc);
+      try { if (document.body) stack.push(document); } catch (_) {}
+      while (stack.length) {
+        const doc = stack.pop();
+        if (!doc || seen.has(doc)) continue;
+        seen.add(doc);
+        try { fn(doc); } catch (_) {}
+        try {
+          doc.querySelectorAll('iframe').forEach((iframe) => {
+            try {
+              if (iframe.contentDocument) stack.push(iframe.contentDocument);
+            } catch (_) {}
+          });
+        } catch (_) {}
+      }
+    }
+
+    function applyBackgroundToDoc(hex, doc) {
+      if (!doc) return;
+      if (!hex) {
+        doc.getElementById(STYLE_ID)?.remove();
+        CARD_SELECTORS.forEach((sel) => {
+          doc.querySelectorAll(sel).forEach((el) => {
+            el.style.removeProperty('background-color');
+            el.style.removeProperty('background');
+          });
+        });
+        return;
+      }
+      let style = doc.getElementById(STYLE_ID);
+      if (!style) {
+        style = doc.createElement('style');
+        style.id = STYLE_ID;
+        (doc.head || doc.documentElement).appendChild(style);
+      }
+      style.textContent = CARD_SELECTORS.map((sel) => (
+        sel + '{background-color:' + hex + '!important;background:' + hex + '!important}'
+      )).join('\n');
+      CARD_SELECTORS.forEach((sel) => {
+        doc.querySelectorAll(sel).forEach((el) => {
+          el.style.setProperty('background-color', hex, 'important');
+          el.style.setProperty('background', hex, 'important');
+        });
+      });
+    }
+
+    function paintEntireCard(hex) {
+      lastHex = hex || '';
+      try {
+        const top = portalWindow();
+        top.__b24DealCardBgBridgeVersion = PAINTER_VERSION;
+        top.__b24DealCardBgBridge = true;
+      } catch (_) {}
+      forEachCardDocument((doc) => applyBackgroundToDoc(hex, doc));
+      if (dealId) {
+        try {
+          const top = portalWindow();
+          const all = JSON.parse(top.localStorage.getItem(CACHE_KEY) || '{}');
+          all[String(dealId)] = hex || '';
+          all.__lastDealId = String(dealId);
+          top.localStorage.setItem(CACHE_KEY, JSON.stringify(all));
+        } catch (_) {}
+      }
+    }
+
+    function ensureParentMessageHook() {
+      let top;
+      try { top = portalWindow(); } catch (_) { return; }
+      if (top.__b24DealCardBgFieldMsgHook) return;
+      top.__b24DealCardBgFieldMsgHook = true;
+      top.addEventListener('message', (e) => {
+        const d = e.data;
+        if (!d || d.type !== MSG_TYPE || !('hex' in d)) return;
+        paintEntireCard(normalizeHex(d.hex));
+      });
+    }
+
+    function normalizeRaw(raw) {
+      if (raw === null || raw === undefined) return '';
+      if (typeof raw === 'object') return String(raw.VALUE || raw.value || '').trim();
+      return String(raw).trim();
+    }
+
+    function normalizeHex(raw) {
+      const s = normalizeRaw(raw);
+      if (!s || s === '0') return '';
+      if (/^#[0-9a-f]{3,8}$/i.test(s)) return s.toUpperCase();
+      if (Object.prototype.hasOwnProperty.call(LABEL_HEX, s)) return LABEL_HEX[s];
+      const hit = PALETTE.find((p) => p.label === s);
+      return hit ? hit.hex : '';
+    }
+
+    function labelFromHex(hex) {
+      const hit = PALETTE.find((p) => p.hex.toUpperCase() === String(hex || '').toUpperCase());
+      return hit ? hit.label : (hex ? hex : 'Без фона');
+    }
+
+    function broadcast(hex) {
+      const msg = { type: MSG_TYPE, hex: hex || '', dealId: dealId };
+      try { window.top.postMessage(msg, '*'); } catch (_) {}
+      let w = window;
+      for (let i = 0; i < 16; i += 1) {
+        try {
+          if (w.parent && w.parent !== w) {
+            w.parent.postMessage(msg, '*');
+            w = w.parent;
+          } else break;
+        } catch (_) { break; }
+      }
+    }
+
+    async function saveHex(hex, label) {
+      paintEntireCard(hex);
+      broadcast(hex);
+      try { BX24.placement.call('setValue', hex || ''); } catch (_) {}
+      if (!dealId) return;
+      try {
+        await call('crm.deal.update', { id: dealId, fields: { [UF]: hex || '' } });
+        paintEntireCard(hex);
+        broadcast(hex);
+      } catch (_) {}
+    }
+
+    function pickColor(item) {
+      saveHex(item.hex, item.label);
+      renderUI(item.label, item.hex);
+    }
+
+    function renderUI(label, hex) {
+      const root = document.getElementById('root');
+      const barBg = hex || '#f3f4f6';
+      root.innerHTML =
+        '<div class="wrap">' +
+        '<div class="bar" style="background:' + barBg + '">' + label + '</div>' +
+        '<div class="edit" id="edit"></div>' +
+        '<p class="hint">Цвет применяется ко всей карточке сделки (все поля и блоки).</p>' +
+        '</div>';
+
+      const edit = document.getElementById('edit');
+      PALETTE.forEach((item) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.innerHTML = '<span class="sw" style="background:' + (item.hex || '#fff') + '"></span>' + item.label;
+        if (item.label === label) btn.classList.add('on');
+        btn.onclick = () => pickColor(item);
+        edit.appendChild(btn);
+      });
+      BX24.fitWindow();
+    }
+
+    window.addEventListener('message', (e) => {
+      const d = e.data;
+      if (!d || d.type !== MSG_TYPE || !('hex' in d)) return;
+      paintEntireCard(normalizeHex(d.hex));
+    });
+
+    BX24.init(async () => {
+      try {
+        ensureParentMessageHook();
+        const opts = BX24.placement.info().options || BX24.getPlacementOptions() || {};
+        dealId = opts.ENTITY_VALUE_ID || opts.entityValueId || opts.ID || dealId;
+        let hex = normalizeHex(opts.VALUE);
+        if (dealId && !hex) {
+          try {
+            const deal = await call('crm.deal.get', { id: dealId, select: [UF] });
+            hex = normalizeHex(deal[UF]);
+          } catch (_) {}
+        }
+        renderUI(labelFromHex(hex), hex);
+        paintEntireCard(hex);
+        broadcast(hex);
+        setInterval(() => {
+          if (lastHex) paintEntireCard(lastHex);
+        }, 1200);
+      } catch (e) {
+        document.getElementById('root').innerHTML =
+          '<div class="err">Виджет: ' + (e.message || e) + '</div>';
+      }
+    }, () => {
+      document.getElementById('root').innerHTML =
+        '<div class="err">Нет связи с приложением. Переустановите приложение на портале.</div>';
+    });
+  </script>
+</body>
+</html>

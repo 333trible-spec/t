@@ -1,0 +1,8 @@
+{
+  "handlerUrl": "https://b24-s2an91.bitrix24.ru/docs/file/deal-card-bg/field-handler.html",
+  "handlerDownloadUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTExJl89NVdYMGdmNXU0MUZRMndnSHRwVEFZQnp5TTY2UXZKSms%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1URXhKbDg5TlZkWU1HZG1OWFUwTVVaUk1uZG5TSFJ3VkVGWlFucDVUVFkyVVhaS1Ntcz18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.3UNyezQWVTRxu3rzt1POOzh0gLVfLYpRhQOSDK%2Fgelc%3D",
+  "handlerBindUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTExJl89NVdYMGdmNXU0MUZRMndnSHRwVEFZQnp5TTY2UXZKSms%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1URXhKbDg5TlZkWU1HZG1OWFUwTVVaUk1uZG5TSFJ3VkVGWlFucDVUVFkyVVhaS1Ntcz18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.3UNyezQWVTRxu3rzt1POOzh0gLVfLYpRhQOSDK%2Fgelc%3D",
+  "handlerFileId": "111",
+  "uploadedAt": "2026-06-28T20:38:22.412Z",
+  "note": "handlerBindUrl = DOWNLOAD (same-origin) для userfieldtype HANDLER"
+}

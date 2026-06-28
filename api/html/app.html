@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Фон карточки сделки</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      color: #1f2937;
+      background: #f9fafb;
+      padding: 20px 24px 28px;
+    }
+    .card {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    .hero {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 28px;
+    }
+    .hero-text { flex: 1 1 58%; min-width: 0; }
+    .hero-image {
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+    .lead {
+      margin: 0 0 14px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #4b5563;
+    }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    li + li { margin-top: 6px; }
+    .meta {
+      padding: 0 28px 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .actions {
+      padding: 0 28px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-secondary { background: #fff; color: #2563eb; border-color: #bfdbfe; }
+    @media (max-width: 720px) {
+      .hero { flex-direction: column-reverse; text-align: center; }
+      .hero-image { flex-basis: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Фон карточки сделки</h1>
+        <p class="lead">
+          Цветовая метка для карточки CRM: палитра в поле сделки, вкладка «Цвет фона»,
+          автоподсветка при открытии. Удобно для брони, VIP, срочных и этапов воронки.
+        </p>
+        <ul>
+          <li>Поле-виджет «Цвет фона карточки» в карточке сделки</li>
+          <li>Вкладка с палитрой и сохранением в CRM</li>
+          <li>Роботы могут менять цвет при смене стадии</li>
+        </ul>
+      </div>
+      <div class="hero-image">
+        <img src="assets/mascot.png" alt="Фон карточки сделки">
+      </div>
+    </div>
+    <p class="meta" id="build-info">Загрузка версии…</p>
+    <div class="actions">
+      <a class="btn btn-primary" id="open-install" href="#">Установить / обновить</a>
+      <a class="btn btn-secondary" id="open-fix-field" href="#">Исправить поле (нет цвета)</a>
+    </div>
+  </div>
+  <script>
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function formatBuildTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return iso;
+      const pad = (n) => String(n).padStart(2, '0');
+      return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear()
+        + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+    }
+
+    async function showBuildInfo() {
+      const el = document.getElementById('build-info');
+      const base = appBase();
+      document.getElementById('open-install').href = base + '/install.html';
+      document.getElementById('open-fix-field').href = base + '/fix-field.html';
+      try {
+        const res = await fetch(base + '/version.json?_=' + Date.now());
+        if (!res.ok) throw new Error('no version');
+        const data = await res.json();
+        el.textContent = 'Последнее обновление сервера: ' + formatBuildTime(data.builtAt)
+          + (data.version ? ' (v' + data.version + ')' : '');
+      } catch (_) {
+        el.textContent = '';
+      }
+    }
+
+    showBuildInfo();
+    if (typeof BX24 !== 'undefined') {
+      BX24.init(function () { BX24.fitWindow(); });
+    }
+  </script>
+</body>
+</html>

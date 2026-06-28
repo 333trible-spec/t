@@ -1,0 +1,21 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/serve?file=app.html" },
+    { "source": "/app.html", "destination": "/api/serve?file=app.html" },
+    { "source": "/install.html", "destination": "/api/serve?file=install.html" },
+    { "source": "/field-handler.html", "destination": "/api/serve?file=field-handler.html" },
+    { "source": "/tab.html", "destination": "/api/serve?file=tab.html" },
+    { "source": "/worker.html", "destination": "/api/serve?file=worker.html" },
+    { "source": "/bookmarklet.html", "destination": "/api/serve?file=bookmarklet.html" },
+    { "source": "/fix-worker.html", "destination": "/api/serve?file=fix-worker.html" },
+    { "source": "/fix-field.html", "destination": "/api/serve?file=fix-field.html" },
+    { "source": "/version.json", "destination": "/api/serve?file=version.json" },
+    { "source": "/paint-bridge.js", "destination": "/api/serve?file=paint-bridge.js" },
+    { "source": "/parent-painter.js", "destination": "/api/serve?file=parent-painter.js" },
+    { "source": "/deal-card-bg.user.js", "destination": "/api/serve?file=deal-card-bg.user.js" },
+    { "source": "/field-handler-url.json", "destination": "/api/serve?file=field-handler-url.json" },
+    { "source": "/portal-worker-url.json", "destination": "/api/serve?file=portal-worker-url.json" },
+    { "source": "/portal-worker.html", "destination": "/api/serve?file=portal-worker.html" },
+    { "source": "/assets/mascot.png", "destination": "/api/serve?file=assets/mascot.png" }
+  ]
+}

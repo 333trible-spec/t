@@ -1,0 +1,12 @@
+{
+  "workerUrl": "https://b24-s2an91.bitrix24.ru/docs/file/deal-card-bg/portal-worker.html",
+  "workerDownloadUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTIzJl89WlFHY1FGVkkxa2ZjeTZPVzgwbDBvRjZWODJYcFBsNGY%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXpKbDg5V2xGSFkxRkdWa2t4YTJaamVUWlBWemd3YkRCdlJqWldPREpZY0ZCc05HWT18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.i8ZqxA%2FlbZMEJws0pwjyHssxIqHuE%2BPwTuHysJGBbnc%3D",
+  "workerBindUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTIzJl89WlFHY1FGVkkxa2ZjeTZPVzgwbDBvRjZWODJYcFBsNGY%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXpKbDg5V2xGSFkxRkdWa2t4YTJaamVUWlBWemd3YkRCdlJqWldPREpZY0ZCc05HWT18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.i8ZqxA%2FlbZMEJws0pwjyHssxIqHuE%2BPwTuHysJGBbnc%3D",
+  "workerFileId": "123",
+  "painterUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTE5Jl89QkJYcHFHaEdNTHB4NDJuZXB3RTJoRUlSRU5sVU9OV0k%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1URTVKbDg5UWtKWWNIRkhhRWROVEhCNE5ESnVaWEIzUlRKb1JVbFNSVTVzVlU5T1Ywaz18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.YnXM9icUg9o5BlrMgaVQ920mCWlZkCgvqH7UoM54%2Fwk%3D",
+  "painterDownloadUrl": "https://b24-s2an91.bitrix24.ru/rest/1/81o68940r6flmrs4/download/?token=disk%7CaWQ9MTE5Jl89QkJYcHFHaEdNTHB4NDJuZXB3RTJoRUlSRU5sVU9OV0k%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1URTVKbDg5UWtKWWNIRkhhRWROVEhCNE5ESnVaWEIzUlRKb1JVbFNSVTVzVlU5T1Ywaz18MXw4MW82ODk0MHI2ZmxtcnM0Ig%3D%3D.YnXM9icUg9o5BlrMgaVQ920mCWlZkCgvqH7UoM54%2Fwk%3D",
+  "painterFileId": "119",
+  "uploadedAt": "2026-06-28T20:38:21.349Z",
+  "workerVersion": "4.1.0-css",
+  "note": "workerBindUrl = DOWNLOAD; CSS-only paint (без JS injection в parent)"
+}

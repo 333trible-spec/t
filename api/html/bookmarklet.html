@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>B24 — закладка «Подсветить фон сделки»</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    a.bookmark { display: inline-block; padding: 12px 20px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    a.bookmark:hover { background: #1d4ed8; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+    ol li { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Закладка — фон всей карточки</h1>
+  <p>Если приложение не может покрасить карточку (ограничение браузера), один раз перетащите кнопку на панель закладок. На карточке сделки нажимайте закладку — фон подтянется из поля «Цвет фона карточки».</p>
+
+  <p>
+    <a class="bookmark" id="bm" href="#">B24: подсветить фон</a>
+  </p>
+
+  <h2>Как установить</h2>
+  <ol>
+    <li>Покажите панель закладок (Ctrl+Shift+B в Chrome).</li>
+    <li><strong>Перетащите</strong> синюю кнопку на панель закладок.</li>
+    <li>На портале откройте сделку → нажмите закладку.</li>
+  </ol>
+
+  <p>После смены цвета в поле — снова нажмите закладку или F5.</p>
+  <script>
+    (function () {
+      var bridge = location.origin + '/paint-bridge.js';
+      var href = "javascript:(function(){var s=document.createElement('script');s.src='" + bridge + "?_='+Date.now();document.head.appendChild(s);})();";
+      document.getElementById('bm').href = href;
+    })();
+  </script>
+</body>
+</html>

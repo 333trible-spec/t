@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Установка — Фон карточки сделки</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 24px; max-width: 720px; margin: 0 auto; color: #1f2937; }
+    .hero {
+      display: flex; gap: 20px; align-items: center; margin-bottom: 20px;
+      padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+    }
+    .hero-text { flex: 1 1 auto; min-width: 0; }
+    .hero-image { flex: 0 0 120px; text-align: center; }
+    .hero-image img { width: 112px; height: 112px; object-fit: contain; }
+    .hero h1 { margin: 0 0 8px; font-size: 22px; }
+    .hero p { margin: 0; font-size: 14px; line-height: 1.45; color: #4b5563; }
+    .ok { color: #15803d; }
+    .err { color: #b91c1c; }
+    .warn { color: #b45309; }
+    li { margin: 6px 0; }
+    code { font-size: 13px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Фон карточки сделки</h1>
+      <p>Установка поля-виджета, вкладки «Цвет фона» и фонового worker на Диске портала.</p>
+      <p>Локальный сервер: <code id="origin"></code></p>
+      <p id="build-info" class="warn"></p>
+    </div>
+    <div class="hero-image">
+      <img src="assets/mascot.png" alt="Фон карточки сделки">
+    </div>
+  </div>
+  <p id="status">Инициализация…</p>
+  <ul id="log"></ul>
+  <script>
+    const TAB_TITLE = 'Цвет фона';
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const USER_TYPE = 'deal_card_bg';
+
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function appUrls() {
+      const base = appBase();
+      return {
+        install: base + '/install.html',
+        fieldHandler: base + '/field-handler.html',
+        tab: base + '/tab.html',
+        worker: base + '/worker.html',
+        fixWorker: base + '/fix-worker.html',
+      };
+    }
+
+    const urls = appUrls();
+    document.getElementById('origin').textContent = urls.install;
+
+    function formatBuildTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return iso;
+      const pad = (n) => String(n).padStart(2, '0');
+      return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear()
+        + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+    }
+
+    async function showBuildInfo() {
+      const el = document.getElementById('build-info');
+      try {
+        const res = await fetch(appBase() + '/version.json?_=' + Date.now());
+        if (!res.ok) throw new Error('no version');
+        const data = await res.json();
+        el.textContent = 'Последнее обновление сервера: ' + formatBuildTime(data.builtAt)
+          + (data.version ? ' (v' + data.version + ')' : '');
+      } catch (_) {
+        el.textContent = 'Последнее обновление: ' + formatBuildTime(new Date().toISOString());
+      }
+    }
+    showBuildInfo();
+
+    function log(msg, ok) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.className = ok === true ? 'ok' : ok === false ? 'err' : 'warn';
+      document.getElementById('log').appendChild(li);
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error() + ': ' + r.error_description()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function normalizeTypeList(raw) {
+      if (Array.isArray(raw)) return raw;
+      if (raw && typeof raw === 'object') return Object.values(raw);
+      return [];
+    }
+
+    function isWidgetType(id) {
+      if (!id) return false;
+      const s = String(id);
+      return s === USER_TYPE || s.endsWith('_' + USER_TYPE) || s.includes('deal_card_bg');
+    }
+
+    function isCrmWidgetType(id) {
+      if (!id) return false;
+      const s = String(id);
+      return s.startsWith('rest_') && s.includes('deal_card_bg');
+    }
+
+    function crmWidgetTypeId(appId, rawTypeId) {
+      const raw = String(rawTypeId || '').trim();
+      if (raw.startsWith('rest_') && raw.includes('deal_card_bg')) return raw;
+      if (appId) return 'rest_' + appId + '_' + USER_TYPE;
+      if (raw && raw !== USER_TYPE) return raw;
+      return null;
+    }
+
+    function portalOrigin() {
+      try { return 'https://' + BX24.getDomain(); } catch (_) { return ''; }
+    }
+
+    async function handlerBindFromJsonUrl(jsonUrl) {
+      try {
+        const res = await fetch(jsonUrl + (jsonUrl.includes('?') ? '&' : '?') + '_=' + Date.now());
+        if (!res.ok) return '';
+        const data = await res.json();
+        const bind = String(data.handlerBindUrl || data.handlerDownloadUrl || '').trim();
+        if (bind && isDiskDownloadUrl(bind)) return bind;
+      } catch (_) {}
+      return '';
+    }
+
+    async function fieldHandlerBindUrl() {
+      const candidates = [
+        appBase() + '/field-handler-url.json',
+        portalOrigin() + '/docs/file/deal-card-bg/field-handler-url.json',
+      ];
+      for (const url of candidates) {
+        const bind = await handlerBindFromJsonUrl(url);
+        if (bind) return bind;
+      }
+      return urls.fieldHandler;
+    }
+
+    async function registerWidgetType() {
+      const handler = await fieldHandlerBindUrl();
+      log('Виджет поля → ' + handler, handler.includes('bitrix24.ru') ? true : null);
+      const payload = {
+        USER_TYPE_ID: USER_TYPE,
+        HANDLER: handler,
+        TITLE: 'Цвет фона карточки',
+        DESCRIPTION: 'Палитра фона сделки',
+        OPTIONS: { height: 0 },
+      };
+      try {
+        await call('userfieldtype.update', payload);
+        log('Обработчик виджета обновлён → ' + handler, true);
+      } catch (e) {
+        const msg = e.message || '';
+        if (!/not found|не найден/i.test(msg)) {
+          try {
+            await call('userfieldtype.add', payload);
+            log('Тип поля зарегистрирован', true);
+            return;
+          } catch (e2) {
+            const msg2 = e2.message || '';
+            if (/binded|already|exist/i.test(msg2)) log('Тип поля уже был в реестре', true);
+            else throw e2;
+          }
+        } else {
+          await call('userfieldtype.add', payload);
+          log('Тип поля зарегистрирован', true);
+        }
+      }
+    }
+
+    async function resolveWidgetTypeId() {
+      await registerWidgetType();
+      let appId = null;
+      try {
+        const app = await call('app.info', {});
+        appId = app.ID || app.id || app.APP_ID;
+        if (appId) log('ID приложения: ' + appId, true);
+      } catch (e) {
+        log('app.info: ' + (e.message || e), null);
+      }
+
+      const list = normalizeTypeList(await call('userfieldtype.list'));
+      const hit = list.find((t) => isWidgetType(t.USER_TYPE_ID || t.userTypeId));
+      const rawType = hit ? (hit.USER_TYPE_ID || hit.userTypeId) : USER_TYPE;
+      const typeId = crmWidgetTypeId(appId, rawType);
+
+      if (!typeId) {
+        throw new Error(
+          'Не удалось собрать ID типа rest_<app>_deal_card_bg. '
+          + 'Проверьте scope: crm + placement + userfieldconfig.',
+        );
+      }
+
+      log('ID типа в реестре: ' + rawType, true);
+      log('ID типа для CRM: ' + typeId, true);
+      return typeId;
+    }
+
+    function findDealField(rows) {
+      return (rows || []).find((f) => f.FIELD_NAME === UF || f.FIELD_NAME === 'DEAL_CARD_BG');
+    }
+
+    function isDiskDownloadUrl(url) {
+      return /\/rest\/[^/]+\/[^/]+\/download/i.test(String(url || ''));
+    }
+
+    async function portalWorkerFromDisk() {
+      try {
+        const children = await call('disk.storage.getchildren', { id: '3' });
+        const folder = (children || []).find((x) => x.TYPE === 'folder' && x.NAME === 'deal-card-bg');
+        if (!folder) return null;
+        const files = await call('disk.folder.getchildren', { id: folder.ID });
+        const hit = (files || []).find((x) => x.TYPE === 'file' && x.NAME === 'portal-worker.html');
+        if (!hit) return null;
+        const info = await call('disk.file.get', { id: hit.ID });
+        const download = String(info?.DOWNLOAD_URL || info?.downloadUrl || '').trim();
+        if (download && isDiskDownloadUrl(download)) return download;
+        return null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    async function portalWorkerBindUrl() {
+      try {
+        const res = await fetch(appBase() + '/portal-worker-url.json?_=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          const bind = String(data.workerBindUrl || data.workerDownloadUrl || '').trim();
+          if (bind && isDiskDownloadUrl(bind)) return bind;
+        }
+      } catch (_) {}
+      try {
+        const opts = await call('app.option.get', {});
+        const saved = String(opts?.portal_worker_url || opts?.PORTAL_WORKER_URL || '').trim();
+        if (saved && isDiskDownloadUrl(saved)) return saved;
+      } catch (_) {}
+      return portalWorkerFromDisk();
+    }
+
+    async function ensureWidgetField(typeId) {
+      const rows = await call('crm.deal.userfield.list', {});
+      let field = findDealField(rows);
+
+      if (!field) {
+        await call('crm.deal.userfield.add', {
+          fields: {
+            FIELD_NAME: 'DEAL_CARD_BG',
+            XML_ID: 'DEAL_CARD_BG',
+            USER_TYPE_ID: typeId,
+            MANDATORY: 'N',
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон',
+            SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+          },
+        });
+        log('Создано поле-виджет ' + UF, true);
+        return;
+      }
+
+      if (field.USER_TYPE_ID === typeId) {
+        log('Поле ' + UF + ' — виджет с палитрой', true);
+        return;
+      }
+
+      log('Тип «' + field.USER_TYPE_ID + '» → виджет…', null);
+      try {
+        await call('crm.deal.userfield.update', {
+          id: field.ID,
+          fields: {
+            USER_TYPE_ID: typeId,
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон',
+            SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+          },
+        });
+        const check = findDealField(await call('crm.deal.userfield.list', {}));
+        if (check?.USER_TYPE_ID === typeId) {
+          log('Поле ' + UF + ' переведено на виджет', true);
+          return;
+        }
+      } catch (_) {}
+
+      log('Пересоздаём поле как виджет (hex в сделках сохранится)…', null);
+      await call('crm.deal.userfield.delete', { id: field.ID });
+      await call('crm.deal.userfield.add', {
+        fields: {
+          FIELD_NAME: 'DEAL_CARD_BG',
+          USER_TYPE_ID: typeId,
+          XML_ID: 'DEAL_CARD_BG',
+          MANDATORY: 'N',
+          EDIT_FORM_LABEL: 'Цвет фона карточки',
+          LIST_COLUMN_LABEL: 'Фон',
+          SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+        },
+      });
+      log('Поле ' + UF + ' — виджет с палитрой', true);
+    }
+
+    async function bindPlacement(placement, handler, title, options) {
+      try {
+        await call('placement.bind', {
+          PLACEMENT: placement,
+          HANDLER: handler,
+          TITLE: title || undefined,
+          DESCRIPTION: title || undefined,
+          LANG_ALL: title ? { ru: { TITLE: title, DESCRIPTION: title } } : undefined,
+          OPTIONS: options || undefined,
+        });
+        log(placement + ' привязан', true);
+      } catch (e) {
+        const msg = e.message || '';
+        if (/binded|bind/i.test(msg)) log(placement + ' уже привязан', true);
+        else throw e;
+      }
+    }
+
+    async function getWorkerBindings() {
+      try {
+        const raw = await call('placement.get', {});
+        const rows = Array.isArray(raw) ? raw : raw ? Object.values(raw) : [];
+        return rows.filter((row) => (row.PLACEMENT || row.placement) === 'PAGE_BACKGROUND_WORKER');
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function clearWorkerBindings() {
+      const placement = 'PAGE_BACKGROUND_WORKER';
+      try {
+        const bulk = await call('placement.unbind', { PLACEMENT: placement });
+        const n = bulk && typeof bulk === 'object' ? bulk.count : bulk;
+        log('Сняты старые привязки worker (count=' + n + ')', true);
+      } catch (e) {
+        log('placement.unbind (все): ' + (e.message || e), null);
+      }
+
+      const handlers = new Set();
+      (await getWorkerBindings()).forEach((row) => {
+        const h = String(row.HANDLER || row.handler || '').trim();
+        if (h) handlers.add(h);
+      });
+      try {
+        const opts = await call('app.option.get', {});
+        const saved = String(opts?.portal_worker_url || opts?.PORTAL_WORKER_URL || '').trim();
+        if (saved) handlers.add(saved);
+      } catch (_) {}
+      handlers.add(urls.worker);
+
+      for (const handler of handlers) {
+        try {
+          await call('placement.unbind', { PLACEMENT: placement, HANDLER: handler });
+          log('unbind → ' + handler, true);
+        } catch (_) {}
+      }
+    }
+
+    async function bindBackgroundWorker() {
+      const placement = 'PAGE_BACKGROUND_WORKER';
+      const bindUrl = await portalWorkerBindUrl();
+      if (!bindUrl) {
+        log('Worker на Диске не найден. Запустите: npm run publish:portal-worker', false);
+        return;
+      }
+      log('Worker (same-origin, Диск) → ' + bindUrl, true);
+
+      const existing = await getWorkerBindings();
+      const exact = existing.find((row) => String(row.HANDLER || row.handler || '').trim() === bindUrl);
+      if (exact) {
+        log('PAGE_BACKGROUND_WORKER уже привязан к актуальному URL', true);
+        try {
+          await call('app.option.set', { options: { portal_worker_url: bindUrl } });
+        } catch (_) {}
+        return;
+      }
+
+      await clearWorkerBindings();
+
+      try {
+        await bindPlacement(placement, bindUrl, 'Фон карточки сделки', { errorHandlerUrl: urls.install });
+        try {
+          await call('app.option.set', { options: { portal_worker_url: bindUrl } });
+        } catch (_) {}
+      } catch (e) {
+        const msg = e.message || String(e);
+        if (/MAX_COUNT|max count/i.test(msg)) {
+          log('PAGE_BACKGROUND_WORKER: старая привязка не снялась', false);
+          log('Откройте: ' + urls.install.replace('install.html', 'fix-worker.html'), false);
+          log('Вкладка и поле-виджет работают и без worker', true);
+        } else {
+          log('PAGE_BACKGROUND_WORKER: ' + msg, false);
+        }
+      }
+    }
+
+    BX24.init(async () => {
+      const status = document.getElementById('status');
+      try {
+        const typeId = await resolveWidgetTypeId();
+        await ensureWidgetField(typeId);
+        await bindPlacement('CRM_DEAL_DETAIL_TAB', urls.tab, TAB_TITLE);
+        await bindBackgroundWorker();
+        const buildEl = document.getElementById('build-info');
+        const buildLine = buildEl?.textContent ? (' ' + buildEl.textContent + '.') : '';
+        status.textContent = 'Готово. Добавьте поле «Цвет фона» на форму сделки → выберите цвет.' + buildLine;
+        log('Цвет — hex в CRM; палитра в поле-виджете и вкладке', true);
+          log('Проверка: F12 → __b24DealCardBgBridgeVersion → "4.1.0-css"', null);
+        if (location.hostname.endsWith('.surge.sh')) {
+          log('Статический хостинг — ПК и туннель не нужны', true);
+        } else if (location.hostname.endsWith('.github.io')) {
+          log('GitHub Pages — ПК и туннель не нужны', true);
+        } else if (location.hostname.endsWith('.loca.lt') || location.hostname.endsWith('.trycloudflare.com')) {
+          log('Туннель: для автономной работы — npm run publish:github', null);
+        } else {
+          log('Локальный сервер — для продакшена: npm run publish:surge', null);
+        }
+        BX24.installFinish();
+      } catch (e) {
+        status.textContent = 'Ошибка установки — прочитайте список ниже';
+        log(e.message || String(e), false);
+        log('Scope: crm + placement + userfieldconfig. Затем Сохранить → Переустановить', false);
+      }
+    });
+  </script>
+</body>
+</html>
