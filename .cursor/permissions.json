@@ -1,0 +1,7 @@
+{
+  "terminalAllowlist": [
+    "powershell -NoProfile -ExecutionPolicy Bypass -File \".cursor/cursor-admin/scripts/sync-context.ps1\"",
+    "powershell:*sync-context.ps1",
+    "powershell:*fetch-system.ps1"
+  ]
+}

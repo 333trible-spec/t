@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterAgentResponse": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \".cursor/hooks/play-chime.ps1\"",
+        "timeout": 15
+      }
+    ]
+  }
+}
