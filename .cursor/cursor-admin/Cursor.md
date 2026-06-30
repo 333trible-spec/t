@@ -14,9 +14,18 @@
 
 | Файл | Назначение |
 |------|------------|
-| [[context]] | Лицензия, **VPN Happ**, тариф, MCP |
+| `context.template.md` | Шаблон в git — ручные настройки, MCP, напоминания |
+| `context.md` | Рабочая копия (локально, не в git) — читает Гарри |
+| `reminder-log.md` | Лог напоминаний (в git, общий дом + работа) |
 | `vpn.json` | Кэш статуса Happ (не в git) |
 | `notes/` | Заметки по настройке Cursor |
+
+## Дом и работа
+
+1. Workspace Cursor — **корень** `Obsidian/`, не `Me/Me/`.
+2. Папка `.cursor/` — **только** в корне репозитория. `Me/Me/.cursor/` не использовать.
+3. После `git pull` на другом ПК: `scripts/sync-context.ps1` создаст `context.md` из шаблона.
+4. См. также [[../../.cursor/README|README .cursor]].
 
 ## Быстрый старт
 

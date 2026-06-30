@@ -9,6 +9,11 @@ function Chars([int[]]$codes) {
     -join ($codes | ForEach-Object { [char]$_ })
 }
 
+$templateFile = Join-Path $PSScriptRoot "..\context.template.md"
+if (-not (Test-Path $ContextFile) -and (Test-Path $templateFile)) {
+    Copy-Item -LiteralPath $templateFile -Destination $ContextFile
+}
+
 $fetchScript = Join-Path $PSScriptRoot "fetch-subscription.ps1"
 & $fetchScript -OutFile $SubscriptionFile | Out-Null
 
