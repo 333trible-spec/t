@@ -1,0 +1,22 @@
+.github-pages/
+.static-url
+.vercel
+.env*
+node_modules/
+
+# Локальный туннель и PID
+.app.pid
+.tunnel.pid
+.watchdog.pid
+.tunnel-url
+app.log
+app.err.log
+tunnel.log
+tunnel.err.log
+
+# Портал-специфичные / генерируемые при publish
+local-dev.json
+app/public/version.json
+app/public/portal-worker-url.json
+app/public/field-handler-url.json
+app/public/deal-card-bg.user.js

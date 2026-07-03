@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Семейное древо — Род</title>
+  <style>
+    :root {
+      --bg: #181818;
+      --chrome: #141414;
+      --text: #e4e4e4eb;
+      --text2: #e4e4e48d;
+      --text3: #e4e4e45e;
+      --stroke: #e4e4e433;
+      --stroke2: #e4e4e41f;
+      --fill-f: #e4e4e411;
+      --fill-m: #e4e4e40a;
+      --fill-t: #e4e4e41e;
+      --accent: #599ce7;
+      --accent-bg: #599ce7;
+      --accent-text: #191c22;
+      --elevated: #181818;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fcfcfc;
+        --chrome: #f3f3f3;
+        --text: #141414f0;
+        --text2: #141414bd;
+        --text3: #1414148a;
+        --stroke: #14141433;
+        --stroke2: #1414141f;
+        --fill-f: #14141414;
+        --fill-m: #1414140f;
+        --fill-t: #14141424;
+        --accent: #3685bf;
+        --accent-bg: #3685bf;
+        --accent-text: #fcfcfc;
+        --elevated: #fcfcfc;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 20px; }
+    h1 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
+    .sub { color: var(--text2); font-size: 14px; margin-bottom: 16px; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+    .toolbar label { color: var(--text2); font-size: 14px; font-weight: 600; }
+    .pill {
+      border: 1px solid var(--stroke);
+      background: transparent;
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .pill:hover { background: var(--fill-m); }
+    .pill.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 12px; font-size: 12px; color: var(--text2); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .sw { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--stroke); }
+    .sw.me { background: var(--accent-bg); border-color: var(--accent); }
+    .sw.f { background: var(--fill-f); }
+    .sw.m { background: var(--fill-m); }
+    .sw.t { background: var(--fill-t); }
+    .frame {
+      overflow: auto;
+      border: 1px solid var(--stroke2);
+      border-radius: 8px;
+      background: var(--chrome);
+    }
+    svg { display: block; }
+    .notes { margin-top: 16px; font-size: 13px; color: var(--text2); }
+    .notes h2 { font-size: 16px; color: var(--text); margin: 0 0 8px; }
+    .meta { font-size: 12px; color: var(--text3); margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Семейное древо</h1>
+    <p class="sub">Папка «Род», черновик «Записи». Сверху вниз — поколения; на одной линии — один «колен». Неизвестные годы — «?».</p>
+
+    <div class="toolbar">
+      <label>Показ:</label>
+      <button type="button" class="pill active" data-view="core">Ядро</button>
+      <button type="button" class="pill" data-view="extended">+ Родня</button>
+      <span style="color:var(--text3)">|</span>
+      <button type="button" class="pill active" data-branch="all">Всё</button>
+      <button type="button" class="pill" data-branch="father">Отец</button>
+      <button type="button" class="pill" data-branch="mother">Мать</button>
+    </div>
+
+    <div class="legend">
+      <span><i class="sw me"></i> Вы</span>
+      <span><i class="sw f"></i> Линия отца</span>
+      <span><i class="sw m"></i> Линия матери</span>
+      <span><i class="sw t"></i> Тройняшки</span>
+    </div>
+
+    <div class="frame" id="frame"></div>
+
+    <div class="notes">
+      <h2>Заметки</h2>
+      <p>Мария, Валентина и Вера — тройняшки, один день рождения (18 марта). Не путать с Дарьей Деевной (18.03.1904), прабабушкой по линии Владимировых.</p>
+      <p class="meta" id="meta"></p>
+    </div>
+  </div>
+
+  <script>
+    const GENERATION = {
+      maxim: 0, darya: 0, kirill: 0, maria_b: 0,
+      vp: 1, si: 1, sergey: 1, sb: 1, genus_v: 1,
+      pp: 2, nm: 2, iv: 2, ni: 2, maria_t: 2, val: 2, vera: 2, raisa: 2, genus_n: 2,
+      vp_pr: 3, ka: 3, mat: 3, mi_b: 3, pe: 3, dd: 3, iy: 3, sk: 3,
+      md: 4,
+    };
+
+    const PEOPLE = [
+      { id: "md", name: "Марья Демьяновна", born: 1878, branch: "mother" },
+      { id: "pe", name: "Платон Ефремович", born: 1907, died: 1985, branch: "mother" },
+      { id: "dd", name: "Дарья Деевна", born: 1904, died: 1959, note: "учила грамоте", branch: "mother" },
+      { id: "iy", name: "Исай Яковлевич", note: "трудовой фронт", branch: "mother" },
+      { id: "sk", name: "Синклетикия", died: 1993, note: "«Саклета»", branch: "mother" },
+      { id: "vp_pr", name: "Владимир П.", note: "прадед", branch: "father" },
+      { id: "ka", name: "Капиталина", branch: "father" },
+      { id: "mat", name: "Матвей Болденко", note: "трудовой фронт", branch: "father" },
+      { id: "mi_b", name: "Мария И. Болденко", born: 1907, died: 1993, note: "«Маша»", branch: "father" },
+      { id: "iv", name: "Иван Платонович", born: 1940, died: 2009, branch: "mother" },
+      { id: "ni", name: "Нина Исаевна", born: 1938, died: 2020, branch: "mother" },
+      { id: "pp", name: "Павел Владимирович", died: 1993, branch: "father" },
+      { id: "nm", name: "Нина Матвеевна", born: 1942, died: 2020, branch: "father" },
+      { id: "vp", name: "Владимир Павлович", born: 1964, branch: "shared", alive: true },
+      { id: "si", name: "Светлана Ивановна", born: 1966, branch: "shared", alive: true },
+      { id: "maxim", name: "Максим", born: 1992, branch: "me", alive: true },
+      { id: "darya", name: "Дарья", born: 1995, branch: "me", alive: true },
+      { id: "sergey", name: "Сергей И.", born: 1967, branch: "kin" },
+      { id: "sb", name: "Светлана Белова", born: 1966, branch: "kin" },
+      { id: "kirill", name: "Кирилл Белов", branch: "kin" },
+      { id: "maria_b", name: "Мария Белова", branch: "kin" },
+      { id: "maria_t", name: "Мария", note: "тройня", branch: "kin", twin: true },
+      { id: "val", name: "Валентина", note: "тройня · 18.03", branch: "kin", twin: true },
+      { id: "vera", name: "Вера", note: "тройня · 18.03", branch: "kin", twin: true },
+      { id: "genus_n", name: "Николай Генус", branch: "kin" },
+      { id: "genus_v", name: "Виктор Генус", born: 1970, branch: "kin" },
+      { id: "raisa", name: "Раиса", born: 1955, branch: "kin" },
+    ];
+
+    const CORE_EDGES = [
+      ["md", "pe"], ["pe", "iv"], ["dd", "iv"], ["iy", "ni"], ["sk", "ni"],
+      ["vp_pr", "pp"], ["ka", "pp"], ["mat", "nm"], ["mi_b", "nm"], ["iv", "si"], ["ni", "si"],
+      ["pp", "vp"], ["nm", "vp"], ["vp", "maxim"], ["vp", "darya"], ["si", "maxim"], ["si", "darya"],
+    ].map(([from, to]) => ({ from, to }));
+
+    const EXTENDED_EDGES = [
+      ["iv", "sergey"], ["ni", "sergey"], ["pp", "sb"], ["nm", "sb"], ["sb", "kirill"], ["sb", "maria_b"],
+      ["iy", "maria_t"], ["sk", "maria_t"], ["iy", "val"], ["sk", "val"], ["iy", "vera"], ["sk", "vera"],
+      ["val", "genus_n"], ["genus_n", "genus_v"], ["iy", "raisa"], ["sk", "raisa"],
+    ].map(([from, to]) => ({ from, to }));
+
+    const COUPLES = [
+      ["pe", "dd"], ["iy", "sk"], ["vp_pr", "ka"], ["mat", "mi_b"], ["pp", "nm"], ["iv", "ni"], ["vp", "si"],
+      ["val", "genus_n"],
+    ];
+
+    const ROW_ORDER = {
+      4: ["md"],
+      3: ["vp_pr", "ka", "mat", "mi_b", "pe", "dd", "iy", "sk"],
+      2: ["pp", "nm", "iv", "ni", "maria_t", "val", "genus_n", "vera", "raisa"],
+      1: ["vp", "si", "sergey", "sb", "genus_v"],
+      0: ["maxim", "darya", "kirill", "maria_b"],
+    };
+
+    const NODE_W = 168;
+    const NODE_H = 56;
+    const RANK_GAP = 72;
+    const NODE_GAP = 28;
+    const COUPLE_GAP = 10;
+    const PADDING = 32;
+    const personById = new Map(PEOPLE.map(p => [p.id, p]));
+
+    function formatLifeYears(born, died, alive) {
+      if (alive) return born != null ? String(born) : "?";
+      const b = born != null ? String(born) : "?";
+      const d = died != null ? String(died) : "?";
+      return b + " — " + d;
+    }
+
+    let view = localStorage.getItem("drevo-view") || "core";
+    let branch = localStorage.getItem("drevo-branch") || "all";
+
+    function visiblePeople(v, b) {
+      const edges = v === "core" ? CORE_EDGES : CORE_EDGES.concat(EXTENDED_EDGES);
+      const ids = new Set();
+      edges.forEach(e => { ids.add(e.from); ids.add(e.to); });
+      return PEOPLE.filter(p => {
+        if (!ids.has(p.id)) return false;
+        if (b === "all") return true;
+        if (p.branch === "me" || p.branch === "shared") return true;
+        if (p.branch === "kin") {
+          if (b === "father") return ["sb", "kirill", "maria_b"].includes(p.id);
+          return ["sergey", "maria_t", "val", "vera", "genus_n", "genus_v", "raisa"].includes(p.id);
+        }
+        if (b === "father") return p.id === "si" || p.branch === "father";
+        if (b === "mother") return p.id === "vp" || p.branch === "mother";
+        return true;
+      });
+    }
+
+    function orderGenerationRow(ids, generation) {
+      const remaining = new Set(ids);
+      const ordered = [];
+      (ROW_ORDER[generation] || []).forEach(id => {
+        if (remaining.has(id)) { ordered.push(id); remaining.delete(id); }
+      });
+      ids.forEach(id => { if (remaining.has(id)) ordered.push(id); });
+      return ordered;
+    }
+
+    function computeLayout(visibleIds) {
+      const byGen = new Map();
+      visibleIds.forEach(id => {
+        const gen = GENERATION[id] ?? 0;
+        if (!byGen.has(gen)) byGen.set(gen, []);
+        byGen.get(gen).push(id);
+      });
+
+      const generations = [...byGen.keys()].sort((a, b) => b - a);
+      const maxGen = generations[0] ?? 0;
+      const layoutNodes = [];
+
+      generations.forEach(gen => {
+        const rowIds = orderGenerationRow(byGen.get(gen), gen);
+        const y = PADDING + (maxGen - gen) * (NODE_H + RANK_GAP);
+        let x = PADDING;
+        rowIds.forEach((id, i) => {
+          layoutNodes.push({ id, x, y, rank: maxGen - gen });
+          const partner = COUPLES.find(c => c[0] === id)?.[1] || COUPLES.find(c => c[1] === id)?.[0];
+          const nextId = rowIds[i + 1];
+          x += NODE_W + (partner === nextId ? COUPLE_GAP : NODE_GAP);
+        });
+      });
+
+      const map = new Map(layoutNodes.map(n => [n.id, n]));
+      const layoutEdges = [...CORE_EDGES, ...EXTENDED_EDGES]
+        .filter(e => visibleIds.has(e.from) && visibleIds.has(e.to))
+        .filter(e => map.has(e.from) && map.has(e.to))
+        .map(e => {
+          const f = map.get(e.from), t = map.get(e.to);
+          return {
+            from: e.from, to: e.to,
+            sx: f.x + NODE_W / 2, sy: f.y + NODE_H,
+            tx: t.x + NODE_W / 2, ty: t.y,
+          };
+        });
+
+      const contentWidth = layoutNodes.length
+        ? Math.max(...layoutNodes.map(n => n.x + NODE_W))
+        : NODE_W;
+      const contentHeight = layoutNodes.length
+        ? Math.max(...layoutNodes.map(n => n.y + NODE_H))
+        : NODE_H;
+
+      return {
+        nodes: layoutNodes,
+        edges: layoutEdges,
+        width: contentWidth + PADDING,
+        height: contentHeight + PADDING,
+      };
+    }
+
+    function nodeStyle(p) {
+      const s = getComputedStyle(document.documentElement);
+      if (p.branch === "me") return {
+        fill: s.getPropertyValue("--accent-bg").trim(),
+        stroke: s.getPropertyValue("--accent").trim(),
+        sw: 2,
+        tc: s.getPropertyValue("--accent-text").trim(),
+        sc: s.getPropertyValue("--accent-text").trim(),
+      };
+      if (p.twin) return {
+        fill: s.getPropertyValue("--fill-t").trim(),
+        stroke: s.getPropertyValue("--stroke2").trim(),
+        sw: 1, tc: s.getPropertyValue("--text").trim(), sc: s.getPropertyValue("--text2").trim(),
+      };
+      if (p.branch === "father") return {
+        fill: s.getPropertyValue("--fill-f").trim(),
+        stroke: s.getPropertyValue("--stroke2").trim(),
+        sw: 1, tc: s.getPropertyValue("--text").trim(), sc: s.getPropertyValue("--text2").trim(),
+      };
+      if (p.branch === "mother") return {
+        fill: s.getPropertyValue("--fill-m").trim(),
+        stroke: s.getPropertyValue("--stroke2").trim(),
+        sw: 1, tc: s.getPropertyValue("--text").trim(), sc: s.getPropertyValue("--text2").trim(),
+      };
+      return {
+        fill: s.getPropertyValue("--elevated").trim(),
+        stroke: s.getPropertyValue("--stroke2").trim(),
+        sw: 1, tc: s.getPropertyValue("--text").trim(), sc: s.getPropertyValue("--text2").trim(),
+      };
+    }
+
+    function edgePath(e) {
+      const my = (e.sy + e.ty) / 2;
+      return `M ${e.sx} ${e.sy} C ${e.sx} ${my}, ${e.tx} ${my}, ${e.tx} ${e.ty}`;
+    }
+
+    function render() {
+      const edgeList = view === "core" ? CORE_EDGES : CORE_EDGES.concat(EXTENDED_EDGES);
+      const people = visiblePeople(view, branch);
+      const ids = new Set(people.map(p => p.id));
+      const edges = edgeList.filter(e => ids.has(e.from) && ids.has(e.to));
+      const layout = computeLayout(ids);
+      const stroke = getComputedStyle(document.documentElement).getPropertyValue("--stroke").trim();
+
+      let svg = `<svg width="${layout.width}" height="${layout.height}" xmlns="http://www.w3.org/2000/svg">`;
+
+      layout.edges.forEach(e => {
+        svg += `<path d="${edgePath(e)}" fill="none" stroke="${stroke}" stroke-width="1.5" opacity="0.85"/>`;
+      });
+
+      COUPLES.forEach(([a, b]) => {
+        const na = layout.nodes.find(n => n.id === a);
+        const nb = layout.nodes.find(n => n.id === b);
+        if (!na || !nb || na.y !== nb.y) return;
+        if (!ids.has(a) || !ids.has(b)) return;
+        const y = na.y + NODE_H / 2;
+        svg += `<line x1="${na.x + NODE_W}" y1="${y}" x2="${nb.x}" y2="${y}" stroke="${stroke}" stroke-width="1"/>`;
+      });
+
+      layout.nodes.forEach(n => {
+        const p = personById.get(n.id);
+        if (!p) return;
+        const st = nodeStyle(p);
+        svg += `<g transform="translate(${n.x},${n.y})">`;
+        svg += `<rect width="${NODE_W}" height="${NODE_H}" rx="6" fill="${st.fill}" stroke="${st.stroke}" stroke-width="${st.sw}"/>`;
+        svg += `<text x="${NODE_W/2}" y="18" text-anchor="middle" fill="${st.tc}" font-size="13" font-weight="600">${esc(p.name)}</text>`;
+        svg += `<text x="${NODE_W/2}" y="34" text-anchor="middle" fill="${st.sc}" font-size="11">${esc(formatLifeYears(p.born, p.died, p.alive))}</text>`;
+        if (p.note) svg += `<text x="${NODE_W/2}" y="48" text-anchor="middle" fill="${st.sc}" font-size="10">${esc(p.note)}</text>`;
+        svg += `</g>`;
+      });
+
+      svg += `</svg>`;
+      document.getElementById("frame").innerHTML = svg;
+      document.getElementById("meta").textContent =
+        `Узлов: ${people.length} · связей: ${edges.length} · режим: ${view === "core" ? "ядро" : "с роднёй"}`;
+    }
+
+    function esc(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+    }
+
+    function syncPills() {
+      document.querySelectorAll("[data-view]").forEach(el => {
+        el.classList.toggle("active", el.dataset.view === view);
+      });
+      document.querySelectorAll("[data-branch]").forEach(el => {
+        el.classList.toggle("active", el.dataset.branch === branch);
+      });
+    }
+
+    document.querySelectorAll("[data-view]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        view = btn.dataset.view;
+        localStorage.setItem("drevo-view", view);
+        syncPills();
+        render();
+      });
+    });
+    document.querySelectorAll("[data-branch]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        branch = btn.dataset.branch;
+        localStorage.setItem("drevo-branch", branch);
+        syncPills();
+        render();
+      });
+    });
+
+    syncPills();
+    render();
+  </script>
+</body>
+</html>

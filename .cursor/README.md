@@ -12,7 +12,7 @@ Workspace Cursor открывается из **корня репозитория
 | `.cursor/cursor-admin/scripts/` | да | Скрипты синхронизации |
 | `.cursor/cursor-admin/context.template.md` | да | Шаблон ручных настроек |
 | `.cursor/cursor-admin/context.md` | **нет** | Рабочий контекст (обновляет `sync-context.ps1`) |
-| `.cursor/cursor-admin/reminder-log.md` | да | Лог напоминаний (общий дом + работа) |
+| `.cursor/cursor-admin/reminder-log.md` | да | Архив / automation (подписка в чате — по запросу) |
 | `.cursor/cursor-admin/*.json` | **нет** | Кэш подписки, VPN, ПК |
 
 **Не создавать** `Me/Me/.cursor/` — это дубликат, ломает синхронизацию.

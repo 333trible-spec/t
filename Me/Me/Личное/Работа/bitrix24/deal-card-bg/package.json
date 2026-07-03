@@ -1,0 +1,36 @@
+{
+  "name": "b24-deal-card-bg",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Цвет фона карточки сделки в Битрикс24",
+  "scripts": {
+    "setup": "node scripts/setup-field.js",
+    "reset-field": "node scripts/reset-field-for-widget.js",
+    "set-color": "node scripts/set-deal-color.js",
+    "app:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-app.ps1",
+    "start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-all.ps1",
+    "app:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-app.ps1",
+    "app:status": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/status-app.ps1",
+    "tunnel": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-tunnel-localtunnel.ps1",
+    "tunnel:cf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-tunnel.ps1",
+    "publish:disk": "node scripts/publish-disk-app.js",
+    "publish:surge": "node scripts/publish-surge.js",
+    "publish:github": "node scripts/publish-github-pages.js",
+    "publish:portal-worker": "node scripts/publish-portal-worker.js",
+    "publish:field-handler": "node scripts/publish-field-handler.js",
+    "bind:field-handler": "node scripts/bind-field-handler-disk.js",
+    "fix:worker": "node scripts/publish-portal-worker.js",
+    "publish:vercel": "node scripts/publish-vercel.js",
+    "deploy:stable": "node scripts/deploy-stable.js",
+    "verify": "node scripts/verify-app.js",
+    "verify:local": "node scripts/verify-local.js",
+    "fix:field": "node scripts/fix-field-type.js",
+    "migrate:enum": "node scripts/migrate-to-enumeration.js",
+    "migrate:string": "node scripts/migrate-to-string-field.js",
+    "site:publish": "node scripts/publish-b24-site.js",
+    "disable": "node scripts/disable.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/serve?file=index.html" },
+    { "source": "/index.html", "destination": "/api/serve?file=index.html" },
+    { "source": "/install.html", "destination": "/api/serve?file=install.html" },
+    { "source": "/tab.html", "destination": "/api/serve?file=tab.html" },
+    { "source": "/bp-form-config.js", "destination": "/api/serve?file=bp-form-config.js" },
+    { "source": "/bp-form.js", "destination": "/api/serve?file=bp-form.js" },
+    { "source": "/deal-prefill-map.js", "destination": "/api/serve?file=deal-prefill-map.js" },
+    { "source": "/deal-prefill.js", "destination": "/api/serve?file=deal-prefill.js" },
+    { "source": "/version.js", "destination": "/api/serve?file=version.js" },
+    { "source": "/app-dashboard.js", "destination": "/api/serve?file=app-dashboard.js" }
+  ],
+  "functions": {
+    "api/serve.js": {
+      "includeFiles": "api/html/**"
+    }
+  }
+}

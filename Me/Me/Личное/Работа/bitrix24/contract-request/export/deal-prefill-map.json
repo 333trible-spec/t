@@ -1,0 +1,91 @@
+{
+  "portal": "ik-navigator.bitrix24.ru",
+  "bpTemplateId": 608,
+  "updated": "2026-06-30",
+  "sourceCode": "api/html/deal-prefill-map.js",
+  "runtime": "api/html/deal-prefill.js",
+  "placement": "CRM_DEAL_DETAIL_TAB",
+  "behavior": {
+    "order": ["deal prefill", "localStorage draft"],
+    "enumResolve": "crm.deal.userfield.list",
+    "files": "hint only — browser cannot set input[type=file]",
+    "reportGlobal": "window.__bp608PrefillReport"
+  },
+  "dealHeader": [
+    {
+      "source": "crm.contact.get",
+      "field": "CONTACT_ID",
+      "label": "ФИО контакта",
+      "ui": "шапка, строка 1"
+    },
+    {
+      "deal": "UF_CRM_1739347967",
+      "label": "Номер ГП (new)",
+      "ui": "шапка, строка 1"
+    },
+    {
+      "deal": "UF_CRM_1538729147",
+      "label": "Тип помещения (Profitbase)",
+      "ui": "шапка, строка 1 (склеивается с номером квартиры)"
+    },
+    {
+      "deal": "UF_CRM_1660535141",
+      "label": "Номер квартиры",
+      "ui": "шапка, строка 1"
+    },
+    {
+      "deal": "UF_CRM_1538728286642",
+      "label": "Общая стоимость (при 100% оплате) (pb)",
+      "ui": "шапка, строка 2, руб."
+    }
+  ],
+  "mapped": [
+    { "param": "type_doc", "label": "Тип договора", "deal": "UF_CRM_1722938526204", "kind": "enum" },
+    { "param": "property_type", "label": "Тип собственности", "deal": "UF_CRM_1722231570", "kind": "enum", "single": true },
+    { "param": "Parameter1", "label": "Участники общей собственности", "deal": "UF_CRM_1722231741", "kind": "crm" },
+    { "param": "Parameter2", "label": "Участники долевой собственности", "deal": "UF_CRM_1722231954", "kind": "crm" },
+    { "param": "form_payment", "label": "Форма оплаты", "deal": "UF_CRM_1514285621", "kind": "enum" },
+    { "param": "initial_fee", "label": "Первоначальный взнос", "deal": "UF_CRM_1619419271478", "kind": "money" },
+    { "param": "down_payment_period", "label": "Срок первоначального взноса", "deal": "UF_CRM_1722843190", "kind": "string" },
+    { "param": "summ_MSK", "label": "Тип сертификата", "deal": "UF_CRM_1723030206", "kind": "enum", "multi": true },
+    { "param": "summ_sotrudnichestva", "label": "Сумма сертификата", "deal": "UF_CRM_1722232687", "kind": "string" },
+    { "param": "bank", "label": "Банк", "deal": "UF_CRM_1514285671", "kind": "enum" },
+    { "param": "commit_deal", "label": "Комментарий по сделке", "deal": "UF_CRM_64E70EC90D28E", "kind": "text" },
+    { "param": "type_registr", "label": "Вид регистрации", "deal": "UF_CRM_1685943769", "kind": "enum" },
+    { "param": "sber", "label": "Приложение СБЕР", "deal": "UF_CRM_1722941445", "kind": "yesNo", "yesNo": ["Есть", "Нет"] },
+    { "param": "repid_sale", "label": "Повторная продажа", "deal": "UF_CRM_1674214850", "altDeal": "UF_CRM_649BDC6DEBD51", "kind": "yesNo", "yesNo": ["Да", "Нет"] },
+    { "param": "link_deal", "label": "Ссылка на предыдущую сделку", "deal": "UF_CRM_1664775392", "kind": "string" },
+    { "param": "age", "label": "Возраст", "deal": "UF_CRM_1659005409074", "kind": "enum" },
+    { "param": "city", "label": "Город обращения", "deal": "UF_CRM_1659007926721", "kind": "enum" },
+    { "param": "sex", "label": "Пол", "deal": "UF_CRM_1659005450720", "kind": "enum" },
+    { "param": "target", "label": "Цель покупки", "deal": "UF_CRM_1659008047015", "kind": "enum" },
+    { "param": "famStatus", "label": "Семейное положение", "deal": "UF_CRM_1659009682372", "kind": "enum" },
+    { "param": "kindOfActivity", "label": "Вид деятельности", "deal": "UF_CRM_1659074512261", "kind": "enum" },
+    { "param": "kids", "label": "Наличие детей", "deal": "UF_CRM_1659074341994", "kind": "enum" },
+    { "param": "attraction", "label": "Что привлекло", "deal": "UF_CRM_1659074620049", "kind": "enum" },
+    { "param": "animals", "label": "Наличие животных", "deal": "UF_CRM_1668572647", "kind": "enum" },
+    { "param": "pasport", "label": "Паспорт", "deal": "UF_CRM_1722839839", "kind": "file" },
+    { "param": "snils", "label": "СНИЛС", "deal": "UF_CRM_1722839884", "kind": "file" },
+    { "param": "inn", "label": "ИНН", "deal": "UF_CRM_1722851893", "kind": "file" },
+    { "param": "marriage_certificate", "label": "Свидетельство о браке", "deal": "UF_CRM_1722839925", "kind": "file" },
+    { "param": "birth_certificate", "label": "Свидетельство о рождении", "deal": "UF_CRM_1722839965", "kind": "file" },
+    { "param": "adress_kids", "label": "Адрес регистрации ребенка", "deal": "UF_CRM_1722840010", "kind": "file" },
+    { "param": "math_capital", "label": "Сертификат мат. капитал", "deal": "UF_CRM_1722840057", "kind": "file" },
+    { "param": "ostatok_capital", "label": "Выписка мат. капитал", "deal": "UF_CRM_1722840095", "kind": "file" },
+    { "param": "sertifikat_sotrudnichestva", "label": "Сертификат Сотрудничество", "deal": "UF_CRM_1722840150", "kind": "file" },
+    { "param": "notarised", "label": "Нотариальная доверенность", "deal": "UF_CRM_1722840210", "kind": "file" },
+    { "param": "other_docs", "label": "Прочие документы", "deal": "UF_CRM_1726038020", "kind": "file" }
+  ],
+  "unmapped": [
+    {
+      "param": "Parameter3",
+      "label": "ЗАПОЛНИ ФИО КЛИЕНТА",
+      "reason": "убрано из формы; флаг БП, не UF-поле сделки; ФИО — в шапке из контакта"
+    }
+  ],
+  "counts": {
+    "mapped": 35,
+    "unmapped": 1,
+    "dealHeaderFields": 5
+  }
+}

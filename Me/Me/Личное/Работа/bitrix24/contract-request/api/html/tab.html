@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявка на договор</title>
+  <style>
+    :root {
+      --nd-green: #88c276;
+      --nd-blue: #2d95d2;
+      --nd-sky: #d5edfc;
+      --nd-teal: #4db6ab;
+      --nd-gradient: linear-gradient(-45deg, #88c276 0%, #4db6ab 50%, #2d95d2 100%);
+      --nd-text: #0f172a;
+      --nd-text-muted: #475569;
+      --nd-border: #b8d9f0;
+      --bg: #d5edfc;
+      --card: #ffffff;
+      --border: var(--nd-border);
+      --primary: var(--nd-blue);
+      --primary-hover: #2486be;
+      --muted: var(--nd-text-muted);
+      --err: #b91c1c;
+      --ok: var(--nd-green);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(45, 149, 210, 0.1);
+      --font: "Futura PT", Futura, "Century Gothic", "Trebuchet MS", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      margin: 0;
+      padding: 16px;
+      padding-bottom: 88px;
+      background: var(--bg);
+      color: var(--nd-text);
+      font-size: 14px;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+    h2 { margin: 0 0 8px; font-size: 17px; font-weight: 650; }
+    h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--nd-blue);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .card-header {
+      background: var(--nd-gradient);
+      border: none;
+      color: #fff;
+    }
+    .card-header h2 { color: #fff; }
+    .card-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-header-row h2 { flex: 1; min-width: 0; }
+    .app-version {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: 0.88;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .card-header .deal-info {
+      font-size: 14px;
+      font-weight: 550;
+      line-height: 1.45;
+      margin: 0;
+      color: #fff;
+    }
+    .deal-line-main { display: block; font-weight: 550; }
+    .deal-line-sum {
+      display: block;
+      margin-top: 6px;
+      font-size: 15px;
+      font-weight: 650;
+    }
+    .card-header .err { color: #fecaca; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .err { color: var(--err); }
+    .ok { color: var(--ok); font-weight: 500; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .form-section {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: none; margin-bottom: 0; }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (min-width: 720px) {
+      .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    /* Документы — плитки */
+    .fields-docs {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 520px) {
+      .fields-docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 960px) {
+      .fields-docs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .field-doc-tile {
+      display: block;
+      min-width: 0;
+    }
+    .doc-tile {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 108px;
+      padding: 12px 14px;
+      border: 1px solid var(--nd-border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .doc-tile:hover {
+      transform: translateY(-3px);
+      border-color: var(--nd-blue);
+      box-shadow: 0 8px 20px rgba(45, 149, 210, 0.24);
+    }
+    .doc-tile:active {
+      transform: translateY(-1px) scale(0.985);
+      box-shadow: 0 3px 10px rgba(45, 149, 210, 0.16);
+    }
+    .field-doc-tile.filled .doc-tile:hover {
+      border-color: var(--nd-green);
+      box-shadow: 0 2px 10px rgba(136, 194, 118, 0.28);
+    }
+    .doc-tile .file-trigger { pointer-events: none; }
+    .field-doc-tile.filled .doc-tile {
+      border-color: var(--nd-green);
+      background: #f3faef;
+    }
+    .field-doc-tile.invalid .doc-tile {
+      border-color: var(--err);
+      box-shadow: 0 0 0 1px var(--err);
+    }
+    .doc-tile-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--nd-text);
+      flex: 1;
+    }
+    .field-doc-tile.filled .doc-tile-title { color: #5a9e4a; }
+    .doc-tile .file-field {
+      justify-content: flex-end;
+      min-height: 0;
+      margin-top: auto;
+    }
+    .doc-tile .file-names {
+      flex: 1;
+      min-width: 0;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    /* Чипы «Тип сертификата» */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      padding: 4px 0;
+    }
+    .chip-option { cursor: pointer; }
+    .chip-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .chip-label {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--nd-blue);
+      background: #fff;
+      color: var(--nd-blue);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.2;
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+      user-select: none;
+    }
+    .chip-option:hover .chip-label {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 149, 210, 0.28);
+    }
+    .chip-option:active .chip-label {
+      transform: translateY(0) scale(0.96);
+      box-shadow: 0 2px 6px rgba(45, 149, 210, 0.18);
+    }
+    .chip-input:checked + .chip-label {
+      background: var(--nd-green);
+      border-color: var(--nd-green);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.35);
+    }
+    .chip-input:focus-visible + .chip-label {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(45, 149, 210, 0.25);
+    }
+    /* «Тип сертификата»: подложку зелёным не красим, рамку/отступ у группы не меняем */
+    .field[data-field="summ_MSK"].filled .chip-group {
+      padding: 4px 0;
+      border: none;
+      background: transparent;
+    }
+    /* Да / Нет — чипы в строку */
+    .yesno-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      padding: 4px 0;
+    }
+    .field[data-field="sber"].filled .yesno-group,
+    .field[data-field="repid_sale"].filled .yesno-group {
+      padding: 4px 0;
+      border: none;
+      background: transparent;
+    }
+    .field {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 6px;
+      min-width: 0;
+      align-content: start;
+    }
+    .field > .lbl {
+      margin-bottom: 0;
+      min-height: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .field > .lbl.lbl-multiline {
+      min-height: 3.25rem;
+    }
+    .field[data-field="summ_sotrudnichestva"] > .lbl {
+      min-height: 3.25rem;
+    }
+    .field.invalid .inp,
+    .field.invalid select { border-color: var(--err); box-shadow: 0 0 0 1px var(--err); }
+    .lbl { display: block; font-weight: 550; margin-bottom: 6px; font-size: 13px; color: var(--nd-text); }
+    .lbl-text { display: block; }
+    .lbl-multiline .lbl-sub {
+      display: block;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .req { color: var(--err); }
+    .inp {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-weight: 500;
+      background: #fff;
+    }
+    .inp-narrow,
+    select.inp,
+    .inp-money {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .inp-wide,
+    .field[data-field="commit_deal"] textarea.inp {
+      width: 100%;
+      min-width: 12rem;
+      max-width: min(100%, 80rem);
+    }
+    .field[data-field="commit_deal"] {
+      grid-column: 1 / -1;
+    }
+    select.inp {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 2rem;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d95d2' d='M3 4.5 6 7.5 9 4.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.65rem center;
+      background-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+    select.inp option {
+      background-color: #fff;
+      color: var(--nd-text);
+    }
+    select.inp:hover {
+      border-color: var(--nd-blue);
+    }
+    .inp-money::-webkit-inner-spin-button,
+    .inp-money::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .inp-money {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    .radio-group,
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      max-width: 100%;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .field > .check-row.yesno-row,
+    .field > .check-row:not(.radio-option):not(.check-option) {
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 0 10px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .radio-option,
+    .check-option { align-items: flex-start; }
+    .radio-option span,
+    .check-option span,
+    .check-row.yesno-row span { line-height: 1.35; font-weight: 500; }
+    .field.ownership-slot.ownership-inactive {
+      opacity: 0.42;
+      pointer-events: none;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .ownership-contact-field {
+      margin-top: 2px;
+      grid-column: 1 / -1;
+      display: block;
+    }
+    .ownership-contact-field .ownership-lbl {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    @media (max-width: 640px) {
+      .contact-cards { grid-template-columns: 1fr; }
+    }
+    .contact-card {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e8f6fc 100%);
+      border: 1px solid rgba(45, 149, 210, 0.25);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 2px rgba(45, 149, 210, 0.08);
+      width: 100%;
+      min-width: 0;
+      transition: box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    a.contact-card {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    a.contact-card:visited { color: inherit; }
+    .contact-card:hover {
+      box-shadow: 0 4px 12px rgba(45, 149, 210, 0.16);
+      border-color: rgba(45, 149, 210, 0.45);
+    }
+    .contact-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+    .contact-body {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact-name {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--nd-text);
+      line-height: 1.4;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .contact-card-wrap {
+      min-width: 0;
+    }
+    .contact-alert {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 3;
+      line-height: 0;
+    }
+    .contact-alert-dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f4863f;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95);
+      cursor: help;
+    }
+    .contact-alert-tip {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      min-width: 11rem;
+      max-width: 16rem;
+      padding: 8px 10px;
+      background: #fff;
+      border: 1px solid rgba(244, 134, 63, 0.4);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .contact-alert-line {
+      display: block;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.45;
+      color: #d9631e;
+      white-space: nowrap;
+    }
+    .contact-alert-line + .contact-alert-line {
+      margin-top: 2px;
+    }
+    .contact-alert:hover .contact-alert-tip,
+    .contact-alert:focus-visible .contact-alert-tip {
+      display: block;
+    }
+    .form-readonly .contact-alert {
+      pointer-events: auto;
+    }
+    .contact-empty {
+      margin: 4px 0 0;
+      font-size: 13px;
+      font-style: italic;
+      grid-column: 1 / -1;
+    }
+    .contact-prompt {
+      margin: 4px 0 0;
+      font-size: 14px;
+      font-weight: 550;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .ownership-contact-field.ownership-awaiting-type .contact-cards {
+      display: block;
+    }
+    .ownership-hint { margin-top: 8px; }
+    .inp:focus { outline: none; border-color: var(--nd-blue); box-shadow: 0 0 0 2px rgba(45, 149, 210, 0.2); }
+    textarea.inp { resize: vertical; min-height: 72px; }
+    .check-row { display: flex; align-items: center; gap: 8px; cursor: pointer; min-height: 2.5rem; }
+
+    /* Зелёная подсветка заполненных полей */
+    .field.filled > .lbl { color: #5a9e4a; }
+    .field.filled .inp,
+    .field.filled textarea.inp {
+      border-color: var(--nd-green);
+      background-color: #f3faef;
+    }
+    .field.filled select.inp {
+      border-color: var(--nd-green);
+      background-color: #fff;
+    }
+    .field.filled .inp:focus,
+    .field.filled select.inp:focus,
+    .field.filled textarea.inp:focus {
+      border-color: var(--nd-blue);
+      box-shadow: 0 0 0 2px rgba(45, 149, 210, 0.2);
+    }
+    .field.filled .radio-group,
+    .field.filled .check-group,
+    .field.filled > .check-row.yesno-row,
+    .field.filled > .check-row:not(.radio-option):not(.check-option) {
+      border-color: var(--nd-green);
+      background-color: #f3faef;
+    }
+
+    /* Прикрепление файла: плюс → галочка (стиль Навигатора) */
+    .file-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      min-height: 2.5rem;
+    }
+    .file-native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .file-trigger {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      color: #fff;
+      background: var(--nd-blue);
+      box-shadow: 0 2px 6px rgba(45, 149, 210, 0.35);
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+    .file-trigger:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 6px 14px rgba(45, 149, 210, 0.45); }
+    .file-trigger:active { transform: translateY(0) scale(0.94); box-shadow: 0 2px 6px rgba(45, 149, 210, 0.3); }
+    .file-native:focus-visible + .file-trigger {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(45, 149, 210, 0.3);
+    }
+    .file-trigger svg { width: 20px; height: 20px; display: block; }
+    .file-trigger .file-icon-done { display: none; }
+    .file-field.has-file .file-trigger {
+      background: var(--nd-green);
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.45);
+    }
+    .file-field.has-file .file-trigger:hover { box-shadow: 0 3px 10px rgba(136, 194, 118, 0.55); }
+    .file-field.has-file .file-trigger .file-icon-add { display: none; }
+    .file-field.has-file .file-trigger .file-icon-done { display: block; }
+    /* Файл уже прикреплён в сделке: плюс на зелёном фоне (в форму не копируется) */
+    .file-field.has-deal-file .file-trigger {
+      background: var(--nd-green);
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.45);
+    }
+    .file-field.has-deal-file .file-trigger:hover { box-shadow: 0 3px 10px rgba(136, 194, 118, 0.55); }
+    .file-names { font-size: 13px; }
+    .file-field.has-file .file-names,
+    .file-field.has-deal-file .file-names { color: #5a9e4a; font-weight: 500; }
+    .check-row input[type="checkbox"],
+    .check-row input[type="radio"] {
+      accent-color: var(--nd-blue);
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+    .hint { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+    .crm-list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+    .crm-list li { margin: 4px 0; }
+    .crm-remove { padding: 2px 8px; font-size: 12px; margin-left: 6px; }
+    .form-footer { margin-top: 4px; }
+    .form-actions-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 35px;
+      transform: translateX(-50%);
+      z-index: 110;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 6px 20px rgba(45, 149, 210, 0.18), 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+    .form-actions-main {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-actions-bar.actions-view-only .btn-action-edit {
+      display: none !important;
+    }
+    .form-actions-main.hidden { display: none !important; }
+    .save-confirm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .save-confirm.hidden { display: none !important; }
+    .save-confirm-text {
+      font-weight: 550;
+      font-size: 14px;
+      color: var(--nd-text);
+      margin-right: 4px;
+    }
+    .form-actions-bar .btn {
+      font-weight: 550;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .form-actions-bar .btn.secondary {
+      background: #fff;
+      border: 1px solid var(--nd-border);
+      color: var(--nd-blue);
+      box-shadow: none;
+    }
+    .form-actions-bar .btn.secondary:hover {
+      border-color: var(--nd-blue);
+      background: #fff;
+    }
+    .form-actions-bar #save-yes:hover {
+      border-color: var(--nd-green);
+      color: #5a9e4a;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(136, 194, 118, 0.35), 0 2px 10px rgba(136, 194, 118, 0.3);
+    }
+    .form-actions-bar .btn.primary {
+      min-width: 7rem;
+      background: var(--nd-blue);
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(45, 149, 210, 0.35);
+    }
+    .form-actions-bar .btn.primary:hover {
+      background: var(--nd-green);
+      box-shadow: 0 2px 8px rgba(136, 194, 118, 0.45);
+    }
+    .form-actions-bar .btn-refresh {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(67, 160, 71, 0.45);
+      background: #fff;
+      color: #43a047;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow:
+        0 2px 10px rgba(67, 160, 71, 0.28),
+        0 1px 4px rgba(15, 23, 42, 0.1);
+    }
+    .form-actions-bar .btn-refresh svg { width: 22px; height: 22px; display: block; }
+    .form-actions-bar .btn-refresh:hover {
+      background: #f3fbf4;
+      border-color: #43a047;
+      color: #2e7d32;
+      transform: translateY(-2px);
+      box-shadow:
+        0 4px 14px rgba(67, 160, 71, 0.34),
+        0 2px 6px rgba(15, 23, 42, 0.12);
+    }
+    .form-actions-bar .btn-refresh:active { transform: translateY(0) scale(0.96); }
+    .form-actions-bar .btn-refresh:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
+    }
+    .form-actions-bar .btn-refresh.is-spinning svg {
+      animation: refresh-spin 0.85s linear infinite;
+    }
+    @keyframes refresh-spin {
+      to { transform: rotate(360deg); }
+    }
+    .btn {
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      background: var(--nd-sky);
+      color: var(--nd-text);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(0.96); }
+    .btn.primary { background: var(--nd-blue); color: #fff; box-shadow: 0 2px 8px rgba(45, 149, 210, 0.35); }
+    .btn.primary:hover { background: var(--primary-hover); box-shadow: 0 6px 16px rgba(45, 149, 210, 0.4); }
+    .btn.primary:active { box-shadow: 0 2px 6px rgba(45, 149, 210, 0.28); }
+    .btn.secondary {
+      background: #fff;
+      border: 1px solid var(--nd-border);
+      color: var(--nd-blue);
+      box-shadow: 0 1px 3px rgba(45, 149, 210, 0.08);
+    }
+    .btn.secondary:hover { border-color: var(--nd-blue); box-shadow: 0 4px 12px rgba(45, 149, 210, 0.18); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .form-msg { margin-top: 12px; font-size: 13px; }
+    .preview {
+      margin-top: 12px;
+      padding: 12px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      overflow: auto;
+      max-height: 240px;
+    }
+    .hidden { display: none !important; }
+    #form-root.form-loading .bp-form {
+      pointer-events: none;
+      opacity: 0.94;
+    }
+    #form-actions-bar.form-loading button {
+      opacity: 0.55;
+      cursor: wait;
+    }
+    body.deal-completed { padding-bottom: 16px; }
+    .stage-blocked-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.45);
+      padding: 24px;
+      cursor: pointer;
+    }
+    .stage-blocked-overlay.hidden { display: none !important; }
+    .save-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.45);
+      padding: 24px;
+    }
+    .save-overlay.hidden { display: none !important; }
+    .save-overlay-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      min-width: 220px;
+      max-width: 360px;
+      padding: 26px 32px;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.2);
+      text-align: center;
+    }
+    .save-overlay-text {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--nd-text);
+      line-height: 1.45;
+    }
+    .save-spinner {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid rgba(45, 149, 210, 0.25);
+      border-top-color: var(--nd-blue);
+      animation: refresh-spin 0.8s linear infinite;
+    }
+    .save-overlay-check {
+      width: 40px;
+      height: 40px;
+      display: none;
+    }
+    .save-overlay.is-done .save-spinner { display: none; }
+    .save-overlay.is-done .save-overlay-check { display: block; }
+    .save-overlay.is-done .save-overlay-text { color: #5a9e4a; }
+    .save-overlay.is-error .save-spinner { display: none; }
+    .save-overlay.is-error .save-overlay-text { color: #b91c1c; }
+    .stage-blocked-overlay p {
+      margin: 0;
+      padding: 20px 28px;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.2);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--nd-text);
+      text-align: center;
+      max-width: 360px;
+      line-height: 1.45;
+      cursor: default;
+    }
+    .form-readonly {
+      pointer-events: none;
+      user-select: none;
+    }
+    .form-readonly .inp,
+    .form-readonly select.inp,
+    .form-readonly textarea.inp {
+      background-color: #f8fafc;
+      cursor: default;
+    }
+    .form-readonly .doc-tile,
+    .form-readonly .chip-option,
+    .form-readonly .file-trigger {
+      cursor: default;
+    }
+    .form-readonly a.contact-card-link {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .form-readonly .doc-tile:hover,
+    .form-readonly .chip-option:hover .chip-label,
+    .form-readonly select.inp:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .form-readonly a.contact-card-link:hover {
+      box-shadow: 0 4px 12px rgba(45, 149, 210, 0.16);
+      border-color: rgba(45, 149, 210, 0.45);
+    }
+    body.deal-view-only { padding-bottom: 88px; }
+    .form-view-only.form-readonly a.file-download-link,
+    .form-view-only.form-readonly a.contact-card-link {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .file-download-link {
+      color: var(--nd-blue);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .file-download-link:hover {
+      text-decoration: underline;
+    }
+    .form-view-only .file-names {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="card card-header">
+    <div class="card-header-row">
+      <h2 id="app-title">Заявка на договор</h2>
+      <span class="app-version" id="app-version"></span>
+    </div>
+    <p class="deal-info" id="deal-info">Загрузка…</p>
+  </div>
+
+  <div class="form-actions-bar" id="form-actions-bar">
+    <div class="form-actions-main" id="form-actions-main">
+      <button type="button" class="btn primary btn-action-edit" id="btn-submit">Сохранить</button>
+      <button type="button" class="btn secondary btn-action-edit" id="btn-validate">Проверить</button>
+      <button type="button" class="btn secondary btn-action-edit" id="btn-send" disabled>Отправить</button>
+      <button type="button" class="btn-refresh" id="btn-refresh" title="Обновить данные" aria-label="Обновить данные" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="save-confirm hidden" id="save-confirm">
+      <span class="save-confirm-text">Сохранить?</span>
+      <button type="button" class="btn secondary" id="save-yes">Да</button>
+      <button type="button" class="btn secondary" id="save-no">Нет</button>
+    </div>
+  </div>
+
+  <div class="card" id="form-root"></div>
+
+  <div class="stage-blocked-overlay hidden" id="stage-blocked-overlay" role="alertdialog" aria-live="assertive">
+    <p>изменение данных на этой стадии запрещено</p>
+  </div>
+
+  <div class="save-overlay hidden" id="save-overlay" role="alertdialog" aria-live="assertive">
+    <div class="save-overlay-box">
+      <div class="save-spinner" aria-hidden="true"></div>
+      <svg class="save-overlay-check" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="11" fill="none" stroke="#88c276" stroke-width="2"/>
+        <path d="M7 12.4l3.3 3.3L17 8.6" fill="none" stroke="#88c276" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="save-overlay-text" id="save-overlay-text">идёт сохранение данных</p>
+    </div>
+  </div>
+
+  <script src="version.js"></script>
+  <script src="bp-form-config.js"></script>
+  <script src="deal-prefill-map.js"></script>
+  <script src="bp-form.js"></script>
+  <script src="deal-prefill.js"></script>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script>
+    let dealId = null;
+
+    function showSaveOverlay(text, mode) {
+      const ov = document.getElementById('save-overlay');
+      const t = document.getElementById('save-overlay-text');
+      if (!ov || !t) return;
+      ov.classList.remove('hidden', 'is-done', 'is-error');
+      if (mode === 'done') ov.classList.add('is-done');
+      else if (mode === 'error') ov.classList.add('is-error');
+      t.textContent = text;
+    }
+
+    function hideSaveOverlay() {
+      const ov = document.getElementById('save-overlay');
+      if (ov) ov.classList.add('hidden');
+    }
+
+    window.__bp608ShowSaveOverlay = showSaveOverlay;
+    window.__bp608HideSaveOverlay = hideSaveOverlay;
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function callBatch(calls) {
+      return new Promise((resolve, reject) => {
+        try {
+          BX24.callBatch(calls, (results) => {
+            const data = {};
+            Object.keys(results || {}).forEach((key) => {
+              const r = results[key];
+              data[key] = (r && typeof r.data === 'function' && !r.error()) ? r.data() : null;
+            });
+            resolve(data);
+          });
+        } catch (e) {
+          reject(e);
+        }
+      });
+    }
+    window.__bp608CallBatch = callBatch;
+
+    function placementDealId() {
+      const info = (typeof BX24.placement.info === 'function' ? BX24.placement.info() : {}) || {};
+      let opts = info.options || {};
+      if (typeof opts === 'string') {
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+      }
+      return opts.ID || opts.id || opts.ENTITY_VALUE_ID || opts.entityValueId || null;
+    }
+
+    const SALES_CATEGORY_ID = 8;
+    const REGISTRATION_CATEGORY_ID = 10;
+
+    function escHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s == null ? '' : String(s);
+      return d.innerHTML;
+    }
+
+    function showPlacementError(message) {
+      const header = document.querySelector('.card-header');
+      const bar = document.getElementById('form-actions-bar');
+      const root = document.getElementById('form-root');
+      if (bar) bar.classList.add('hidden');
+      if (root) {
+        root.classList.remove('card');
+        root.innerHTML = '<p class="err" style="text-align:center;padding:24px 16px">' + escHtml(message) + '</p>';
+      }
+      if (header) header.classList.remove('hidden');
+    }
+
+    function enableViewOnlyMode(salesDealId, placementDealId) {
+      window.__bp608ViewOnly = true;
+      window.__bp608PlacementDealId = placementDealId;
+      window.__bp608DealId = salesDealId;
+      const titleEl = document.getElementById('app-title');
+      if (titleEl) titleEl.textContent = 'Заявка на договор (просмотр)';
+      if (window.BP608Form && window.BP608Form.setReadOnly) {
+        window.BP608Form.setReadOnly(document.getElementById('form-root'), true, { viewOnly: true });
+      }
+    }
+
+    function setFormLoading(loading) {
+      const refreshBtn = document.getElementById('btn-refresh');
+      if (refreshBtn) {
+        refreshBtn.disabled = !!loading;
+        refreshBtn.classList.toggle('is-spinning', !!loading);
+      }
+      const bar = document.getElementById('form-actions-bar');
+      const root = document.getElementById('form-root');
+      if (bar) {
+        bar.classList.toggle('form-loading', !!loading);
+        bar.querySelectorAll('button').forEach((btn) => {
+          btn.disabled = !!loading;
+        });
+      }
+      if (root) root.classList.toggle('form-loading', !!loading);
+      if (!loading && window.BP608Form && window.BP608Form.refreshState) {
+        const form = root && root.querySelector('#bp608-form');
+        if (form) window.BP608Form.refreshState(form);
+      }
+    }
+
+    function showNotAvailable() {
+      const header = document.querySelector('.card-header');
+      const bar = document.getElementById('form-actions-bar');
+      const root = document.getElementById('form-root');
+      if (header) header.classList.add('hidden');
+      if (bar) bar.classList.add('hidden');
+      if (root) {
+        root.classList.remove('card');
+        root.innerHTML = '';
+      }
+    }
+
+    function initForm() {
+      const root = document.getElementById('form-root');
+      const config = window.BP608_FORM_CONFIG || [];
+      window.BP608Form.render(root, config);
+      window.__bp608DealId = dealId;
+    }
+
+    async function prefillFormFromDeal(deal, dataDealId) {
+      const root = document.getElementById('form-root');
+      const targetDealId = dataDealId || dealId;
+      if (!targetDealId || !root.querySelector('#bp608-form')) return;
+      try {
+        await window.BP608DealPrefill.load(root, targetDealId, call, deal);
+      } catch (e) {
+        console.warn('prefill', e);
+      }
+    }
+
+    async function finishFormInit(deal, dataDealId) {
+      const root = document.getElementById('form-root');
+      const targetDealId = dataDealId || dealId;
+      if (targetDealId) await prefillFormFromDeal(deal, targetDealId);
+      window.BP608Form.loadDraft(root, targetDealId);
+      if (targetDealId && window.BP608DealPrefill && window.BP608DealPrefill.hydrateContacts) {
+        try {
+          await window.BP608DealPrefill.hydrateContacts(root, call);
+        } catch (e) {
+          console.warn('hydrate contacts', e);
+        }
+      }
+      if (window.BP608Form && window.BP608Form.captureBaseline) {
+        window.BP608Form.captureBaseline(root);
+      }
+    }
+
+    function pick(...vals) {
+      for (let i = 0; i < vals.length; i++) {
+        const v = vals[i];
+        if (v == null || v === '') continue;
+        if (Array.isArray(v) && !v.length) continue;
+        return Array.isArray(v) ? v.join(', ') : String(v);
+      }
+      return '—';
+    }
+
+    function formatRub(v) {
+      if (v == null || v === '') return '—';
+      const cleaned = String(v).replace(/\s/g, '').replace(',', '.');
+      const n = Number(cleaned);
+      if (Number.isNaN(n)) return String(v).trim() + ' руб.';
+      return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n) + ' руб.';
+    }
+
+    async function contactFio(deal) {
+      const contactId = deal.CONTACT_ID;
+      if (!contactId) return '—';
+      const stash = window.__bp608DealContacts || {};
+      if (stash.dealContact && Number(stash.dealContact.id) === Number(contactId)) {
+        const t = String(stash.dealContact.title || '').trim();
+        if (t && !/^Контакт #\d+$/i.test(t)) return t;
+      }
+      const c = await call('crm.contact.get', {
+        id: contactId,
+        select: ['NAME', 'LAST_NAME', 'SECOND_NAME'],
+      });
+      const fio = [c.LAST_NAME, c.NAME, c.SECOND_NAME].filter(Boolean).join(' ').trim();
+      return fio || '—';
+    }
+
+    function joinTypeAndRoom(typeVal, roomVal) {
+      const type = typeVal == null || typeVal === '' ? '' : String(typeVal).trim();
+      const room = roomVal == null || roomVal === '' ? '' : String(roomVal).trim();
+      if (type && room) return type + ' ' + room;
+      return type || room || '—';
+    }
+
+    function renderDealHeader(deal, fio) {
+      const place = joinTypeAndRoom(deal.UF_CRM_1538729147, deal.UF_CRM_1660535141);
+      const line1 = [fio || '—', pick(deal.UF_CRM_1739347967), place].join(' / ');
+      const sum = formatRub(deal.UF_CRM_1538728286642);
+      return (
+        '<span class="deal-line-main">' + escHtml(line1) + '</span>' +
+        '<span class="deal-line-sum">' + escHtml(sum) + '</span>'
+      );
+    }
+
+    async function finalizeDealUI(deal) {
+      if (!deal) return;
+      const fio = await contactFio(deal);
+      document.getElementById('deal-info').innerHTML = renderDealHeader(deal, fio);
+    }
+
+    function ensureFormReady() {
+      const header = document.querySelector('.card-header');
+      const root = document.getElementById('form-root');
+      if (header) header.classList.remove('hidden');
+      if (!root) return;
+      if (!root.querySelector('#bp608-form')) {
+        root.classList.add('card');
+        root.innerHTML = '';
+        initForm();
+      }
+    }
+
+    async function loadDealContent() {
+      const placementId = placementDealId() || dealId;
+      if (!placementId) throw new Error('Нет ID сделки');
+
+      dealId = placementId;
+      window.__bp608PlacementDealId = placementId;
+      ensureFormReady();
+
+      const placementDeal = await window.BP608DealPrefill.fetchDeal(placementId, call);
+      const categoryId = Number(placementDeal.CATEGORY_ID);
+      let dataDeal = null;
+      let dataDealId = placementId;
+
+      if (categoryId === REGISTRATION_CATEGORY_ID) {
+        const salesDealId = window.BP608DealPrefill.resolveSalesDealId(placementDeal);
+        if (!salesDealId) {
+          showPlacementError('Не указана сделка в продажах (поле «Сделка в продажах»)');
+          return null;
+        }
+        enableViewOnlyMode(salesDealId, placementId);
+        dataDealId = salesDealId;
+        dataDeal = await window.BP608DealPrefill.fetchDeal(salesDealId, call);
+      } else if (categoryId === SALES_CATEGORY_ID) {
+        window.__bp608ViewOnly = false;
+        const titleEl = document.getElementById('app-title');
+        if (titleEl) titleEl.textContent = 'Заявка на договор';
+        const bar = document.getElementById('form-actions-bar');
+        if (bar) bar.classList.remove('hidden');
+        if (window.BP608Form && window.BP608Form.setReadOnly) {
+          window.BP608Form.setReadOnly(document.getElementById('form-root'), false);
+        }
+        dataDeal = placementDeal;
+      } else {
+        showNotAvailable();
+        return null;
+      }
+
+      document.getElementById('deal-info').innerHTML = renderDealHeader(dataDeal, '—');
+      await finishFormInit(dataDeal, dataDealId);
+      await finalizeDealUI(dataDeal);
+      if (window.__bp608ViewOnly) {
+        window.BP608Form.setReadOnly(document.getElementById('form-root'), true, {
+          viewOnly: true,
+        });
+      }
+      return dataDeal;
+    }
+
+    async function refreshDealData() {
+      if (!dealId && !placementDealId()) return;
+      setFormLoading(true);
+      try {
+        await loadDealContent();
+      } catch (e) {
+        document.getElementById('deal-info').innerHTML = '<span class="err">' + escHtml(e.message || e) + '</span>';
+      } finally {
+        setFormLoading(false);
+      }
+    }
+
+    function startApp() {
+      window.__bp608Call = call;
+      if (typeof BX24 === 'undefined') {
+        document.getElementById('deal-info').textContent = 'Предпросмотр без портала';
+        initForm();
+        return;
+      }
+      BX24.init(async () => {
+        try {
+          dealId = placementDealId();
+          window.__bp608DealId = dealId;
+          if (!dealId) {
+            document.getElementById('deal-info').innerHTML = '<span class="err">Откройте вкладку из карточки сделки</span>';
+            return;
+          }
+
+          initForm();
+          setFormLoading(true);
+          try {
+            await loadDealContent();
+          } finally {
+            setFormLoading(false);
+            const refreshBtn = document.getElementById('btn-refresh');
+            if (refreshBtn) refreshBtn.disabled = false;
+          }
+        } catch (e) {
+          setFormLoading(false);
+          document.getElementById('deal-info').innerHTML = '<span class="err">' + escHtml(e.message || e) + '</span>';
+        }
+      }, () => {
+        document.getElementById('deal-info').innerHTML = '<span class="muted">Форма доступна; REST — после установки на портал</span>';
+        initForm();
+        finishFormInit();
+      });
+    }
+
+    startApp();
+
+    (function bindRefreshButton() {
+      const btn = document.getElementById('btn-refresh');
+      if (btn) btn.addEventListener('click', () => { refreshDealData(); });
+    })();
+
+    (function showAppVersion() {
+      const el = document.getElementById('app-version');
+      const v = window.BP608_APP_VERSION;
+      if (el && v) el.textContent = v;
+    })();
+  </script>
+</body>
+</html>

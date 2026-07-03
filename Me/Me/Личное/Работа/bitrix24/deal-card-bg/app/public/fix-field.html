@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Исправление поля — Цвет фона</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; max-width: 720px; margin: 0 auto; color: #1f2937; }
+    h1 { font-size: 20px; margin: 0 0 10px; }
+    p { line-height: 1.5; color: #4b5563; }
+    .box {
+      margin: 16px 0; padding: 14px 16px; border-radius: 10px;
+      background: #fffbeb; border: 1px solid #fcd34d;
+    }
+    .box a { color: #2563eb; }
+    .ok { color: #15803d; }
+    .err { color: #b91c1c; }
+    .warn { color: #b45309; }
+    li { margin: 6px 0; word-break: break-all; }
+    #status { font-weight: 600; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>Поле «Цвет фона карточки»</h1>
+  <p>Переводит поле с типа <code>string</code> (текст <code>#E3F2FD</code>) на <strong>виджет с палитрой</strong>.</p>
+  <p><strong>Кнопок нет</strong> — страница сама выполняет исправление, когда открыта <strong>из портала Битрикс24</strong>.</p>
+  <div id="outside-box" class="box" style="display:none">
+    <p><strong>Вы открыли ссылку в обычной вкладке браузера.</strong> Так не работает — нужен контекст приложения на портале.</p>
+    <ol>
+      <li>Зайдите на <a href="https://b24-s2an91.bitrix24.ru" target="_blank" rel="noopener">b24-s2an91.bitrix24.ru</a></li>
+      <li><strong>Приложения</strong> → <strong>Разработчикам</strong> → <strong>Установленные</strong></li>
+      <li><strong>Фон карточки сделки</strong> → <strong>Открыть</strong></li>
+      <li>На странице приложения — <strong>«Исправить поле (нет цвета)»</strong></li>
+    </ol>
+    <p>Или переустановите: <a href="install.html">install.html</a> (тоже только из портала).</p>
+    <p>Если на сделке уже <strong>цветная заливка</strong> — эту страницу можно не открывать.</p>
+  </div>
+  <p id="status"></p>
+  <ul id="log"></ul>
+  <script>
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const USER_TYPE = 'deal_card_bg';
+
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function log(msg, ok) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.className = ok === true ? 'ok' : ok === false ? 'err' : 'warn';
+      document.getElementById('log').appendChild(li);
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error() + ': ' + r.error_description()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function isDiskDownloadUrl(url) {
+      return /\/rest\/[^/]+\/[^/]+\/download/i.test(String(url || ''));
+    }
+
+    function portalOrigin() {
+      try { return 'https://' + BX24.getDomain(); } catch (_) { return ''; }
+    }
+
+    async function handlerBindFromJsonUrl(jsonUrl) {
+      try {
+        const res = await fetch(jsonUrl + (jsonUrl.includes('?') ? '&' : '?') + '_=' + Date.now());
+        if (!res.ok) return '';
+        const data = await res.json();
+        const bind = String(data.handlerBindUrl || data.handlerDownloadUrl || '').trim();
+        if (bind && isDiskDownloadUrl(bind)) return bind;
+      } catch (_) {}
+      return '';
+    }
+
+    async function fieldHandlerBindUrl() {
+      const candidates = [
+        appBase() + '/field-handler-url.json',
+        portalOrigin() + '/docs/file/deal-card-bg/field-handler-url.json',
+      ];
+      for (const url of candidates) {
+        const bind = await handlerBindFromJsonUrl(url);
+        if (bind) return bind;
+      }
+      return appBase() + '/field-handler.html';
+    }
+
+    async function registerWidgetType(handler) {
+      const payload = {
+        USER_TYPE_ID: USER_TYPE,
+        HANDLER: handler,
+        TITLE: 'Цвет фона карточки',
+        DESCRIPTION: 'Палитра фона сделки',
+        OPTIONS: { height: 56 },
+      };
+      try {
+        await call('userfieldtype.update', payload);
+      } catch (_) {
+        try { await call('userfieldtype.add', payload); } catch (_2) {}
+      }
+    }
+
+    async function widgetTypeId() {
+      const app = await call('app.info', {});
+      const appId = app.ID || app.id || app.APP_ID || 1;
+      return 'rest_' + appId + '_' + USER_TYPE;
+    }
+
+    async function getField() {
+      const rows = await call('crm.deal.userfield.list', {});
+      return (rows || []).find((f) => f.FIELD_NAME === UF);
+    }
+
+    async function fixField() {
+      const handler = await fieldHandlerBindUrl();
+      await registerWidgetType(handler);
+      log('Обработчик виджета → ' + handler, true);
+
+      const typeId = await widgetTypeId();
+      log('Тип для CRM: ' + typeId, true);
+
+      const field = await getField();
+      if (!field) {
+        await call('crm.deal.userfield.add', {
+          fields: {
+            FIELD_NAME: 'DEAL_CARD_BG',
+            USER_TYPE_ID: typeId,
+            XML_ID: 'DEAL_CARD_BG',
+            MANDATORY: 'N',
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон',
+            SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+          },
+        });
+        log('Создано поле-виджет ' + UF, true);
+        return;
+      }
+
+      log('Было: тип «' + field.USER_TYPE_ID + '», ID ' + field.ID, null);
+
+      if (field.USER_TYPE_ID === typeId) {
+        log('Уже виджет — менять не нужно', true);
+        return;
+      }
+
+      try {
+        await call('crm.deal.userfield.update', {
+          id: field.ID,
+          fields: {
+            USER_TYPE_ID: typeId,
+            EDIT_FORM_LABEL: 'Цвет фона карточки',
+            LIST_COLUMN_LABEL: 'Фон',
+            SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+          },
+        });
+        const check = await getField();
+        if (check?.USER_TYPE_ID === typeId) {
+          log('Поле переведено на виджет', true);
+          return;
+        }
+        log('update не сменил тип (остался «' + check?.USER_TYPE_ID + '») — пересоздаём…', null);
+      } catch (e) {
+        log('update: ' + (e.message || e), null);
+      }
+
+      await call('crm.deal.userfield.delete', { id: field.ID });
+      log('Старое поле удалено (hex в сделках обычно сохраняется)', null);
+      await call('crm.deal.userfield.add', {
+        fields: {
+          FIELD_NAME: 'DEAL_CARD_BG',
+          USER_TYPE_ID: typeId,
+          XML_ID: 'DEAL_CARD_BG',
+          MANDATORY: 'N',
+          EDIT_FORM_LABEL: 'Цвет фона карточки',
+          LIST_COLUMN_LABEL: 'Фон',
+          SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 56 },
+        },
+      });
+      const after = await getField();
+      if (after?.USER_TYPE_ID === typeId) {
+        log('Поле-виджет создано заново', true);
+      } else {
+        log('Тип после создания: «' + (after?.USER_TYPE_ID || '?') + '»', false);
+      }
+    }
+
+    function start() {
+      document.getElementById('status').textContent = 'Исправление…';
+      fixField()
+        .then(() => {
+          document.getElementById('status').textContent = 'Готово';
+          log('Ctrl+F5 на карточке сделки', true);
+          BX24.fitWindow();
+        })
+        .catch((e) => {
+          document.getElementById('status').textContent = 'Ошибка';
+          log(e.message || String(e), false);
+          log('Scope: crm + placement + userfieldconfig', false);
+        });
+    }
+
+    if (typeof BX24 === 'undefined') {
+      document.getElementById('outside-box').style.display = 'block';
+      document.getElementById('status').textContent = 'Откройте из портала Битрикс24';
+    } else {
+      BX24.init(start, () => {
+        document.getElementById('outside-box').style.display = 'block';
+        document.getElementById('status').textContent = 'Нет связи с порталом';
+      });
+    }
+  </script>
+</body>
+</html>

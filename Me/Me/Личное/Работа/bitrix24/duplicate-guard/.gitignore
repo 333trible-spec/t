@@ -1,0 +1,5 @@
+.github-pages/
+.static-url
+node_modules/
+.vercel
+.env*

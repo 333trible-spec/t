@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Duplicate Guard — настройки</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 16px 20px 40px; color: #1f2937; background: #f8fafc; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .sub { color: #64748b; font-size: 13px; margin-bottom: 16px; }
+    .panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+    label { font-size: 13px; font-weight: 600; }
+    select, input[type=text] { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; min-width: 200px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tab { padding: 8px 14px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; }
+    .tab.active { background: #1565c0; color: #fff; border-color: #1565c0; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { border-bottom: 1px solid #e2e8f0; padding: 10px 8px; text-align: left; vertical-align: top; }
+    th { background: #f1f5f9; font-weight: 600; }
+    .stages { max-height: 120px; overflow: auto; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; }
+    .stages label { display: block; font-weight: normal; margin: 4px 0; font-size: 12px; }
+  .funnel-check { display: inline-flex; align-items: center; gap: 6px; margin: 4px 12px 4px 0; font-weight: normal; font-size: 13px; }
+    button.primary { background: #1565c0; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    button.primary:disabled { opacity: .5; }
+    #toast { position: fixed; bottom: 20px; right: 20px; background: #15803d; color: #fff; padding: 12px 18px; border-radius: 8px; display: none; }
+    #toast.err { background: #b91c1c; }
+  </style>
+</head>
+<body>
+  <h1>Duplicate Guard</h1>
+  <p class="sub">Сценарии обработки новых лидов при дублях в CRM</p>
+
+  <div class="panel">
+    <div class="row">
+      <label><input type="checkbox" id="enabled" checked> Модуль включён</label>
+    </div>
+    <h3 style="margin:12px 0 8px;font-size:14px;">Воронки сделок в проверке</h3>
+    <div id="participating"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin:0 0 8px;font-size:14px;">Правила по воронкам</h3>
+    <p class="sub" style="margin:0 0 12px;">Для каждой воронки — свои активные стадии и действия по сценариям. Если найдена сделка в воронке, применяются её правила.</p>
+    <div class="tabs" id="tabs"></div>
+    <div id="funnel-editor"></div>
+  </div>
+
+  <button class="primary" id="save">Сохранить настройки</button>
+  <div id="toast"></div>
+
+  <script>
+    const CONFIG_KEY = 'duplicate_guard_config';
+    const SCENARIOS = [
+      { id: 'ACTIVE_LEAD_NEW_LEAD', title: 'Есть активный лид → новый лид' },
+      { id: 'ACTIVE_DEAL_CONTACT_NEW_LEAD', title: 'Активная сделка + контакт → новый лид' },
+      { id: 'CONTACT_NEW_LEAD', title: 'Есть контакт → лид' },
+      { id: 'NO_LEAD_NO_DEAL_NEW_LEAD', title: 'Нет активного лида и сделки → новый лид' },
+      { id: 'NO_DEAL_NO_CONTACT_NEW_LEAD', title: 'Нет сделки и контакта → лид' },
+    ];
+
+    let config = null;
+    let categories = [];
+    let leadStatuses = [];
+    let dealStagesByCat = {};
+    let activeTab = 'default';
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function toast(msg, err) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.className = err ? 'err' : '';
+      el.style.display = 'block';
+      setTimeout(() => { el.style.display = 'none'; }, 3000);
+    }
+
+    function defaultFunnel(catId, name) {
+      const scenarios = {};
+      SCENARIOS.forEach((s) => {
+        scenarios[s.id] = {
+          action: ['ACTIVE_LEAD_NEW_LEAD', 'ACTIVE_DEAL_CONTACT_NEW_LEAD'].includes(s.id) ? 'reject' : 'keep',
+          rejectStatusId: 'JUNK',
+        };
+      });
+      return {
+        categoryId: Number(catId),
+        categoryName: name || '',
+        enabled: true,
+        activeLeadStatuses: [],
+        activeDealStages: [],
+        scenarios,
+      };
+    }
+
+    function ensureFunnel(key, name) {
+      if (!config.funnels[key]) config.funnels[key] = defaultFunnel(key === 'default' ? 0 : key, name);
+      return config.funnels[key];
+    }
+
+    async function loadMeta() {
+      categories = await call('crm.dealcategory.list', {}) || [];
+      const leadSt = await call('crm.status.list', { filter: { ENTITY_ID: 'STATUS' } }) || [];
+      leadStatuses = leadSt;
+
+      dealStagesByCat = { 0: await call('crm.status.list', { filter: { ENTITY_ID: 'DEAL_STAGE' } }) || [] };
+      for (const c of categories) {
+        const eid = Number(c.ID) === 0 ? 'DEAL_STAGE' : 'DEAL_STAGE_' + c.ID;
+        dealStagesByCat[c.ID] = await call('crm.status.list', { filter: { ENTITY_ID: eid } }) || [];
+      }
+    }
+
+    async function loadConfig() {
+      const raw = await call('app.option.get', { option: CONFIG_KEY });
+      if (raw) {
+        try { config = JSON.parse(raw); } catch { config = null; }
+      }
+      if (!config) {
+        config = { version: 1, enabled: true, participatingCategoryIds: [], funnels: {} };
+      }
+      ensureFunnel('default', 'Общие правила');
+      for (const c of categories) {
+        ensureFunnel(String(c.ID), c.NAME);
+      }
+    }
+
+    function renderParticipating() {
+      const box = document.getElementById('participating');
+      box.innerHTML = categories.map((c) => {
+        const checked = config.participatingCategoryIds.includes(Number(c.ID)) ? 'checked' : '';
+        return `<label class="funnel-check"><input type="checkbox" data-cat="${c.ID}" ${checked}> ${c.NAME || 'Воронка ' + c.ID}</label>`;
+      }).join('');
+      box.querySelectorAll('input').forEach((inp) => {
+        inp.onchange = () => {
+          const id = Number(inp.dataset.cat);
+          if (inp.checked) {
+            if (!config.participatingCategoryIds.includes(id)) config.participatingCategoryIds.push(id);
+          } else {
+            config.participatingCategoryIds = config.participatingCategoryIds.filter((x) => x !== id);
+          }
+        };
+      });
+    }
+
+    function renderTabs() {
+      const tabs = document.getElementById('tabs');
+      const keys = ['default', ...categories.map((c) => String(c.ID))];
+      tabs.innerHTML = keys.map((k) => {
+        const name = k === 'default' ? 'Общие' : (config.funnels[k]?.categoryName || k);
+        return `<button type="button" class="tab ${k === activeTab ? 'active' : ''}" data-tab="${k}">${name}</button>`;
+      }).join('');
+      tabs.querySelectorAll('.tab').forEach((btn) => {
+        btn.onclick = () => { activeTab = btn.dataset.tab; renderTabs(); renderEditor(); };
+      });
+    }
+
+    function renderEditor() {
+      const f = ensureFunnel(activeTab, activeTab === 'default' ? 'Общие' : '');
+      const catId = activeTab === 'default' ? 0 : Number(activeTab);
+      const dealStages = dealStagesByCat[catId] || dealStagesByCat[0] || [];
+
+      const leadChecks = leadStatuses.map((s) => {
+        const on = f.activeLeadStatuses.includes(s.STATUS_ID) ? 'checked' : '';
+        return `<label><input type="checkbox" data-kind="lead" value="${s.STATUS_ID}" ${on}> ${s.NAME}</label>`;
+      }).join('');
+
+      const dealChecks = dealStages.map((s) => {
+        const on = f.activeDealStages.includes(s.STATUS_ID) ? 'checked' : '';
+        return `<label><input type="checkbox" data-kind="deal" value="${s.STATUS_ID}" ${on}> ${s.NAME} (${s.STATUS_ID})</label>`;
+      }).join('');
+
+      const junkStatuses = leadStatuses.filter((s) => s.SEMANTICS === 'F' || s.STATUS_ID === 'JUNK');
+      const rejectOpts = (junkStatuses.length ? junkStatuses : leadStatuses).map((s) =>
+        `<option value="${s.STATUS_ID}" ${f.scenarios[SCENARIOS[0].id]?.rejectStatusId === s.STATUS_ID ? 'selected' : ''}>${s.NAME}</option>`
+      ).join('');
+
+      const rows = SCENARIOS.map((sc) => {
+        const rule = f.scenarios[sc.id] || { action: 'keep', rejectStatusId: 'JUNK' };
+        return `<tr>
+          <td>${sc.title}</td>
+          <td>
+            <select data-sc="${sc.id}" data-field="action">
+              <option value="keep" ${rule.action === 'keep' ? 'selected' : ''}>Оставить активным</option>
+              <option value="reject" ${rule.action === 'reject' ? 'selected' : ''}>Браковать лид</option>
+            </select>
+          </td>
+          <td>
+            <select data-sc="${sc.id}" data-field="rejectStatusId" ${rule.action !== 'reject' ? 'disabled' : ''}>
+              ${leadStatuses.map((s) => `<option value="${s.STATUS_ID}" ${rule.rejectStatusId === s.STATUS_ID ? 'selected' : ''}>${s.NAME}</option>`).join('')}
+            </select>
+          </td>
+        </tr>`;
+      }).join('');
+
+      document.getElementById('funnel-editor').innerHTML = `
+        <div class="row"><label><input type="checkbox" id="funnel-enabled" ${f.enabled ? 'checked' : ''}> Правила воронки включены</label></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div><strong>Активные стадии лидов</strong><div class="stages" id="lead-stages">${leadChecks || '—'}</div></div>
+          <div><strong>Активные стадии сделок (воронка)</strong><div class="stages" id="deal-stages">${dealChecks || '—'}</div></div>
+        </div>
+        <table><thead><tr><th>Сценарий</th><th>Действие</th><th>Стадия брака</th></tr></thead><tbody>${rows}</tbody></table>
+      `;
+
+      document.getElementById('funnel-enabled').onchange = (e) => { f.enabled = e.target.checked; };
+
+      document.getElementById('lead-stages').querySelectorAll('input').forEach((inp) => {
+        inp.onchange = () => {
+          f.activeLeadStatuses = [...document.querySelectorAll('#lead-stages input:checked')].map((i) => i.value);
+        };
+      });
+      document.getElementById('deal-stages').querySelectorAll('input').forEach((inp) => {
+        inp.onchange = () => {
+          f.activeDealStages = [...document.querySelectorAll('#deal-stages input:checked')].map((i) => i.value);
+        };
+      });
+
+      document.querySelectorAll('[data-sc]').forEach((el) => {
+        el.onchange = () => {
+          const sc = el.dataset.sc;
+          const field = el.dataset.field;
+          if (!f.scenarios[sc]) f.scenarios[sc] = { action: 'keep', rejectStatusId: 'JUNK' };
+          f.scenarios[sc][field] = el.value;
+          if (field === 'action') {
+            const statusSel = document.querySelector(`[data-sc="${sc}"][data-field="rejectStatusId"]`);
+            if (statusSel) statusSel.disabled = el.value !== 'reject';
+          }
+        };
+      });
+    }
+
+    document.getElementById('save').onclick = async () => {
+      config.enabled = document.getElementById('enabled').checked;
+      try {
+        await call('app.option.set', { options: { [CONFIG_KEY]: JSON.stringify(config) } });
+        toast('Сохранено');
+      } catch (e) {
+        toast(e.message, true);
+      }
+    };
+
+    BX24.init(async () => {
+      try {
+        await loadMeta();
+        await loadConfig();
+        document.getElementById('enabled').checked = config.enabled !== false;
+        renderParticipating();
+        renderTabs();
+        renderEditor();
+      } catch (e) {
+        toast('Ошибка загрузки: ' + e.message, true);
+      }
+    });
+  </script>
+</body>
+</html>

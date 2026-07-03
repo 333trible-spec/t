@@ -1,0 +1,7 @@
+B24 CRM report bot listening on http://127.0.0.1:3847
+Handler: POST /bitrix/handler
+Health:  GET /health
+Events:  fetch
+poll: старт для бота 21 (fetch mode)
+poll: ONIMBOTV2MESSAGEADD
+poll: ONIMBOTV2MESSAGEADD

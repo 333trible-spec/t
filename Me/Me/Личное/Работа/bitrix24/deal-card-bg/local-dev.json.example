@@ -1,0 +1,5 @@
+{
+  "subdomain": "b24-deal-card-bg-YOUR-SUBDOMAIN",
+  "watchdogIntervalSec": 40,
+  "comment": "Скопируйте в local-dev.json (не в git). Фиксированный поддомен localtunnel."
+}

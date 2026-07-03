@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+
+  <title>Цвет фона</title>
+
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body { margin: 0; font-family: system-ui, sans-serif; padding: 16px; background: #f9fafb; }
+
+    h2 { margin: 0 0 8px; font-size: 16px; }
+
+    .sub { margin: 0 0 12px; font-size: 12px; color: #6b7280; }
+
+    .preview { height: 100px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #374151; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+
+    button { border: 2px solid #e5e7eb; border-radius: 8px; padding: 10px 6px; cursor: pointer; background: #fff; font-size: 12px; }
+
+    button:hover { border-color: #2563eb; }
+
+    button.active { border-color: #2563eb; box-shadow: 0 0 0 2px #93c5fd; }
+
+    .swatch { width: 100%; height: 26px; border-radius: 4px; margin-bottom: 4px; border: 1px solid rgba(0,0,0,.08); }
+
+    #msg { margin-top: 12px; font-size: 13px; min-height: 1.2em; }
+
+    #msg.ok { color: #15803d; }
+
+    #msg.err { color: #b91c1c; }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h2>Цвет фона карточки</h2>
+
+  <p class="sub">Цвет сохраняется в сделку. Превью ниже — во вкладке приложения.</p>
+
+  <div class="preview" id="preview">…</div>
+
+  <div class="grid" id="grid"></div>
+
+  <p id="msg"></p>
+
+  <script>
+
+    const PALETTE = [
+
+      { label: 'Без фона', hex: '' },
+
+      { label: 'Бронь', hex: '#FFF8E1' },
+
+      { label: 'Оформление', hex: '#E3F2FD' },
+
+      { label: 'Рассрочка', hex: '#F3E5F5' },
+
+      { label: 'VIP', hex: '#FFFDE7' },
+
+      { label: 'Срочно', hex: '#FFEBEE' },
+
+      { label: 'Успех', hex: '#E8F5E9' },
+
+      { label: 'Провал', hex: '#F5F5F5' },
+
+    ];
+
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+
+    const MSG_TYPE = 'b24-deal-card-bg';
+
+
+
+    let dealId = null;
+
+
+
+    function call(method, params) {
+
+      return new Promise((resolve, reject) => {
+
+        BX24.callMethod(method, params, (r) => {
+
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+
+          else resolve(r.data());
+
+        });
+
+      });
+
+    }
+
+
+
+    function hexFromStored(raw) {
+
+      if (raw === null || raw === undefined || raw === '' || raw === '0') return '';
+
+      const s = String(raw).trim();
+
+      if (/^#[0-9a-f]{3,8}$/i.test(s)) return s.toUpperCase();
+
+      const hit = PALETTE.find((p) => p.label === s);
+
+      return hit ? hit.hex : '';
+
+    }
+
+
+
+    function labelFromHex(hex) {
+
+      const hit = PALETTE.find((p) => p.hex.toUpperCase() === String(hex || '').toUpperCase());
+
+      return hit ? hit.label : (hex ? hex : 'Без фона');
+
+    }
+
+
+
+    function broadcastPaint(hex) {
+
+      const msg = { type: MSG_TYPE, hex: hex || '', dealId: dealId };
+
+      for (let i = 0; i < 5; i += 1) {
+
+        try { window.top.postMessage(msg, '*'); } catch (_) {}
+
+        let w = window;
+
+        for (let j = 0; j < 24; j += 1) {
+
+          try {
+
+            if (w.parent && w.parent !== w) {
+
+              w.parent.postMessage(msg, '*');
+
+              w = w.parent;
+
+            } else break;
+
+          } catch (_) { break; }
+
+        }
+
+      }
+
+      try {
+
+        const cache = JSON.parse(localStorage.getItem('b24-deal-card-bg-v4') || '{}');
+
+        cache[String(dealId)] = hex || '';
+
+        cache.__lastDealId = String(dealId);
+
+        localStorage.setItem('b24-deal-card-bg-v4', JSON.stringify(cache));
+
+      } catch (_) {}
+
+    }
+
+
+
+    function setMsg(text, ok) {
+
+      const el = document.getElementById('msg');
+
+      el.textContent = text;
+
+      el.className = ok ? 'ok' : 'err';
+
+    }
+
+
+
+    function setPreview(label, hex) {
+
+      const el = document.getElementById('preview');
+
+      el.style.background = hex || '#fff';
+
+      el.textContent = label;
+
+      document.querySelectorAll('#grid button').forEach((btn) => {
+
+        btn.classList.toggle('active', btn.dataset.hex === (hex || ''));
+
+      });
+
+    }
+
+
+
+    async function saveColor(item) {
+
+      if (!dealId) return;
+
+      setMsg('Сохраняю…', true);
+
+      broadcastPaint(item.hex);
+
+      try {
+
+        await call('crm.deal.update', {
+
+          id: dealId,
+
+          fields: { [UF]: item.hex || '' },
+
+        });
+
+        setPreview(item.label, item.hex);
+
+        broadcastPaint(item.hex);
+
+        try { BX24.placement.call('reloadData'); } catch (_) {}
+
+        setMsg('Готово: «' + item.label + '»', true);
+
+      } catch (e) {
+
+        setMsg('Ошибка: ' + (e.message || e), false);
+
+      }
+
+    }
+
+
+
+    function renderGrid() {
+
+      const grid = document.getElementById('grid');
+
+      grid.innerHTML = '';
+
+      PALETTE.forEach((item) => {
+
+        const btn = document.createElement('button');
+
+        btn.type = 'button';
+
+        btn.dataset.hex = item.hex;
+
+        btn.innerHTML = '<div class="swatch" style="background:' + (item.hex || '#fff') + '"></div>' + item.label;
+
+        btn.onclick = () => saveColor(item);
+
+        grid.appendChild(btn);
+
+      });
+
+    }
+
+
+
+    BX24.init(async () => {
+
+      let opts = BX24.placement.info().options || {};
+
+      if (typeof opts === 'string') {
+
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+
+      }
+
+      dealId = opts.ID || opts.id || opts.ENTITY_VALUE_ID;
+
+      if (!dealId) {
+
+        document.getElementById('preview').textContent = 'Откройте из карточки сделки';
+
+        return;
+
+      }
+
+      renderGrid();
+
+      try {
+
+        const deal = await call('crm.deal.get', { id: dealId, select: [UF] });
+
+        const hex = hexFromStored(deal[UF]);
+
+        setPreview(labelFromHex(hex), hex);
+
+        broadcastPaint(hex);
+
+      } catch (e) {
+
+        setMsg(e.message || String(e), false);
+
+      }
+
+      BX24.fitWindow();
+
+    });
+
+  </script>
+
+</body>
+
+</html>
+
+

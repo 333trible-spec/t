@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявка на договор</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 24px;
+      max-width: 560px;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.5;
+    }
+    h1 { font-size: 20px; margin: 0 0 12px; }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .muted { color: #64748b; font-size: 14px; }
+    .err { color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Заявка на договор</h1>
+    <p class="muted" id="status">Приложение установлено.</p>
+    <p>Рабочий интерфейс — во <strong>вкладке карточки сделки</strong> в CRM.</p>
+    <ol class="muted">
+      <li><strong>CRM → Сделки</strong></li>
+      <li>Откройте сделку</li>
+      <li>Вкладка <strong>«Заявка на договор»</strong></li>
+    </ol>
+    <p class="muted">Статус БП 608 и задания — только внутри сделки.</p>
+  </div>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('status');
+      if (typeof BX24 === 'undefined') {
+        el.innerHTML = '<span class="err">SDK Б24 не загрузился. Проверьте сеть или блокировщики.</span>';
+        return;
+      }
+      BX24.init(function () {
+        el.textContent = 'Связь с ik-navigator: OK.';
+      }, function () {
+        el.innerHTML = '<span class="err">Нет авторизации SDK — откройте из портала ik-navigator.</span>';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+</head>
+<body>
+<script>
+(function () {
+  'use strict';
+  const WORKER_VERSION = '4.1.0-css';
+  if (window.__b24DealCardBgPortalWorker) return;
+  window.__b24DealCardBgPortalWorker = WORKER_VERSION;
+
+  const UF = 'UF_CRM_DEAL_CARD_BG';
+  const STYLE_ID = 'b24-deal-card-bg-style';
+  const MSG_TYPE = 'b24-deal-card-bg';
+  const CACHE_KEY = 'b24-deal-card-bg-v4';
+  const CSS_SELECTORS = [
+    '.ui-page-slider-wrapper',
+    '.ui-page-slider-content',
+    '#ui-page-slider-content',
+    '.ui-page-slider-workarea',
+    '.ui-side-panel-wrap',
+    '.ui-side-panel-content',
+    '.ui-side-panel-slider-content',
+    '.ui-side-panel',
+    '.crm-entity-widget-content',
+    '.crm-entity-card-container',
+  ];
+  const LABEL_HEX = {
+    'Без фона': '', Бронь: '#FFF8E1', Оформление: '#E3F2FD', Рассрочка: '#F3E5F5',
+    VIP: '#FFFDE7', Срочно: '#FFEBEE', Успех: '#E8F5E9', Провал: '#F5F5F5',
+  };
+
+  let lastHex = '';
+  let previewUntil = 0;
+
+  function portalWindow() {
+    let win = window;
+    for (let i = 0; i < 16; i += 1) {
+      if (!win.parent || win.parent === win) break;
+      try { void win.parent.document.body; win = win.parent; } catch (_) { break; }
+    }
+    return win;
+  }
+
+  function portalDocument() {
+    try { return portalWindow().document; } catch (_) { return null; }
+  }
+
+  function markPortal() {
+    try {
+      const top = portalWindow();
+      top.__b24DealCardBgBridgeVersion = WORKER_VERSION;
+      top.__b24DealCardBgBridge = true;
+      top.__b24DealCardBgWorkerActive = true;
+    } catch (_) {}
+  }
+
+  function matchDealId(str) {
+    const m = String(str || '').match(/\/crm\/deal\/details\/(\d+)/i);
+    return m ? m[1] : null;
+  }
+
+  function findDealId() {
+    const top = portalWindow();
+    let id = matchDealId(top.location?.href) || matchDealId(top.location?.hash);
+    if (id) return id;
+    try {
+      const sp = top.BX?.SidePanel?.Instance;
+      const sliders = sp?.getOpenSliders?.() || [];
+      for (const slider of sliders) {
+        for (const u of [slider?.getUrl?.(), slider?.getUri?.()]) {
+          const hit = matchDealId(u);
+          if (hit) return hit;
+        }
+      }
+    } catch (_) {}
+    try {
+      const all = JSON.parse(top.localStorage.getItem(CACHE_KEY) || '{}');
+      if (all.__lastDealId) return String(all.__lastDealId);
+    } catch (_) {}
+    return null;
+  }
+
+  function normalizeHex(raw) {
+    if (raw === null || raw === undefined || raw === '' || raw === '0') return '';
+    const s = String(raw).trim();
+    if (/^#[0-9a-f]{3,8}$/i.test(s)) return s.toUpperCase();
+    if (Object.prototype.hasOwnProperty.call(LABEL_HEX, s)) return LABEL_HEX[s];
+    return '';
+  }
+
+  function applyCss(hex, doc) {
+    if (!doc) return;
+    if (!hex) {
+      doc.getElementById(STYLE_ID)?.remove();
+      CSS_SELECTORS.forEach((sel) => {
+        doc.querySelectorAll(sel).forEach((el) => {
+          el.style.removeProperty('background-color');
+          el.style.removeProperty('background');
+        });
+      });
+      return;
+    }
+    let style = doc.getElementById(STYLE_ID);
+    if (!style) {
+      style = doc.createElement('style');
+      style.id = STYLE_ID;
+      style.setAttribute('data-b24-deal-card-bg', WORKER_VERSION);
+      (doc.head || doc.documentElement).appendChild(style);
+    }
+    style.textContent = CSS_SELECTORS.map((sel) => (
+      sel + '{background-color:' + hex + '!important;background:' + hex + '!important}'
+    )).join('\n');
+    CSS_SELECTORS.forEach((sel) => {
+      doc.querySelectorAll(sel).forEach((el) => {
+        el.style.setProperty('background-color', hex, 'important');
+        el.style.setProperty('background', hex, 'important');
+      });
+    });
+  }
+
+  function paintAllDocs(hex) {
+    markPortal();
+    const topDoc = portalDocument();
+    if (topDoc) applyCss(hex, topDoc);
+    if (!topDoc) return;
+    topDoc.querySelectorAll('iframe').forEach((iframe) => {
+      try {
+        if (iframe.contentDocument) applyCss(hex, iframe.contentDocument);
+      } catch (_) {}
+    });
+  }
+
+  function restCall(method, params) {
+    return new Promise((resolve, reject) => {
+      BX24.callMethod(method, params, (r) => {
+        if (r.error()) reject(new Error(r.error_description || r.error()));
+        else resolve(r.data());
+      });
+    });
+  }
+
+  async function refresh() {
+    if (Date.now() < previewUntil && lastHex) {
+      paintAllDocs(lastHex);
+      return;
+    }
+    const dealId = findDealId();
+    if (!dealId) return;
+    let cached = '';
+    try {
+      const all = JSON.parse(portalWindow().localStorage.getItem(CACHE_KEY) || '{}');
+      if (Object.prototype.hasOwnProperty.call(all, String(dealId))) cached = all[String(dealId)] || '';
+    } catch (_) {}
+    if (cached) {
+      lastHex = cached;
+      paintAllDocs(cached);
+    }
+    try {
+      const deal = await restCall('crm.deal.get', { id: dealId, select: [UF] });
+      const hex = normalizeHex(deal[UF]);
+      lastHex = hex;
+      paintAllDocs(hex);
+    } catch (_) {
+      if (cached) paintAllDocs(cached);
+    }
+  }
+
+  window.addEventListener('message', (e) => {
+    const d = e.data;
+    if (!d || d.type !== MSG_TYPE || !('hex' in d)) return;
+    previewUntil = Date.now() + 180000;
+    lastHex = normalizeHex(d.hex) || '';
+    paintAllDocs(lastHex);
+    setTimeout(refresh, 400);
+  });
+
+  function start() {
+    markPortal();
+    refresh();
+    setInterval(() => { markPortal(); refresh(); }, 900);
+    try {
+      const top = portalWindow();
+      if (top.BX?.addCustomEvent) {
+        top.BX.addCustomEvent('SidePanel.Slider:onOpenComplete', () => setTimeout(refresh, 200));
+        top.BX.addCustomEvent('SidePanel.Slider:onCloseComplete', () => setTimeout(refresh, 200));
+      }
+    } catch (_) {}
+  }
+
+  if (typeof BX24 !== 'undefined') BX24.init(start, start);
+  else start();
+})();
+</script>
+</body>
+</html>

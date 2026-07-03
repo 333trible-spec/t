@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/serve?file=install.html" },
+    { "source": "/install.html", "destination": "/api/serve?file=install.html" },
+    { "source": "/settings.html", "destination": "/api/serve?file=settings.html" },
+    { "source": "/field-handler.html", "destination": "/api/serve?file=field-handler.html" },
+    { "source": "/fix-dup-fields.html", "destination": "/api/serve?file=fix-dup-fields.html" }
+  ]
+}

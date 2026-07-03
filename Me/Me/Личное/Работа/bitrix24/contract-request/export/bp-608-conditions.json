@@ -1,0 +1,166 @@
+{
+  "branches": [
+    {
+      "title": "Последовательный бизнес-процесс",
+      "conds": [
+        {
+          "field": "CONTACT.NAME",
+          "op": "empty",
+          "value": ""
+        },
+        {
+          "field": "CONTACT.LAST_NAME",
+          "op": "empty",
+          "value": ""
+        },
+        {
+          "field": "CONTACT.SECOND_NAME",
+          "op": "empty",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Добавить новость",
+      "conds": [
+        {
+          "field": "CONTACT.EMAIL",
+          "op": "empty",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Добавить новость",
+      "conds": [
+        {
+          "field": "UF_CRM_1538729147",
+          "op": "contain",
+          "value": "Кладовка"
+        }
+      ]
+    },
+    {
+      "title": "Заявка на договор инд",
+      "conds": [
+        {
+          "field": "UF_CRM_1538729147",
+          "op": "contain",
+          "value": "Кладовка"
+        }
+      ]
+    },
+    {
+      "title": "Заявка на договор долевая",
+      "conds": [
+        {
+          "field": "CONTACT_ID",
+          "op": "!empty",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "проверка направления текущей сделки",
+      "conds": [
+        {
+          "field": "CATEGORY_ID",
+          "op": "=",
+          "value": "6"
+        },
+        {
+          "field": "CATEGORY_ID",
+          "op": "=",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "title": "вторая проверка - наличие сделок в целевом направлении",
+      "conds": [
+        {
+          "field": "UF_CRM_1644993988",
+          "op": "=",
+          "value": "Параллельная бронь"
+        }
+      ]
+    },
+    {
+      "title": "Фиксируем ID созданной сделки",
+      "conds": [
+        {
+          "field": "CATEGORY_ID",
+          "op": "=",
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "title": "Зеленые Аллеи Н",
+      "conds": [
+        {
+          "field": "CATEGORY_ID",
+          "op": "=",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "title": "Параллельное выполнение",
+      "conds": [
+        {
+          "field": "UF_CRM_1696847562",
+          "op": "!empty",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Параллельное выполнение",
+      "conds": [
+        {
+          "field": "UF_CRM_1662629293",
+          "op": "!empty",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "params": [],
+  "docs": 4,
+  "allSet": {
+    "UF_CRM_1644993988": [
+      "Параллельная бронь",
+      ""
+    ],
+    "UF_CRM_1664775472": [
+      "https://ik-navigator.bitrix24.ru/crm/deal/details/{=Document:ID}/",
+      "https://ik-navigator.bitrix24.ru/crm/deal/details/{=Document:ID}/"
+    ],
+    "UF_CRM_1664792769": [
+      "{=Document:ID}",
+      "{=Document:ID}"
+    ],
+    "UF_CRM_1664775392": [
+      "https://ik-navigator.bitrix24.ru/crm/deal/details/{=A22719_85345_60744_79567:DealId}/",
+      "https://ik-navigator.bitrix24.ru/crm/deal/details/{=A36251_22003_90243_9655:DealId}/"
+    ],
+    "UF_CRM_1664792607": [
+      "{=A22719_85345_60744_79567:DealId}",
+      "{=A36251_22003_90243_9655:DealId}"
+    ],
+    "UF_CRM_6360C8B48C713": [
+      "{=A22719_85345_60744_79567:DealId}"
+    ],
+    "UF_CRM_625FB3551F86E": [
+      "{=A22719_85345_60744_79567:DealId}",
+      "{=A36251_22003_90243_9655:DealId}"
+    ],
+    "UF_CRM_1649750063": [
+      "{=A18204_36395_63922_78829:ASSIGNED_BY_ID}"
+    ],
+    "STAGE_ID": [
+      "C8:48"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "b24-duplicate-guard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Битрикс24: контроль дублей лидов по настраиваемым сценариям",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "register:portal": "node scripts/register-portal.mjs",
+    "deploy": "vercel deploy --prod",
+    "fetch:vercel": "node scripts/fetch-from-vercel.js",
+    "download:deployment": "node scripts/download-deployment.js",
+    "publish:github": "node scripts/publish-github.js",
+    "publish:vercel": "node scripts/publish-vercel.js"
+  },
+  "engines": { "node": ">=18" }
+}

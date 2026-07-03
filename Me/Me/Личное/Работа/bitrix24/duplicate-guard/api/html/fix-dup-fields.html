@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Создание полей — Проверка на дубль</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; max-width: 760px; margin: 0 auto; color: #1f2937; }
+    h1 { font-size: 20px; margin: 0 0 10px; }
+    p { line-height: 1.5; color: #4b5563; }
+    .box {
+      margin: 16px 0; padding: 14px 16px; border-radius: 10px;
+      background: #fffbeb; border: 1px solid #fcd34d;
+    }
+    .ok { color: #15803d; } .err { color: #b91c1c; } .warn { color: #b45309; }
+    li { margin: 6px 0; word-break: break-all; }
+    #status { font-weight: 600; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>Поле «Проверка на дубль»</h1>
+  <p>Создаёт виджет-кнопку в <strong>лидах</strong> и <strong>сделках</strong>: по нажатию — поиск дублей по телефону в текущей воронке, подсветка зелёным / красным.</p>
+  <p><strong>Страница работает только из портала Битрикс24</strong> (контекст приложения Duplicate Guard).</p>
+  <div id="outside-box" class="box" style="display:none">
+    <p><strong>Открыто вне портала.</strong> Зайдите на <a href="https://b24-s2an91.bitrix24.ru/marketplace/app/5/" target="_blank" rel="noopener">Duplicate Guard (app 5)</a> → откройте эту страницу из приложения.</p>
+    <p>Или нажмите <strong>«Установить»</strong> на <a href="install.html">install.html</a> (тоже из портала).</p>
+  </div>
+  <p id="status">Инициализация…</p>
+  <ul id="log"></ul>
+  <script>
+    const USER_TYPE = 'duplicate_check';
+    const UF_DEAL = 'DEAL_DUP_CHECK';
+    const UF_LEAD = 'LEAD_DUP_CHECK';
+    const LABEL = 'Проверка на дубль';
+
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function log(msg, ok) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.className = ok === true ? 'ok' : ok === false ? 'err' : 'warn';
+      document.getElementById('log').appendChild(li);
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function normalizeTypeList(raw) {
+      if (Array.isArray(raw)) return raw;
+      if (raw && typeof raw === 'object') return Object.values(raw);
+      return [];
+    }
+
+    function crmWidgetTypeId(appId, rawTypeId) {
+      const raw = String(rawTypeId || '').trim();
+      if (raw.startsWith('rest_') && raw.includes('duplicate_check')) return raw;
+      if (appId) return 'rest_' + appId + '_' + USER_TYPE;
+      return raw || USER_TYPE;
+    }
+
+    async function registerWidgetType(handlerUrl) {
+      const payload = {
+        USER_TYPE_ID: USER_TYPE,
+        HANDLER: handlerUrl,
+        TITLE: LABEL,
+        DESCRIPTION: 'Кнопка проверки дублей по телефону',
+        OPTIONS: { height: 120 },
+      };
+      try {
+        await call('userfieldtype.update', payload);
+        log('Тип виджета обновлён', true);
+      } catch (_) {
+        try {
+          await call('userfieldtype.add', payload);
+          log('Тип виджета зарегистрирован', true);
+        } catch (e2) {
+          if (/exist|binded|already/i.test(e2.message || '')) log('Тип виджета уже есть', true);
+          else throw e2;
+        }
+      }
+    }
+
+    async function resolveWidgetTypeId() {
+      const list = normalizeTypeList(await call('userfieldtype.list'));
+      let appId = null;
+      try {
+        const app = await call('app.info', {});
+        appId = app.ID || app.id || app.APP_ID;
+        log('ID приложения: ' + appId, true);
+      } catch (_) {}
+      const hit = list.find((t) => String(t.USER_TYPE_ID || t.userTypeId || '').includes('duplicate_check'));
+      const raw = hit ? (hit.USER_TYPE_ID || hit.userTypeId) : USER_TYPE;
+      return crmWidgetTypeId(appId, raw);
+    }
+
+    async function ensureEntityField(entity, fieldName, typeId) {
+      const listMethod = entity === 'deal' ? 'crm.deal.userfield.list' : 'crm.lead.userfield.list';
+      const addMethod = entity === 'deal' ? 'crm.deal.userfield.add' : 'crm.lead.userfield.add';
+      const updateMethod = entity === 'deal' ? 'crm.deal.userfield.update' : 'crm.lead.userfield.update';
+      const deleteMethod = entity === 'deal' ? 'crm.deal.userfield.delete' : 'crm.lead.userfield.delete';
+      const rows = await call(listMethod, {});
+      const uf = 'UF_CRM_' + fieldName;
+      const field = (rows || []).find((f) => f.FIELD_NAME === uf || f.FIELD_NAME === fieldName);
+      const fieldsPayload = {
+        FIELD_NAME: fieldName,
+        XML_ID: fieldName,
+        USER_TYPE_ID: typeId,
+        MANDATORY: 'N',
+        SHOW_IN_LIST: 'N',
+        EDIT_FORM_LABEL: LABEL,
+        LIST_COLUMN_LABEL: LABEL,
+        SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 120 },
+      };
+
+      function typeMatches(fieldType) {
+        const t = String(fieldType || '');
+        if (t === String(typeId)) return true;
+        return t.startsWith('rest_') && t.includes('duplicate_check');
+      }
+
+      if (!field) {
+        await call(addMethod, { fields: fieldsPayload });
+        log('Создано поле «' + LABEL + '» (' + entity + ')', true);
+        return;
+      }
+
+      log('Поле «' + LABEL + '» (' + entity + '): тип «' + field.USER_TYPE_ID + '»', null);
+
+      if (typeMatches(field.USER_TYPE_ID)) {
+        log('Поле «' + LABEL + '» (' + entity + ') — тип OK', true);
+        return;
+      }
+
+      try {
+        await call(updateMethod, {
+          id: field.ID,
+          fields: { USER_TYPE_ID: typeId, EDIT_FORM_LABEL: LABEL, SETTINGS: { DEFAULT_VALUE: '', HEIGHT: 120 } },
+        });
+        const check = (await call(listMethod, {})).find((f) => f.ID === field.ID);
+        if (typeMatches(check?.USER_TYPE_ID)) {
+          log('Поле «' + LABEL + '» (' + entity + ') переведено на виджет', true);
+          return;
+        }
+      } catch (e) {
+        log('update (' + entity + '): ' + (e.message || e), null);
+      }
+
+      await call(deleteMethod, { id: field.ID });
+      await call(addMethod, { fields: fieldsPayload });
+      log('Поле «' + LABEL + '» (' + entity + ') пересоздано', true);
+    }
+
+    async function runSetup() {
+      const handlerUrl = appBase() + '/field-handler.html';
+      log('Обработчик виджета → ' + handlerUrl, null);
+      await registerWidgetType(handlerUrl);
+      const typeId = await resolveWidgetTypeId();
+      log('CRM type ID: ' + typeId, true);
+      await ensureEntityField('lead', UF_LEAD, typeId);
+      await ensureEntityField('deal', UF_DEAL, typeId);
+      document.getElementById('status').innerHTML = '<span class="ok">Поля созданы. Добавьте их на форму карточки (⚙ → Просмотр).</span>';
+    }
+
+    function start() {
+      if (typeof BX24 === 'undefined' || !BX24.init) {
+        document.getElementById('outside-box').style.display = 'block';
+        document.getElementById('status').textContent = 'Нет BX24 — откройте из портала.';
+        return;
+      }
+      BX24.init(async () => {
+        try {
+          await runSetup();
+        } catch (e) {
+          log('Ошибка: ' + (e.message || e), false);
+          document.getElementById('status').innerHTML = '<span class="err">Ошибка — см. лог</span>';
+        }
+      });
+    }
+
+    start();
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявка на договор</title>
+  <style>
+    :root { --bg: #f8fafc; --card: #fff; --border: #e2e8f0; --primary: #2563eb; --muted: #64748b; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 16px; background: var(--bg); color: #0f172a; font-size: 14px; }
+    h2 { margin: 0 0 12px; font-size: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+    button { padding: 10px 16px; background: var(--primary); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    button.secondary { background: #fff; color: var(--primary); border: 1px solid var(--border); }
+    .muted { color: var(--muted); font-size: 13px; }
+    .err { color: #b91c1c; }
+    .ok { color: #15803d; }
+    .task { border-top: 1px solid var(--border); padding: 10px 0; }
+    .task:first-child { border-top: none; padding-top: 0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #e0e7ff; color: #3730a3; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Заявка на договор</h2>
+    <p class="muted" id="deal-info">Загрузка…</p>
+    <p style="margin: 12px 0">
+      <button id="btn-refresh" type="button">Обновить</button>
+    </p>
+    <p id="msg" class="muted"></p>
+  </div>
+
+  <div class="card">
+    <h2>Активные процессы</h2>
+    <div id="workflows" class="muted">—</div>
+  </div>
+
+  <div class="card">
+    <h2>Задания по сделке</h2>
+    <div id="tasks" class="muted">—</div>
+  </div>
+
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script>
+    // Шаблон БП на ik-navigator: CRM_DEAL / 608
+    const TEMPLATE_ID = 608;
+
+    let dealId = null;
+
+    function documentId(id) {
+      return ['crm', 'CCrmDocumentDeal', 'DEAL_' + id];
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function placementDealId() {
+      const info = (typeof BX24.placement.info === 'function' ? BX24.placement.info() : {}) || {};
+      let opts = info.options || {};
+      if (typeof opts === 'string') {
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+      }
+      return opts.ID || opts.id || opts.ENTITY_VALUE_ID || opts.entityValueId || null;
+    }
+
+    function setMsg(text, isErr) {
+      const el = document.getElementById('msg');
+      el.textContent = text || '';
+      el.className = isErr ? 'err' : (text ? 'ok' : 'muted');
+    }
+
+    async function loadDeal() {
+      if (!dealId) return;
+      const deal = await call('crm.deal.get', { id: dealId, select: ['ID', 'TITLE', 'STAGE_ID', 'CATEGORY_ID'] });
+      document.getElementById('deal-info').textContent =
+        'Сделка #' + deal.ID + ': ' + (deal.TITLE || '—');
+    }
+
+    async function loadWorkflows() {
+      const box = document.getElementById('workflows');
+      try {
+        const rows = await call('bizproc.workflow.instances', {
+          select: ['ID', 'TEMPLATE_ID', 'STARTED', 'STATUS', 'MODIFIED'],
+          filter: { DOCUMENT_ID: documentId(dealId) },
+        });
+        const list = Array.isArray(rows) ? rows : (rows && Object.values(rows)) || [];
+        const ours = list.filter((w) => String(w.TEMPLATE_ID) === String(TEMPLATE_ID));
+        if (!ours.length) {
+          box.innerHTML = '<span class="muted">Нет активных процессов по шаблону ' + TEMPLATE_ID + '</span>';
+          return;
+        }
+        box.innerHTML = ours.map((w) =>
+          '<div class="task"><span class="badge">#' + w.ID + '</span> '
+          + 'статус: ' + (w.STATUS || '—')
+          + ' · с ' + (w.STARTED || w.MODIFIED || '—') + '</div>'
+        ).join('');
+      } catch (e) {
+        box.innerHTML = '<span class="err">' + (e.message || e) + '</span>';
+      }
+    }
+
+    async function loadTasks() {
+      const box = document.getElementById('tasks');
+      try {
+        const user = await call('user.current', {});
+        const userId = user.ID || user.id;
+        const rows = await call('bizproc.task.list', {
+          select: ['ID', 'NAME', 'DESCRIPTION', 'STATUS', 'WORKFLOW_ID', 'DOCUMENT_ID'],
+          filter: { USER_ID: userId },
+        });
+        const list = Array.isArray(rows) ? rows : (rows && Object.values(rows)) || [];
+        const docKey = 'DEAL_' + dealId;
+        const mine = list.filter((t) => {
+          const doc = t.DOCUMENT_ID;
+          if (Array.isArray(doc)) return doc[2] === docKey;
+          return String(doc || '').includes(docKey);
+        });
+        if (!mine.length) {
+          box.innerHTML = '<span class="muted">Нет открытых заданий для вас по этой сделке</span>';
+          return;
+        }
+        box.innerHTML = mine.map((t) =>
+          '<div class="task"><strong>' + (t.NAME || 'Задание') + '</strong>'
+          + (t.DESCRIPTION ? '<div class="muted">' + t.DESCRIPTION + '</div>' : '')
+          + '<div style="margin-top:8px">'
+          + '<button type="button" data-task="' + t.ID + '" data-status="ok">Выполнить</button> '
+          + '<button type="button" class="secondary" data-task="' + t.ID + '" data-status="cancel">Отклонить</button>'
+          + '</div></div>'
+        ).join('');
+        box.querySelectorAll('button[data-task]').forEach((btn) => {
+          btn.onclick = () => completeTask(btn.dataset.task, btn.dataset.status);
+        });
+      } catch (e) {
+        box.innerHTML = '<span class="err">' + (e.message || e) + '</span>';
+      }
+    }
+
+    async function completeTask(taskId, status) {
+      try {
+        await call('bizproc.task.complete', { TASK_ID: taskId, STATUS: status });
+        setMsg('Задание обновлено', false);
+        await refresh();
+      } catch (e) {
+        setMsg(e.message || String(e), true);
+      }
+    }
+
+    async function refresh() {
+      await Promise.all([loadWorkflows(), loadTasks()]);
+    }
+
+    BX24.init(async () => {
+      try {
+        dealId = placementDealId();
+        if (!dealId) {
+          document.getElementById('deal-info').innerHTML = '<span class="err">Откройте вкладку из карточки сделки</span>';
+          document.getElementById('btn-refresh').disabled = true;
+          return;
+        }
+        await loadDeal();
+        await refresh();
+        document.getElementById('btn-refresh').onclick = refresh;
+      } catch (e) {
+        setMsg(e.message || String(e), true);
+      }
+    }, () => {
+      document.getElementById('deal-info').innerHTML = '<span class="err">Нет связи с порталом. Переустановите приложение.</span>';
+    });
+  </script>
+</body>
+</html>

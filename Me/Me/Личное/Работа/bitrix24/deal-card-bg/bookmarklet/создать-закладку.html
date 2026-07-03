@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>B24 — закладка «Подсветить фон сделки»</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    a.bookmark { display: inline-block; padding: 12px 20px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    a.bookmark:hover { background: #1d4ed8; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+    ol li { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Закладка вместо Tampermonkey</h1>
+  <p>Один раз перетащите синюю кнопку на панель закладок браузера. На карточке сделки в Б24 нажимайте закладку — фон подтянется из поля «Цвет фона карточки».</p>
+
+  <p>
+    <a class="bookmark" href="javascript:(function(){var UF='UF_CRM_DEAL_CARD_BG',SID='b24-deal-card-bg-style',HEX={'':'','#fff8e1':'#FFF8E1','#e3f2fd':'#E3F2FD','#f3e5f5':'#F3E5F5','#fffde7':'#FFFDE7','#ffebee':'#FFEBEE','#e8f5e9':'#E8F5E9','#f5f5f5':'#F5F5F5'},SEL=['.crm-entity-widget-content','.ui-entity-editor-column-content','.ui-side-panel-wrap','[data-role=&quot;entity-editor&quot;]'];function norm(x){if(!x)return'';var k=String(x).trim().toLowerCase();return HEX[k]||(k[0]==='#'?k.toUpperCase():'');}function paint(h){var s=document.getElementById(SID);if(!h){s&&s.remove();SEL.forEach(function(sel){document.querySelectorAll(sel).forEach(function(el){el.style.backgroundColor='';});});return;}if(!s){s=document.createElement('style');s.id=SID;document.head.appendChild(s);}s.textContent=SEL.map(function(sel){return sel+'{background-color:'+h+'!important}';}).join('');}function rest(m,p){return new Promise(function(ok,no){if(!window.BX||!BX.rest||!BX.rest.callMethod)return no(new Error('Откройте карточку сделки в Б24'));BX.rest.callMethod(m,p,function(r){r.error()?no(new Error(r.error())):ok(r.data());});});}var m=location.pathname.match(/\/crm\/deal\/details\/(\d+)/i);if(!m){alert('Откройте карточку сделки (не канбан)');return;}var id=m[1];rest('crm.deal.get',{id:id,select:[UF]}).then(function(deal){var raw=deal[UF];if(!raw){paint('');alert('У сделки не выбран цвет фона');return null;}return rest('crm.deal.userfield.list',{filter:{FIELD_NAME:'DEAL_CARD_BG'}}).then(function(rows){var f=(rows||[]).find(function(x){return x.FIELD_NAME==='DEAL_CARD_BG';});var row=(f&&f.LIST||[]).find(function(r){return String(r.ID)===String(raw);});return norm(row&&row.XML_ID);});}).then(function(hex){if(hex===null)return;paint(hex);}).catch(function(e){alert('Ошибка: '+(e.message||e));});})();">
+      B24: подсветить фон
+    </a>
+  </p>
+
+  <h2>Как установить</h2>
+  <ol>
+    <li>Откройте <strong>этот файл</strong> в браузере (двойной клик по <code>создать-закладку.html</code>).</li>
+    <li>Покажите панель закладок (Ctrl+Shift+B в Chrome).</li>
+    <li><strong>Перетащите</strong> синюю кнопку на панель закладок.</li>
+    <li>На портале откройте сделку → нажмите закладку.</li>
+  </ol>
+
+  <p>После смены цвета в поле — снова нажмите закладку (или F5). Автоматически при каждом открытии не срабатывает — это плата за отсутствие расширений.</p>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+</head>
+<body>
+  <script>
+    const UF = 'UF_CRM_DEAL_CARD_BG';
+    const MSG_TYPE = 'b24-deal-card-bg';
+    const STYLE_ID = 'b24-deal-card-bg-style';
+    const LABEL_HEX = {
+      'Без фона': '',
+      Бронь: '#FFF8E1',
+      Оформление: '#E3F2FD',
+      Рассрочка: '#F3E5F5',
+      VIP: '#FFFDE7',
+      Срочно: '#FFEBEE',
+      Успех: '#E8F5E9',
+      Провал: '#F5F5F5',
+    };
+    const CARD_SELECTORS = [
+      '.ui-page-slider-wrapper',
+      '.ui-page-slider-content',
+      '#ui-page-slider-content',
+      '.ui-side-panel-wrap',
+      '.ui-side-panel-content',
+      '.ui-side-panel',
+      '.ui-slider-page',
+      '.crm-entity-widget-content',
+      '.crm-entity-card-container',
+      '.crm-entity-card-widget',
+      '.ui-entity-wrap',
+      '[data-role="entity-editor"]',
+      '.ui-entity-editor-column-content',
+    ];
+
+    function portalDocument() {
+      let win = window;
+      let doc = null;
+      for (let i = 0; i < 12; i += 1) {
+        try {
+          void win.document.body;
+          doc = win.document;
+        } catch (_) {
+          break;
+        }
+        if (!win.parent || win.parent === win) break;
+        try {
+          void win.parent.document.body;
+          win = win.parent;
+        } catch (_) {
+          break;
+        }
+      }
+      return doc;
+    }
+
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function injectPaintBridge() {
+      const doc = portalDocument();
+      if (!doc || doc === document) return false;
+      if (doc.getElementById('b24-deal-card-bg-bridge')) return true;
+      const s = doc.createElement('script');
+      s.id = 'b24-deal-card-bg-bridge';
+      s.src = appBase() + '/paint-bridge.js?_=' + Date.now();
+      s.setAttribute('data-skip-moving', 'true');
+      doc.head.appendChild(s);
+      return true;
+    }
+
+    function applyBackground(hex, doc) {
+      const d = doc || portalDocument();
+      if (!d || d === document) return false;
+      let style = d.getElementById(STYLE_ID);
+      if (!hex) {
+        style?.remove();
+        CARD_SELECTORS.forEach((sel) => {
+          d.querySelectorAll(sel).forEach((el) => { el.style.backgroundColor = ''; });
+        });
+        return true;
+      }
+      if (!style) {
+        style = d.createElement('style');
+        style.id = STYLE_ID;
+        d.head.appendChild(style);
+      }
+      style.textContent = CARD_SELECTORS.map(
+        (sel) => `${sel}{background-color:${hex}!important;transition:background-color .25s ease}`,
+      ).join('');
+      return true;
+    }
+
+    function hexFromRaw(raw, list) {
+      if (raw === null || raw === undefined || raw === '') return '';
+      const s = String(raw).trim();
+      if (Object.prototype.hasOwnProperty.call(LABEL_HEX, s)) return LABEL_HEX[s];
+      const row = (list || []).find((r) => String(r.ID) === s || r.VALUE === s);
+      if (!row) return '';
+      if (Object.prototype.hasOwnProperty.call(LABEL_HEX, row.VALUE)) return LABEL_HEX[row.VALUE];
+      const xml = String(row.XML_ID || '').trim().toLowerCase();
+      return xml.startsWith('#') ? xml.toUpperCase() : '';
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function dealIdFromUri(uri) {
+      const m = String(uri || '').match(/\/crm\/deal\/details\/(\d+)/i);
+      return m ? m[1] : null;
+    }
+
+    let fieldListCache = null;
+    let lastUri = '';
+
+    async function loadFieldList() {
+      if (fieldListCache) return fieldListCache;
+      const rows = await call('crm.deal.userfield.list', { filter: { FIELD_NAME: 'DEAL_CARD_BG' } });
+      const field = (rows || []).find((f) => f.FIELD_NAME === 'DEAL_CARD_BG');
+      fieldListCache = field?.LIST || [];
+      return fieldListCache;
+    }
+
+    async function paintDeal(dealId) {
+      if (!dealId) return;
+      const deal = await call('crm.deal.get', { id: dealId, select: [UF] });
+      const list = await loadFieldList();
+      const hex = hexFromRaw(deal[UF], list);
+      injectPaintBridge();
+      applyBackground(hex);
+      try { window.top.postMessage({ type: MSG_TYPE, hex: hex || '' }, '*'); } catch (_) {}
+    }
+
+    function uriFromPlacement() {
+      const info = BX24.placement.info();
+      let opts = info.options || {};
+      if (typeof opts === 'string') {
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+      }
+      return decodeURIComponent(String(opts.URI || ''));
+    }
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (!data || data.type !== MSG_TYPE) return;
+      applyBackground(data.hex || '');
+    });
+
+    BX24.init(async () => {
+      try {
+        const uri = uriFromPlacement();
+        if (uri === lastUri) return;
+        lastUri = uri;
+        const dealId = dealIdFromUri(uri);
+        if (dealId) await paintDeal(dealId);
+        else applyBackground('');
+      } catch (_) {}
+    });
+  </script>
+</body>
+</html>

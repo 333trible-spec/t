@@ -1,0 +1,8 @@
+{
+  "install": "https://b24-duplicate-guard.vercel.app/install.html",
+  "settings": "https://b24-duplicate-guard.vercel.app/settings.html",
+  "host": "vercel",
+  "domain": "b24-duplicate-guard.vercel.app",
+  "b24HandlerUrl": "https://b24-duplicate-guard.vercel.app/settings.html",
+  "b24InstallUrl": "https://b24-duplicate-guard.vercel.app/install.html"
+}

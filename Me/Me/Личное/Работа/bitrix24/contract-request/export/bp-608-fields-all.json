@@ -1,0 +1,6393 @@
+[
+  {
+    "code": "adress_kids",
+    "entity": "BP_PARAM",
+    "label": "Адрес детей",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "age",
+    "entity": "BP_PARAM",
+    "label": "Возраст",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "animals",
+    "entity": "BP_PARAM",
+    "label": "Животные",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "attraction",
+    "entity": "BP_PARAM",
+    "label": "Привлекательность",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "bank",
+    "entity": "BP_PARAM",
+    "label": "Банк",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "birth_certificate",
+    "entity": "BP_PARAM",
+    "label": "Свидетельство о рождении",
+    "type": "file",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "city",
+    "entity": "BP_PARAM",
+    "label": "Город",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "commit_deal",
+    "entity": "BP_PARAM",
+    "label": "Фиксация сделки",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "down_payment_period",
+    "entity": "BP_PARAM",
+    "label": "Срок взноса",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "famStatus",
+    "entity": "BP_PARAM",
+    "label": "Семейное положение",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "form_payment",
+    "entity": "BP_PARAM",
+    "label": "Форма оплаты",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "initial_fee",
+    "entity": "BP_PARAM",
+    "label": "Первоначальный взнос",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "inn",
+    "entity": "BP_PARAM",
+    "label": "ИНН",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "kids",
+    "entity": "BP_PARAM",
+    "label": "Дети",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "kindOfActivity",
+    "entity": "BP_PARAM",
+    "label": "Род деятельности",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "marriage_certificate",
+    "entity": "BP_PARAM",
+    "label": "Свидетельство о браке",
+    "type": "file",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "math_capital",
+    "entity": "BP_PARAM",
+    "label": "Мат. капитал",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "notarised",
+    "entity": "BP_PARAM",
+    "label": "Нотариальное",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "ostatok_capital",
+    "entity": "BP_PARAM",
+    "label": "Остаток капитала",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "other_docs",
+    "entity": "BP_PARAM",
+    "label": "Прочие документы",
+    "type": "file",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "Parameter1",
+    "entity": "BP_PARAM",
+    "label": "Параметр 1",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "Parameter2",
+    "entity": "BP_PARAM",
+    "label": "Параметр 2",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "pasport",
+    "entity": "BP_PARAM",
+    "label": "Паспорт",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "property_type",
+    "entity": "BP_PARAM",
+    "label": "Тип недвижимости",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "sber",
+    "entity": "BP_PARAM",
+    "label": "Сбер",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "sertifikat_sotrudnichestva",
+    "entity": "BP_PARAM",
+    "label": "Сертификат сотрудничества",
+    "type": "file",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "sex",
+    "entity": "BP_PARAM",
+    "label": "Пол",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "snils",
+    "entity": "BP_PARAM",
+    "label": "СНИЛС",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "summ_MSK",
+    "entity": "BP_PARAM",
+    "label": "Сумма МСК",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "summ_sotrudnichestva",
+    "entity": "BP_PARAM",
+    "label": "Сумма сотрудничества",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "target",
+    "entity": "BP_PARAM",
+    "label": "Цель покупки",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "TargetUser",
+    "entity": "BP_PARAM",
+    "label": "Получатель уведомления",
+    "type": "user",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "type_doc",
+    "entity": "BP_PARAM",
+    "label": "Тип документа",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "type_registr",
+    "entity": "BP_PARAM",
+    "label": "Тип регистрации",
+    "type": "text",
+    "role": "параметр шаблона БП"
+  },
+  {
+    "code": "CONTACT.EMAIL",
+    "entity": "CONTACT",
+    "label": "E-mail",
+    "type": "crm",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT.ID",
+    "entity": "CONTACT",
+    "label": "ID контакта",
+    "type": "integer",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT.LAST_NAME",
+    "entity": "CONTACT",
+    "label": "Фамилия",
+    "type": "string",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT.NAME",
+    "entity": "CONTACT",
+    "label": "Имя",
+    "type": "string",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT.SECOND_NAME",
+    "entity": "CONTACT",
+    "label": "Отчество",
+    "type": "string",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "ASSIGNED_BY_ID",
+    "entity": "DEAL",
+    "label": "Ответственный",
+    "type": "employee",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CATEGORY_ID",
+    "entity": "DEAL",
+    "label": "Направление (воронка)",
+    "type": "crm_category",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT_ID",
+    "entity": "DEAL",
+    "label": "Контакт",
+    "type": "crm",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "CONTACT_IDS",
+    "entity": "DEAL",
+    "label": "Контакты",
+    "type": "crm",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "DATE_CREATE",
+    "entity": "DEAL",
+    "label": "Дата создания",
+    "type": "datetime",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "ID",
+    "entity": "DEAL",
+    "label": "ID",
+    "type": "integer",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "OPPORTUNITY",
+    "entity": "DEAL",
+    "label": "Сумма",
+    "type": "money",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "SOURCE_DESCRIPTION",
+    "entity": "DEAL",
+    "label": "Описание источника",
+    "type": "string",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "SOURCE_ID",
+    "entity": "DEAL",
+    "label": "Источник",
+    "type": "crm_status",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "STAGE_ID",
+    "entity": "DEAL",
+    "label": "Стадия",
+    "type": "crm_status",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "TITLE",
+    "entity": "DEAL",
+    "label": "Название",
+    "type": "string",
+    "role": "логика / копирование"
+  },
+  {
+    "code": "UF_CRM_121B01D4630C9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1489656054",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1489662019",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1504065664",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285145",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285621",
+    "entity": "DEAL",
+    "label": "Форма оплаты (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285671",
+    "entity": "DEAL",
+    "label": "Банк (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285709",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285720",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285737",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1514285784",
+    "entity": "DEAL",
+    "label": "Тип собственника",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1516087526",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1516110338",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1516188182",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1517818034",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1519044876",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728175196",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728238762",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728252471",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728258081",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728263731",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728269909",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728276066",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728286642",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538728292007",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1538729147",
+    "entity": "DEAL",
+    "label": "Тип помещения",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1539687636",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540548252",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540552899",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540553564",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540553594",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540554275",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540554740",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540554805",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1540554822",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542270475",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542270499",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542270524",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542800812",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542800839",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1542800844",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1554371480174",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1554440345378",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1554441471323",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1554441569076",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1557008108",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1557008119",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1566371562",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1566896313",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1578484533",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579073932",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579079347",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579079421",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579601630",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579777690",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1579779128",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1580876455874",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1580876464731",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1580876531207",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1581071847",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1581509456929",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582005107",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582005750",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582008586983",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582012969",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582082289",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1582091435",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1584706806",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1586152755",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1591077995374",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1593586909",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1598874108",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1599212908923",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1599212940506",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619418611769",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619418745002",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419271478",
+    "entity": "DEAL",
+    "label": "Первоначальный взнос (портрет)",
+    "type": "money",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419293422",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419325995",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419358548",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419381158",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419426779",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419522421",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419554637",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619419588171",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619435259403",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619515162085",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619618497873",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619692947",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1619692983",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1622183969",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1622183995",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1622184023",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1626081681",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1626763524972",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1626853324790",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1630396564387",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1634903177",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1638092857988",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1638092976684",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1638098562414",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1638098621042",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1638516174709",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1639116266399",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1639295741292",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1640151193",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1640151983",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1640156227",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1643109623",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1644993988",
+    "entity": "DEAL",
+    "label": "Дополнительно",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1647340962",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1647847963971",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1647848029617",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1647852416795",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1648620318066",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1648622722604",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649750063",
+    "entity": "DEAL",
+    "label": "Ответственный новой сделки",
+    "type": "employee",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649752943",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649752988",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753011",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753040",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753090",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753119",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753152",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753176",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1649753202",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1650958148343",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1650958311024",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1650958359213",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1650959214562",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1653397101",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1653456666850",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1653457227797",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1653457314150",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1656057996",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1656062400",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1656935682167",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1656935706386",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657001309",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657187469180",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657873213",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657873655",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657884727174",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657884761876",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657884785292",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657884802348",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657884827604",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1657885780068",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658465868488",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658466069923",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658466137636",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658466192688",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658466222856",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658466242337",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1658998576",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659005409074",
+    "entity": "DEAL",
+    "label": "Возраст (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659005450720",
+    "entity": "DEAL",
+    "label": "Пол (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659007926721",
+    "entity": "DEAL",
+    "label": "Город (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659008047015",
+    "entity": "DEAL",
+    "label": "Цель покупки (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659009682372",
+    "entity": "DEAL",
+    "label": "Семейное положение (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659074341994",
+    "entity": "DEAL",
+    "label": "Дети (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659074512261",
+    "entity": "DEAL",
+    "label": "Род деятельности (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659074620049",
+    "entity": "DEAL",
+    "label": "Привлекательность (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659498442261",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659595292115",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659697660501",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1659697771995",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1660041810",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1660043118613",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1660535141",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1660644640",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1660888065753",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1661764685",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1662629293",
+    "entity": "DEAL",
+    "label": "ФИО клиента",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1662721064",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1662956961",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1663658772",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1663660947",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1663674513",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1663674681",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1663737776",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664431613",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664529814",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664530057",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664530081",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664530244",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664775392",
+    "entity": "DEAL",
+    "label": "Ссылка на сделку в оформлении",
+    "type": "url",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664775472",
+    "entity": "DEAL",
+    "label": "Ссылка на сделку в продажах",
+    "type": "url",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664792607",
+    "entity": "DEAL",
+    "label": "ID сделки в оформлении",
+    "type": "integer",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664792769",
+    "entity": "DEAL",
+    "label": "ID сделки (продажи)",
+    "type": "integer",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1664969607",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1666157549",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1668572647",
+    "entity": "DEAL",
+    "label": "Животные (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1674214850",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1676357023",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1679476064",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1683805668",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1684153610",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1684326063958",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1684412549",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1684753562",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1684845420",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1685943769",
+    "entity": "DEAL",
+    "label": "Тип регистрации (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1686043236",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1689224441",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1689316871842",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1690960836",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1692183647",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693308309392",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693540108",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693553546",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693553595",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693553642",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693553670",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693656913",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693656976",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1693657017",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1694352376",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1694352398",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1695363057",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1695980864",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1695982032",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1695982033",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1696414290326",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1696566768473",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1696568305521",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1696847562",
+    "entity": "DEAL",
+    "label": "Есть завышение",
+    "type": "boolean",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1697015111",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1697018686",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1697020510",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1697195546",
+    "entity": "DEAL",
+    "label": "ГП (генплан)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1697195546_PRINTABLE",
+    "entity": "DEAL",
+    "label": "ГП (генплан)",
+    "type": "enumeration",
+    "role": "печатное значение"
+  },
+  {
+    "code": "UF_CRM_1699343028",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1699449054",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1700215388994",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1700215460776",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1700217998116",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1700457910",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1700471607414",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1702277580",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1702537697",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1702537731",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1703505805",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1704975890651",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1705491161999",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1706265688",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1706524400",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1706526939978",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1707196553249",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1707196677821",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1707211888",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1707211971",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1707287114",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1708940135",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1709102252",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710230664",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710412968",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710494587",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710495594",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710995148",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1710997656",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1712733610",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1718358123",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1718618351",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1718919216",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1721129282",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722231570",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722231741",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722231954",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722232687",
+    "entity": "DEAL",
+    "label": "Сумма сотрудничества (портрет)",
+    "type": "money",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722233695",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722246835",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722839839",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722839884",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722839925",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722839965",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722840010",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722840057",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722840095",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722840150",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722840210",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722843190",
+    "entity": "DEAL",
+    "label": "Срок взноса (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722851893",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722855061",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722938526204",
+    "entity": "DEAL",
+    "label": "Тип документа (портрет)",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722939499",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1722941445",
+    "entity": "DEAL",
+    "label": "Сбер (портрет)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723030206",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723199854315",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723456654",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723528988",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723532204",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1723613436",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1724149252",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1726038020",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1732790138",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1732790183",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1733208845253",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1739347967",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1739351362",
+    "entity": "DEAL",
+    "label": "Комнатность",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1739353069",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1739357026",
+    "entity": "DEAL",
+    "label": "ID помещения (Шахматка)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1741592250",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1742989121",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1742989123",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1744779334",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1749018147",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1753075344",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1753865705041",
+    "entity": "DEAL",
+    "label": "Признак в заявке",
+    "type": "enumeration",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1754367756909",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1754975401369",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1756207944",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1773990099",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1776852546752",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1776852774142",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1776855310914",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1776855355606",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1776855427146",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1777023001835",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1777023476482",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1777024041",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1777024041_DFS_HISTORY",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1778581864832",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1781503203212",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782215619343",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782216309667",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782815976",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782816044",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782816883",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782816939",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782816991",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817037",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817073",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817098",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817120",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817166",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817206",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817257",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817274",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817308",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817348",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817363",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_1782817414",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C02DA7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C0E4F4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C17977",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C55CB4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C5F366",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_59AD381C64BD1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5A55BEC3DB9F3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5A7BF679EF9BA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5A7BF67A75A3A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5A7BF67A93FBD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5A7BF67AB2112",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5AF52F901BA31",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5AF52F90344E1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B0BE49D5FE85",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B35C61C1F97A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B35C61C2D443",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B35C61C38E90",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88EF0C7B988",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F240415C2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F2405FA44",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F240A7D38",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F2412EF8F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F241DAF82",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F2420C988",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B88F24233C81",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F99B498A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F99CA7B0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F99DAE2C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F99EAA0F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A058AF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A1430D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A24C45",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A31BCD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A3F560",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A561DA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A69CFA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A82FBF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9A95961",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9AA80FB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9ABA199",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9ACD049",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9AE525F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B00E83",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B123D5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B298E8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B3C55F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B4E557",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B605A9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B75F69",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B8944A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9B9C80B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9BB48EE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9BCA231",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9BE3413",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C04969",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C1C4A1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C32D14",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C45291",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C65188",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C7C5C8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9C937FC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9CAC248",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9CC360B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9CD9383",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9CF0C95",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D151AE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D2C698",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D43B49",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D5A667",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D73482",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9D8A216",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9DA4ACF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9DBE7A8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9DD8C3A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E01AD3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E1A53D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E35FCA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E579BD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E78694",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9E9FC6F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9EC0EA0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9EE1B2D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9F090D4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9F308E7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9F507B4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9F717E1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9F95A94",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9FB97FD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892F9FDC10D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA008518",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA034582",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA0748D7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA09CA39",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA0C018C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA0E28BF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA11A124",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA141015",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5B892FA16618C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F40B82C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F436906",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F456AE2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F47779B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F497E71",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F4B6E6A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F4D9F33",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F505E19",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F524986",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F549EB8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F567840",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BED85ED5EA3C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BED85ED8F7EB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5BED85EDB3CED",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C1A4B9650F1E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C1A4B96A7F33",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C1A4B97806BC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C1A4B981BB4E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFAB7CF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFD32F6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFE1EA6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFEFD53",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00074FD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0014C95",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC002982E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0048376",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC005F2E6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC006E198",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC007C2C5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC008F6AB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC009DF8F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00ACE93",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00BBF14",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00CD6DB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00E0B5B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0115C12",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC014FB8F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC015CB41",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC016D38C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01772CC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01822C6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC018C9BB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0198CB8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01A6235",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01B4615",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01CAD5F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01DC6D6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01E5380",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01EF5B7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02028D1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC020DD6F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC021DB43",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC022682E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC022DD57",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0235D93",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0242549",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC024BCBB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02574E9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0266669",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02700F1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02796A7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02851C0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC028D425",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0298A0A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02AD91B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02BA8E2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02C6771",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02D2618",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02DFF85",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03011DF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC030A465",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0314AA4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC031EFF8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC032A909",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC033332D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC033EC04",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0346DAD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC035139C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0362566",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC036D743",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03778CB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0382316",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC038F2F2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03B79D5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03C1873",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03C8D21",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03D26D6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03DE773",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0404F27",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC040E371",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0418ABF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04232BC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC043C26C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0448046",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC045159A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC045DB38",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC046BF97",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC047A200",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC049FC16",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04AB15B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04E701F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC051D2AE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC052F6C3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC053C316",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC054B3DD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC056196F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0575E99",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5CA701C6CC233",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D1EF87C5FC73",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D1F409BC2FB3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4163D06FF37",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4163D0D2690",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4163D1332CA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4163D1831F1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4163D1BFE57",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D4BCC064A28D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D5D0FCC32A73",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5D65294E5BBF2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5DCCCE4942BAF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5DCCCE49A37E0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E15CA0E5F680",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E1843946DB3F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD91162B9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD9196434",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD91B0564",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD92058E9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD921FAFC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD9235B18",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD925023E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E37FD925CA68",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8C3C363",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8CEB17C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8D9A63F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5F69F2A4C9045",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_5F69F2A57E652",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62319C94282DD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_625FB3527CA06",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_625FB3551F86E",
+    "entity": "DEAL",
+    "label": "ID созданной сделки",
+    "type": "integer",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6260DD4C3EC25",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6260DD4E69825",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62C55BEA5A853",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944AA2EC90",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944AD4D239",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944B01F1C0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944B30F028",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944B5DE54A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62D944B8B214E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AD48F318",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AD6E02D9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AD92FF6A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38ADB74253",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38ADDC30B3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AE02AAEF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AE978439",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AF2028DB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38AFA90AC4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62E38B0305826",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62ECC27B95770",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62ECC27C7E767",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62ECC27E4EA93",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F108F5984E1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F108FC8EB08",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E58631CE7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E5B5EAA66",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E7110B6BA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E716AB106",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E870CE65D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F1E877A79C1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F61E8A2CAE7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F61E8CD1ADE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_62F61EE328A4A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_630DC30A73FD4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_630DC3100EC45",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_630DC53A5CC30",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63203CFC95952",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6322C2D8D9929",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6322C2DBB2EE0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6322EA4B4ED4F",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6322EA4E21C02",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_632984EB3FD9E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_632AF95F892F7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_633FDA684F149",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_633FDA6B1F1DA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6346C4E487473",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6346C4E702D9D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_634D2E57D105B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_634D2E5AC37D3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63567E33665A8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63567E365DEA0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_635B76843C38B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8984503C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C89EBBCDC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8A5451FB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8AD25A7D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8B48C713",
+    "entity": "DEAL",
+    "label": "ID сделки (параллельная бронь)",
+    "type": "integer",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8BB7D1DA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8C248987",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8C8E34B6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8CFD5B8A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8D6C8BDB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8DD32142",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8E3D9D36",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8EA4C18D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6360C8F088B19",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_637DB0991C857",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_637DB09BB561A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A6171173",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A649F9F4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A67CCF26",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A6B3F0BD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A6EAA145",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A722D0FB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A758AF3B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A791A28A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A7C9332B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A8030604",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A8401B5C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A87B593A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A8B5273B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63807A8EF2A2A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_639837A57DB51",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_639837A9A48D6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63AC5592C2470",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63AC5595DBBC6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63AC55990254D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63AC559EBEA0D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63C907873C6E1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63C9078B49509",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63C9078EE4F05",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63C9079569D8B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63D7517E4ACA0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63D75181906EA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63DCE5DA46381",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63DCE5DE774C0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63EA085F2EFF5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_63EA086364130",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_641A8A76E5E68",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_641A8A7B2FAE1",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_646B27A298A7A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_646B27A796FD9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_646B64684C5F2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_646B646D2DAEE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_649BDC69B026A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_649BDC6DEBD51",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B77AB4AE3DF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B77AB8BCFB5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B7941FB10F3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B7942409BA2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B794281248E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B7942F1BFE7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B7A7D7B19E4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64B7A7DC36659",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64DB2433E71DB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64DB243848906",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70E9C328D9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EA005ACA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EA3A4C34",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EA76D7B5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EAB40C37",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EAEE55F5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EB2EF961",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EB6E58C7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EBD9EDA5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EC39B659",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EC90D28E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70ECEDA78B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70ED4A4835",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E70EDB2815B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E7139D2AE78",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E713A186C51",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E713A5EF7A3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E713AC80821",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E7418FEA3FF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E7419480A30",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E88467DD803",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64E8A36270D80",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64F2B7B7AFE26",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_64F2B7BB96150",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6502F998DCC33",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6503E23C885EF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65521C01B1C21",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65521C06582B2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_655DC6085039A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_655DC60D2AEF8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6560740DE81D4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65607412CE2F9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6566C9A1DF646",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6566D5EF072AB",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_659FE32D7B24E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65D2DAF34FC69",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65D2DAFA9D1B9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65D2DB03A4285",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65D2DB0C97778",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65D2DB15B6F86",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E042CC9",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E065B35",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0795F5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E08E632",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0A15F0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0B5E6D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0C82BD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65F832B6D830B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65F96456255DC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_65F96456682DA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6603B013DBADD",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_663A2826AF5E8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66555C048988D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66555C04A6DBC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66555C04C2E98",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66555C0FD0C98",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66700EA31B81B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6673BC08EA2C8",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6673BC0916286",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6673BC0934582",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6673BC146BF8D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_667A45F1A155A",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_667A45F1C325C",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66A9BC13EE35D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66B0BA0B21A2D",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66EC21CC68682",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66EC21CC90F4E",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66EC21CCAEDBA",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_66EC21DB491D5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_675688669F7A5",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6788D081EF0A0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6788D082489C4",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A04093CD7DA6",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A43B6E42F9E7",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A43B6EB93AFF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A43B6F40A8D0",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A43B6FC72CA3",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_6A43B7170863B",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_A_T_GROUP_ID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_A_W_GROUP_ID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ADDRESS_2",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_AMB_TELEGRAM_ID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_AVITO_WZ",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CHECKBOX",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3836327779992",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3836743009697",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3837359946416",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CONTACT_3836327788178",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CONTACT_3836743010551",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_EMPLOYEE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_NEGOTIATION",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_VACANCY",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_EMPLOYEE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_NEGOTIATION",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_VACANCY",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_DEAL_ITISO_GRAPH",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_DIZAINEST",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_EMAIL_HOME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_EMAIL_OTHER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_EMAIL_WORK",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_FLOOR_SELECT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_FULL_ADDRESS",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHAGES",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHAPPLICANTID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHCITY",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHDOWNLOADRESUMEURLPDF",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHRESPONSEID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHRESPONSETEXT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHSEX",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHVACANCYID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_HHVACANCYNAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_I2CRM_CHAT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ID_SALES",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_IM_OTHER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_INSTAGRAM_WZ",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_KLININGPOSLER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_LAST_NAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_LEGACY_HOURLY_RATE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_LEGACY_LINK_DASH",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_LEGACY_LINK_TASK",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MANGO_TOPICS",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_CHANNEL_TYPE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_CREATE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_END",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_ENTRY_ID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_ENTRY_POINT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_RESULT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_TAG_ID",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_NAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_AREA",
+    "entity": "DEAL",
+    "label": "Площадь (бронь)",
+    "type": "double",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_BALCONY",
+    "entity": "DEAL",
+    "label": "Балкон (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_FLOOR",
+    "entity": "DEAL",
+    "label": "Этаж (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_HOUSE",
+    "entity": "DEAL",
+    "label": "Дом (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_NUMBER",
+    "entity": "DEAL",
+    "label": "Номер (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_PRICE",
+    "entity": "DEAL",
+    "label": "Цена (бронь)",
+    "type": "money",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_PRICE_METR",
+    "entity": "DEAL",
+    "label": "Цена за м² (бронь)",
+    "type": "money",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_PROJECT",
+    "entity": "DEAL",
+    "label": "Проект (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_PROP_ID",
+    "entity": "DEAL",
+    "label": "ID объекта (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_ROOMS",
+    "entity": "DEAL",
+    "label": "Комнаты (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PB_SECTION",
+    "entity": "DEAL",
+    "label": "Секция (бронь)",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PHONE_HOME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PHONE_MOBILE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PHONE_OTHER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PHONE_WORK",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_PRICE_METER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_RECORDING_TAG",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_REQUIREDFIELDELEMENT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_SECOND_NAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_SKIDKANATEHNI",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_BIRTHDAY",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_CITYBIRTH",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_FIRSTNAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_GENDER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_LASTNAME",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_DATE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_NUMBER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_ORG",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_ORG_CODE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_SERIAL",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_PATRONYMIC",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_ST_SIGNATURE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_TELEGRAMID_WZ",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_TELEGRAMUSERNAME_WZ",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_TIKTOK",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_VK_WZ",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_VTORICHNAYANE",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  },
+  {
+    "code": "UF_CRM_WEB_OTHER",
+    "entity": "DEAL",
+    "label": "",
+    "type": "string",
+    "role": "документ / копирование"
+  }
+]

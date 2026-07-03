@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <title>Сброс PAGE_BACKGROUND_WORKER</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; max-width: 720px; margin: 0 auto; color: #1f2937; }
+    h1 { font-size: 20px; margin: 0 0 12px; }
+    .ok { color: #15803d; }
+    .err { color: #b91c1c; }
+    .warn { color: #b45309; }
+    li { margin: 6px 0; word-break: break-all; }
+    code { font-size: 12px; }
+    .btn {
+      margin-top: 16px; padding: 10px 16px; border: 0; border-radius: 8px;
+      background: #2563eb; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Сброс фонового worker</h1>
+  <p>Исправляет ошибку «слот занят», когда приложение одно, но осталась старая привязка URL.</p>
+  <ul id="log"></ul>
+  <button type="button" class="btn" id="retry">Повторить сброс</button>
+  <script>
+    const PLACEMENT = 'PAGE_BACKGROUND_WORKER';
+
+    function appBase() {
+      return location.origin + location.pathname.replace(/\/[^/]*$/, '');
+    }
+
+    function log(msg, ok) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.className = ok === true ? 'ok' : ok === false ? 'err' : 'warn';
+      document.getElementById('log').appendChild(li);
+    }
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error() + ': ' + r.error_description()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function normalizeHandlers(raw) {
+      const rows = Array.isArray(raw) ? raw : raw ? Object.values(raw) : [];
+      return rows
+        .filter((row) => (row.PLACEMENT || row.placement) === PLACEMENT)
+        .map((row) => String(row.HANDLER || row.handler || '').trim())
+        .filter(Boolean);
+    }
+
+    async function portalWorkerBindUrl() {
+      try {
+        const res = await fetch(appBase() + '/portal-worker-url.json?_=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          const bind = String(data.workerBindUrl || data.workerDownloadUrl || '').trim();
+          if (bind) return bind;
+        }
+      } catch (_) {}
+      return null;
+    }
+
+    async function extraHandlerUrls() {
+      const urls = new Set([
+        appBase() + '/worker.html',
+      ]);
+      try {
+        const opts = await call('app.option.get', {});
+        const saved = String(opts?.portal_worker_url || opts?.PORTAL_WORKER_URL || '').trim();
+        if (saved) urls.add(saved);
+      } catch (_) {}
+      return [...urls];
+    }
+
+    async function runFix() {
+      document.getElementById('log').innerHTML = '';
+      log('Старт…', null);
+
+      let listed = [];
+      try {
+        listed = normalizeHandlers(await call('placement.get', {}));
+        if (listed.length) {
+          listed.forEach((h) => log('Сейчас в placement.get: ' + h, null));
+        } else {
+          log('placement.get: привязок не видно (возможна «скрытая» старая)', null);
+        }
+      } catch (e) {
+        log('placement.get: ' + (e.message || e), false);
+      }
+
+      try {
+        const bulk = await call('placement.unbind', { PLACEMENT });
+        const n = bulk && typeof bulk === 'object' ? bulk.count : bulk;
+        log('placement.unbind (все URL этого приложения): count=' + n, true);
+      } catch (e) {
+        log('placement.unbind (bulk): ' + (e.message || e), false);
+      }
+
+      const candidates = new Set([...listed, ...(await extraHandlerUrls())]);
+      for (const handler of candidates) {
+        try {
+          const r = await call('placement.unbind', { PLACEMENT, HANDLER: handler });
+          const n = r && typeof r === 'object' ? r.count : r;
+          log('unbind → ' + handler + ' (count=' + n + ')', true);
+        } catch (e) {
+          log('unbind пропуск → ' + handler, null);
+        }
+      }
+
+      const bindUrl = await portalWorkerBindUrl();
+      if (!bindUrl) {
+        log('Нет workerBindUrl в portal-worker-url.json', false);
+        return;
+      }
+
+      try {
+        await call('placement.bind', {
+          PLACEMENT,
+          HANDLER: bindUrl,
+          OPTIONS: { errorHandlerUrl: appBase() + '/install.html' },
+        });
+        log('PAGE_BACKGROUND_WORKER привязан → ' + bindUrl, true);
+        try {
+          await call('app.option.set', { options: { portal_worker_url: bindUrl } });
+        } catch (_) {}
+      } catch (e) {
+        const msg = e.message || String(e);
+        if (/MAX_COUNT|max count/i.test(msg)) {
+          log('Слот всё ещё занят. Удалите приложение полностью и установите заново.', false);
+        } else if (/binded|bind/i.test(msg)) {
+          log('Worker уже привязан', true);
+        } else {
+          log('placement.bind: ' + msg, false);
+        }
+      }
+
+      log('Готово. Обновите портал (Ctrl+F5).', true);
+    }
+
+    document.getElementById('retry').onclick = () => runFix().catch((e) => log(e.message || String(e), false));
+
+    BX24.init(() => {
+      runFix().catch((e) => log(e.message || String(e), false));
+      BX24.fitWindow();
+    });
+  </script>
+</body>
+</html>

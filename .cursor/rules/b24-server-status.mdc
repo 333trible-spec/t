@@ -1,0 +1,31 @@
+---
+description: Команда «статус сервера» — проверка локальных и Vercel-серверов Б24
+alwaysApply: true
+---
+
+# Команда «статус сервера»
+
+Триггеры (без учёта регистра): **статус сервера**, **статус серверов**, **server status**.
+
+## Кто отвечает
+
+Только **Витёк** (синий заголовок). Гарри — не подключать (нет вопроса про пути).
+
+## Что сделать (выполнить, не описывать)
+
+1. Локально — скрипты статуса:
+   - `Me/Me/Личное/Работа/bitrix24/crm-report-bot/scripts/status-bot.ps1`
+   - `Me/Me/Личное/Работа/bitrix24/deal-card-bg/scripts/status-app.ps1`
+2. Health локально: `http://127.0.0.1:3847/health` (бот), `http://127.0.0.1:3848/health` (deal-card-bg).
+3. Vercel — HTTP HEAD/GET `install.html`:
+   - `https://tt-two-lime.vercel.app/install.html`
+   - `https://b24-duplicate-guard.vercel.app/install.html`
+   - `https://b24-contract-request.vercel.app/install.html`
+
+## Формат ответа
+
+Таблица **Локально на ПК** (crm-report-bot :3847, deal-card-bg :3848, туннель) и **Vercel** (имя, URL, HTTP-код).
+
+Если локальный сервис OFF — одна строка как запустить (`start-bot.ps1` / `npm run app:start` в нужной папке).
+
+Не писать в журнал `context.md` — это диагностика по запросу, не сессия внедрения.

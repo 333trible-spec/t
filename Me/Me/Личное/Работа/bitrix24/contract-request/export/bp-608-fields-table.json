@@ -1,0 +1,8219 @@
+[
+  {
+    "code": "adress_kids",
+    "entity": "Параметр БП",
+    "label": "Адрес регистрации ребенка",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "age",
+    "entity": "Параметр БП",
+    "label": "Возраст",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "animals",
+    "entity": "Параметр БП",
+    "label": "Наличие животных",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "attraction",
+    "entity": "Параметр БП",
+    "label": "Что привлекло",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "bank",
+    "entity": "Параметр БП",
+    "label": "Банк",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "birth_certificate",
+    "entity": "Параметр БП",
+    "label": "Свидетельство о рождении",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "city",
+    "entity": "Параметр БП",
+    "label": "Город обращения",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "commit_deal",
+    "entity": "Параметр БП",
+    "label": "Комментарий по сделке",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "down_payment_period",
+    "entity": "Параметр БП",
+    "label": "Срок первоначального взноса",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "famStatus",
+    "entity": "Параметр БП",
+    "label": "Семейное положение",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "form_payment",
+    "entity": "Параметр БП",
+    "label": "Форма оплаты",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "initial_fee",
+    "entity": "Параметр БП",
+    "label": "Общая сумма первоначального взноса(с учетом всех сертификатов и собственных средств)",
+    "typeRu": "Деньги",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "inn",
+    "entity": "Параметр БП",
+    "label": "ИНН каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "kids",
+    "entity": "Параметр БП",
+    "label": "Наличие детей",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "kindOfActivity",
+    "entity": "Параметр БП",
+    "label": "Вид деятельности",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "marriage_certificate",
+    "entity": "Параметр БП",
+    "label": "Свидетельство о браке",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "math_capital",
+    "entity": "Параметр БП",
+    "label": "Сертификат на мат. капитал",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "notarised",
+    "entity": "Параметр БП",
+    "label": "Нотариальная доверенность",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "ostatok_capital",
+    "entity": "Параметр БП",
+    "label": "Выписка об остатке мат. капитала",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "other_docs",
+    "entity": "Параметр БП",
+    "label": "Прочие документы",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "Parameter1",
+    "entity": "Параметр БП",
+    "label": "Участники общей собственности",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "Parameter2",
+    "entity": "Параметр БП",
+    "label": "Участники долевой собственности",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "pasport",
+    "entity": "Параметр БП",
+    "label": "Паспорт каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "property_type",
+    "entity": "Параметр БП",
+    "label": "Тип собственности",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "sber",
+    "entity": "Параметр БП",
+    "label": "Есть приложение СБЕР",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "sertifikat_sotrudnichestva",
+    "entity": "Параметр БП",
+    "label": "Сертификат Сотрудничество",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "sex",
+    "entity": "Параметр БП",
+    "label": "Пол",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "snils",
+    "entity": "Параметр БП",
+    "label": "СНИЛС каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "summ_MSK",
+    "entity": "Параметр БП",
+    "label": "Тип сертификата",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "summ_sotrudnichestva",
+    "entity": "Параметр БП",
+    "label": "Сумма сертификата",
+    "typeRu": "Деньги",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "target",
+    "entity": "Параметр БП",
+    "label": "Цель покупки",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "TargetUser",
+    "entity": "Параметр БП",
+    "label": "Получатель уведомления",
+    "typeRu": "Пользователь",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "type_doc",
+    "entity": "Параметр БП",
+    "label": "Тип договора",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Да",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "type_registr",
+    "entity": "Параметр БП",
+    "label": "Вид регистрации",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "Нет",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "CONTACT.EMAIL",
+    "entity": "Контакт",
+    "label": "Контакт: E-mail",
+    "typeRu": "E-mail",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Уведомление, если пусто"
+  },
+  {
+    "code": "CONTACT.ID",
+    "entity": "Контакт",
+    "label": "Контакт: ID",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "CONTACT.LAST_NAME",
+    "entity": "Контакт",
+    "label": "Контакт: Фамилия",
+    "typeRu": "Строка",
+    "requiredCrm": "Да",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Уведомление, если пусто"
+  },
+  {
+    "code": "CONTACT.NAME",
+    "entity": "Контакт",
+    "label": "Контакт: Имя",
+    "typeRu": "Строка",
+    "requiredCrm": "Да",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Уведомление, если пусто"
+  },
+  {
+    "code": "CONTACT.SECOND_NAME",
+    "entity": "Контакт",
+    "label": "Контакт: Отчество",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Уведомление, если пусто"
+  },
+  {
+    "code": "ASSIGNED_BY_ID",
+    "entity": "Сделка",
+    "label": "Ответственный",
+    "typeRu": "Пользователь",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "CATEGORY_ID",
+    "entity": "Сделка",
+    "label": "Воронка",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Только воронки 6 или 8"
+  },
+  {
+    "code": "CONTACT_ID",
+    "entity": "Сделка",
+    "label": "Контакт",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Да — без контакта БП останавливается"
+  },
+  {
+    "code": "CONTACT_IDS",
+    "entity": "Сделка",
+    "label": "Контакты",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "DATE_CREATE",
+    "entity": "Сделка",
+    "label": "Когда создана",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "ID",
+    "entity": "Сделка",
+    "label": "ID",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "OPPORTUNITY",
+    "entity": "Сделка",
+    "label": "Сумма",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "SOURCE_DESCRIPTION",
+    "entity": "Сделка",
+    "label": "Дополнительно об источнике",
+    "typeRu": "Текст",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "SOURCE_ID",
+    "entity": "Сделка",
+    "label": "Источник",
+    "typeRu": "Стадия/справочник",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "STAGE_ID",
+    "entity": "Сделка",
+    "label": "Стадия",
+    "typeRu": "Стадия/справочник",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "TITLE",
+    "entity": "Сделка",
+    "label": "Название",
+    "typeRu": "Строка",
+    "requiredCrm": "Да",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_121B01D4630C9",
+    "entity": "Сделка",
+    "label": "Площадь с антресолью без летних помещений, м2",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1489656054",
+    "entity": "Сделка",
+    "label": "roistat",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1489662019",
+    "entity": "Сделка",
+    "label": "Номер по техплану",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1504065664",
+    "entity": "Сделка",
+    "label": "Номер по техплану",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285145",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285621",
+    "entity": "Сделка",
+    "label": "Форма оплаты",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285671",
+    "entity": "Сделка",
+    "label": "Банк",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285709",
+    "entity": "Сделка",
+    "label": "Номер участка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285720",
+    "entity": "Сделка",
+    "label": "Площадь участка (кв.м)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285737",
+    "entity": "Сделка",
+    "label": "Кадастровый номер",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1514285784",
+    "entity": "Сделка",
+    "label": "АН",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1516087526",
+    "entity": "Сделка",
+    "label": "Показ",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1516110338",
+    "entity": "Сделка",
+    "label": "Дата показа",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1516188182",
+    "entity": "Сделка",
+    "label": "Агент(строка)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1517818034",
+    "entity": "Сделка",
+    "label": "Дата договора купли-продажи",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1519044876",
+    "entity": "Сделка",
+    "label": "Дата и время встречи (для скрипта)",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728175196",
+    "entity": "Сделка",
+    "label": "Количество квартир в доме",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728238762",
+    "entity": "Сделка",
+    "label": "Расположение в таунхаусе",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728252471",
+    "entity": "Сделка",
+    "label": "Площадь земельного участка, кв.м",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728258081",
+    "entity": "Сделка",
+    "label": "Площадь мансарды или чердака, кв.м.",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728263731",
+    "entity": "Сделка",
+    "label": "Площадь террасы, кв.м. ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728269909",
+    "entity": "Сделка",
+    "label": "Площадь крыльца, кв.м.",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728276066",
+    "entity": "Сделка",
+    "label": "Цена за кв.м. земли/руб.",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728286642",
+    "entity": "Сделка",
+    "label": "Общая стоимость (при 100% оплате)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538728292007",
+    "entity": "Сделка",
+    "label": "Срок сдачи дома ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1538729147",
+    "entity": "Сделка",
+    "label": "Тип помещения (Profitbase)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Да — ветка заявки"
+  },
+  {
+    "code": "UF_CRM_1539687636",
+    "entity": "Сделка",
+    "label": "Источник Roistat ID",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540548252",
+    "entity": "Сделка",
+    "label": "Расположение в секции",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540552899",
+    "entity": "Сделка",
+    "label": "Тип помещения",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540553564",
+    "entity": "Сделка",
+    "label": "Особенность дома (Profitbase)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540553594",
+    "entity": "Сделка",
+    "label": "Тип таунхауса",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540554275",
+    "entity": "Сделка",
+    "label": "Кадастровый номер земельного участка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540554740",
+    "entity": "Сделка",
+    "label": "Общая стоимость (при рассрочке)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540554805",
+    "entity": "Сделка",
+    "label": "Стоимость квартиры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1540554822",
+    "entity": "Сделка",
+    "label": "Стоимость земельного участка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542270475",
+    "entity": "Сделка",
+    "label": "Зеленые Аллеи (Ипотека Стоимость квартиры)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542270499",
+    "entity": "Сделка",
+    "label": "Зеленые Аллеи (Ипотека Первый взнос)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542270524",
+    "entity": "Сделка",
+    "label": "Зеленые Аллеи (Ипотека Срок ипотеки)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542800812",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542800839",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1542800844",
+    "entity": "Сделка",
+    "label": "roistat_name_project",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1554371480174",
+    "entity": "Сделка",
+    "label": "Дата подписания Акта",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1554440345378",
+    "entity": "Сделка",
+    "label": "Дата регистрации ДДУ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1554441471323",
+    "entity": "Сделка",
+    "label": "Тип жилого блока",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1554441569076",
+    "entity": "Сделка",
+    "label": "Общая площадь (с террасой), кв.м",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1557008108",
+    "entity": "Сделка",
+    "label": "NEMIND_STATUS_LOG",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1557008119",
+    "entity": "Сделка",
+    "label": "NEMIND_STATUS_OLD",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1566371562",
+    "entity": "Сделка",
+    "label": "ga_clientID",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1566896313",
+    "entity": "Сделка",
+    "label": "Рекламный канал (Roistat)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1578484533",
+    "entity": "Сделка",
+    "label": "NEMIND_STAGES_LOG",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579073932",
+    "entity": "Сделка",
+    "label": "Планируемое время покупки",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579079347",
+    "entity": "Сделка",
+    "label": "(s) история температуры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579079421",
+    "entity": "Сделка",
+    "label": "(s) старое значения - время покупки",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579601630",
+    "entity": "Сделка",
+    "label": "Квадратура (П.Н.)",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579777690",
+    "entity": "Сделка",
+    "label": "(системное) История стадий",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1579779128",
+    "entity": "Сделка",
+    "label": "(системное) Предыдущая стадия",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1580876455874",
+    "entity": "Сделка",
+    "label": "АН (Н)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1580876464731",
+    "entity": "Сделка",
+    "label": "Агент (Н)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1580876531207",
+    "entity": "Сделка",
+    "label": "Телефон агента, вводить без первой цифры (Н)",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1581071847",
+    "entity": "Сделка",
+    "label": "Дата создание лида(Н)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1581509456929",
+    "entity": "Сделка",
+    "label": "Проверка контакта",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582005107",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582005750",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582008586983",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582012969",
+    "entity": "Сделка",
+    "label": "Дубли",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582082289",
+    "entity": "Сделка",
+    "label": "Email в сделке",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1582091435",
+    "entity": "Сделка",
+    "label": "Телефон в сделке",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1584706806",
+    "entity": "Сделка",
+    "label": "Sustem (запуск бп)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1586152755",
+    "entity": "Сделка",
+    "label": "Оригинальный ответственный (системное)",
+    "typeRu": "Пользователь",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1591077995374",
+    "entity": "Сделка",
+    "label": "Светофор",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1593586909",
+    "entity": "Сделка",
+    "label": "NEMIND_CRM_ID",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1598874108",
+    "entity": "Сделка",
+    "label": "(системное) ответственный за встречу",
+    "typeRu": "Пользователь",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1599212908923",
+    "entity": "Сделка",
+    "label": "Коттеджный поселок",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1599212940506",
+    "entity": "Сделка",
+    "label": "Номер земельного участка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619418611769",
+    "entity": "Сделка",
+    "label": "Процентная ставка",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619418745002",
+    "entity": "Сделка",
+    "label": "Дата отправка в Росреестр / сдачи на регистрацию в МФЦ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419271478",
+    "entity": "Сделка",
+    "label": "Первоначальный взнос (сумма)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419293422",
+    "entity": "Сделка",
+    "label": "Дата поступления ПВ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419325995",
+    "entity": "Сделка",
+    "label": "Кредитные средства (сумма)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419358548",
+    "entity": "Сделка",
+    "label": "Дата поступления кредитных средств",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419381158",
+    "entity": "Сделка",
+    "label": "Сумма нефинансовой акции(субсидия за счет застройщика)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419426779",
+    "entity": "Сделка",
+    "label": "Дата поступления материнского капитала",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419522421",
+    "entity": "Сделка",
+    "label": "Иные поступления по сделке (вид)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419554637",
+    "entity": "Сделка",
+    "label": "Сумма иных поступлений",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619419588171",
+    "entity": "Сделка",
+    "label": "Дата иных поступлений",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619435259403",
+    "entity": "Сделка",
+    "label": "Общая сумма (для проверки)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619515162085",
+    "entity": "Сделка",
+    "label": "Комментарий к брони",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619618497873",
+    "entity": "Сделка",
+    "label": "Приведенная (продаваемая) площадь с террасой, коэф. 0,3, кв. м",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619692947",
+    "entity": "Сделка",
+    "label": "дату/время перевода сделки в стадию ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1619692983",
+    "entity": "Сделка",
+    "label": "дату/время перевода сделки в стадию ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1622183969",
+    "entity": "Сделка",
+    "label": "(сист.) 2105 - ид контакта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1622183995",
+    "entity": "Сделка",
+    "label": "(сист.) 2105 - номер ГП",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1622184023",
+    "entity": "Сделка",
+    "label": "(сист.) 2105 - номер ЖБ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1626081681",
+    "entity": "Сделка",
+    "label": "(11434) номер гп",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1626763524972",
+    "entity": "Сделка",
+    "label": "Причины отказа",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1626853324790",
+    "entity": "Сделка",
+    "label": "Причина снятия брони",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1630396564387",
+    "entity": "Сделка",
+    "label": "Интерес к четырехэтажкам",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1634903177",
+    "entity": "Сделка",
+    "label": "Цена за м2 (техническое)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1638092857988",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1638092976684",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1638098562414",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1638098621042",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1638516174709",
+    "entity": "Сделка",
+    "label": "Электронная регистрация в СКБ-Техно",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1639116266399",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1639295741292",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1640151193",
+    "entity": "Сделка",
+    "label": "(системное) 14162 пред. стадия",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1640151983",
+    "entity": "Сделка",
+    "label": "(системное) 14162 через БП",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1640156227",
+    "entity": "Сделка",
+    "label": "(системное) 14162 смс о брони была",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1643109623",
+    "entity": "Сделка",
+    "label": "14162 БП - стадии ЗА н",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1644993988",
+    "entity": "Сделка",
+    "label": "Дополнительно",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1647340962",
+    "entity": "Сделка",
+    "label": "Компании",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1647847963971",
+    "entity": "Сделка",
+    "label": "Применяемая акция",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1647848029617",
+    "entity": "Сделка",
+    "label": "Сумма акции",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1647852416795",
+    "entity": "Сделка",
+    "label": "Социальная сеть / мессенджер",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1648620318066",
+    "entity": "Сделка",
+    "label": "Тип таунхауса / тип квартиры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1648622722604",
+    "entity": "Сделка",
+    "label": "Очередь (pb)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649750063",
+    "entity": "Сделка",
+    "label": "Ответственный менеджер по продажам",
+    "typeRu": "Пользователь",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649752943",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Очередь",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649752988",
+    "entity": "Сделка",
+    "label": "15912(сист.)-тип таунхауса / тип квартиры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753011",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Расположение в таунхаусе",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753040",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Общая площадь с террассой",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753090",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Площадь земельного участка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753119",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Площадь мансарды или чердака",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753152",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Дата установки стадии бронь",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753176",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Сумма и валюта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1649753202",
+    "entity": "Сделка",
+    "label": "15912(сист.)-Отвественный менеджер по продажам",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1650958148343",
+    "entity": "Сделка",
+    "label": "Секция (подъезд)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1650958311024",
+    "entity": "Сделка",
+    "label": "Этаж (new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1650958359213",
+    "entity": "Сделка",
+    "label": "Номер на площадке",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1650959214562",
+    "entity": "Сделка",
+    "label": "Площадь без учета террасы и балкона, кв. м",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1653397101",
+    "entity": "Сделка",
+    "label": "АГЕНТ (для бота)",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1653456666850",
+    "entity": "Сделка",
+    "label": "Дата сделки (для отчета)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1653457227797",
+    "entity": "Сделка",
+    "label": "Слетевшая бронь (чек-бокс)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1653457314150",
+    "entity": "Сделка",
+    "label": "Дата снятия брони (для отчета)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1656057996",
+    "entity": "Сделка",
+    "label": "ЖК (new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1656062400",
+    "entity": "Сделка",
+    "label": "16978-сделка была в КЦ",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1656935682167",
+    "entity": "Сделка",
+    "label": "Тип заявки",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1656935706386",
+    "entity": "Сделка",
+    "label": "Страница сайта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657001309",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657187469180",
+    "entity": "Сделка",
+    "label": "Контроль дубликатов",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657873213",
+    "entity": "Сделка",
+    "label": "Откуда о нас узнали",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657873655",
+    "entity": "Сделка",
+    "label": "Тип сделки (сис)",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657884727174",
+    "entity": "Сделка",
+    "label": "Номер договора",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657884761876",
+    "entity": "Сделка",
+    "label": "Дата создания договора",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657884785292",
+    "entity": "Сделка",
+    "label": "Дата подписания договора",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657884802348",
+    "entity": "Сделка",
+    "label": "Дата подачи на регистрацию",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657884827604",
+    "entity": "Сделка",
+    "label": "Дата полной оплаты на эскроу счет",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1657885780068",
+    "entity": "Сделка",
+    "label": "Предпочтение по типу",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658465868488",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658466069923",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658466137636",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658466192688",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658466222856",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658466242337",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1658998576",
+    "entity": "Сделка",
+    "label": "Квиз ответы",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659005409074",
+    "entity": "Сделка",
+    "label": "Возраст",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659005450720",
+    "entity": "Сделка",
+    "label": "Пол",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659007926721",
+    "entity": "Сделка",
+    "label": "Город обращения",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659008047015",
+    "entity": "Сделка",
+    "label": "Цель покупки",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659009682372",
+    "entity": "Сделка",
+    "label": "Семейное положение",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659074341994",
+    "entity": "Сделка",
+    "label": "Наличие детей",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659074512261",
+    "entity": "Сделка",
+    "label": "Вид деятельности",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659074620049",
+    "entity": "Сделка",
+    "label": "Что привлекло",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659498442261",
+    "entity": "Сделка",
+    "label": "Дата постановки брони",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659595292115",
+    "entity": "Сделка",
+    "label": "Дата снятие брони",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659697660501",
+    "entity": "Сделка",
+    "label": "Бюджет земельного участка",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1659697771995",
+    "entity": "Сделка",
+    "label": "Критерии выбора участка",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1660041810",
+    "entity": "Сделка",
+    "label": "Дата ДДУ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1660043118613",
+    "entity": "Сделка",
+    "label": "Дата передачи из КЦ",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1660535141",
+    "entity": "Сделка",
+    "label": "Номер квартиры / жилого блока",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1660644640",
+    "entity": "Сделка",
+    "label": "Сделка поступила в КЦ",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1660888065753",
+    "entity": "Сделка",
+    "label": "Контроль дублей",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1661764685",
+    "entity": "Сделка",
+    "label": "Тип агентского обращения",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1662629293",
+    "entity": "Сделка",
+    "label": "Необходимо заполнить ФИО и почту клиента",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1662721064",
+    "entity": "Сделка",
+    "label": "Результат показа",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1662956961",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1663658772",
+    "entity": "Сделка",
+    "label": "НОМЕР ТЕЛЕФОНА",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1663660947",
+    "entity": "Сделка",
+    "label": "Клиент со скидкой",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1663674513",
+    "entity": "Сделка",
+    "label": "Комментарий дизайн/ремонт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1663674681",
+    "entity": "Сделка",
+    "label": "Почта дизайн/ремонт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1663737776",
+    "entity": "Сделка",
+    "label": "Ещё один человек в сделке",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664431613",
+    "entity": "Сделка",
+    "label": "Сумма на момент брони",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664529814",
+    "entity": "Сделка",
+    "label": "id_ paperwork",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664530057",
+    "entity": "Сделка",
+    "label": "ID оформления",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664530081",
+    "entity": "Сделка",
+    "label": "ID продажи",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664530244",
+    "entity": "Сделка",
+    "label": "id_sale",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664775392",
+    "entity": "Сделка",
+    "label": "Ссылка на сделку в оформлении",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664775472",
+    "entity": "Сделка",
+    "label": "Ссылка на сделку в продажах",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664792607",
+    "entity": "Сделка",
+    "label": "Сделка в оформлении",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664792769",
+    "entity": "Сделка",
+    "label": "Сделка в продажах",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1664969607",
+    "entity": "Сделка",
+    "label": "Дата создания сделки в ОП",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1666157549",
+    "entity": "Сделка",
+    "label": "Тип показа",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1668572647",
+    "entity": "Сделка",
+    "label": "Наличие животных",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1674214850",
+    "entity": "Сделка",
+    "label": "Повторная продажа",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1676357023",
+    "entity": "Сделка",
+    "label": "ID cделки в продажах",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1679476064",
+    "entity": "Сделка",
+    "label": "Размер квартиры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1683805668",
+    "entity": "Сделка",
+    "label": "Дата сделки",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1684153610",
+    "entity": "Сделка",
+    "label": "20880-ид дела",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1684326063958",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1684412549",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1684753562",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1684845420",
+    "entity": "Сделка",
+    "label": "Комментарий по клиенту",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1685943769",
+    "entity": "Сделка",
+    "label": "Вид регистрации",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1686043236",
+    "entity": "Сделка",
+    "label": "Сумма акции $",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1689224441",
+    "entity": "Сделка",
+    "label": "Вид ремонта",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1689316871842",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1690960836",
+    "entity": "Сделка",
+    "label": "Тип показа",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1692183647",
+    "entity": "Сделка",
+    "label": "Договор отправлен в банк",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693308309392",
+    "entity": "Сделка",
+    "label": "планирование встречи",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693540108",
+    "entity": "Сделка",
+    "label": "Результат встречи",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693553546",
+    "entity": "Сделка",
+    "label": "Вид дизайн-проекта",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693553595",
+    "entity": "Сделка",
+    "label": "Вид недвижимости",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693553642",
+    "entity": "Сделка",
+    "label": "Начало дизайн-проект",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693553670",
+    "entity": "Сделка",
+    "label": "Окончание дизайн-проект",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693656913",
+    "entity": "Сделка",
+    "label": "Договор на ДП",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693656976",
+    "entity": "Сделка",
+    "label": "Доп соглашение",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1693657017",
+    "entity": "Сделка",
+    "label": "Договор на ремонт",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1694352376",
+    "entity": "Сделка",
+    "label": "Начало ремонт",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1694352398",
+    "entity": "Сделка",
+    "label": "Окончание ремонт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1695363057",
+    "entity": "Сделка",
+    "label": "Тип работ",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1695980864",
+    "entity": "Сделка",
+    "label": "Признак обработки",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1695982032",
+    "entity": "Сделка",
+    "label": "Признак апдейта",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1695982033",
+    "entity": "Сделка",
+    "label": "Признак апдейта",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1696414290326",
+    "entity": "Сделка",
+    "label": "Контроль дубликатов",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1696566768473",
+    "entity": "Сделка",
+    "label": "***СКОРО ВСТРЕЧА!!!!***",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1696568305521",
+    "entity": "Сделка",
+    "label": "Встреча напоминание",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1696847562",
+    "entity": "Сделка",
+    "label": "Сумма завышения",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1697015111",
+    "entity": "Сделка",
+    "label": "Сумма завышения (системное)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1697018686",
+    "entity": "Сделка",
+    "label": "Сумма акции (системное)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1697020510",
+    "entity": "Сделка",
+    "label": "Изначальная сумма (системное)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1697195546",
+    "entity": "Сделка",
+    "label": "ГП (генплан)",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1697195546_PRINTABLE",
+    "entity": "Сделка",
+    "label": "ГП (генплан)",
+    "typeRu": "Список",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1699343028",
+    "entity": "Сделка",
+    "label": "Тип недвижимости",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1699449054",
+    "entity": "Сделка",
+    "label": "Признак обработки - 2",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1700215388994",
+    "entity": "Сделка",
+    "label": "Стоимость без ремонта",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1700215460776",
+    "entity": "Сделка",
+    "label": "Ремонт учтен в стоимости",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1700217998116",
+    "entity": "Сделка",
+    "label": "Стоимость с ремонтом",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1700457910",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта (системное)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1700471607414",
+    "entity": "Сделка",
+    "label": "Стоимость без ремонта (системное)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1702277580",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1702537697",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1702537731",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1703505805",
+    "entity": "Сделка",
+    "label": "ID показа",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1704975890651",
+    "entity": "Сделка",
+    "label": "Акции",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1705491161999",
+    "entity": "Сделка",
+    "label": "Акции new",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1706265688",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1706524400",
+    "entity": "Сделка",
+    "label": "Ответственный (текст)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1706526939978",
+    "entity": "Сделка",
+    "label": "Подпись ответственного",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1707196553249",
+    "entity": "Сделка",
+    "label": "Коммисия АН оплачена",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1707196677821",
+    "entity": "Сделка",
+    "label": "Сумма комиссии АН ",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1707211888",
+    "entity": "Сделка",
+    "label": "% комиссии банка",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1707211971",
+    "entity": "Сделка",
+    "label": "Сумма комиссии банка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1707287114",
+    "entity": "Сделка",
+    "label": "Комиссия банка учтена",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1708940135",
+    "entity": "Сделка",
+    "label": "Агентская заявка",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1709102252",
+    "entity": "Сделка",
+    "label": "Сумма комиссии банка (сис)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710230664",
+    "entity": "Сделка",
+    "label": "Дата взятия в работу КУ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710412968",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710494587",
+    "entity": "Сделка",
+    "label": "Дата создания КУ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710495594",
+    "entity": "Сделка",
+    "label": "Счетчик продления КУ",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710995148",
+    "entity": "Сделка",
+    "label": "Сделка из планировщика",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1710997656",
+    "entity": "Сделка",
+    "label": "Отложили на срок:",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1712733610",
+    "entity": "Сделка",
+    "label": "ID помещения (сис)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1718358123",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1718618351",
+    "entity": "Сделка",
+    "label": "Инкубатор",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1718919216",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1721129282",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722231570",
+    "entity": "Сделка",
+    "label": "Тип собственности",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722231741",
+    "entity": "Сделка",
+    "label": "Участники общей собственности",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722231954",
+    "entity": "Сделка",
+    "label": "Участники долевой собственности",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722232687",
+    "entity": "Сделка",
+    "label": "Сумма сертификата(old)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722233695",
+    "entity": "Сделка",
+    "label": "Субсидия банка(субсидия за счет клиента)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722246835",
+    "entity": "Сделка",
+    "label": "Тип ремонта",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722839839",
+    "entity": "Сделка",
+    "label": "Паспорт каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722839884",
+    "entity": "Сделка",
+    "label": "СНИЛС каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722839925",
+    "entity": "Сделка",
+    "label": "Свидетельство о браке",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722839965",
+    "entity": "Сделка",
+    "label": "Свидетельство о рождении",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722840010",
+    "entity": "Сделка",
+    "label": "Адрес регистрации ребенка",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722840057",
+    "entity": "Сделка",
+    "label": "Сертификат на мат. капитал",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722840095",
+    "entity": "Сделка",
+    "label": "Выписка об остатке мат. капитала",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722840150",
+    "entity": "Сделка",
+    "label": "Сертификат Сотрудничество",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722840210",
+    "entity": "Сделка",
+    "label": "Нотариальная доверенность",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722843190",
+    "entity": "Сделка",
+    "label": "Срок внесения первоначального взноса",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722851893",
+    "entity": "Сделка",
+    "label": "ИНН каждого покупателя",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722855061",
+    "entity": "Сделка",
+    "label": "Предыдущая сделка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722938526204",
+    "entity": "Сделка",
+    "label": "Тип договора",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722939499",
+    "entity": "Сделка",
+    "label": "Дата выхода на сделку(примерная)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1722941445",
+    "entity": "Сделка",
+    "label": "Приложение СБЕР",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723030206",
+    "entity": "Сделка",
+    "label": "Тип сертификата",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723199854315",
+    "entity": "Сделка",
+    "label": "Телефон агента без первой цифры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723456654",
+    "entity": "Сделка",
+    "label": "Прошла синхронизация",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723528988",
+    "entity": "Сделка",
+    "label": "Заявка на договор",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723532204",
+    "entity": "Сделка",
+    "label": "Сумма сертификата",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1723613436",
+    "entity": "Сделка",
+    "label": "Доп. опция",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1724149252",
+    "entity": "Сделка",
+    "label": "Текущая стадия(сис)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1726038020",
+    "entity": "Сделка",
+    "label": "Прочие документы",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1732790138",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1732790183",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1733208845253",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1739347967",
+    "entity": "Сделка",
+    "label": "Номер ГП (new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1739351362",
+    "entity": "Сделка",
+    "label": "Комнат (new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1739353069",
+    "entity": "Сделка",
+    "label": "Умный сценарий",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1739357026",
+    "entity": "Сделка",
+    "label": "ID помещения (new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Да — вызов шахматки"
+  },
+  {
+    "code": "UF_CRM_1741592250",
+    "entity": "Сделка",
+    "label": "Суммы Акций(new)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1742989121",
+    "entity": "Сделка",
+    "label": "Планировки",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1742989123",
+    "entity": "Сделка",
+    "label": "Планировки",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1744779334",
+    "entity": "Сделка",
+    "label": "РЕМОНТ С ВЫГОДОЙ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1749018147",
+    "entity": "Сделка",
+    "label": "Применяемая акция(new)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1753075344",
+    "entity": "Сделка",
+    "label": "Комиссия АН %",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1753865705041",
+    "entity": "Сделка",
+    "label": "Агент(new)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1754367756909",
+    "entity": "Сделка",
+    "label": "Стоимость Базовый ремонт акция",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1754975401369",
+    "entity": "Сделка",
+    "label": "Проверка на дубли",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1756207944",
+    "entity": "Сделка",
+    "label": "Старое КУ",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1773990099",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1776852546752",
+    "entity": "Сделка",
+    "label": "Арендные каникулы",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1776852774142",
+    "entity": "Сделка",
+    "label": "С управляющим (да/нет)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1776855310914",
+    "entity": "Сделка",
+    "label": "Первоначальный взнос",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1776855355606",
+    "entity": "Сделка",
+    "label": "Обеспечительный платеж",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1776855427146",
+    "entity": "Сделка",
+    "label": "Ежемесячная арендная плата",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1777023001835",
+    "entity": "Сделка",
+    "label": "Причины отложенного спроса",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1777023476482",
+    "entity": "Сделка",
+    "label": "Операция сделки",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1777024041",
+    "entity": "Сделка",
+    "label": "Арендная ставка (за кв.м.)",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1777024041_DFS_HISTORY",
+    "entity": "Сделка",
+    "label": "Копия поля UF_CRM_1777024041 для приложения ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1778581864832",
+    "entity": "Сделка",
+    "label": "Причина отказа (провала сделки)",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1781503203212",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782215619343",
+    "entity": "Сделка",
+    "label": "Направление деятельности",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782216309667",
+    "entity": "Сделка",
+    "label": "Дата окончания аренды",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782815976",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782816044",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782816883",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782816939",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782816991",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817037",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817073",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817098",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817120",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817166",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817206",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817257",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817274",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817308",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817348",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817363",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_1782817414",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C02DA7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C0E4F4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C17977",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C55CB4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C5F366",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_59AD381C64BD1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5A55BEC3DB9F3",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5A7BF679EF9BA",
+    "entity": "Сделка",
+    "label": "Согласен на email/SMS рассылку (актуальное)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5A7BF67A75A3A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5A7BF67A93FBD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5A7BF67AB2112",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5AF52F901BA31",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5AF52F90344E1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B0BE49D5FE85",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B35C61C1F97A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B35C61C2D443",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B35C61C38E90",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88EF0C7B988",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F240415C2",
+    "entity": "Сделка",
+    "label": "Дата начала",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F2405FA44",
+    "entity": "Сделка",
+    "label": "Дата события",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F240A7D38",
+    "entity": "Сделка",
+    "label": "Лид",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F2412EF8F",
+    "entity": "Сделка",
+    "label": "Контакты",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F241DAF82",
+    "entity": "Сделка",
+    "label": "Компания",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F2420C988",
+    "entity": "Сделка",
+    "label": "Контакт",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B88F24233C81",
+    "entity": "Сделка",
+    "label": "Стадия сделки",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F99B498A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F99CA7B0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F99DAE2C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F99EAA0F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A058AF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A1430D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A24C45",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A31BCD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A3F560",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A561DA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A69CFA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A82FBF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9A95961",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9AA80FB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9ABA199",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9ACD049",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9AE525F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B00E83",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B123D5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B298E8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B3C55F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B4E557",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B605A9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B75F69",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B8944A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9B9C80B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9BB48EE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9BCA231",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9BE3413",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C04969",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C1C4A1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C32D14",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C45291",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C65188",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C7C5C8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9C937FC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9CAC248",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9CC360B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9CD9383",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9CF0C95",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D151AE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D2C698",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D43B49",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D5A667",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D73482",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9D8A216",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9DA4ACF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9DBE7A8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9DD8C3A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E01AD3",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E1A53D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E35FCA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E579BD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E78694",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9E9FC6F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9EC0EA0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9EE1B2D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9F090D4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9F308E7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9F507B4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9F717E1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9F95A94",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9FB97FD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892F9FDC10D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA008518",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA034582",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA0748D7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA09CA39",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA0C018C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA0E28BF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA11A124",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA141015",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5B892FA16618C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F40B82C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F436906",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F456AE2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F47779B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F497E71",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F4B6E6A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F4D9F33",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F505E19",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F524986",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F549EB8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BC5C9F567840",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BED85ED5EA3C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BED85ED8F7EB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5BED85EDB3CED",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C1A4B9650F1E",
+    "entity": "Сделка",
+    "label": "Carrotquest UID",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C1A4B96A7F33",
+    "entity": "Сделка",
+    "label": "Карточка на Carrotquest",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C1A4B97806BC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C1A4B981BB4E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFAB7CF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFD32F6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFE1EA6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABBFFEFD53",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00074FD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0014C95",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC002982E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0048376",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC005F2E6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC006E198",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC007C2C5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC008F6AB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC009DF8F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00ACE93",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00BBF14",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00CD6DB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC00E0B5B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0115C12",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC014FB8F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC015CB41",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC016D38C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01772CC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01822C6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC018C9BB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0198CB8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01A6235",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01B4615",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01CAD5F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01DC6D6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01E5380",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC01EF5B7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02028D1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC020DD6F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC021DB43",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC022682E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC022DD57",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0235D93",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0242549",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC024BCBB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02574E9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0266669",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02700F1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02796A7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02851C0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC028D425",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0298A0A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02AD91B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02BA8E2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02C6771",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02D2618",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC02DFF85",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03011DF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC030A465",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0314AA4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC031EFF8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC032A909",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC033332D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC033EC04",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0346DAD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC035139C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0362566",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC036D743",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03778CB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0382316",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC038F2F2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03B79D5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03C1873",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03C8D21",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03D26D6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC03DE773",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0404F27",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC040E371",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0418ABF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04232BC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC043C26C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0448046",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC045159A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC045DB38",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC046BF97",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC047A200",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC049FC16",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04AB15B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC04E701F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC051D2AE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC052F6C3",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC053C316",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC054B3DD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC056196F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5C5ABC0575E99",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5CA701C6CC233",
+    "entity": "Сделка",
+    "label": "Дом",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D1EF87C5FC73",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D1F409BC2FB3",
+    "entity": "Сделка",
+    "label": "Агентство",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4163D06FF37",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4163D0D2690",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4163D1332CA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4163D1831F1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4163D1BFE57",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D4BCC064A28D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D5D0FCC32A73",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5D65294E5BBF2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5DCCCE4942BAF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5DCCCE49A37E0",
+    "entity": "Сделка",
+    "label": "Температура лида",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E15CA0E5F680",
+    "entity": "Сделка",
+    "label": "PREVIOUS_STATUS_ID",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E1843946DB3F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD91162B9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD9196434",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD91B0564",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD92058E9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD921FAFC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD9235B18",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD925023E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E37FD925CA68",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8C3C363",
+    "entity": "Сделка",
+    "label": "Номер квартиры",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8CEB17C",
+    "entity": "Сделка",
+    "label": "Площадь земли, кв.м.",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5E4B8D8D9A63F",
+    "entity": "Сделка",
+    "label": "Особенность дома",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5F69F2A4C9045",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_5F69F2A57E652",
+    "entity": "Сделка",
+    "label": "Диалог Carrotquest",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62319C94282DD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_625FB3527CA06",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_625FB3551F86E",
+    "entity": "Сделка",
+    "label": "ID сделки оформления(число)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6260DD4C3EC25",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6260DD4E69825",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта Лайт(акция)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62C55BEA5A853",
+    "entity": "Сделка",
+    "label": "COMMENTS",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944AA2EC90",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944AD4D239",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944B01F1C0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944B30F028",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944B5DE54A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62D944B8B214E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AD48F318",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AD6E02D9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AD92FF6A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38ADB74253",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38ADDC30B3",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AE02AAEF",
+    "entity": "Сделка",
+    "label": "Источник из Carrot Quest",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AE978439",
+    "entity": "Сделка",
+    "label": "Общий квиз: все ответы",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AF2028DB",
+    "entity": "Сделка",
+    "label": "Квиз ипотека: все ответы",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38AFA90AC4",
+    "entity": "Сделка",
+    "label": "Для чего покупаете недвижимость?",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62E38B0305826",
+    "entity": "Сделка",
+    "label": "Какая будет форма оплаты??",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62ECC27B95770",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62ECC27C7E767",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62ECC27E4EA93",
+    "entity": "Сделка",
+    "label": "Тип сделки",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F108F5984E1",
+    "entity": "Сделка",
+    "label": "Номер в очереди",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F108FC8EB08",
+    "entity": "Сделка",
+    "label": "Объект недвижимости",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E58631CE7",
+    "entity": "Сделка",
+    "label": "Сущность отдела продаж",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E5B5EAA66",
+    "entity": "Сделка",
+    "label": "Сущность отдела продаж",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E7110B6BA",
+    "entity": "Сделка",
+    "label": "Дата договора с ОК",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E716AB106",
+    "entity": "Сделка",
+    "label": "Дата начала расчетов с ОК",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E870CE65D",
+    "entity": "Сделка",
+    "label": "Статус",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F1E877A79C1",
+    "entity": "Сделка",
+    "label": "Статус лида",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F61E8A2CAE7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F61E8CD1ADE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_62F61EE328A4A",
+    "entity": "Сделка",
+    "label": "Направление",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_630DC30A73FD4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_630DC3100EC45",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_630DC53A5CC30",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63203CFC95952",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6322C2D8D9929",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6322C2DBB2EE0",
+    "entity": "Сделка",
+    "label": "Системное (1)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6322EA4B4ED4F",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6322EA4E21C02",
+    "entity": "Сделка",
+    "label": "Резюме",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_632984EB3FD9E",
+    "entity": "Сделка",
+    "label": "Реанимирован",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_632AF95F892F7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_633FDA684F149",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_633FDA6B1F1DA",
+    "entity": "Сделка",
+    "label": "Был запуск скрипт дублей",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6346C4E487473",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6346C4E702D9D",
+    "entity": "Сделка",
+    "label": "221012-отработал БП",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_634D2E57D105B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_634D2E5AC37D3",
+    "entity": "Сделка",
+    "label": "Телефон агента",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63567E33665A8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63567E365DEA0",
+    "entity": "Сделка",
+    "label": "Интересует тип недвижимости:",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_635B76843C38B",
+    "entity": "Сделка",
+    "label": "Агент (вебхук с сайта)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8984503C",
+    "entity": "Сделка",
+    "label": "Вероятность,%",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C89EBBCDC",
+    "entity": "Сделка",
+    "label": "Предполагаемая дата закрытия",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8A5451FB",
+    "entity": "Сделка",
+    "label": "Тип",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8AD25A7D",
+    "entity": "Сделка",
+    "label": "Тип события",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8B48C713",
+    "entity": "Сделка",
+    "label": "ID Сделки в направлении ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8BB7D1DA",
+    "entity": "Сделка",
+    "label": "ID Сделки в направлении ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8C248987",
+    "entity": "Сделка",
+    "label": "Агент(old)",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8C8E34B6",
+    "entity": "Сделка",
+    "label": "Город",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8CFD5B8A",
+    "entity": "Сделка",
+    "label": "Дата прекращения права собственности",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8D6C8BDB",
+    "entity": "Сделка",
+    "label": "Дата рождения",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8DD32142",
+    "entity": "Сделка",
+    "label": "Дата следующего контакта",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8E3D9D36",
+    "entity": "Сделка",
+    "label": "Название компании",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8EA4C18D",
+    "entity": "Сделка",
+    "label": "Создатель лида",
+    "typeRu": "Пользователь",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6360C8F088B19",
+    "entity": "Сделка",
+    "label": "Улица",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_637DB0991C857",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_637DB09BB561A",
+    "entity": "Сделка",
+    "label": "1",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A6171173",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A649F9F4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A67CCF26",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A6B3F0BD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A6EAA145",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A722D0FB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A758AF3B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A791A28A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A7C9332B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A8030604",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A8401B5C",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A87B593A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A8B5273B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63807A8EF2A2A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_639837A57DB51",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_639837A9A48D6",
+    "entity": "Сделка",
+    "label": "Не для отчёта",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63AC5592C2470",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63AC5595DBBC6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63AC55990254D",
+    "entity": "Сделка",
+    "label": "КП (сегмент)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63AC559EBEA0D",
+    "entity": "Сделка",
+    "label": "ЗА (сегмент)",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63C907873C6E1",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63C9078B49509",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63C9078EE4F05",
+    "entity": "Сделка",
+    "label": "Ссылка из вебхука (актуальное)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63C9079569D8B",
+    "entity": "Сделка",
+    "label": "Согласен на email/SMS рассылку",
+    "typeRu": "Да/Нет",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63D7517E4ACA0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63D75181906EA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63DCE5DA46381",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63DCE5DE774C0",
+    "entity": "Сделка",
+    "label": "Дополнительная информация",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63EA085F2EFF5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_63EA086364130",
+    "entity": "Сделка",
+    "label": "19564-ид записи в ус 68",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_641A8A76E5E68",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_641A8A7B2FAE1",
+    "entity": "Сделка",
+    "label": "Статус звонка",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_646B27A298A7A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_646B27A796FD9",
+    "entity": "Сделка",
+    "label": "Источник в Carrot quest",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_646B64684C5F2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_646B646D2DAEE",
+    "entity": "Сделка",
+    "label": "Скидка по программе лояльности",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_649BDC69B026A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_649BDC6DEBD51",
+    "entity": "Сделка",
+    "label": "Повторная продажа.",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B77AB4AE3DF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B77AB8BCFB5",
+    "entity": "Сделка",
+    "label": "Начало диалога в открытых линиях",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B7941FB10F3",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B7942409BA2",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B794281248E",
+    "entity": "Сделка",
+    "label": "(sys) idActivity",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B7942F1BFE7",
+    "entity": "Сделка",
+    "label": "(sys) idActivity",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B7A7D7B19E4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64B7A7DC36659",
+    "entity": "Сделка",
+    "label": "(sys) idActivity",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64DB2433E71DB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64DB243848906",
+    "entity": "Сделка",
+    "label": "ID в УС Заявки оформления",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70E9C328D9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EA005ACA",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EA3A4C34",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EA76D7B5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EAB40C37",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EAEE55F5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EB2EF961",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EB6E58C7",
+    "entity": "Сделка",
+    "label": "UF_CRM_CHECKBOX",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EBD9EDA5",
+    "entity": "Сделка",
+    "label": "Комментарий для КЦ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EC39B659",
+    "entity": "Сделка",
+    "label": "Информация",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EC90D28E",
+    "entity": "Сделка",
+    "label": "Комментарий по сделке",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70ECEDA78B",
+    "entity": "Сделка",
+    "label": "Задача Завышения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70ED4A4835",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта Лайт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E70EDB2815B",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта Базовый",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E7139D2AE78",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E713A186C51",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E713A5EF7A3",
+    "entity": "Сделка",
+    "label": "Стоимость ремонта Базовый+",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E713AC80821",
+    "entity": "Сделка",
+    "label": "Цена по прайсу",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E7418FEA3FF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E7419480A30",
+    "entity": "Сделка",
+    "label": "Дата прайса",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E88467DD803",
+    "entity": "Сделка",
+    "label": "UF_CRM_KLININGPOSLER",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64E8A36270D80",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64F2B7B7AFE26",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_64F2B7BB96150",
+    "entity": "Сделка",
+    "label": "UF_CRM_VTORICHNAYANE",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6502F998DCC33",
+    "entity": "Сделка",
+    "label": "UF_CRM_DIZAINEST",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6503E23C885EF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65521C01B1C21",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65521C06582B2",
+    "entity": "Сделка",
+    "label": "Друг",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_655DC6085039A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_655DC60D2AEF8",
+    "entity": "Сделка",
+    "label": "Тип недвижимости (список.)",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6560740DE81D4",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65607412CE2F9",
+    "entity": "Сделка",
+    "label": "Дата конвертации",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6566C9A1DF646",
+    "entity": "Сделка",
+    "label": "Новое поле",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6566D5EF072AB",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_659FE32D7B24E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65D2DAF34FC69",
+    "entity": "Сделка",
+    "label": "Instagram_WZ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65D2DAFA9D1B9",
+    "entity": "Сделка",
+    "label": "VK_WZ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65D2DB03A4285",
+    "entity": "Сделка",
+    "label": "Avito_WZ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65D2DB0C97778",
+    "entity": "Сделка",
+    "label": "TelegramUsername_WZ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65D2DB15B6F86",
+    "entity": "Сделка",
+    "label": "TelegramId_WZ",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E042CC9",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E065B35",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0795F5",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E08E632",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0A15F0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0B5E6D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65E6E2E0C82BD",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65F832B6D830B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65F96456255DC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_65F96456682DA",
+    "entity": "Сделка",
+    "label": "Кампания КЦ",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6603B013DBADD",
+    "entity": "Сделка",
+    "label": "Тематики КЦ",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_663A2826AF5E8",
+    "entity": "Сделка",
+    "label": "Речевая Аналитика",
+    "typeRu": "Список",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66555C048988D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66555C04A6DBC",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66555C04C2E98",
+    "entity": "Сделка",
+    "label": "Найденный дубль",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66555C0FD0C98",
+    "entity": "Сделка",
+    "label": "Найденные дубли",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66700EA31B81B",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6673BC08EA2C8",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6673BC0916286",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6673BC0934582",
+    "entity": "Сделка",
+    "label": "Количество обработок звонка",
+    "typeRu": "Число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6673BC146BF8D",
+    "entity": "Сделка",
+    "label": "(sys) Комментарий к звонку",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_667A45F1A155A",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_667A45F1C325C",
+    "entity": "Сделка",
+    "label": "UF_CRM_SKIDKANATEHNI",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66A9BC13EE35D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66B0BA0B21A2D",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66EC21CC68682",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66EC21CC90F4E",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66EC21CCAEDBA",
+    "entity": "Сделка",
+    "label": "(sys) VK",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_66EC21DB491D5",
+    "entity": "Сделка",
+    "label": "(sys) Last Comment Id",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_675688669F7A5",
+    "entity": "Сделка",
+    "label": "Кем выдан паспорт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6788D081EF0A0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6788D082489C4",
+    "entity": "Сделка",
+    "label": "Источник (Веб-Аналитика)",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A04093CD7DA6",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A43B6E42F9E7",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A43B6EB93AFF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A43B6F40A8D0",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A43B6FC72CA3",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_6A43B7170863B",
+    "entity": "Сделка",
+    "label": "Дата ",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_A_T_GROUP_ID",
+    "entity": "Сделка",
+    "label": "Telegram Group Id",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_A_W_GROUP_ID",
+    "entity": "Сделка",
+    "label": "WhatsApp Group Id",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ADDRESS_2",
+    "entity": "Сделка",
+    "label": "Квартира",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_AMB_TELEGRAM_ID",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_AVITO_WZ",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CHECKBOX",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3836327779992",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3836743009697",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_COMPANY_3837359946416",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CONTACT_3836327788178",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CONTACT_3836743010551",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_EMPLOYEE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_NEGOTIATION",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_CONTACT_HH2CRM_VACANCY",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_EMPLOYEE",
+    "entity": "Сделка",
+    "label": "ID аккаунта HH2CRM",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_NEGOTIATION",
+    "entity": "Сделка",
+    "label": "Отклик HH2CRM",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_DEAL_HH2CRM_VACANCY",
+    "entity": "Сделка",
+    "label": "Вакансия HH2CRM",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_DEAL_ITISO_GRAPH",
+    "entity": "Сделка",
+    "label": "Платежи (ITISO)",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_DIZAINEST",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_EMAIL_HOME",
+    "entity": "Сделка",
+    "label": "Частный e-mail",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_EMAIL_OTHER",
+    "entity": "Сделка",
+    "label": "Другой e-mail",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_EMAIL_WORK",
+    "entity": "Сделка",
+    "label": "Рабочий e-mail",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_FLOOR_SELECT",
+    "entity": "Сделка",
+    "label": "Этаж",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_FULL_ADDRESS",
+    "entity": "Сделка",
+    "label": "Адрес",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHAGES",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHAPPLICANTID",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHCITY",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHDOWNLOADRESUMEURLPDF",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHRESPONSEID",
+    "entity": "Сделка",
+    "label": "hh: ИД Отклика",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHRESPONSETEXT",
+    "entity": "Сделка",
+    "label": "hh: Сопроводительное письмо",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHSEX",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHVACANCYID",
+    "entity": "Сделка",
+    "label": "hh: ИД Вакансии",
+    "typeRu": "Целое число",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_HHVACANCYNAME",
+    "entity": "Сделка",
+    "label": "hh: Название вакансии",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_I2CRM_CHAT",
+    "entity": "Сделка",
+    "label": "Чат",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ID_SALES",
+    "entity": "Сделка",
+    "label": "ID продажи",
+    "typeRu": "Привязка к CRM",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_IM_OTHER",
+    "entity": "Сделка",
+    "label": "Другой контакт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_INSTAGRAM_WZ",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_KLININGPOSLER",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_LAST_NAME",
+    "entity": "Сделка",
+    "label": "Фамилия",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_LEGACY_HOURLY_RATE",
+    "entity": "Сделка",
+    "label": "Ставка часа",
+    "typeRu": "Деньги",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_LEGACY_LINK_DASH",
+    "entity": "Сделка",
+    "label": "Дашборд (внешняя ссылка)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_LEGACY_LINK_TASK",
+    "entity": "Сделка",
+    "label": "Ссылка на задачи (группа на вашем портале)",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MANGO_TOPICS",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_CHANNEL_TYPE",
+    "entity": "Сделка",
+    "label": "Канал обращения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_CREATE",
+    "entity": "Сделка",
+    "label": "Дата/время создания обращения",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_END",
+    "entity": "Сделка",
+    "label": "Дата/время завершения обращения",
+    "typeRu": "Дата и время",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_ENTRY_ID",
+    "entity": "Сделка",
+    "label": "ID звонка",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_ENTRY_POINT",
+    "entity": "Сделка",
+    "label": "Точка входа обращения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_RESULT",
+    "entity": "Сделка",
+    "label": "Результат обращения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_MGO_CC_TAG_ID",
+    "entity": "Сделка",
+    "label": "Тематики обращения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_NAME",
+    "entity": "Сделка",
+    "label": "Имя",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_AREA",
+    "entity": "Сделка",
+    "label": "Площадь, м2",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_BALCONY",
+    "entity": "Сделка",
+    "label": "Площадь балкона, м2",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_FLOOR",
+    "entity": "Сделка",
+    "label": "Этаж",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_HOUSE",
+    "entity": "Сделка",
+    "label": "Номер ГП",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_NUMBER",
+    "entity": "Сделка",
+    "label": "Номер помещения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_PRICE",
+    "entity": "Сделка",
+    "label": "Цена помещения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_PRICE_METR",
+    "entity": "Сделка",
+    "label": "Цена за м2, руб",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_PROJECT",
+    "entity": "Сделка",
+    "label": "ЖК",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_PROP_ID",
+    "entity": "Сделка",
+    "label": "ID помещения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_ROOMS",
+    "entity": "Сделка",
+    "label": "Комнат",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PB_SECTION",
+    "entity": "Сделка",
+    "label": "Подъезд",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PHONE_HOME",
+    "entity": "Сделка",
+    "label": "Домашний телефон",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PHONE_MOBILE",
+    "entity": "Сделка",
+    "label": "Мобильный телефон",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PHONE_OTHER",
+    "entity": "Сделка",
+    "label": "Другой телефон",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PHONE_WORK",
+    "entity": "Сделка",
+    "label": "Рабочий телефон",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_PRICE_METER",
+    "entity": "Сделка",
+    "label": "Цена за м2, руб",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_RECORDING_TAG",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_REQUIREDFIELDELEMENT",
+    "entity": "Сделка",
+    "label": "Обязательные поля",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_SECOND_NAME",
+    "entity": "Сделка",
+    "label": "Отчество",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_SKIDKANATEHNI",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_BIRTHDAY",
+    "entity": "Сделка",
+    "label": "Дата рождения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_CITYBIRTH",
+    "entity": "Сделка",
+    "label": "Место рождения",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_FIRSTNAME",
+    "entity": "Сделка",
+    "label": "Имя",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_GENDER",
+    "entity": "Сделка",
+    "label": "Пол",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_LASTNAME",
+    "entity": "Сделка",
+    "label": "Фамилия",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT",
+    "entity": "Сделка",
+    "label": "Паспорт",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_DATE",
+    "entity": "Сделка",
+    "label": "Дата выдачи паспорта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_NUMBER",
+    "entity": "Сделка",
+    "label": "Номер паспорта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_ORG",
+    "entity": "Сделка",
+    "label": "Кем выдан паспорт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_ORG_CODE",
+    "entity": "Сделка",
+    "label": "Код подразделения выдавшего паспорт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PASSPORT_SERIAL",
+    "entity": "Сделка",
+    "label": "Серия паспорта",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_PATRONYMIC",
+    "entity": "Сделка",
+    "label": "Отчество",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_ST_SIGNATURE",
+    "entity": "Сделка",
+    "label": "Подпись",
+    "typeRu": "Файл",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_TELEGRAMID_WZ",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_TELEGRAMUSERNAME_WZ",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_TIKTOK",
+    "entity": "Сделка",
+    "label": "TikTok",
+    "typeRu": "Пользовательское поле",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_VK_WZ",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_VTORICHNAYANE",
+    "entity": "Сделка",
+    "label": "—",
+    "typeRu": "Строка",
+    "requiredCrm": "—",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  },
+  {
+    "code": "UF_CRM_WEB_OTHER",
+    "entity": "Сделка",
+    "label": "Другой сайт",
+    "typeRu": "Строка",
+    "requiredCrm": "Нет",
+    "requiredBpStart": "—",
+    "requiredBpLogic": "Нет"
+  }
+]

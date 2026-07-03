@@ -1,0 +1,82 @@
+{
+  "portrait": [
+    {
+      "field": "UF_CRM_1685943769",
+      "value": "{=Template:type_registr}"
+    }
+  ],
+  "templates": [
+    "Parameter1",
+    "Parameter2",
+    "TargetUser",
+    "adress_kids",
+    "age",
+    "animals",
+    "attraction",
+    "bank",
+    "birth_certificate",
+    "city",
+    "commit_deal",
+    "down_payment_period",
+    "famStatus",
+    "form_payment",
+    "initial_fee",
+    "inn",
+    "kids",
+    "kindOfActivity",
+    "marriage_certificate",
+    "math_capital",
+    "notarised",
+    "ostatok_capital",
+    "other_docs",
+    "pasport",
+    "property_type",
+    "sber",
+    "sertifikat_sotrudnichestva",
+    "sex",
+    "snils",
+    "summ_MSK",
+    "summ_sotrudnichestva",
+    "target",
+    "type_doc",
+    "type_registr"
+  ],
+  "saveFields": [
+    [],
+    []
+  ],
+  "createMaps": [
+    [
+      {
+        "field": "UF_CRM_1664775392",
+        "value": "https://ik-navigator.bitrix24.ru/crm/deal/details/{=A22719_85345_60744_79567:Dea"
+      },
+      {
+        "field": "UF_CRM_1664792607",
+        "value": "{=A22719_85345_60744_79567:DealId}"
+      },
+      {
+        "field": "UF_CRM_6360C8B48C713",
+        "value": "{=A22719_85345_60744_79567:DealId}"
+      },
+      {
+        "field": "UF_CRM_625FB3551F86E",
+        "value": "{=A22719_85345_60744_79567:DealId}"
+      }
+    ],
+    [
+      {
+        "field": "UF_CRM_1664775392",
+        "value": "https://ik-navigator.bitrix24.ru/crm/deal/details/{=A36251_22003_90243_9655:Deal"
+      },
+      {
+        "field": "UF_CRM_1664792607",
+        "value": "{=A36251_22003_90243_9655:DealId}"
+      },
+      {
+        "field": "UF_CRM_625FB3551F86E",
+        "value": "{=A36251_22003_90243_9655:DealId}"
+      }
+    ]
+  ]
+}

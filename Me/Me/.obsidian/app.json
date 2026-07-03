@@ -1,0 +1,10 @@
+{
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": false,
+  "showUnsupportedFiles": true,
+  "newFileLocation": "folder",
+  "attachmentFolderPath": "Личное/Ищем истину/_assets",
+  "useMarkdownLinks": false,
+  "newLinkFormat": "relativePathToFile",
+  "promptDeleteRemoteImages": false
+}

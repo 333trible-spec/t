@@ -1,0 +1,21 @@
+{
+  "name": "b24-crm-report-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Чат-бот Битрикс24 — отчёты по CRM",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-bot.ps1",
+    "status": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/status-bot.ps1",
+    "bot:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-bot.ps1",
+    "bot:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-bot.ps1",
+    "bot:status": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/status-bot.ps1",
+    "register": "node scripts/register-bot.js",
+    "sync-webhook": "node scripts/sync-webhook.js",
+    "use-fetch": "node scripts/use-fetch-mode.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

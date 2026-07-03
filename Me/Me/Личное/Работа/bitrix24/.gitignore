@@ -1,0 +1,14 @@
+.env
+*.env.local
+crm-report-bot/node_modules/
+crm-report-bot/.bot.pid
+deal-card-bg/.app.pid
+deal-card-bg/.tunnel.pid
+deal-card-bg/.watchdog.pid
+deal-card-bg/.tunnel-url
+deal-card-bg/.static-url
+deal-card-bg/.github-pages/
+deal-card-bg/app.log
+deal-card-bg/app.err.log
+deal-card-bg/tunnel.log
+deal-card-bg/tunnel.err.log

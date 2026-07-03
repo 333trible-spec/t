@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявка на договор</title>
+  <style>
+    :root {
+      --nd-green: #88c276;
+      --nd-blue: #2d95d2;
+      --nd-sky: #d5edfc;
+      --nd-teal: #4db6ab;
+      --nd-gradient: linear-gradient(-45deg, #88c276 0%, #4db6ab 50%, #2d95d2 100%);
+      --nd-text: #0f172a;
+      --nd-text-muted: #475569;
+      --nd-border: #b8d9f0;
+      --bg: #d5edfc;
+      --card: #ffffff;
+      --border: var(--nd-border);
+      --primary: var(--nd-blue);
+      --primary-hover: #2486be;
+      --muted: var(--nd-text-muted);
+      --err: #b91c1c;
+      --ok: var(--nd-green);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(45, 149, 210, 0.1);
+      --font: "Futura PT", Futura, "Century Gothic", "Trebuchet MS", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      margin: 0;
+      padding: 16px;
+      padding-bottom: 88px;
+      background: var(--bg);
+      color: var(--nd-text);
+      font-size: 14px;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+    h2 { margin: 0 0 8px; font-size: 17px; font-weight: 650; }
+    h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--nd-blue);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .card-header {
+      background: var(--nd-gradient);
+      border: none;
+      color: #fff;
+    }
+    .card-header h2 { color: #fff; }
+    .card-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-header-row h2 { flex: 1; min-width: 0; }
+    .app-version {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: 0.88;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .card-header .deal-info {
+      font-size: 14px;
+      font-weight: 550;
+      line-height: 1.45;
+      margin: 0;
+      color: #fff;
+    }
+    .deal-line-main { display: block; font-weight: 550; }
+    .deal-line-sum {
+      display: block;
+      margin-top: 6px;
+      font-size: 15px;
+      font-weight: 650;
+    }
+    .card-header .err { color: #fecaca; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .err { color: var(--err); }
+    .ok { color: var(--ok); font-weight: 500; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .form-section {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: none; margin-bottom: 0; }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (min-width: 720px) {
+      .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    /* Документы — плитки */
+    .fields-docs {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 520px) {
+      .fields-docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 960px) {
+      .fields-docs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .field-doc-tile {
+      display: block;
+      min-width: 0;
+    }
+    .doc-tile {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 108px;
+      padding: 12px 14px;
+      border: 1px solid var(--nd-border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .doc-tile:hover {
+      transform: translateY(-3px);
+      border-color: var(--nd-blue);
+      box-shadow: 0 8px 20px rgba(45, 149, 210, 0.24);
+    }
+    .doc-tile:active {
+      transform: translateY(-1px) scale(0.985);
+      box-shadow: 0 3px 10px rgba(45, 149, 210, 0.16);
+    }
+    .field-doc-tile.filled .doc-tile:hover {
+      border-color: var(--nd-green);
+      box-shadow: 0 2px 10px rgba(136, 194, 118, 0.28);
+    }
+    .doc-tile .file-trigger { pointer-events: none; }
+    .field-doc-tile.filled .doc-tile {
+      border-color: var(--nd-green);
+      background: #f3faef;
+    }
+    .field-doc-tile.invalid .doc-tile {
+      border-color: var(--err);
+      box-shadow: 0 0 0 1px var(--err);
+    }
+    .doc-tile-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--nd-text);
+      flex: 1;
+    }
+    .field-doc-tile.filled .doc-tile-title { color: #5a9e4a; }
+    .doc-tile .file-field {
+      justify-content: flex-end;
+      min-height: 0;
+      margin-top: auto;
+    }
+    .doc-tile .file-names {
+      flex: 1;
+      min-width: 0;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    /* Чипы «Тип сертификата» */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      padding: 4px 0;
+    }
+    .chip-option { cursor: pointer; }
+    .chip-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .chip-label {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--nd-blue);
+      background: #fff;
+      color: var(--nd-blue);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.2;
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+      user-select: none;
+    }
+    .chip-option:hover .chip-label {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 149, 210, 0.28);
+    }
+    .chip-option:active .chip-label {
+      transform: translateY(0) scale(0.96);
+      box-shadow: 0 2px 6px rgba(45, 149, 210, 0.18);
+    }
+    .chip-input:checked + .chip-label {
+      background: var(--nd-green);
+      border-color: var(--nd-green);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.35);
+    }
+    .chip-input:focus-visible + .chip-label {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(45, 149, 210, 0.25);
+    }
+    /* «Тип сертификата»: подложку зелёным не красим, рамку/отступ у группы не меняем */
+    .field[data-field="summ_MSK"].filled .chip-group {
+      padding: 4px 0;
+      border: none;
+      background: transparent;
+    }
+    /* Да / Нет — чипы в строку */
+    .yesno-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      padding: 4px 0;
+    }
+    .field[data-field="sber"].filled .yesno-group,
+    .field[data-field="repid_sale"].filled .yesno-group {
+      padding: 4px 0;
+      border: none;
+      background: transparent;
+    }
+    .field {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 6px;
+      min-width: 0;
+      align-content: start;
+    }
+    .field > .lbl {
+      margin-bottom: 0;
+      min-height: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .field > .lbl.lbl-multiline {
+      min-height: 3.25rem;
+    }
+    .field[data-field="summ_sotrudnichestva"] > .lbl {
+      min-height: 3.25rem;
+    }
+    .field.invalid .inp,
+    .field.invalid select { border-color: var(--err); box-shadow: 0 0 0 1px var(--err); }
+    .lbl { display: block; font-weight: 550; margin-bottom: 6px; font-size: 13px; color: var(--nd-text); }
+    .lbl-text { display: block; }
+    .lbl-multiline .lbl-sub {
+      display: block;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .req { color: var(--err); }
+    .inp {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-weight: 500;
+      background: #fff;
+    }
+    .inp-narrow,
+    select.inp,
+    .inp-money {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .inp-wide,
+    .field[data-field="commit_deal"] textarea.inp {
+      width: 100%;
+      min-width: 12rem;
+      max-width: min(100%, 80rem);
+    }
+    .field[data-field="commit_deal"] {
+      grid-column: 1 / -1;
+    }
+    select.inp {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 2rem;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d95d2' d='M3 4.5 6 7.5 9 4.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.65rem center;
+      background-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+    select.inp option {
+      background-color: #fff;
+      color: var(--nd-text);
+    }
+    select.inp:hover {
+      border-color: var(--nd-blue);
+    }
+    .inp-money::-webkit-inner-spin-button,
+    .inp-money::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .inp-money {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    .radio-group,
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      max-width: 100%;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .field > .check-row.yesno-row,
+    .field > .check-row:not(.radio-option):not(.check-option) {
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 0 10px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .radio-option,
+    .check-option { align-items: flex-start; }
+    .radio-option span,
+    .check-option span,
+    .check-row.yesno-row span { line-height: 1.35; font-weight: 500; }
+    .field.ownership-slot.ownership-inactive {
+      opacity: 0.42;
+      pointer-events: none;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .ownership-contact-field {
+      margin-top: 2px;
+      grid-column: 1 / -1;
+      display: block;
+    }
+    .ownership-contact-field .ownership-lbl {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    @media (max-width: 640px) {
+      .contact-cards { grid-template-columns: 1fr; }
+    }
+    .contact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e8f6fc 100%);
+      border: 1px solid rgba(45, 149, 210, 0.25);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 2px rgba(45, 149, 210, 0.08);
+      width: 100%;
+      min-width: 0;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(45, 149, 210, 0.2);
+      border-color: rgba(45, 149, 210, 0.45);
+    }
+    .contact-card:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 2px 6px rgba(45, 149, 210, 0.12);
+    }
+    .contact-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+    .contact-body {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact-name {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--nd-text);
+      line-height: 1.4;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .contact-card-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .contact-status-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 14px;
+      padding: 0 2px;
+    }
+    .contact-status-warn {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.35;
+      color: #dc2626;
+    }
+    .contact-empty {
+      margin: 4px 0 0;
+      font-size: 13px;
+      font-style: italic;
+      grid-column: 1 / -1;
+    }
+    .contact-prompt {
+      margin: 4px 0 0;
+      font-size: 14px;
+      font-weight: 550;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .ownership-contact-field.ownership-awaiting-type .contact-cards {
+      display: block;
+    }
+    .ownership-hint { margin-top: 8px; }
+    .inp:focus { outline: none; border-color: var(--nd-blue); box-shadow: 0 0 0 2px rgba(45, 149, 210, 0.2); }
+    textarea.inp { resize: vertical; min-height: 72px; }
+    .check-row { display: flex; align-items: center; gap: 8px; cursor: pointer; min-height: 2.5rem; }
+
+    /* Зелёная подсветка заполненных полей */
+    .field.filled > .lbl { color: #5a9e4a; }
+    .field.filled .inp,
+    .field.filled textarea.inp {
+      border-color: var(--nd-green);
+      background-color: #f3faef;
+    }
+    .field.filled select.inp {
+      border-color: var(--nd-green);
+      background-color: #fff;
+    }
+    .field.filled .inp:focus,
+    .field.filled select.inp:focus,
+    .field.filled textarea.inp:focus {
+      border-color: var(--nd-blue);
+      box-shadow: 0 0 0 2px rgba(45, 149, 210, 0.2);
+    }
+    .field.filled .radio-group,
+    .field.filled .check-group,
+    .field.filled > .check-row.yesno-row,
+    .field.filled > .check-row:not(.radio-option):not(.check-option) {
+      border-color: var(--nd-green);
+      background-color: #f3faef;
+    }
+
+    /* Прикрепление файла: плюс → галочка (стиль Навигатора) */
+    .file-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      min-height: 2.5rem;
+    }
+    .file-native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .file-trigger {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      color: #fff;
+      background: var(--nd-blue);
+      box-shadow: 0 2px 6px rgba(45, 149, 210, 0.35);
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+    .file-trigger:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 6px 14px rgba(45, 149, 210, 0.45); }
+    .file-trigger:active { transform: translateY(0) scale(0.94); box-shadow: 0 2px 6px rgba(45, 149, 210, 0.3); }
+    .file-native:focus-visible + .file-trigger {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(45, 149, 210, 0.3);
+    }
+    .file-trigger svg { width: 20px; height: 20px; display: block; }
+    .file-trigger .file-icon-done { display: none; }
+    .file-field.has-file .file-trigger {
+      background: var(--nd-green);
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.45);
+    }
+    .file-field.has-file .file-trigger:hover { box-shadow: 0 3px 10px rgba(136, 194, 118, 0.55); }
+    .file-field.has-file .file-trigger .file-icon-add { display: none; }
+    .file-field.has-file .file-trigger .file-icon-done { display: block; }
+    /* Файл уже прикреплён в сделке: плюс на зелёном фоне (в форму не копируется) */
+    .file-field.has-deal-file .file-trigger {
+      background: var(--nd-green);
+      box-shadow: 0 2px 6px rgba(136, 194, 118, 0.45);
+    }
+    .file-field.has-deal-file .file-trigger:hover { box-shadow: 0 3px 10px rgba(136, 194, 118, 0.55); }
+    .file-names { font-size: 13px; }
+    .file-field.has-file .file-names,
+    .file-field.has-deal-file .file-names { color: #5a9e4a; font-weight: 500; }
+    .check-row input[type="checkbox"],
+    .check-row input[type="radio"] {
+      accent-color: var(--nd-blue);
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+    .hint { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+    .crm-list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+    .crm-list li { margin: 4px 0; }
+    .crm-remove { padding: 2px 8px; font-size: 12px; margin-left: 6px; }
+    .form-footer { margin-top: 4px; }
+    .form-actions-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 12px 16px;
+      background: #fff;
+      border: none;
+      border-top: 1px solid var(--nd-border);
+      border-radius: 0;
+      box-shadow: 0 -2px 12px rgba(45, 149, 210, 0.16);
+    }
+    .form-actions-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .form-actions-main.hidden { display: none !important; }
+    .save-confirm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .save-confirm.hidden { display: none !important; }
+    .save-confirm-text {
+      font-weight: 550;
+      font-size: 14px;
+      color: var(--nd-text);
+      margin-right: 4px;
+    }
+    .form-actions-bar .btn {
+      font-weight: 550;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .form-actions-bar .btn.secondary {
+      background: #fff;
+      border: 1px solid var(--nd-border);
+      color: var(--nd-blue);
+      box-shadow: none;
+    }
+    .form-actions-bar .btn.secondary:hover {
+      border-color: var(--nd-blue);
+      background: #fff;
+    }
+    .form-actions-bar #save-yes:hover {
+      border-color: var(--nd-green);
+      color: #5a9e4a;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(136, 194, 118, 0.35), 0 2px 10px rgba(136, 194, 118, 0.3);
+    }
+    .form-actions-bar .btn.primary {
+      min-width: 7rem;
+      background: var(--nd-blue);
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(45, 149, 210, 0.35);
+    }
+    .form-actions-bar .btn.primary:hover {
+      background: var(--nd-green);
+      box-shadow: 0 2px 8px rgba(136, 194, 118, 0.45);
+    }
+    .btn {
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      background: var(--nd-sky);
+      color: var(--nd-text);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(0.96); }
+    .btn.primary { background: var(--nd-blue); color: #fff; box-shadow: 0 2px 8px rgba(45, 149, 210, 0.35); }
+    .btn.primary:hover { background: var(--primary-hover); box-shadow: 0 6px 16px rgba(45, 149, 210, 0.4); }
+    .btn.primary:active { box-shadow: 0 2px 6px rgba(45, 149, 210, 0.28); }
+    .btn.secondary {
+      background: #fff;
+      border: 1px solid var(--nd-border);
+      color: var(--nd-blue);
+      box-shadow: 0 1px 3px rgba(45, 149, 210, 0.08);
+    }
+    .btn.secondary:hover { border-color: var(--nd-blue); box-shadow: 0 4px 12px rgba(45, 149, 210, 0.18); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .form-msg { margin-top: 12px; font-size: 13px; }
+    .preview {
+      margin-top: 12px;
+      padding: 12px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      overflow: auto;
+      max-height: 240px;
+    }
+    .hidden { display: none !important; }
+    /* Сделка на стадии «Успешно (за-н)» — только просмотр */
+    body.deal-completed { padding-bottom: 16px; }
+    .form-readonly {
+      pointer-events: none;
+      user-select: none;
+    }
+    .form-readonly .inp,
+    .form-readonly select.inp,
+    .form-readonly textarea.inp {
+      background-color: #f8fafc;
+      cursor: default;
+    }
+    .form-readonly .doc-tile,
+    .form-readonly .chip-option,
+    .form-readonly .contact-card,
+    .form-readonly .file-trigger {
+      cursor: default;
+    }
+    .form-readonly .doc-tile:hover,
+    .form-readonly .chip-option:hover .chip-label,
+    .form-readonly .contact-card:hover,
+    .form-readonly select.inp:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card card-header">
+    <div class="card-header-row">
+      <h2 id="app-title">Заявка на договор</h2>
+      <span class="app-version" id="app-version"></span>
+    </div>
+    <p class="deal-info" id="deal-info">Загрузка…</p>
+  </div>
+
+  <div class="form-actions-bar" id="form-actions-bar">
+    <div class="form-actions-main" id="form-actions-main">
+      <button type="button" class="btn primary" id="btn-submit">Сохранить</button>
+      <button type="button" class="btn secondary" id="btn-validate">Проверить</button>
+      <button type="button" class="btn secondary" id="btn-draft">Черновик</button>
+    </div>
+    <div class="save-confirm hidden" id="save-confirm">
+      <span class="save-confirm-text">Сохранить?</span>
+      <button type="button" class="btn secondary" id="save-yes">Да</button>
+      <button type="button" class="btn secondary" id="save-no">Нет</button>
+    </div>
+  </div>
+
+  <div class="card" id="form-root"></div>
+
+  <script src="version.js"></script>
+  <script src="bp-form-config.js"></script>
+  <script src="deal-prefill-map.js"></script>
+  <script src="bp-form.js"></script>
+  <script src="deal-prefill.js"></script>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script>
+    let dealId = null;
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function placementDealId() {
+      const info = (typeof BX24.placement.info === 'function' ? BX24.placement.info() : {}) || {};
+      let opts = info.options || {};
+      if (typeof opts === 'string') {
+        try { opts = JSON.parse(opts); } catch (_) { opts = {}; }
+      }
+      return opts.ID || opts.id || opts.ENTITY_VALUE_ID || opts.entityValueId || null;
+    }
+
+    function initForm() {
+      const root = document.getElementById('form-root');
+      const config = window.BP608_FORM_CONFIG || [];
+      window.BP608Form.render(root, config);
+      window.__bp608DealId = dealId;
+    }
+
+    async function prefillFormFromDeal() {
+      const root = document.getElementById('form-root');
+      if (!dealId || !root.querySelector('#bp608-form')) return;
+      try {
+        await window.BP608DealPrefill.load(root, dealId, call);
+      } catch (e) {
+        console.warn('prefill', e);
+      }
+    }
+
+    async function finishFormInit() {
+      const root = document.getElementById('form-root');
+      initForm();
+      if (dealId) await prefillFormFromDeal();
+      window.BP608Form.loadDraft(root, dealId);
+      if (dealId && window.BP608DealPrefill && window.BP608DealPrefill.hydrateContacts) {
+        try {
+          await window.BP608DealPrefill.hydrateContacts(root, call);
+        } catch (e) {
+          console.warn('hydrate contacts', e);
+        }
+      }
+    }
+
+    function pick(...vals) {
+      for (let i = 0; i < vals.length; i++) {
+        const v = vals[i];
+        if (v == null || v === '') continue;
+        if (Array.isArray(v) && !v.length) continue;
+        return Array.isArray(v) ? v.join(', ') : String(v);
+      }
+      return '—';
+    }
+
+    function formatRub(v) {
+      if (v == null || v === '') return '—';
+      const cleaned = String(v).replace(/\s/g, '').replace(',', '.');
+      const n = Number(cleaned);
+      if (Number.isNaN(n)) return String(v).trim() + ' руб.';
+      return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n) + ' руб.';
+    }
+
+    async function contactFio(deal) {
+      const contactId = deal.CONTACT_ID;
+      if (!contactId) return '—';
+      const c = await call('crm.contact.get', {
+        id: contactId,
+        select: ['NAME', 'LAST_NAME', 'SECOND_NAME'],
+      });
+      const fio = [c.LAST_NAME, c.NAME, c.SECOND_NAME].filter(Boolean).join(' ').trim();
+      return fio || '—';
+    }
+
+    function joinTypeAndRoom(typeVal, roomVal) {
+      const type = typeVal == null || typeVal === '' ? '' : String(typeVal).trim();
+      const room = roomVal == null || roomVal === '' ? '' : String(roomVal).trim();
+      if (type && room) return type + ' ' + room;
+      return type || room || '—';
+    }
+
+    function renderDealHeader(deal, fio) {
+      const place = joinTypeAndRoom(deal.UF_CRM_1538729147, deal.UF_CRM_1660535141);
+      const line1 = [fio || '—', pick(deal.UF_CRM_1739347967), place].join(' / ');
+      const sum = formatRub(deal.UF_CRM_1538728286642);
+      return (
+        '<span class="deal-line-main">' + line1 + '</span>' +
+        '<span class="deal-line-sum">' + sum + '</span>'
+      );
+    }
+
+    async function applyDealCompletedMode(deal) {
+      if (!deal || !window.BP608DealPrefill || !window.BP608DealPrefill.isDealCompletedStage) return;
+      let completed = false;
+      try {
+        completed = await window.BP608DealPrefill.isDealCompletedStage(call, deal);
+      } catch (e) {
+        console.warn('stage check', e);
+      }
+      window.__bp608DealCompleted = completed;
+      const titleEl = document.getElementById('app-title');
+      if (completed && titleEl) titleEl.textContent = 'Сделка завершена';
+      if (completed && window.BP608Form && window.BP608Form.setReadOnly) {
+        window.BP608Form.setReadOnly(document.getElementById('form-root'), true);
+      }
+    }
+
+    async function loadDeal() {
+      if (!dealId) {
+        document.getElementById('deal-info').textContent = 'Откройте вкладку из карточки сделки';
+        return;
+      }
+      const deal = await call('crm.deal.get', {
+        id: dealId,
+        select: [
+          'ID',
+          'CONTACT_ID',
+          'STAGE_ID',
+          'CATEGORY_ID',
+          'UF_CRM_1739347967',
+          'UF_CRM_1538729147',
+          'UF_CRM_1660535141',
+          'UF_CRM_1538728286642',
+        ],
+      });
+      const fio = await contactFio(deal);
+      document.getElementById('deal-info').innerHTML = renderDealHeader(deal, fio);
+      await applyDealCompletedMode(deal);
+    }
+
+    function startApp() {
+      window.__bp608Call = call;
+      if (typeof BX24 === 'undefined') {
+        document.getElementById('deal-info').textContent = 'Предпросмотр без портала';
+        initForm();
+        return;
+      }
+      BX24.init(async () => {
+        try {
+          dealId = placementDealId();
+          window.__bp608DealId = dealId;
+          await finishFormInit();
+          if (!dealId) {
+            document.getElementById('deal-info').innerHTML = '<span class="err">Откройте вкладку из карточки сделки</span>';
+          } else {
+            await loadDeal();
+          }
+        } catch (e) {
+          document.getElementById('deal-info').innerHTML = '<span class="err">' + (e.message || e) + '</span>';
+        }
+      }, () => {
+        document.getElementById('deal-info').innerHTML = '<span class="muted">Форма доступна; REST — после установки на портал</span>';
+        finishFormInit();
+      });
+    }
+
+    startApp();
+
+    (function showAppVersion() {
+      const el = document.getElementById('app-version');
+      const v = window.BP608_APP_VERSION;
+      if (el && v) el.textContent = v;
+    })();
+  </script>
+</body>
+</html>

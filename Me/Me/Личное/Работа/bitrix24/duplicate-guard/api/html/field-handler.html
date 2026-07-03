@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { font-family: system-ui, sans-serif; background: transparent; }
+    .wrap {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.08);
+      transition: background .2s, border-color .2s;
+    }
+    .wrap.state-ok { background: #E8F5E9; border-color: #A5D6A7; }
+    .wrap.state-dup { background: #FFEBEE; border-color: #EF9A9A; }
+    .wrap.state-idle { background: #f9fafb; }
+    .title { font-size: 13px; font-weight: 700; margin: 0 0 8px; color: #1f2937; }
+    button.check {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      background: #1565c0;
+      color: #fff;
+      cursor: pointer;
+    }
+    button.check:disabled { opacity: .6; cursor: wait; }
+    .msg { margin-top: 10px; font-size: 12px; line-height: 1.45; color: #374151; }
+    .msg strong { display: block; margin-bottom: 4px; }
+    ul { margin: 6px 0 0; padding-left: 18px; font-size: 12px; }
+    li { margin: 4px 0; }
+    .muted { color: #6b7280; font-size: 11px; margin-top: 6px; }
+    .err { color: #b91c1c; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const USER_TYPE = 'duplicate_check';
+
+    function digitsOnly(raw) {
+      return String(raw ?? '').replace(/\D/g, '');
+    }
+    function normalizePhone(raw) {
+      const trimmed = String(raw ?? '').trim();
+      if (!trimmed) return null;
+      const d = digitsOnly(trimmed);
+      if (!d) return null;
+      if (d.length === 11 && d[0] === '8') return '+7' + d.slice(1);
+      if (d.length === 11 && d[0] === '7') return '+' + d;
+      if (d.length === 10) return '+7' + d;
+      if (trimmed.startsWith('+') && d.length === 11 && d[0] === '7') return '+' + d;
+      if (d.length >= 10 && d.length <= 15) return '+' + d;
+      return null;
+    }
+    function phoneSearchVariants(raw) {
+      const canonical = normalizePhone(raw);
+      if (!canonical) return [];
+      const d = digitsOnly(canonical);
+      const variants = new Set([canonical, d]);
+      if (d.length === 11 && d[0] === '7') {
+        const ten = d.slice(1);
+        variants.add('8' + ten);
+        variants.add(ten);
+        variants.add('+7 ' + ten.slice(0, 3) + ' ' + ten.slice(3, 6) + '-' + ten.slice(6, 8) + '-' + ten.slice(8));
+        variants.add('8 (' + ten.slice(0, 3) + ') ' + ten.slice(3, 6) + '-' + ten.slice(6, 8) + '-' + ten.slice(8));
+      }
+      return [...variants];
+    }
+    function extractPhonesFromCrmField(phoneField) {
+      const rows = Array.isArray(phoneField) ? phoneField : [];
+      const seen = new Set();
+      const out = [];
+      for (const row of rows) {
+        const raw = row?.VALUE ?? row?.value ?? row;
+        const n = normalizePhone(raw);
+        if (n && !seen.has(n)) { seen.add(n); out.push(n); }
+      }
+      return out;
+    }
+    async function findByPhone(entityType, rawPhone) {
+      const values = phoneSearchVariants(rawPhone);
+      if (!values.length) return [];
+      const r = await call('crm.duplicate.findbycomm', {
+        entity_type: entityType,
+        type: 'PHONE',
+        values,
+      });
+      return r?.[entityType] || [];
+    }
+
+    let entityType = '';
+    let entityId = null;
+    let categoryId = 0;
+    let categoryName = '';
+
+    function call(method, params) {
+      return new Promise((resolve, reject) => {
+        BX24.callMethod(method, params, (r) => {
+          if (r.error()) reject(new Error(r.error_description || r.error()));
+          else resolve(r.data());
+        });
+      });
+    }
+
+    function portalUrl(path) {
+      try { return 'https://' + BX24.getDomain() + path; } catch (_) { return '#'; }
+    }
+
+    async function loadCategories() {
+      const rows = await call('crm.dealcategory.list', {});
+      const map = {};
+      (rows || []).forEach((c) => { map[Number(c.ID)] = c.NAME; });
+      return map;
+    }
+
+    async function getEntityPhones() {
+      if (entityType === 'CRM_DEAL') {
+        const d = await call('crm.deal.get', {
+          id: entityId,
+          select: ['ID', 'TITLE', 'PHONE', 'CATEGORY_ID', 'CONTACT_ID'],
+        });
+        categoryId = Number(d.CATEGORY_ID || 0);
+        let phones = extractPhonesFromCrmField(d.PHONE);
+        if (!phones.length && d.CONTACT_ID) {
+          const c = await call('crm.contact.get', { id: d.CONTACT_ID, select: ['PHONE'] });
+          phones = extractPhonesFromCrmField(c.PHONE);
+        }
+        return { phones, title: d.TITLE || '' };
+      }
+      const l = await call('crm.lead.get', {
+        id: entityId,
+        select: ['ID', 'TITLE', 'PHONE', 'STATUS_ID'],
+      });
+      categoryId = 0;
+      return { phones: extractPhonesFromCrmField(l.PHONE), title: l.TITLE || '' };
+    }
+
+    async function collectByPhone(canonicalPhone, catMap) {
+      const found = { contacts: [], leads: [], dealsInFunnel: [], dealsOther: [] };
+
+      for (const id of await findByPhone('CONTACT', canonicalPhone)) {
+        const c = await call('crm.contact.get', { id, select: ['ID', 'TITLE', 'NAME', 'LAST_NAME'] });
+        const name = c.TITLE || [c.LAST_NAME, c.NAME].filter(Boolean).join(' ') || ('Контакт #' + id);
+        found.contacts.push({ id, name, type: 'contact' });
+      }
+
+      for (const id of (await findByPhone('LEAD', canonicalPhone)).filter((lid) => String(lid) !== String(entityId))) {
+        const l = await call('crm.lead.get', { id, select: ['ID', 'TITLE', 'STATUS_ID'] });
+        found.leads.push({
+          id,
+          name: l.TITLE || ('Лид #' + id),
+          type: 'lead',
+          url: portalUrl('/crm/lead/details/' + id + '/'),
+        });
+      }
+
+      const contactIdList = found.contacts.map((c) => c.id);
+      if (contactIdList.length) {
+        const deals = await call('crm.deal.list', {
+          filter: { CONTACT_ID: contactIdList },
+          select: ['ID', 'TITLE', 'CATEGORY_ID', 'STAGE_ID'],
+        });
+        for (const d of deals || []) {
+          if (String(d.ID) === String(entityId)) continue;
+          const cat = Number(d.CATEGORY_ID || 0);
+          const item = {
+            id: d.ID,
+            name: d.TITLE || ('Сделка #' + d.ID),
+            type: 'deal',
+            categoryId: cat,
+            categoryName: catMap[cat] || ('Воронка ' + cat),
+            url: portalUrl('/crm/deal/details/' + d.ID + '/'),
+          };
+          if (entityType === 'CRM_DEAL' && cat === categoryId) found.dealsInFunnel.push(item);
+          else found.dealsOther.push(item);
+        }
+      }
+
+      return found;
+    }
+
+    function mergeResults(parts) {
+      const key = (x) => x.type + ':' + x.id;
+      const map = new Map();
+      const merge = (arr, bucket) => {
+        arr.forEach((item) => {
+          const k = key(item);
+          if (!map.has(k)) map.set(k, { ...item, bucket });
+        });
+      };
+      parts.forEach((p) => {
+        merge(p.contacts, 'contact');
+        merge(p.leads, 'lead');
+        merge(p.dealsInFunnel, 'funnel');
+        merge(p.dealsOther, 'other');
+      });
+      return [...map.values()];
+    }
+
+    function renderState(state, message, items, funnelLabel) {
+      const root = document.getElementById('root');
+      const stateClass = state === 'ok' ? 'state-ok' : (state === 'dup' ? 'state-dup' : 'state-idle');
+      let listHtml = '';
+      if (items && items.length) {
+        listHtml = '<ul>' + items.map((it) => {
+          const label = it.type === 'deal'
+            ? it.name + ' — ' + (it.categoryName || '')
+            : it.name;
+          const href = it.url || (it.type === 'contact' ? portalUrl('/crm/contact/details/' + it.id + '/') : '#');
+          return '<li><a href="' + href + '" target="_blank" rel="noopener">' + label + '</a></li>';
+        }).join('') + '</ul>';
+      }
+      root.innerHTML =
+        '<div class="wrap ' + stateClass + '">' +
+        '<p class="title">Проверка на дубль</p>' +
+        '<button type="button" class="check" id="btn">Проверить дубли</button>' +
+        '<div class="msg"><strong>' + message + '</strong>' + listHtml +
+        (funnelLabel ? '<p class="muted">Воронка: ' + funnelLabel + '</p>' : '') +
+        '</div></div>';
+      document.getElementById('btn').onclick = runCheck;
+      try { BX24.fitWindow(); } catch (_) {}
+    }
+
+    async function runCheck() {
+      const btn = document.getElementById('btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Проверка…'; }
+      try {
+        resolveContext();
+        if (!entityId) {
+          renderState('idle', 'Сначала сохраните карточку — нужен ID лида/сделки', [], '');
+          return;
+        }
+        const catMap = await loadCategories();
+        categoryName = catMap[categoryId] || (entityType === 'CRM_LEAD' ? 'Лиды' : 'Воронка ' + categoryId);
+
+        const { phones } = await getEntityPhones();
+        if (!phones.length) {
+          renderState('idle', 'Телефон не указан — проверка только по номеру телефона', [], categoryName);
+          return;
+        }
+
+        const parts = [];
+        for (const phone of phones) {
+          parts.push(await collectByPhone(phone, catMap));
+        }
+
+        const inFunnelDeals = parts.flatMap((p) => p.dealsInFunnel);
+        const leadDupes = parts.flatMap((p) => p.leads);
+
+        const relevantForColor = entityType === 'CRM_DEAL' ? inFunnelDeals : leadDupes;
+        const hasDup = relevantForColor.length > 0;
+
+        const displayItems = entityType === 'CRM_DEAL'
+          ? mergeResults([{
+            contacts: parts.flatMap((p) => p.contacts),
+            leads: leadDupes,
+            dealsInFunnel: inFunnelDeals,
+            dealsOther: [],
+          }])
+          : mergeResults(parts);
+
+        const showItems = entityType === 'CRM_DEAL'
+          ? displayItems.filter((x) => x.bucket === 'funnel' || x.bucket === 'lead' || x.bucket === 'contact')
+          : displayItems;
+
+        if (hasDup) {
+          const cnt = entityType === 'CRM_DEAL'
+            ? inFunnelDeals.length + ' в воронке'
+            : leadDupes.length + ' лид(ов)';
+          renderState('dup', 'Дубликаты найдены (' + cnt + ')', showItems, categoryName);
+        } else {
+          renderState('ok', 'Дублей нет', [], categoryName);
+        }
+
+        try {
+          BX24.placement.call('setValue', JSON.stringify({
+            status: hasDup ? 'dup' : 'ok',
+            checkedAt: new Date().toISOString(),
+            categoryId,
+          }));
+        } catch (_) {}
+      } catch (e) {
+        document.getElementById('root').innerHTML =
+          '<div class="wrap state-idle"><p class="err">' + (e.message || e) + '</p>' +
+          '<button type="button" class="check" id="btn">Повторить</button></div>';
+        document.getElementById('btn').onclick = runCheck;
+      } finally {
+        const b = document.getElementById('btn');
+        if (b) { b.disabled = false; b.textContent = 'Проверить дубли'; }
+      }
+    }
+
+    function resolveContext() {
+      const info = (typeof BX24.placement.info === 'function' ? BX24.placement.info() : {}) || {};
+      const opts = info.options || (typeof BX24.getPlacementOptions === 'function' ? BX24.getPlacementOptions() : {}) || {};
+      const et = String(opts.ENTITY_ID || opts.entityId || info.placement || '').toUpperCase();
+      if (et.includes('DEAL')) entityType = 'CRM_DEAL';
+      else if (et.includes('LEAD')) entityType = 'CRM_LEAD';
+      else entityType = et;
+      entityId = opts.ENTITY_VALUE_ID || opts.entityValueId || opts.ELEMENT_ID || opts.ID || opts.id || entityId;
+      return { entityType, entityId };
+    }
+
+    BX24.init(() => {
+      try {
+        resolveContext();
+        if (!entityId) {
+          renderState('idle', 'Сохраните карточку, затем нажмите «Проверить дубли»', [], '');
+        } else {
+          renderState('idle', 'Проверка дублей только по номеру телефона', [], '');
+        }
+        try { BX24.fitWindow(); } catch (_) {}
+      } catch (e) {
+        document.getElementById('root').innerHTML =
+          '<div class="wrap state-idle"><p class="err">' + (e.message || e) + '</p></div>';
+      }
+    }, () => {
+      document.getElementById('root').innerHTML =
+        '<div class="wrap state-idle"><p class="err">Нет связи с приложением. Переустановите Duplicate Guard.</p></div>';
+    });
+  </script>
+</body>
+</html>
