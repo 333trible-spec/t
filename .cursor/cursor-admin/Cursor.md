@@ -40,9 +40,10 @@
 | `scripts/sync-context.ps1` | Подписка + VPN → context.md |
 | `scripts/fetch-subscription.ps1` | Только subscription.json |
 | `scripts/fetch-vpn.ps1` | Только vpn.json (Happ) |
-| `scripts/fetch-ambience.ps1` | Время и погода Тюмени → ambience.json |
 | `scripts/fetch-system.ps1` | Снимок Windows (RAM, диск, CPU, **GPU temp**) → system.json |
-| `subscription.json` / `vpn.json` / `system.json` / `ambience.json` | Кэш (не в git) |
+| `subscription.json` / `vpn.json` / `system.json` | Кэш (не в git) |
+
+Погода / ambience — **отключены** (скрипт удалён).
 
 ## Примеры запросов
 
@@ -58,4 +59,8 @@
 | Агент | Зона |
 |-------|------|
 | [[../../Me/Me/Личное/Работа/bitrix24/Битрикс24|Витёк]] | Битрикс24 |
-| Гена | Безопасность настроек |
+| Гена | Безопасность (по просьбе) |
+| База знаний | Google Drive → БЗ Б24 |
+| Дизайнер Навигатора | Брендбук, UI/CSS |
+
+Канон: `.cursor/rules/agents-allowlist.mdc`.
