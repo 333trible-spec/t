@@ -2,9 +2,9 @@
 
 
 
-Проект: [[PROJECT]] · Регистрация: [[docs/B24-APP-REGISTER]] · Версии: [[docs/VERSIONING]] · URL: [[static-urls.json]]
+Проект: [[PROJECT]] · Регистрация: [[docs/B24-APP-REGISTER]] · Для сотрудников: [[docs/USER-GUIDE]] · Кратко: [[docs/USER-GUIDE-SHORT]] · Версии: [[docs/VERSIONING]] · URL: [[static-urls.json]]
 
-**Текущая версия:** `v 0.6` (`version.json`) · шаг **+0.01** (`npm run version:bump`)
+**Текущая версия:** `v 0.76` (`version.json`) · шаг **+0.01** (`npm run version:bump`)
 
 | Команда в чате | Действие |
 |----------------|----------|
@@ -41,9 +41,11 @@
 
 | Редактор | https://ik-navigator.bitrix24.ru/crm/configs/bp/CRM_DEAL/edit/608/ |
 
-| Запуск из вкладки | **Нет** — БП стартует штатно на портале |
+| Запуск из вкладки | **Да** — кнопка «Отправить» → `bizproc.workflow.start` (шаблон 608) |
 
 | DOCUMENT_ID | `['crm', 'CCrmDocumentDeal', 'DEAL_{dealId}']` |
+
+| Parameter3 | `Y` (Да), если у контакта заполнены ФИО + почта + реквизиты |
 
 
 
@@ -72,6 +74,12 @@
 | Дата | Задача | Результат |
 
 |------|--------|-----------|
+
+| 2026-07-14 | View-only в оформлении: после refresh кнопки не включаются снова | ✅ tab.html, bp-form.js → v 0.76 |
+
+| 2026-07-14 | Фикс флагов контакта долевая/совместная (ФИО/телефон/почта/реквизиты) | ✅ bp-form.js → v 0.75 |
+
+| 2026-07-13 | Кнопка «Отправить» → запуск БП 608 с PARAMETERS; активность по обязательным + ФИО/почта/реквизиты; Parameter3=Y | ✅ api/html/bp-form.js, deal-prefill.js |
 
 | 2026-07-01 | Создан проект | ✅ PROJECT, app/public |
 

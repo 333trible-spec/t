@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявка на договор</title>
+  <style>
+    :root {
+      --nd-green: #88c276;
+      --nd-blue: #2d95d2;
+      --nd-sky: #d5edfc;
+      --nd-teal: #4db6ab;
+      --nd-gradient: linear-gradient(-45deg, #88c276 0%, #4db6ab 50%, #2d95d2 100%);
+      --nd-text: #0f172a;
+      --nd-text-muted: #475569;
+      --nd-border: #b8d9f0;
+      --bg: #d5edfc;
+      --card: #ffffff;
+      --border: var(--nd-border);
+      --primary: var(--nd-blue);
+      --primary-hover: #2486be;
+      --muted: var(--nd-text-muted);
+      --err: #b91c1c;
+      --ok: var(--nd-green);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(45, 149, 210, 0.1);
+      --font: "Futura PT", Futura, "Century Gothic", "Trebuchet MS", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      margin: 0;
+      padding: 16px;
+      background: var(--bg);
+      color: var(--nd-text);
+      font-size: 14px;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+    .page { max-width: 720px; margin: 0 auto; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .card-header {
+      background: var(--nd-gradient);
+      border: none;
+      color: #fff;
+      padding: 18px 20px;
+    }
+    .card-header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 650;
+      color: #fff;
+    }
+    .card-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .app-version {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: 0.88;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--nd-blue);
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(45, 149, 210, 0.2);
+    }
+    .muted { color: var(--muted); font-size: 13px; }
+    .err { color: var(--err); }
+    .hidden { display: none !important; }
+    #dash-status { margin: 0 0 14px; font-size: 14px; }
+    .dash-user strong { color: var(--nd-text); font-weight: 600; }
+    .dash-hero {
+      margin-bottom: 16px;
+      padding: 18px 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--nd-border);
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(213,237,252,0.55) 100%);
+      box-shadow: 0 4px 14px rgba(45, 149, 210, 0.12);
+    }
+    .dash-stat {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .dash-count {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      background: var(--nd-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .dash-count-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 6px;
+    }
+    .dash-count-label {
+      font-size: 20px;
+      font-weight: 650;
+      color: var(--nd-green);
+    }
+    .dash-stage-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--nd-blue);
+      background: rgba(45, 149, 210, 0.1);
+      border: 1px solid rgba(45, 149, 210, 0.25);
+      width: fit-content;
+    }
+    .dash-funnel { margin: 10px 0 0; font-size: 12px; }
+    .dash-deal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 520px) {
+      .dash-deal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .dash-deal-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 14px;
+      border: 1px solid var(--nd-border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+    .dash-deal-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--nd-blue);
+      box-shadow: 0 4px 12px rgba(45, 149, 210, 0.16);
+    }
+    .dash-deal-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--nd-text);
+      line-height: 1.35;
+    }
+    .dash-deal-id {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .dash-empty-box {
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--nd-border);
+      background: rgba(255, 255, 255, 0.7);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .dash-empty { margin: 0; }
+    .dash-more { margin: 0 0 12px; text-align: center; }
+    .btn-kanban {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: var(--nd-blue);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(45, 149, 210, 0.35);
+      transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+    }
+    .btn-kanban:hover {
+      background: var(--nd-green);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(136, 194, 118, 0.4);
+    }
+    .btn-refresh {
+      margin-top: 14px;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--nd-border);
+      background: #fff;
+      color: var(--nd-blue);
+      font: inherit;
+      font-weight: 550;
+      cursor: pointer;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+    .btn-refresh:hover {
+      border-color: var(--nd-blue);
+      box-shadow: 0 2px 8px rgba(45, 149, 210, 0.15);
+    }
+    .hint-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .hint-list li { margin: 8px 0; }
+    .hint-list strong { color: var(--nd-text); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card card-header">
+      <div class="card-header-row">
+        <h1>Заявка на договор</h1>
+        <span class="app-version" id="app-version"></span>
+      </div>
+    </div>
+
+    <div class="card" id="dash-root">
+      <h2 class="section-title">Оформление документов</h2>
+      <p id="dash-status" class="muted">Инициализация…</p>
+      <div id="dash-body" class="hidden"></div>
+      <button type="button" class="btn-refresh hidden" id="btn-refresh-dash">Обновить</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Форма в карточке сделки</h2>
+      <ol class="hint-list muted">
+        <li><strong>CRM → Сделки</strong></li>
+        <li>Откройте сделку в воронке 8</li>
+        <li>Вкладка <strong>«Заявка на договор»</strong></li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="version.js"></script>
+  <script src="app-dashboard.js"></script>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script>
+    (function () {
+      const verEl = document.getElementById('app-version');
+      if (verEl && window.BP608_APP_VERSION) verEl.textContent = window.BP608_APP_VERSION;
+
+      const root = document.getElementById('dash-root');
+      const refreshBtn = document.getElementById('btn-refresh-dash');
+
+      function refresh() {
+        if (window.BP608AppDashboard && window.BP608AppDashboard.load) {
+          window.BP608AppDashboard.load(root);
+        }
+      }
+
+      if (refreshBtn) refreshBtn.addEventListener('click', refresh);
+
+      if (typeof BX24 === 'undefined') {
+        document.getElementById('dash-status').innerHTML =
+          '<span class="err">SDK Б24 не загрузился. Откройте приложение из портала ik-navigator.</span>';
+        return;
+      }
+
+      BX24.init(function () {
+        if (refreshBtn) refreshBtn.classList.remove('hidden');
+        refresh();
+      }, function () {
+        document.getElementById('dash-status').innerHTML =
+          '<span class="err">Нет авторизации SDK — откройте из портала ik-navigator.</span>';
+      });
+    })();
+  </script>
+</body>
+</html>

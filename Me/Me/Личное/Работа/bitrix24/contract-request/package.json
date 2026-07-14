@@ -1,5 +1,6 @@
 {
   "name": "b24-contract-request",
+  "version": "0.72.0",
   "private": true,
   "description": "Заявка на договор — placement на ik-navigator",
   "scripts": {
@@ -8,5 +9,7 @@
     "version:rollback": "node scripts/version-rollback.js",
     "version:bump": "node scripts/version-bump.js"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }

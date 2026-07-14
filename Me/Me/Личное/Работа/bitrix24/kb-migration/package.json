@@ -1,5 +1,16 @@
 {
   "name": "kb-migration",
+  "version": "1.0.0",
   "private": true,
-  "type": "module"
+  "description": "Google Drive to Bitrix24 knowledge base (dm-tmn)",
+  "scripts": {
+    "fetch-incidents": "node scripts/fetch-incidents.js",
+    "parse-b24": "node scripts/parse-b24.js",
+    "parse-1c": "node scripts/parse-1c.js",
+    "publish-b24": "node scripts/publish-b24-rest.js",
+    "publish-1c": "node scripts/publish-1c.js",
+    "publish-incident": "node scripts/publish-incident.js",
+    "attach-images": "node scripts/attach-b24-images.js",
+    "check-access": "node scripts/check-note-access.js"
+  }
 }

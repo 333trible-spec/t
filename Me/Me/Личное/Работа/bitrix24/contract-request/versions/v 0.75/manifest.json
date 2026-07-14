@@ -1,0 +1,17 @@
+{
+  "version": "v 0.75",
+  "savedAt": "2026-07-14T08:30:26.497Z",
+  "files": {
+    "api/html/index.html": "6b75a9c4c81372d1c69df6b6d9621879e5c7456d97ba3943a82155457f06286c",
+    "api/html/install.html": "ec56c98839f5ce83ba993535dae89c5504121179bc755a4a1706f4060fa0fc0f",
+    "api/html/tab.html": "91823740bf6e781be2643b139d020b6202504cb475a3737765a5e9e9c269928a",
+    "api/html/bp-form-config.js": "12dfa0b2a9b1879831107b0d730979f367df690f0d2f517b395664c1033205f0",
+    "api/html/bp-form.js": "1baf8bcfa854d7b8c02c974ebac523fe030eeec7f0b3d15b7004005f2f2d4aef",
+    "api/html/deal-prefill-map.js": "ae622c48d4b236480f74b915ed6d1056ad27450de74cd3213161401a1f1e2584",
+    "api/html/deal-prefill.js": "229bdbf18e1cc2375ad25a6ea9b3ddbc3b150672d067e09eb17fac362e654759",
+    "api/html/version.js": "10b918d1e45de1b40aafebae8d0526aba2bf523853cecb6292f43dc098fe5b2a",
+    "api/serve.js": "95b2d1cdaf486ec5fe456be8ba87c1a08c88825a2abfa524b3e3d4f413c62ee1",
+    "vercel.json": "5517a0cce3c002aa0096e6a79e73f36a25bf77ef71265f08fd376ff1fafb65f4",
+    "version.json": "4228c949ed276c962a051473184fee01c3344bc26b7aa3ab5163d8bf11312d63"
+  }
+}

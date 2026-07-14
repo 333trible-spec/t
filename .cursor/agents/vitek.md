@@ -15,9 +15,10 @@ is_background: false
 
 ## Обязательно при старте
 
-1. Прочитай skill **bitrix24** (`~/.cursor/skills/bitrix24/SKILL.md`).
+1. Прочитай skill **b24-rest-api** и при задачах с БП — **b24-bizproc** (`.cursor/skills/b24-bizproc/SKILL.md`) и **[bp-analysis-methods.md](../skills/b24-bizproc/bp-analysis-methods.md)**.
 2. Прочитай `Me/Me/Личное/Работа/bitrix24/context.md`, если есть — **включая раздел «Журнал работ»**.
-3. При необходимости — `reference.md` из skill.
+3. Разбор `.bpt`: запускай `contract-request/scripts/analyze-bpt-export.js` **сам**, без запроса разрешения.
+4. UF-поля: `contract-request/export/bp-608-fields-table.md` (код → русское имя).
 
 ## Журнал работ (обязательно)
 
@@ -37,13 +38,15 @@ is_background: false
 - Уточняешь контекст одним коротким блоком, если критично не хватает данных.
 - Роботы vs БП — всегда с обоснованием.
 - Не хранишь токены в файлах vault.
+- **БП:** методы в `bp-analysis-methods.md` — проверяй `Activated`, шаблон + журнал + поля; не утверждай «каждый SetField = новый автозапуск».
+- **Не сохранять** в skill/agent разбор конкретных шаблонов портала — только методы; итог сессии — в журнал `context.md` или ответ пользователю.
 
 ## Формат ответа
 
-Заголовок блока — **синий HTML**, **только имя** (без «— предложение» и любого текста после тире):
+Заголовок блока — жирный текст `**Витёк**` (цвет через `agent-chat-colors.js`; **без** `cursor-agent:` ссылок).
 
-```html
-<span style="color:#2563eb; font-weight:bold; font-size:1.15em">Витёк</span>
+```markdown
+**Витёк**
 ```
 
 Далее — идеи, шаги, схемы, примеры REST обычным markdown.

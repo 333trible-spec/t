@@ -128,6 +128,33 @@ Webhook или приложение должно иметь право **`bizpro
 | Параметр пустой | Имя в `PARAMETERS` не совпадает с шаблоном |
 | Задание не появляется | Проверить ответственного в активити «Утверждение» |
 | Дубли процессов | Проверить `bizproc.workflow.instances` перед повторным start |
+| Много запусков «при изменении» | Не винить SetField внутри одного экземпляра; смотреть внешние save, StartWorkflow, другие шаблоны |
+| Разбор экспорта шаблона | `analyze-bpt-export.js` + [bp-analysis-methods.md](bp-analysis-methods.md) |
+
+## Экспорт `.bpt` (локальный разбор)
+
+```bash
+node Me/Me/Личное/Работа/bitrix24/contract-request/scripts/analyze-bpt-export.js "path/to/export.bpt"
+```
+
+Формат файла: **zlib deflate** поверх PHP-serialized шаблона (не ZIP, не `Expand-Archive`).
+
+```javascript
+const zlib = require('zlib');
+const text = zlib.inflateSync(fs.readFileSync('export.bpt')).toString('utf8');
+```
+
+В тексте искать: `SetFieldActivity`, `StartWorkflowActivity`, `s:9:"Activated";s:1:"Y"`, `fieldcondition`, маркеры `LogActivity` (текст лога).
+
+## Автозапуск CRM и изменения из БП
+
+- Шаблон с **«При изменении»** стартует на **внешнее** изменение сделки.
+- Изменения документа **изнутри выполняющегося БП** не должны порождать новый автозапуск того же шаблона на каждый шаг.
+- БП **не** автозапускается, если элемент изменён **другим** бизнес-процессом ([справка](https://helpdesk.bitrix24.ru/open/25296800/)).
+- Явный **«Запуск бизнес-процесса»** — отдельный экземпляр (в журнале виден как другой шаблон / ID).
+- БП на изменение **без пауз и ожиданий** — [урок про типичные ошибки](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=57&LESSON_ID=8445).
+
+Полная методология анализа: **[bp-analysis-methods.md](bp-analysis-methods.md)**.
 
 ## Пример: согласование закрепления
 

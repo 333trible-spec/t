@@ -1,0 +1,34 @@
+/* Agent colors by class — titles **Имя**, strokes *курсив* only (no links). */
+
+.cursor-agent-title-garri,
+.cursor-agent-title-garri * { color: #7c3aed !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
+.cursor-agent-title-vitek,
+.cursor-agent-title-vitek * { color: #2563eb !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
+.cursor-agent-title-gena,
+.cursor-agent-title-gena * { color: #dc2626 !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
+/* light zinc — #111 on dark Cursor chat was invisible */
+.cursor-agent-title-baza-znaniy,
+.cursor-agent-title-baza-znaniy * { color: #e5e5e5 !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
+.cursor-agent-title-designer-navigator,
+.cursor-agent-title-designer-navigator * { color: #88c276 !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
+
+.cursor-agent-stroke-garri,
+.cursor-agent-stroke-garri * { color: #7c3aed !important; font-style: italic !important; text-decoration: none !important; }
+.cursor-agent-stroke-vitek,
+.cursor-agent-stroke-vitek * { color: #2563eb !important; font-style: italic !important; text-decoration: none !important; }
+.cursor-agent-stroke-gena,
+.cursor-agent-stroke-gena * { color: #dc2626 !important; font-style: italic !important; text-decoration: none !important; }
+.cursor-agent-stroke-baza-znaniy,
+.cursor-agent-stroke-baza-znaniy * { color: #a3a3a3 !important; font-style: italic !important; text-decoration: none !important; }
+.cursor-agent-stroke-designer-navigator,
+.cursor-agent-stroke-designer-navigator * { color: #88c276 !important; font-style: italic !important; text-decoration: none !important; }
+
+a.cursor-agent-title-garri,
+a.cursor-agent-title-vitek,
+a.cursor-agent-title-gena,
+a.cursor-agent-title-baza-znaniy,
+a.cursor-agent-title-designer-navigator {
+  pointer-events: none !important;
+  cursor: default !important;
+  text-decoration: none !important;
+}

@@ -25,12 +25,12 @@ alwaysApply: true
 
 Примеры:
 
-```html
-<span style="color:#7c3aed; font-weight:bold; font-style:italic">Температура в канале падает. Туннель спит. Будь бдителен.</span>
+```markdown
+*Температура в канале падает. Туннель спит. Будь бдителен.*
 ```
 
-```html
-<span style="color:#7c3aed; font-weight:bold; font-style:italic">Тоннель рухнул. Держи удар — включи VPN.</span>
+```markdown
+*Тоннель рухнул. Держи удар — включи VPN.*
 ```
 
 - **idle** — клиент на месте, туннеля нет (холод в канале; или спокойно, без драмы)
@@ -59,9 +59,11 @@ alwaysApply: true
 
 Шаблон штриха навыка в теле:
 
-```html
-<span style="color:#7c3aed; font-style:italic">текст навыка</span>
+```markdown
+*текст навыка*
 ```
+
+Штрих — **только** курсив `*…*`, **без ссылок**.
 
 ## Блок подписки — **только по запросу**
 
@@ -71,20 +73,20 @@ alwaysApply: true
 
 Прочитать `.cursor/cursor-admin/context.md` → дата окончания лицензии.
 
-```html
-<span style="color:#7c3aed; font-weight:bold; font-size:1.15em">Гарри</span>
+```markdown
+**Гарри**
 ```
 
-```html
-<span style="color:#7c3aed; font-weight:bold">До окончания подписки Cursor: N дней (до ДД.ММ.ГГГГ)</span>
+```markdown
+**До окончания подписки Cursor: N дней (до ДД.ММ.ГГГГ)**
 ```
 
-Кратко: тариф, дни, срочность (см. пороги), ссылка [cursor.com/dashboard](https://cursor.com/dashboard). Штрих навыка по срочности — фиолетовым курсивом в теле, после цифр; блок лицензии — фиолетовый жирный, без курсива.
+Кратко: тариф, дни, срочность (см. пороги), ссылка [cursor.com/dashboard](https://cursor.com/dashboard). Штрих навыка — `*…*` без ссылки; блок лицензии — жирный текст без ссылки.
 
 Если дата в `context.md` **не заполнена**:
 
-```html
-<span style="color:#7c3aed; font-weight:bold">Лицензия: укажите дату окончания в .cursor/cursor-admin/context.md</span>
+```markdown
+**Лицензия: укажите дату окончания в .cursor/cursor-admin/context.md**
 ```
 
 После блока — пустая строка, затем основной ответ.
@@ -164,6 +166,6 @@ Workspace Cursor — корень **Obsidian**. Контент Obsidian — **`M
 
 Инструкции: `.cursor/agents/garri.md` · Вызов: `/garri`
 
-```html
-<span style="color:#7c3aed; font-weight:bold; font-size:1.15em">Гарри</span>
+```markdown
+**Гарри**
 ```
