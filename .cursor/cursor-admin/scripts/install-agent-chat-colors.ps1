@@ -41,12 +41,16 @@ if (-not $json.PSObject.Properties['vscode_custom_css.imports']) {
   Add-Member -InputObject $json -NotePropertyName 'vscode_custom_css.imports' -Value @()
 }
 
-$imports = @($json.'vscode_custom_css.imports') | Where-Object {
-  $_ -and ($_ -notmatch 'agent-chat-colors\.(css|js)')
+# Keep as Object[]: `$null + 'a' + 'b'` / bare `+=` on empty pipeline glues URIs into one string.
+$imports = [System.Collections.Generic.List[string]]::new()
+foreach ($item in @($json.'vscode_custom_css.imports')) {
+  if (-not $item) { continue }
+  if ($item -match 'agent-chat-colors\.(css|js)') { continue }
+  $imports.Add([string]$item)
 }
-$imports += $cssUri
-$imports += $jsUri
-$json.'vscode_custom_css.imports' = @($imports)
+$imports.Add($cssUri)
+$imports.Add($jsUri)
+$json.'vscode_custom_css.imports' = $imports.ToArray()
 
 $out = $json | ConvertTo-Json -Depth 8
 [System.IO.File]::WriteAllText($settingsPath, $out, [System.Text.UTF8Encoding]::new($false))

@@ -70,6 +70,18 @@ function getCurrentVersion() {
   return normalizeVersion(data.version);
 }
 
+function syncPackageJsonVersion(version) {
+  const pkgPath = path.join(ROOT, 'package.json');
+  if (!fs.existsSync(pkgPath)) return;
+  const pkg = readJson(pkgPath);
+  const n = parseVersionNumber(version);
+  if (Number.isNaN(n)) return;
+  const semver = (Math.round(n * 100) / 100).toFixed(2) + '.0';
+  if (pkg.version === semver) return;
+  pkg.version = semver;
+  writeJson(pkgPath, pkg);
+}
+
 function setCurrentVersion(version) {
   const v = normalizeVersion(version);
   writeJson(VERSION_JSON, {
@@ -77,6 +89,7 @@ function setCurrentVersion(version) {
     updatedAt: new Date().toISOString(),
   });
   syncVersionJs(v);
+  syncPackageJsonVersion(v);
   return v;
 }
 

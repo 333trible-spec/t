@@ -1,8 +1,8 @@
 {
   "name": "b24-contract-request",
-  "version": "0.72.0",
+  "version": "0.76.0",
   "private": true,
-  "description": "Заявка на договор — placement на ik-navigator",
+  "description": "Заявка на договор - placement на ik-navigator",
   "scripts": {
     "deploy": "node scripts/publish-vercel.js",
     "version:save": "node scripts/version-save.js",

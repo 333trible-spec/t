@@ -1,4 +1,9 @@
 {
-  "npm.autoDetect": "on",
-  "npm.exclude": "**/kb-migration/**"
+  "npm.autoDetect": "off",
+  "npm.exclude": [
+    "**/kb-migration",
+    "**/kb-migration/**",
+    "**/contract-request",
+    "**/contract-request/**"
+  ]
 }
