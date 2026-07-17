@@ -1,0 +1,42 @@
+{
+
+  "rewrites": [
+
+    { "source": "/", "destination": "/api/serve?file=install.html" },
+
+    { "source": "/install.html", "destination": "/api/serve?file=install.html" },
+
+    { "source": "/app.html", "destination": "/api/serve?file=main.html" },
+
+    { "source": "/main.html", "destination": "/api/serve?file=main.html" },
+
+    { "source": "/app.css", "destination": "/api/serve?file=styles.css" },
+
+    { "source": "/styles.css", "destination": "/api/serve?file=styles.css" },
+
+    { "source": "/app.js", "destination": "/api/serve?file=client.js" },
+
+    { "source": "/client.js", "destination": "/api/serve?file=client.js" },
+
+    { "source": "/version.js", "destination": "/api/serve?file=version.js" },
+
+    { "source": "/constants-registry.js", "destination": "/api/serve?file=constants-registry.js" },
+
+    { "source": "/img/footer-die.png", "destination": "/api/serve?file=img/footer-die.png" },
+
+    { "source": "/img/deny-key.png", "destination": "/api/serve?file=img/deny-key.png" }
+
+  ],
+
+  "functions": {
+
+    "api/serve.js": {
+
+      "includeFiles": "api/html/**"
+
+    }
+
+  }
+
+}
+

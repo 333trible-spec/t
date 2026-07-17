@@ -1,10 +1,12 @@
 # Стабильный URL — один раз в Б24, больше не менять
 
-**Рабочий URL (Vercel, проверен GET+POST):**
+> **2026-07-17:** проект Vercel `tt` **удалён**. URL offline. Код в vault `deal-card-bg/`. Ниже — историческая инструкция на случай повторного деплоя.
 
-`https://tt-two-lime.vercel.app/install.html`
+**Бывший URL:**
 
-Проект: [vercel.com/333trible-specs-projects/tt](https://vercel.com/333trible-specs-projects/tt)
+`https://tt-two-lime.vercel.app/install.html` — **404**
+
+Проект: ~~vercel.com/333trible-specs-projects/tt~~ — снят
 
 ## Вариант 1 — Vercel (рекомендуется: не отваливается, ПК не нужен)
 

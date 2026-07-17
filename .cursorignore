@@ -1,0 +1,30 @@
+﻿# Dependencies and build artifacts
+**/node_modules/
+**/dist/
+**/build/
+**/.next/
+**/*.map
+
+# Vercel / deploy local metadata
+**/.vercel/
+
+# Heavy / generated Bitrix exports (keep .md/.json analysis readable)
+**/export/**/*.bpt
+**/export/**/*.decoded.txt
+
+# Local secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# OS / editor noise
+**/.DS_Store
+**/Thumbs.db
+**/*.tmp
+**/*.log
+
+# Obsidian runtime (plugins stay out of agent index; vault notes stay indexed)
+Me/Me/.obsidian/plugins/
+Me/Me/.obsidian/workspace.json
+Me/Me/.obsidian/workspace-mobile.json
+Me/Me/.obsidian/cache/

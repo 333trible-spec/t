@@ -331,7 +331,15 @@
         const icons =
           '<svg class="file-icon-add" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>' +
           '<svg class="file-icon-done" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const clearIcon =
+          '<svg class="file-icon-clear" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+          '<path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>' +
+          '</svg>';
         const nativeInput = '<input class="file-native" id="' + fid + '" type="file" name="' + esc(field.code) + '"' + multi + reqAttr + '>';
+        const clearBtn =
+          '<button type="button" class="file-clear" title="Удалить файлы" aria-label="Удалить файлы" disabled>' +
+          clearIcon +
+          '</button>';
         const namesBox = '<div class="file-names muted" data-files-for="' + esc(field.code) + '"></div>';
         if (isDocTile) {
           control =
@@ -339,7 +347,10 @@
             '<span class="doc-tile-title">' + esc(field.label) + req + '</span>' +
             '<div class="file-field" data-file-field="' + esc(field.code) + '">' +
             nativeInput +
-            '<span class="file-trigger" aria-hidden="true">' + icons + '</span>' +
+            '<div class="file-actions">' +
+            '<span class="file-trigger" title="Прикрепить файл" aria-hidden="true">' + icons + '</span>' +
+            clearBtn +
+            '</div>' +
             namesBox +
             '</div>' +
             '</label>';
@@ -347,7 +358,10 @@
           control =
             '<div class="file-field" data-file-field="' + esc(field.code) + '">' +
             nativeInput +
+            '<div class="file-actions">' +
             '<label class="file-trigger" for="' + fid + '" title="Прикрепить файл" aria-label="Прикрепить файл">' + icons + '</label>' +
+            clearBtn +
+            '</div>' +
             namesBox +
             '</div>';
         }
@@ -615,6 +629,11 @@
     Object.keys(cur).forEach((code) => {
       if (!valuesEqual(base[code], cur[code])) n += 1;
     });
+    form.querySelectorAll('.file-field[data-file-cleared="1"]').forEach((wrap) => {
+      const code = wrap.getAttribute('data-file-field');
+      if (!code) return;
+      if (valuesEqual(base[code], cur[code])) n += 1;
+    });
     return n;
   }
 
@@ -881,6 +900,38 @@
     sendBtn.disabled = !canSendForm(form);
   }
 
+  function syncFileClearButton(wrap) {
+    if (!wrap) return;
+    const clearBtn = wrap.querySelector('.file-clear');
+    if (!clearBtn) return;
+    const hasAttached =
+      wrap.classList.contains('has-file') || wrap.classList.contains('has-deal-file');
+    clearBtn.disabled = !hasAttached;
+  }
+
+  function syncAllFileClearButtons(form) {
+    if (!form) return;
+    form.querySelectorAll('.file-field').forEach(syncFileClearButton);
+  }
+
+  /** Снимает файлы с UI; из сделки уйдут только после «Сохранить». */
+  function markFilesForClear(wrap, form) {
+    if (!wrap) return;
+    const input = wrap.querySelector('input[type=file]');
+    if (input) input.value = '';
+    wrap.classList.remove('has-file', 'has-deal-file');
+    wrap.setAttribute('data-file-cleared', '1');
+    const hint = wrap.querySelector('.file-names');
+    if (hint) {
+      hint.textContent = '';
+      hint.innerHTML = '';
+      hint.classList.remove('ok');
+      hint.classList.add('muted');
+    }
+    syncFileClearButton(wrap);
+    if (form) refreshFilledState(form);
+  }
+
   function refreshFilledState(form) {
     if (!form) return;
     (window.BP608_FORM_CONFIG || []).forEach((field) => {
@@ -890,6 +941,7 @@
     });
     const own = form.querySelector('.ownership-contact-field');
     if (own) own.classList.toggle('filled', isOwnershipFilled(form));
+    syncAllFileClearButtons(form);
     refreshSendButton(form);
   }
 
@@ -936,10 +988,32 @@
         const wrap = inp.closest('.file-field');
         if (wrap) {
           wrap.classList.toggle('has-file', count > 0);
-          if (count > 0) wrap.classList.remove('has-deal-file');
+          if (count > 0) {
+            wrap.classList.remove('has-deal-file');
+            wrap.removeAttribute('data-file-cleared');
+          }
+          syncFileClearButton(wrap);
         }
         refreshFilledState(form);
       });
+    });
+
+    form.addEventListener('click', (e) => {
+      const clearBtn = e.target.closest('.file-clear');
+      if (!clearBtn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (clearBtn.disabled) return;
+      const wrap = clearBtn.closest('.file-field');
+      if (!wrap) return;
+      if (form.classList.contains('form-readonly') || window.__bp608ViewOnly) return;
+      markFilesForClear(wrap, form);
+    });
+
+    form.addEventListener('mousedown', (e) => {
+      if (!e.target.closest('.file-clear')) return;
+      e.preventDefault();
+      e.stopPropagation();
     });
 
     form.addEventListener('input', () => refreshFilledState(form));

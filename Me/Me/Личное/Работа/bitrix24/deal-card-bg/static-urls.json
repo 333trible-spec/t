@@ -1,11 +1,15 @@
 {
-  "install": "https://tt-two-lime.vercel.app/install.html",
-  "fieldHandler": "https://tt-two-lime.vercel.app/field-handler.html",
-  "tab": "https://tt-two-lime.vercel.app/tab.html",
-  "fixField": "https://tt-two-lime.vercel.app/fix-field.html",
-  "version": "2.4.0",
-  "publishedAt": "2026-06-28T21:00:00.000Z",
-  "host": "vercel",
-  "domain": "tt-two-lime.vercel.app",
-  "b24InstallUrl": "https://tt-two-lime.vercel.app/install.html"
+  "status": "offline",
+  "removedFromVercelAt": "2026-07-17",
+  "note": "Проект tt удалён с Vercel. Код в vault deal-card-bg/.",
+  "install": null,
+  "fieldHandler": null,
+  "tab": null,
+  "fixField": null,
+  "domain": null,
+  "b24InstallUrl": null,
+  "former": {
+    "install": "https://tt-two-lime.vercel.app/install.html",
+    "domain": "tt-two-lime.vercel.app"
+  }
 }

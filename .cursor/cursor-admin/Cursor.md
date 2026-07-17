@@ -29,16 +29,16 @@
 
 ## Быстрый старт
 
-1. **Авто:** Гарри запускает `scripts/sync-context.ps1` — подписка и **Happ VPN** подтягиваются при запросе
-2. **Подписка в чате:** только по запросу — `/garri`, вопрос про лицензию или срок
+1. **Авто:** Гарри запускает `scripts/sync-context.ps1` — только **Happ VPN** (TTL 3 мин)
+2. **Подписка:** только по запросу — `sync-context.ps1 -Subscription` (`/garri`, лицензия, срок)
 3. **По расписанию (опционально):** [[automation-daily]] (Cursor Automations, 9:00)
 
 ## Скрипты
 
 | Файл | Назначение |
 |------|------------|
-| `scripts/sync-context.ps1` | Подписка + VPN → context.md |
-| `scripts/fetch-subscription.ps1` | Только subscription.json |
+| `scripts/sync-context.ps1` | VPN → context.md; `-Subscription` — ещё и подписка |
+| `scripts/fetch-subscription.ps1` | Только subscription.json (по запросу) |
 | `scripts/fetch-vpn.ps1` | Только vpn.json (Happ) |
 | `scripts/fetch-system.ps1` | Снимок Windows (RAM, диск, CPU, **GPU temp**) → system.json |
 | `subscription.json` / `vpn.json` / `system.json` | Кэш (не в git) |
@@ -61,6 +61,6 @@
 | [[../../Me/Me/Личное/Работа/bitrix24/Битрикс24|Витёк]] | Битрикс24 |
 | Гена | Безопасность (по просьбе) |
 | База знаний | Google Drive → БЗ Б24 |
-| Дизайнер Навигатора | Брендбук, UI/CSS |
+| Дизайнер | UX/UI Б24, брендбук, UI/CSS |
 
 Канон: `.cursor/rules/agents-allowlist.mdc`.

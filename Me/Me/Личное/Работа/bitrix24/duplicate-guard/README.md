@@ -2,7 +2,7 @@
 
 Локальное приложение: настраиваемые сценарии при создании лида, проверка по телефону/email, действия «браковать» или «оставить».
 
-**Production:** https://b24-duplicate-guard.vercel.app
+**Production:** ~~https://b24-duplicate-guard.vercel.app~~ — **снят с Vercel** (2026-07-17). Код только в vault.
 
 Регистрация на портале: [docs/B24-APP-REGISTER.md](docs/B24-APP-REGISTER.md)
 

@@ -60,7 +60,7 @@
 | Стадии лидов | см. тестовый портал выше |
 | Смарт-процессы | доступны (Энтерпрайз); альтернатива/дополнение — приложения Маркета |
 | **Стикеры на канбане** | `UF_CRM_DEAL_STICKERS`: Бронь, Оформление, Рассрочка, Ипотека, Срочно, VIP |
-| Контроль дублей | Duplicate Guard, app 5, `duplicate-guard/` → b24-duplicate-guard.vercel.app |
+| Контроль дублей | Duplicate Guard — папка `duplicate-guard/`, **Vercel снят** (2026-07-17) |
 | Основные источники лидов | сайт, звонки, мессенджеры… |
 
 ## Автоматизация
@@ -76,8 +76,8 @@
 | Входящий вебхук (прод) | есть / нет (URL в менеджере паролей) |
 | Входящий вебхук (тест) | `.env` → `B24_TEST_WEBHOOK` |
 | OAuth-приложение | есть / нет |
-| Локальное приложение | **deal-card-bg** — app 1, [tt-two-lime.vercel.app](https://tt-two-lime.vercel.app/install.html) |
-| **Duplicate Guard** | app 5, [b24-duplicate-guard.vercel.app](https://b24-duplicate-guard.vercel.app/install.html), папка `duplicate-guard/` |
+| Локальное приложение | **deal-card-bg** — app 1, код в vault, **Vercel offline** (2026-07-17) |
+| **Duplicate Guard** | app 5 (тест), код в `duplicate-guard/`, **Vercel offline** |
 | Стикеры сделок | поле `UF_CRM_DEAL_STICKERS` (ID 233), множественный список |
 | **Фон карточки сделки** | `UF_CRM_DEAL_CARD_BG` (ID 235), список цветов; проект `deal-card-bg/` |
 
@@ -94,6 +94,109 @@
 
 > Витёк читает этот блок в начале сессии и **дописывает** после значимых шагов.  
 > Формат записи: дата → задача → действие → результат → открыто.
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (calendar-picker inset)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; `::-webkit-calendar-picker-indicator` с `inset: 0` | ✅ |
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (даты: click/focus без preventDefault)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; `openMonthPicker` на `click`/`focus`, без `preventDefault` | ✅ |
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (без bump, UI-проверка)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; без h1 «6 кадров» в шапке; «Увольнение ❌»; `showPicker` на `mousedown` | ✅ |
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (отпуск/увольнение UI)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; «Новый отпуск 🏝️», «Увольнение 👋», `.picker-btn { white-space: nowrap }` | ✅ |
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (UI picker / dis-bp-hint)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; «Выбрать замещающего», dis-bp-hint, «Уволить сотрудника?» в прод | ✅ |
+
+### 2026-07-17 — 6 кадров: redeploy 0.1.10 (без bump)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**, app.html / deny-key / footer-die HTTP 200 | ✅ |
+
+### 2026-07-17 — 6 кадров: деплой 0.1.10
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Согласование версии | context/README/package.json, rewrites deny-key/footer-die в vercel.json + dev-server | локально **0.1.10** | ✅ |
+| 2 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**, img deny-key/footer-die HTTP 200 | ✅ |
+
+### 2026-07-17 — 6 кадров: деплой 0.1.9
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npx vercel deploy --prod --yes` → `b24-six-staff.vercel.app` | READY; version.js **0.1.9** OK | ✅ |
+
+### 2026-07-17 — 6 кадров: деплой 0.1.8
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npx vercel deploy --prod --yes` → `b24-six-staff.vercel.app` | READY; version.js **0.1.8** OK | ✅ |
+
+### 2026-07-17 — absence-deputy («6 кадров»): prod на Vercel
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npx vercel deploy --prod --yes` → alias `b24-six-staff.vercel.app` | READY; app.html / img / version.js **0.1.5** OK | ✅ |
+
+### 2026-07-17 — 6 кадров: деплой 0.1.6
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npx vercel deploy --prod --yes` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.6** OK | ✅ |
+
+### 2026-07-17 — deal-card-bg: снят с Vercel
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Убрать с сервера | Удалён Vercel-проект `tt` (tt-two-lime) | URL → 404; код в `deal-card-bg/` | ✅ |
+
+### 2026-07-17 — Duplicate Guard: снят с Vercel
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Убрать с сервера | Удалены Vercel-проекты `b24-duplicate-guard` и `duplicate-guard` | URLs → 404; код остаётся в vault | ✅ |
+
+### 2026-07-17 — 6 кадров: каркас 0.1
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 6 | Каркас UI v0.1 | `api/html/*`, serve, vercel.json, `npm run dev` :3840 | install + app (Отпуск/Увольнение), localStorage `six_staff_v01`, реестр констант JS | ✅ |
+| 7 | Заглушки | apply GlobalConst + cron | console TODO, без записи на портал | ✅ stub |
+| 8 | ACL | доступ только `user.current` ID **24880** | на портале deny остальным; localhost без BX24 — просмотр UI | ✅ |
+| 9 | Деплой | Vercel `b24-six-staff` | https://b24-six-staff.vercel.app · install/app 200 | ✅ |
+| — | Не делали | регистрация на ik-navigator, Vue/UI Kit npm | — | — |
+
+**Открыто:** регистрация локального приложения · ID констант · запись GlobalConst · backend/cron.
+
+### 2026-07-17 — Absence Deputy: старт проекта
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Папка проекта | `bitrix24/absence-deputy/` + PROJECT/README/context | ✅ | ✅ |
+| 2 | Реестр GlobalConst | 46 со скринов → `data/global-constants.json` + md; 42 user in scope | ✅ ID констант ещё нет | ⏳ |
+| 3 | Индексы | ПРОЕКТЫ.md, Битрикс24.md, Работа.md | ✅ | ✅ |
+| 4 | Экспорт БП 2784 | `export/bp-2784.bpt` разобран | ❌ GlobalConst в шаблоне нет (только LogActivity) | ❌ |
+| 5 | Scope MVP | отпуск: «с»→подмена, «по»→авто; ik-navigator; тест «Проджект Б24»; доступ всем; 2 экрана Отпуск/Увольнение | ✅ увольнение — уточнить логику констант | ⏳ |
+
+**Открыто (исторически):** логика увольнения vs константы · ID · запись GlobalConst · каркас app + cron → каркас закрыт в записи выше.
 
 ### 2026-07-13 — Заявка на договор: Отправить → БП 608
 

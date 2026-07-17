@@ -249,7 +249,12 @@
   </div>
 
   <script src="version.js"></script>
-  <script src="app-dashboard.js"></script>
+  <script>
+    (function () {
+      var v = encodeURIComponent(String(window.BP608_APP_VERSION || 'dev').replace(/\s+/g, ''));
+      document.write('<script src="app-dashboard.js?v=' + v + '"><\/script>');
+    })();
+  </script>
   <script src="https://api.bitrix24.com/api/v1/"></script>
   <script>
     (function () {

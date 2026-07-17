@@ -1,0 +1,13 @@
+{
+  "name": "b24-six-staff",
+  "version": "0.1.10",
+  "private": true,
+  "description": "Битрикс24: 6 кадров — отпуск и увольнение с учётом глобальных констант",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "deploy": "npx --yes vercel deploy --prod --yes"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

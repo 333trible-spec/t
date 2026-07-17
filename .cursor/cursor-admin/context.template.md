@@ -1,4 +1,4 @@
-# Контекст Cursor — для агента Гарри
+﻿# Контекст Cursor — для агента Гарри
 
 > Шаблон в git. Рабочая копия — `context.md` (локально, не в git).
 > Гарри читает `context.md`; скрипт `sync-context.ps1` создаёт его из этого файла при первом запуске.
@@ -58,10 +58,13 @@ _Список подключённых MCP и статус auth_
 
 | Агент | Вызов | Роль |
 |-------|-------|------|
+| Гарри | `/garri` | Cursor, VPN, **ПК**, локальные файлы |
 | Витёк | `/vitek` | Битрикс24 (CRM, автоматизация) |
-| Гена | `/gena` | Безопасность |
-| Гарри | `/garri` | Cursor, VPN, **ПК**, админ IDE |
+| Гена | `/gena` | Безопасность (только по просьбе) |
 | База знаний | `/baza-znaniy` | Google Drive → база знаний Б24 |
+| Дизайнер | `/designer-navigator` | UX/UI Б24, брендбук, UI/CSS |
+
+Других агентов нет. См. `.cursor/rules/agents-allowlist.mdc`.
 
 ## Напоминания для Гарри
 
@@ -74,4 +77,4 @@ _Список подключённых MCP и статус auth_
 ## Заметки
 
 - Период billing-цикла usage: смотреть On-Demand Usage в [dashboard](https://cursor.com/dashboard)
-- Синхронизация: `scripts/sync-context.ps1` → локальный `context.md`
+- Синхронизация: `scripts/sync-context.ps1` → VPN; подписка только `-Subscription`

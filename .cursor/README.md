@@ -7,7 +7,7 @@ Workspace Cursor открывается из **корня репозитория
 | Путь | В git | Назначение |
 |------|-------|------------|
 | `.cursor/rules/` | да | Правила агентов |
-| `.cursor/agents/` | да | Гарри, Витёк, Гена, База знаний, Дизайнер Навигатора |
+| `.cursor/agents/` | да | Гарри, Витёк, Гена, База знаний, Дизайнер |
 | `.cursor/hooks/` | да | Звук, хуки |
 | `.cursor/cursor-admin/scripts/` | да | Скрипты синхронизации |
 | `.cursor/cursor-admin/context.template.md` | да | Шаблон ручных настроек |
@@ -25,7 +25,7 @@ Workspace Cursor открывается из **корня репозитория
 | **Витёк** | `/vitek` | Битрикс24 (кроме контента БЗ) |
 | **Гена** | `/gena` | Безопасность (по просьбе) |
 | **База знаний** | `/baza-znaniy` | Google Drive → БЗ Б24 |
-| **Дизайнер Навигатора** | `/designer-navigator` | Брендбук, UI/CSS |
+| **Дизайнер** | `/designer-navigator` | UX/UI Б24, брендбук, UI/CSS |
 
 Канон маршрутизации: `.cursor/rules/agents-allowlist.mdc`.
 

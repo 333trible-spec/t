@@ -35,8 +35,7 @@
     body {
       font-family: var(--font);
       margin: 0;
-      padding: 16px;
-      padding-bottom: 28px;
+      padding: 0 0 6px;
       background: var(--bg);
       color: var(--nd-text);
       font-size: 14px;
@@ -53,6 +52,26 @@
       overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      background: var(--bg);
+      scrollbar-color: rgba(45, 149, 210, 0.48) transparent;
+      scrollbar-width: thin;
+    }
+    .app-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+    .app-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .app-scroll::-webkit-scrollbar-thumb {
+      background: rgba(45, 149, 210, 0.42);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    .app-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(45, 149, 210, 0.62);
+      border: 2px solid transparent;
+      background-clip: padding-box;
     }
     h2 { margin: 0 0 8px; font-size: 17px; font-weight: 650; }
     h3 {
@@ -72,16 +91,33 @@
     .card-header {
       background: var(--nd-gradient);
       border: none;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: none;
       color: #fff;
+    }
+    .app-scroll > .card {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+    .app-scroll > .card:first-child {
+      margin-top: 0;
     }
     .card-header h2 { color: #fff; }
     .card-header-row {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
     .card-header-row h2 { flex: 1; min-width: 0; }
+    .card-header-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+      padding-right: 2px;
+    }
     .app-version {
       font-size: 11px;
       font-weight: 500;
@@ -89,6 +125,34 @@
       opacity: 0.88;
       white-space: nowrap;
       color: rgba(255, 255, 255, 0.92);
+    }
+    .app-help-btn {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(148, 163, 184, 0.28);
+      color: rgba(241, 245, 249, 0.85);
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+    .app-help-btn:hover {
+      background: rgba(148, 163, 184, 0.48);
+      border-color: rgba(226, 232, 240, 0.7);
+      color: #fff;
+      transform: scale(1.06);
+    }
+    .app-help-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.45);
     }
     .card-header .deal-info {
       font-size: 14px;
@@ -149,6 +213,7 @@
       min-width: 0;
     }
     .doc-tile {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -174,6 +239,16 @@
       box-shadow: 0 2px 10px rgba(136, 194, 118, 0.28);
     }
     .doc-tile .file-trigger { pointer-events: none; }
+    .doc-tile .file-actions { position: static; }
+    .doc-tile .file-clear {
+      top: 8px;
+      right: 8px;
+      z-index: 3;
+      pointer-events: auto;
+    }
+    .field-doc-tile.filled .doc-tile-title {
+      padding-right: 22px;
+    }
     .field-doc-tile.filled .doc-tile {
       border-color: var(--nd-green);
       background: #f3faef;
@@ -581,13 +656,19 @@
       background-color: #f3faef;
     }
 
-    /* Прикрепление файла: плюс → галочка (стиль Навигатора) */
+    /* Прикрепление файла: плюс / галочка + маленький крестик справа сверху */
     .file-field {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
       min-height: 2.5rem;
+    }
+    .file-actions {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
     }
     .file-native {
       position: absolute;
@@ -609,13 +690,15 @@
       flex-shrink: 0;
       cursor: pointer;
       color: #fff;
+      border: 0;
+      padding: 0;
       background: var(--nd-blue);
       box-shadow: 0 2px 6px rgba(45, 149, 210, 0.35);
       transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
     }
     .file-trigger:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 6px 14px rgba(45, 149, 210, 0.45); }
     .file-trigger:active { transform: translateY(0) scale(0.94); box-shadow: 0 2px 6px rgba(45, 149, 210, 0.3); }
-    .file-native:focus-visible + .file-trigger {
+    .file-native:focus-visible + .file-actions .file-trigger {
       outline: none;
       box-shadow: 0 0 0 3px rgba(45, 149, 210, 0.3);
     }
@@ -634,6 +717,43 @@
       box-shadow: 0 2px 6px rgba(136, 194, 118, 0.45);
     }
     .file-field.has-deal-file .file-trigger:hover { box-shadow: 0 3px 10px rgba(136, 194, 118, 0.55); }
+    .file-clear {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      z-index: 2;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 0;
+      color: #fff;
+      background: rgba(100, 116, 139, 0.37);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+      cursor: pointer;
+      transition: transform 0.14s ease, background 0.14s ease, box-shadow 0.14s ease;
+    }
+    .file-field.has-file .file-clear:not(:disabled),
+    .file-field.has-deal-file .file-clear:not(:disabled) {
+      display: inline-flex;
+    }
+    .file-clear svg { width: 9px; height: 9px; display: block; }
+    .file-clear:hover:not(:disabled) {
+      transform: scale(1.12);
+      background: #f4863f;
+      box-shadow: 0 2px 6px rgba(244, 134, 63, 0.55);
+    }
+    .file-clear:active:not(:disabled) {
+      transform: scale(0.95);
+      background: #e6752e;
+    }
+    .file-clear:focus-visible:not(:disabled) {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(244, 134, 63, 0.4);
+    }
     .file-names { font-size: 13px; }
     .file-field.has-file .file-names,
     .file-field.has-deal-file .file-names { color: #5a9e4a; font-weight: 500; }
@@ -824,6 +944,91 @@
       cursor: pointer;
     }
     .stage-blocked-overlay.hidden { display: none !important; }
+    .help-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 16px;
+    }
+    .help-overlay.hidden { display: none !important; }
+    .help-overlay-box {
+      position: relative;
+      width: min(640px, 100%);
+      max-height: min(82vh, 720px);
+      overflow: auto;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.28);
+      padding: 20px 22px 22px;
+      color: var(--nd-text);
+    }
+    .help-overlay-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      width: 32px;
+      height: 32px;
+      margin: -4px -6px 0 8px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(100, 116, 139, 0.12);
+      color: #64748b;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .help-overlay-close:hover {
+      background: rgba(244, 134, 63, 0.18);
+      color: #f4863f;
+    }
+    .help-overlay-title {
+      margin: 0 40px 14px 0;
+      font-size: 18px;
+      font-weight: 650;
+      color: var(--nd-text);
+    }
+    .help-guide h3 {
+      margin: 18px 0 8px;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--nd-blue);
+    }
+    .help-guide h3:first-child { margin-top: 0; }
+    .help-guide p,
+    .help-guide li {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--nd-text);
+    }
+    .help-guide p { margin: 0 0 8px; }
+    .help-guide ol,
+    .help-guide ul {
+      margin: 0 0 10px;
+      padding-left: 18px;
+    }
+    .help-guide li { margin: 4px 0; }
+    .help-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 10px;
+      font-size: 13px;
+    }
+    .help-guide th,
+    .help-guide td {
+      border: 1px solid var(--nd-border);
+      padding: 7px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .help-guide th {
+      background: #f0f9ff;
+      color: var(--nd-blue);
+      font-weight: 600;
+    }
     .save-overlay {
       position: fixed;
       inset: 0;
@@ -901,7 +1106,8 @@
     }
     .form-readonly .doc-tile,
     .form-readonly .chip-option,
-    .form-readonly .file-trigger {
+    .form-readonly .file-trigger,
+    .form-readonly .file-clear {
       cursor: default;
     }
     .form-readonly a.contact-card-link {
@@ -960,7 +1166,10 @@
     <div class="card card-header">
       <div class="card-header-row">
         <h2 id="app-title">Заявка на договор</h2>
-        <span class="app-version" id="app-version"></span>
+        <div class="card-header-meta">
+          <span class="app-version" id="app-version"></span>
+          <button type="button" class="app-help-btn" id="app-help-btn" title="Инструкция" aria-label="Открыть инструкцию">?</button>
+        </div>
       </div>
       <p class="deal-info" id="deal-info">Загрузка…</p>
     </div>
@@ -986,6 +1195,79 @@
     </div>
   </div>
 
+  <div class="help-overlay hidden" id="help-overlay" role="dialog" aria-modal="true" aria-labelledby="help-overlay-title">
+    <div class="help-overlay-box" id="help-overlay-box">
+      <button type="button" class="help-overlay-close" id="help-overlay-close" title="Закрыть" aria-label="Закрыть">×</button>
+      <h2 class="help-overlay-title" id="help-overlay-title">Как пользоваться</h2>
+      <div class="help-guide">
+        <p>Откройте сделку в CRM → вкладка <strong>«Заявка на договор»</strong>. Если вкладки нет — нажмите <strong>⋯</strong> / <strong>Ещё</strong>.</p>
+
+        <h3>Когда можно работать</h3>
+        <table>
+          <thead>
+            <tr><th>Где открыли сделку</th><th>Что можно</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Воронка <strong>Продажи</strong></td><td>Заполнять, сохранять, отправлять</td></tr>
+            <tr><td>Воронка <strong>Оформление</strong></td><td>Только смотреть</td></tr>
+            <tr><td>Сделка уже <strong>успешно закрыта</strong></td><td>Смотреть можно, менять и отправлять — нельзя</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Что делать по шагам</h3>
+        <ol>
+          <li>Откройте вкладку и проверьте данные, которые подставились сами.</li>
+          <li>Заполните пустые обязательные поля (отмечены <strong>*</strong>).</li>
+          <li>Проверьте карточку покупателя: нужны <strong>ФИО, телефон, почта и реквизиты</strong>. Нажмите на карточку — откроется контакт в CRM.</li>
+          <li>Прикрепите документы.</li>
+          <li>Нажмите <strong>Проверить</strong> — система покажет, чего не хватает.</li>
+          <li><strong>Сохранить</strong> — записать в сделку без отправки в оформление.</li>
+          <li><strong>Отправить</strong> — передать заявку в оформление.</li>
+        </ol>
+        <p>При отправке появится: <em>«Передаю в оформление. Не закрывайте окно»</em>. Дождитесь окончания — окно и карточку сделки <strong>не закрывайте</strong>.</p>
+
+        <h3>Документы</h3>
+        <ul>
+          <li>Нажмите на карточку документа или кнопку <strong>+</strong>.</li>
+          <li>Несколько файлов сразу: в окне выбора зажмите <strong>Ctrl</strong> или <strong>Shift</strong>.</li>
+          <li>Удалить файлы: серый крестик в правом верхнем углу карточки (при наведении оранжевый) → затем <strong>Сохранить</strong> → <strong>Да</strong>. Без сохранения файлы в сделке останутся.</li>
+        </ul>
+
+        <h3>Кнопки внизу</h3>
+        <table>
+          <thead>
+            <tr><th>Кнопка</th><th>Зачем</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Сохранить</strong></td><td>Записать изменения в сделку</td></tr>
+            <tr><td><strong>Проверить</strong></td><td>Показать, что ещё не заполнено</td></tr>
+            <tr><td><strong>Отправить</strong></td><td>Отправить заявку в оформление</td></tr>
+            <tr><td>🔄</td><td>Обновить данные из сделки</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Отправить</strong> станет активной, когда заполнены все обязательные поля и данные покупателя.</p>
+
+        <h3>Подсказки по цветам</h3>
+        <ul>
+          <li>Зелёная рамка — поле заполнено</li>
+          <li>Красная рамка — нужно заполнить</li>
+          <li>Зелёная галочка на документе — файлы прикреплены</li>
+          <li>Серый крестик на карточке — удалить файлы</li>
+          <li>Оранжевая точка на контакте — в карточке покупателя чего-то не хватает</li>
+        </ul>
+
+        <h3>Если что-то не получается</h3>
+        <ul>
+          <li><strong>«Отправить» не нажимается</strong> → нажмите <strong>Проверить</strong> и исправьте замечания.</li>
+          <li><strong>В оформлении нельзя редактировать</strong> → так и должно быть; правьте в сделке продаж.</li>
+          <li><strong>Нельзя сохранить на закрытой сделке</strong> → стадия уже финальная.</li>
+          <li><strong>Удалил файлы, а они вернулись</strong> → нужно было нажать <strong>Сохранить</strong>.</li>
+          <li><strong>Нет вкладки</strong> → обратитесь к администратору портала.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="stage-blocked-overlay hidden" id="stage-blocked-overlay" role="alertdialog" aria-live="assertive">
     <p>изменение данных на этой стадии запрещено</p>
   </div>
@@ -1002,10 +1284,19 @@
   </div>
 
   <script src="version.js"></script>
-  <script src="bp-form-config.js"></script>
-  <script src="deal-prefill-map.js"></script>
-  <script src="bp-form.js"></script>
-  <script src="deal-prefill.js"></script>
+  <script>
+    (function () {
+      var v = encodeURIComponent(String(window.BP608_APP_VERSION || 'dev').replace(/\s+/g, ''));
+      [
+        'bp-form-config.js',
+        'deal-prefill-map.js',
+        'bp-form.js',
+        'deal-prefill.js',
+      ].forEach(function (src) {
+        document.write('<script src="' + src + '?v=' + v + '"><\/script>');
+      });
+    })();
+  </script>
   <script src="https://api.bitrix24.com/api/v1/"></script>
   <script>
     let dealId = null;
@@ -1232,19 +1523,22 @@
       return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n) + ' руб.';
     }
 
-    async function contactFio(deal) {
+    function ensureEnumWarmup(callFn) {
+      if (!callFn || !window.BP608DealPrefill || !window.BP608DealPrefill.warmup) {
+        return Promise.resolve();
+      }
+      return window.BP608DealPrefill.warmup(callFn);
+    }
+
+    function contactFioFromStash(deal) {
       const contactId = deal.CONTACT_ID;
       if (!contactId) return '—';
       const stash = window.__bp608DealContacts || {};
-      if (stash.dealContact && Number(stash.dealContact.id) === Number(contactId)) {
-        const t = String(stash.dealContact.title || '').trim();
-        if (t && !/^Контакт #\d+$/i.test(t)) return t;
-      }
-      const c = await call('crm.contact.get', {
-        id: contactId,
-        select: ['NAME', 'LAST_NAME', 'SECOND_NAME'],
-      });
-      const fio = [c.LAST_NAME, c.NAME, c.SECOND_NAME].filter(Boolean).join(' ').trim();
+      if (!stash.dealContact || Number(stash.dealContact.id) !== Number(contactId)) return '—';
+      const c = stash.dealContact;
+      const title = String(c.title || '').trim();
+      if (title && !/^Контакт #\d+$/i.test(title)) return title;
+      const fio = [c.lastName, c.firstName, c.secondName].filter(Boolean).join(' ').trim();
       return fio || '—';
     }
 
@@ -1265,9 +1559,9 @@
       );
     }
 
-    async function finalizeDealUI(deal) {
+    function finalizeDealUI(deal) {
       if (!deal) return;
-      const fio = await contactFio(deal);
+      const fio = contactFioFromStash(deal);
       document.getElementById('deal-info').innerHTML = renderDealHeader(deal, fio);
     }
 
@@ -1292,6 +1586,7 @@
         window.__bp608PlacementDealId = placementId;
         ensureFormReady();
 
+        const enumWarmup = ensureEnumWarmup(call);
         const placementDeal = await window.BP608DealPrefill.fetchDeal(placementId, call);
         const categoryId = Number(placementDeal.CATEGORY_ID);
         let dataDeal = null;
@@ -1305,7 +1600,11 @@
           }
           enableViewOnlyMode(salesDealId, placementId);
           dataDealId = salesDealId;
-          dataDeal = await window.BP608DealPrefill.fetchDeal(salesDealId, call);
+          const [salesDeal] = await Promise.all([
+            window.BP608DealPrefill.fetchDeal(salesDealId, call),
+            enumWarmup,
+          ]);
+          dataDeal = salesDeal;
         } else if (categoryId === SALES_CATEGORY_ID) {
           window.__bp608ViewOnly = false;
           const titleEl = document.getElementById('app-title');
@@ -1315,6 +1614,7 @@
           if (window.BP608Form && window.BP608Form.setReadOnly) {
             window.BP608Form.setReadOnly(document.getElementById('form-root'), false);
           }
+          await enumWarmup;
           dataDeal = placementDeal;
         } else {
           showNotAvailable();
@@ -1323,7 +1623,7 @@
 
         document.getElementById('deal-info').innerHTML = renderDealHeader(dataDeal, '—');
         await finishFormInit(dataDeal, dataDealId);
-        await finalizeDealUI(dataDeal);
+        finalizeDealUI(dataDeal);
         if (window.__bp608ViewOnly) {
           window.BP608Form.setReadOnly(document.getElementById('form-root'), true, {
             viewOnly: true,
@@ -1365,6 +1665,7 @@
             return;
           }
 
+          ensureEnumWarmup(call);
           initForm();
           setFormLoading(true);
           try {
@@ -1405,6 +1706,45 @@
       const el = document.getElementById('app-version');
       const v = window.BP608_APP_VERSION;
       if (el && v) el.textContent = v;
+    })();
+
+    (function bindHelpGuide() {
+      const overlay = document.getElementById('help-overlay');
+      const openBtn = document.getElementById('app-help-btn');
+      const closeBtn = document.getElementById('help-overlay-close');
+      const box = document.getElementById('help-overlay-box');
+      if (!overlay || !openBtn) return;
+
+      function openHelp() {
+        overlay.classList.remove('hidden');
+        if (closeBtn) closeBtn.focus();
+      }
+      function closeHelp() {
+        overlay.classList.add('hidden');
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openHelp();
+      });
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          closeHelp();
+        });
+      }
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeHelp();
+      });
+      if (box) {
+        box.addEventListener('click', (e) => e.stopPropagation());
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeHelp();
+      });
     })();
   </script>
 </body>

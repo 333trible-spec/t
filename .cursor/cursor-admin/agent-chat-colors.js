@@ -13,7 +13,7 @@
     { id: 'vitek', color: '#2563eb', titleCls: 'cursor-agent-title-vitek', strokeCls: 'cursor-agent-stroke-vitek', titles: ['\u0412\u0438\u0442\u0451\u043a'] },
     { id: 'gena', color: '#dc2626', titleCls: 'cursor-agent-title-gena', strokeCls: 'cursor-agent-stroke-gena', titles: ['\u0413\u0435\u043d\u0430'] },
     { id: 'baza-znaniy', color: '#e5e5e5', strokeColor: '#a3a3a3', titleCls: 'cursor-agent-title-baza-znaniy', strokeCls: 'cursor-agent-stroke-baza-znaniy', titles: ['\u0411\u0430\u0437\u0430 \u0437\u043d\u0430\u043d\u0438\u0439'] },
-    { id: 'designer-navigator', color: '#88c276', titleCls: 'cursor-agent-title-designer-navigator', strokeCls: 'cursor-agent-stroke-designer-navigator', titles: ['\u0414\u0438\u0437\u0430\u0439\u043d\u0435\u0440 \u041d\u0430\u0432\u0438\u0433\u0430\u0442\u043e\u0440\u0430'] }
+    { id: 'designer-navigator', color: '#88c276', titleCls: 'cursor-agent-title-designer-navigator', strokeCls: 'cursor-agent-stroke-designer-navigator', titles: ['\u0414\u0438\u0437\u0430\u0439\u043d\u0435\u0440'] }
   ];
 
   var TITLE_SET = {};

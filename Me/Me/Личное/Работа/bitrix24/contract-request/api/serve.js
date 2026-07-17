@@ -35,6 +35,33 @@ const CSP_FRAME_ANCESTORS = [
   'https://*.bitrix24.cn',
 ].join(' ');
 
+function hasVersionQuery(req) {
+  try {
+    const url = new URL(req.url || '/', 'http://localhost');
+    return url.searchParams.has('v');
+  } catch (_) {
+    return /\bv=/.test(String(req.url || ''));
+  }
+}
+
+function applyCacheHeaders(file, ext, req, res) {
+  if (file === 'version.js') {
+    res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    return;
+  }
+  if (ext === '.js') {
+    if (hasVersionQuery(req)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+    }
+    return;
+  }
+  if (ext === '.html') {
+    res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+  }
+}
+
 module.exports = (req, res) => {
   const file = String(req.query.file || 'index.html').replace(/\.\./g, '').replace(/\\/g, '');
   if (!ALLOWED.has(file)) {
@@ -49,5 +76,6 @@ module.exports = (req, res) => {
   const ext = path.extname(file);
   res.setHeader('Content-Type', MIME[ext] || 'text/plain; charset=utf-8');
   res.setHeader('Content-Security-Policy', 'frame-ancestors ' + CSP_FRAME_ANCESTORS);
+  applyCacheHeaders(file, ext, req, res);
   res.status(200).end(fs.readFileSync(filePath, 'utf8'));
 };

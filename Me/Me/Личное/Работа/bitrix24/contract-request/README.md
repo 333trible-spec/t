@@ -19,6 +19,8 @@ npm run deploy
 
 | Файл | Содержание |
 |------|------------|
+| [[docs/USER-GUIDE]] | Инструкция для сотрудников (полная) |
+| [[docs/USER-GUIDE-SHORT]] | Краткая памятка |
 | [[PROJECT]] | Архитектура |
 | [[context]] | Портал, журнал |
 | [[docs/B24-APP-REGISTER]] | Scope, установка на ik-navigator |

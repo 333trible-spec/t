@@ -89,33 +89,67 @@
     return m ? Number(m[1]) : 0;
   }
 
+  function diskFileDownloadUrl(info) {
+    return String(
+      info.DOWNLOAD_URL || info.downloadUrl || info.DETAIL_URL || info.detailUrl || ''
+    ).trim();
+  }
+
   async function resolveFileDownloadUrls(call, entries) {
-    const out = [];
-    for (let i = 0; i < entries.length; i++) {
-      const e = entries[i];
-      if (e.downloadUrl) {
-        out.push(e);
-        continue;
-      }
-      if (e.id > 0 && call) {
+    if (!entries || !entries.length) return [];
+    const out = entries.map((e) => Object.assign({}, e));
+    const needFetch = out.filter((e) => e.id > 0 && !e.downloadUrl);
+    if (!needFetch.length || !call) return out;
+
+    const batch = window.__bp608CallBatch;
+    const applyInfo = (entry, info) => {
+      if (info) entry.downloadUrl = diskFileDownloadUrl(info);
+    };
+
+    if (typeof batch === 'function') {
+      const CHUNK = 50;
+      for (let offset = 0; offset < needFetch.length; offset += CHUNK) {
+        const chunk = needFetch.slice(offset, offset + CHUNK);
+        const calls = {};
+        chunk.forEach((e) => {
+          calls['f' + e.id] = ['disk.file.get', { id: e.id }];
+        });
         try {
-          const info = await call('disk.file.get', { id: e.id });
-          const url = String(
-            info.DOWNLOAD_URL || info.downloadUrl || info.DETAIL_URL || info.detailUrl || ''
-          ).trim();
-          out.push(Object.assign({}, e, { downloadUrl: url }));
+          const res = await batch(calls);
+          chunk.forEach((e) => applyInfo(e, res['f' + e.id]));
         } catch (_) {
-          out.push(e);
+          for (let i = 0; i < chunk.length; i++) {
+            const e = chunk[i];
+            try {
+              applyInfo(e, await call('disk.file.get', { id: e.id }));
+            } catch (_) {}
+          }
         }
-        continue;
       }
-      out.push(e);
+      return out;
+    }
+
+    for (let i = 0; i < needFetch.length; i++) {
+      const e = needFetch[i];
+      try {
+        applyInfo(e, await call('disk.file.get', { id: e.id }));
+      } catch (_) {}
     }
     return out;
   }
 
-  async function fetchAllDealUserFields(call) {
-    if (window.__bp608UserFields) return window.__bp608UserFields;
+  const UF_FIELD_SELECT = ['FIELD_NAME', 'USER_TYPE_ID', 'MULTIPLE', 'LIST'];
+
+  function collectNeededUfFieldNames() {
+    const names = new Set();
+    (window.BP608_DEAL_PREFILL_MAP || []).forEach((row) => {
+      if (row.deal) names.add(row.deal);
+      if (row.altDeal) names.add(row.altDeal);
+    });
+    return [...names];
+  }
+
+  async function fetchAllDealUserFieldsLegacy(call) {
     const all = [];
     const batch = window.__bp608CallBatch;
     if (typeof batch === 'function') {
@@ -142,7 +176,6 @@
         if (total < PAGES * 50 || !lastFull) break;
         base += PAGES;
       }
-      window.__bp608UserFields = all;
       return all;
     }
     let start = 0;
@@ -153,8 +186,58 @@
       if (rows.length < 50) break;
       start += 50;
     }
+    return all;
+  }
+
+  async function fetchNeededDealUserFields(call) {
+    if (window.__bp608UserFields) return window.__bp608UserFields;
+    const fieldNames = collectNeededUfFieldNames();
+    const all = [];
+    const batch = window.__bp608CallBatch;
+
+    if (typeof batch === 'function' && fieldNames.length) {
+      const CHUNK = 50;
+      for (let offset = 0; offset < fieldNames.length; offset += CHUNK) {
+        const chunk = fieldNames.slice(offset, offset + CHUNK);
+        const calls = {};
+        chunk.forEach((name, i) => {
+          calls['uf' + i] = ['crm.deal.userfield.list', {
+            filter: { FIELD_NAME: name },
+            select: UF_FIELD_SELECT,
+          }];
+        });
+        try {
+          const res = await batch(calls);
+          chunk.forEach((name, i) => {
+            const rows = res['uf' + i];
+            if (Array.isArray(rows) && rows.length) all.push(...rows);
+          });
+        } catch (_) {}
+      }
+    } else if (fieldNames.length) {
+      for (let i = 0; i < fieldNames.length; i++) {
+        try {
+          const rows = await call('crm.deal.userfield.list', {
+            filter: { FIELD_NAME: fieldNames[i] },
+            select: UF_FIELD_SELECT,
+          });
+          if (Array.isArray(rows) && rows.length) all.push(...rows);
+        } catch (_) {}
+      }
+    }
+
+    if (!all.length && fieldNames.length) {
+      const legacy = await fetchAllDealUserFieldsLegacy(call);
+      window.__bp608UserFields = legacy;
+      return legacy;
+    }
+
     window.__bp608UserFields = all;
     return all;
+  }
+
+  async function fetchAllDealUserFields(call) {
+    return fetchNeededDealUserFields(call);
   }
 
   async function loadEnumMaps(call) {
@@ -274,6 +357,8 @@
 
       if (row.kind === 'file') {
         const input = form.elements[row.param];
+        const wrap = form.querySelector('[data-file-field="' + row.param + '"]');
+        const cleared = wrap && wrap.getAttribute('data-file-cleared') === '1';
         if (input && input.files && input.files.length) {
           const encoded = await encodeFileField(input.files, !!field.multiple);
           if (encoded !== undefined) {
@@ -281,6 +366,11 @@
             report.files.push({ param: row.param, deal: row.deal, count: input.files.length });
             report.saved.push(row.param);
           }
+        } else if (cleared) {
+          const uf = ufByName[row.deal];
+          fields[row.deal] = (field.multiple || (uf && uf.MULTIPLE === 'Y')) ? [] : '';
+          report.files.push({ param: row.param, deal: row.deal, count: 0, cleared: true });
+          report.saved.push(row.param);
         }
         continue;
       }
@@ -416,10 +506,12 @@
 
       if (field.type === 'file') {
         const input = form.elements[code];
+        const wrap = form.querySelector('[data-file-field="' + code + '"]');
+        const cleared = wrap && wrap.getAttribute('data-file-cleared') === '1';
         if (input && input.files && input.files.length) {
           const encoded = await encodeFileField(input.files, !!field.multiple);
           if (encoded !== undefined) parameters[code] = encoded;
-        } else {
+        } else if (!cleared) {
           const fromDeal = await fileParamFromDeal(deal, code, !!field.multiple);
           if (fromDeal !== undefined) parameters[code] = fromDeal;
         }
@@ -679,6 +771,7 @@
     });
     form.querySelectorAll('.file-field').forEach((wrap) => {
       wrap.classList.remove('has-file', 'has-deal-file');
+      wrap.removeAttribute('data-file-cleared');
     });
     form.querySelectorAll('.file-names').forEach((hint) => {
       hint.textContent = '';
@@ -717,15 +810,24 @@
 
   async function applyDealFileDownloads(form, deal, call, map) {
     const rows = map || window.BP608_DEAL_PREFILL_MAP || [];
+    const groups = [];
+    const flat = [];
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
       if (row.kind !== 'file') continue;
       let raw = deal[row.deal];
       if (isEmpty(raw) && row.altDeal) raw = deal[row.altDeal];
-      const entries = await resolveFileDownloadUrls(call, fileEntries(raw));
+      const entries = fileEntries(raw);
       if (!entries.length) continue;
-      setFileHint(form, row.param, entries.map((e) => e.name), entries);
+      groups.push({ param: row.param, start: flat.length, count: entries.length });
+      flat.push.apply(flat, entries);
     }
+    if (!flat.length) return;
+    const resolved = await resolveFileDownloadUrls(call, flat);
+    groups.forEach((g) => {
+      const slice = resolved.slice(g.start, g.start + g.count);
+      setFileHint(form, g.param, slice.map((e) => e.name), slice);
+    });
   }
 
   async function buildPayload(deal, enumMaps) {
@@ -864,6 +966,13 @@
   }
 
   window.BP608DealPrefill = {
+    warmup: function (call) {
+      if (!call) return Promise.resolve();
+      if (!window.__bp608EnumWarmup) {
+        window.__bp608EnumWarmup = loadEnumMaps(call).catch(() => ({}));
+      }
+      return window.__bp608EnumWarmup;
+    },
     enrichContacts: function (call, contacts) {
       return hydrateContactList(call, contacts);
     },

@@ -1,0 +1,150 @@
+{
+  "decodedBytes": 359369,
+  "activityTypes": [
+    [
+      "string",
+      559
+    ],
+    [
+      "select",
+      148
+    ],
+    [
+      "datetime",
+      66
+    ],
+    [
+      "bool",
+      58
+    ],
+    [
+      "UF:crm",
+      51
+    ],
+    [
+      "UF:date",
+      39
+    ],
+    [
+      "file",
+      30
+    ],
+    [
+      "UF:money",
+      29
+    ],
+    [
+      "int",
+      23
+    ],
+    [
+      "double",
+      22
+    ],
+    [
+      "user",
+      21
+    ],
+    [
+      "text",
+      17
+    ],
+    [
+      "UF:url",
+      12
+    ],
+    [
+      "UF:rest_124_b24duplicate__fields_duplicate",
+      9
+    ],
+    [
+      "UF:crm_status",
+      4
+    ],
+    [
+      "time",
+      3
+    ],
+    [
+      "entityselector",
+      3
+    ],
+    [
+      "date",
+      2
+    ],
+    [
+      "UF:rest_98_data_dadata",
+      2
+    ],
+    [
+      "UF:rest_384_universalrequiredfield",
+      2
+    ],
+    [
+      "email",
+      2
+    ],
+    [
+      "phone",
+      2
+    ],
+    [
+      "web",
+      2
+    ],
+    [
+      "im",
+      2
+    ],
+    [
+      "SequentialWorkflowActivity",
+      1
+    ],
+    [
+      "LogActivity",
+      1
+    ],
+    [
+      "UF:rest_42_contact",
+      1
+    ],
+    [
+      "UF:rest_62_light",
+      1
+    ],
+    [
+      "UF:rest_196_depend_fields21",
+      1
+    ],
+    [
+      "UF:rest_354_contactfield",
+      1
+    ],
+    [
+      "UF:resourcebooking",
+      1
+    ]
+  ],
+  "expressionCount": 1,
+  "topExpressions": [
+    [
+      "{=System:Now}",
+      1
+    ]
+  ],
+  "needleHits": {
+    "GlobalConst": -1,
+    "GlobalVar": -1,
+    "Constant": -1,
+    "Const": -1,
+    "A62638_89551_10304_32527": -1,
+    "Технический": -1,
+    "Директор продаж": -1,
+    "ModifyConstant": -1,
+    "SetConstant": -1,
+    "GlobalConstant": -1
+  },
+  "uniqueUsers": 0,
+  "topUsers": []
+}

@@ -11,15 +11,28 @@ alwaysApply: true
 
 ## Синхронизация
 
-Если вопрос про Гарри, лицензию, VPN, **ПК**, **локальные файлы/папки**:
+Если вопрос про Гарри, VPN, **ПК**, **локальные файлы/папки** (без лицензии):
 
 1. `powershell -NoProfile -ExecutionPolicy Bypass -File ".cursor/cursor-admin/scripts/sync-context.ps1"`
-2. Прочитать `subscription.json`, `vpn.json`, `context.md`
+2. Прочитать `vpn.json`, `context.md`
 3. **Только при вопросе о ПК** (в т.ч. температура GPU): `fetch-system.ps1 -UpdateContext` → `system.json` → `gpu[].temperatureC`
+
+**Подписку не трогать** в обычном sync. `subscription.json` / API — **только** при явном вопросе про лицензию / подписку / `/garri` / «срок…»:
+
+`sync-context.ps1 -Subscription` → затем читать `subscription.json` и блок подписки в `context.md`.
+
+### TTL кэша (только VPN)
+
+| Источник | По умолчанию | Принудительно |
+|----------|--------------|---------------|
+| `vpn.json` | TTL **3 мин** | `-Force` |
+| `subscription.json` | **не обновляется** | только `-Subscription` (сразу fetch) |
+
+Можно пропустить шаг sync, если в **этом же** ответе уже есть свежий `vpn.json` (в пределах TTL).
 
 ## VPN без туннеля (каждый ответ)
 
-После sync прочитать `vpn.json`.
+После sync (или при валидном кэше) прочитать `vpn.json`.
 
 Если **`requestsThroughVpn` = false** — в **начале любого ответа** (в т.ч. когда дальше только Витёк / Гена / БЗ):
 
@@ -28,8 +41,6 @@ alwaysApply: true
 3. Без блока подписки
 
 Если **`requestsThroughVpn` = true`** — строку не показывать.
-
-Перед проверкой — `sync-context.ps1` (или свежий `vpn.json` из этого ответа).
 
 **Погода отключена** — не запускать ambience-скрипты, не упоминать время/погоду/Тюмень.
 

@@ -2,11 +2,39 @@
 param(
     [string]$SubscriptionFile = (Join-Path $PSScriptRoot "..\subscription.json"),
     [string]$VpnFile = (Join-Path $PSScriptRoot "..\vpn.json"),
-    [string]$ContextFile = (Join-Path $PSScriptRoot "..\context.md")
+    [string]$ContextFile = (Join-Path $PSScriptRoot "..\context.md"),
+    [switch]$Force,
+    [switch]$Subscription,
+    [int]$VpnTtlMinutes = 3
 )
 
 function Chars([int[]]$codes) {
     -join ($codes | ForEach-Object { [char]$_ })
+}
+
+function Test-CacheFresh {
+    param(
+        [string]$Path,
+        [timespan]$MaxAge
+    )
+    if (-not (Test-Path -LiteralPath $Path)) {
+        return $false
+    }
+    try {
+        $json = Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json
+        if ($json.fetchedAt) {
+            $fetched = [datetime]::Parse([string]$json.fetchedAt)
+            return ((Get-Date) - $fetched) -lt $MaxAge
+        }
+    }
+    catch { }
+    try {
+        $age = (Get-Date) - (Get-Item -LiteralPath $Path).LastWriteTime
+        return $age -lt $MaxAge
+    }
+    catch {
+        return $false
+    }
 }
 
 $templateFile = Join-Path $PSScriptRoot "..\context.template.md"
@@ -14,18 +42,24 @@ if (-not (Test-Path $ContextFile) -and (Test-Path $templateFile)) {
     Copy-Item -LiteralPath $templateFile -Destination $ContextFile
 }
 
-$fetchScript = Join-Path $PSScriptRoot "fetch-subscription.ps1"
-& $fetchScript -OutFile $SubscriptionFile | Out-Null
+$vpnFresh = (-not $Force) -and (Test-CacheFresh -Path $VpnFile -MaxAge ([timespan]::FromMinutes($VpnTtlMinutes)))
 
-$fetchVpnScript = Join-Path $PSScriptRoot "fetch-vpn.ps1"
-& $fetchVpnScript -OutFile $VpnFile | Out-Null
-
-if (-not (Test-Path $SubscriptionFile)) {
-    Write-Error "subscription.json not created"
-    exit 1
+if (-not $vpnFresh) {
+    $fetchVpnScript = Join-Path $PSScriptRoot "fetch-vpn.ps1"
+    & $fetchVpnScript -OutFile $VpnFile | Out-Null
 }
 
-$data = Get-Content $SubscriptionFile -Raw -Encoding UTF8 | ConvertFrom-Json
+$subFetched = $false
+if ($Subscription) {
+    $fetchScript = Join-Path $PSScriptRoot "fetch-subscription.ps1"
+    & $fetchScript -OutFile $SubscriptionFile | Out-Null
+    $subFetched = $true
+    if (-not (Test-Path $SubscriptionFile)) {
+        Write-Error "subscription.json not created"
+        exit 1
+    }
+}
+
 $vpn = $null
 if (Test-Path $VpnFile) {
     $vpn = Get-Content $VpnFile -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -33,58 +67,10 @@ if (Test-Path $VpnFile) {
 $ctx = Get-Content $ContextFile -Raw -Encoding UTF8
 
 $em = Chars @(0x2014)
-$dn = Chars @(0x0020, 0x0434, 0x043D, 0x002E)
-
-$plan = if ($data.planLabel) { $data.planLabel } else { $em }
-$planType = if ($data.membershipType) { $data.membershipType } else { "unknown" }
-$status = if ($data.subscriptionStatus) { $data.subscriptionStatus } else { "unknown" }
-
-$statusRu = switch ($status) {
-    "active" { Chars @(0x0430, 0x043A, 0x0442, 0x0438, 0x0432, 0x043D, 0x0430) }
-    "trialing" { Chars @(0x043F, 0x0440, 0x043E, 0x0431, 0x043D, 0x044B, 0x0439, 0x0020, 0x043F, 0x0435, 0x0440, 0x0438, 0x043E, 0x0434) }
-    "past_due" { Chars @(0x043F, 0x0440, 0x043E, 0x0441, 0x0440, 0x043E, 0x0447, 0x0435, 0x043D, 0x0430) }
-    "canceled" { Chars @(0x043E, 0x0442, 0x043C, 0x0435, 0x043D, 0x0435, 0x043D, 0x0430) }
-    default { $status }
-}
-
-$email = if ($data.email) { $data.email } else { $em }
-$periodEnd = $em
-if ($data.periodEnd) {
-    $periodEnd = ([datetime]$data.periodEnd.Substring(0, 10)).ToString("dd.MM.yyyy")
-}
-$days = if ($null -ne $data.daysUntilPeriodEnd) { "$($data.daysUntilPeriodEnd)$dn" } else { $em }
 $checked = Get-Date -Format "dd.MM.yyyy"
-$usageStart = if ($data.usage -and $data.usage.startOfMonth) { $data.usage.startOfMonth } else { $em }
-$source = if ($data.source) { $data.source } else { "local" }
-
-$ostatok = Chars @(0x043E, 0x0441, 0x0442, 0x0430, 0x0442, 0x043E, 0x043A)
-$usageRow = "| Fast requests ($ostatok) | $em |"
-if ($data.usage) {
-    $used = $data.usage.fastRequestsUsed
-    $lim = $data.usage.fastRequestsLimit
-    if ($null -ne $data.usage.fastRequestsRemaining -and $null -ne $lim) {
-        $usageRow = "| Fast requests ($ostatok) | $($data.usage.fastRequestsRemaining) / $lim |"
-    }
-    elseif ($null -ne $used) {
-        $limText = if ($null -ne $lim) { $lim } else { $em }
-        $usageRow = "| Fast requests ($ostatok) | $used / $limText |"
-    }
-}
 
 $p1 = Chars @(0x041F, 0x0430, 0x0440, 0x0430, 0x043C, 0x0435, 0x0442, 0x0440)
 $p2 = Chars @(0x0417, 0x043D, 0x0430, 0x0447, 0x0435, 0x043D, 0x0438, 0x0435)
-$p3 = Chars @(0x0422, 0x0430, 0x0440, 0x0438, 0x0444)
-$p4 = Chars @(0x0421, 0x0442, 0x0430, 0x0442, 0x0443, 0x0441, 0x0020, 0x043F, 0x043E, 0x0434, 0x043F, 0x0438, 0x0441, 0x043A, 0x0438)
-$p5 = Chars @(0x0414, 0x0430, 0x0442, 0x0430, 0x0020, 0x043E, 0x043A, 0x043E, 0x043D, 0x0447, 0x0430, 0x043D, 0x0438, 0x044F, 0x0020, 0x002F, 0x0020, 0x043F, 0x0440, 0x043E, 0x0434, 0x043B, 0x0435, 0x043D, 0x0438, 0x044F)
-$p6 = Chars @(0x041F, 0x0435, 0x0440, 0x0438, 0x043E, 0x0434, 0x0020, 0x0075, 0x0073, 0x0061, 0x0067, 0x0065)
-$p7 = Chars @(0x041E, 0x043F, 0x043B, 0x0430, 0x0442, 0x0430)
-$p8 = Chars @(0x0438, 0x0437, 0x0020, 0x0053, 0x0074, 0x0072, 0x0069, 0x0070, 0x0065, 0x0020, 0x043F, 0x0440, 0x0438, 0x0020, 0x043D, 0x0435, 0x043E, 0x0431, 0x0445, 0x043E, 0x0434, 0x0438, 0x043C, 0x043E, 0x0441, 0x0442, 0x0438)
-$pEmailAcc = Chars @(0x0430, 0x043A, 0x043A, 0x0430, 0x0443, 0x043D, 0x0442, 0x0430)
-$pSync = Chars @(0x041F, 0x043E, 0x0441, 0x043B, 0x0435, 0x0434, 0x043D, 0x044F, 0x044F, 0x0020, 0x0441, 0x0438, 0x043D, 0x0445, 0x0440, 0x043E, 0x043D, 0x0438, 0x0437, 0x0430, 0x0446, 0x0438, 0x044F)
-$p10 = Chars @(0x0430, 0x0432, 0x0442, 0x043E, 0x003A)
-$p11 = Chars @(0x0414, 0x0430, 0x0442, 0x0430, 0x0020, 0x043F, 0x043E, 0x0441, 0x043B, 0x0435, 0x0434, 0x043D, 0x0435, 0x0439, 0x0020, 0x043F, 0x0440, 0x043E, 0x0432, 0x0435, 0x0440, 0x043A, 0x0438, 0x0020, 0x0075, 0x0073, 0x0061, 0x0067, 0x0065)
-$p12 = Chars @(0x0418, 0x0441, 0x0442, 0x043E, 0x0447, 0x043D, 0x0438, 0x043A, 0x0020, 0x0434, 0x0430, 0x043D, 0x043D, 0x044B, 0x0445)
-$limTitle = Chars @(0x041B, 0x0438, 0x043C, 0x0438, 0x0442, 0x044B, 0x0020, 0x0028, 0x0437, 0x0430, 0x043F, 0x043E, 0x043B, 0x043D, 0x044F, 0x0442, 0x044C, 0x0020, 0x043F, 0x043E, 0x0020, 0x0436, 0x0435, 0x043B, 0x0430, 0x043D, 0x0438, 0x044E, 0x0029)
 
 $vpnStatusRu = $em
 $vpnProcs = $em
@@ -144,7 +130,65 @@ $vpnBlock = @"
 | $(Chars @(0x041F, 0x043E, 0x0441, 0x043B, 0x0435, 0x0434, 0x043D, 0x044F, 0x044F, 0x0020, 0x043F, 0x0440, 0x043E, 0x0432, 0x0435, 0x0440, 0x043A, 0x0430)) | $checked |
 "@
 
-$subBlock = @"
+$sredaHeader = "## " + (Chars @(0x0421, 0x0440, 0x0435, 0x0434, 0x0430))
+$vpnHeader = "## VPN (Happ)"
+$vpnHeaderEsc = [regex]::Escape($vpnHeader)
+$sredaHeaderEsc = [regex]::Escape($sredaHeader)
+$ctx = [regex]::Replace($ctx, "(?s)$vpnHeaderEsc.*?(?=\r?\n$sredaHeaderEsc)", ($vpnBlock.TrimEnd() + "`n"))
+
+if ($subFetched) {
+    $data = Get-Content $SubscriptionFile -Raw -Encoding UTF8 | ConvertFrom-Json
+    $dn = Chars @(0x0020, 0x0434, 0x043D, 0x002E)
+
+    $plan = if ($data.planLabel) { $data.planLabel } else { $em }
+    $planType = if ($data.membershipType) { $data.membershipType } else { "unknown" }
+    $status = if ($data.subscriptionStatus) { $data.subscriptionStatus } else { "unknown" }
+
+    $statusRu = switch ($status) {
+        "active" { Chars @(0x0430, 0x043A, 0x0442, 0x0438, 0x0432, 0x043D, 0x0430) }
+        "trialing" { Chars @(0x043F, 0x0440, 0x043E, 0x0431, 0x043D, 0x044B, 0x0439, 0x0020, 0x043F, 0x0435, 0x0440, 0x0438, 0x043E, 0x0434) }
+        "past_due" { Chars @(0x043F, 0x0440, 0x043E, 0x0441, 0x0440, 0x043E, 0x0447, 0x0435, 0x043D, 0x0430) }
+        "canceled" { Chars @(0x043E, 0x0442, 0x043C, 0x0435, 0x043D, 0x0435, 0x043D, 0x0430) }
+        default { $status }
+    }
+
+    $email = if ($data.email) { $data.email } else { $em }
+    $periodEnd = $em
+    if ($data.periodEnd) {
+        $periodEnd = ([datetime]$data.periodEnd.Substring(0, 10)).ToString("dd.MM.yyyy")
+    }
+    $days = if ($null -ne $data.daysUntilPeriodEnd) { "$($data.daysUntilPeriodEnd)$dn" } else { $em }
+    $usageStart = if ($data.usage -and $data.usage.startOfMonth) { $data.usage.startOfMonth } else { $em }
+    $source = if ($data.source) { $data.source } else { "local" }
+
+    $ostatok = Chars @(0x043E, 0x0441, 0x0442, 0x0430, 0x0442, 0x043E, 0x043A)
+    $usageRow = "| Fast requests ($ostatok) | $em |"
+    if ($data.usage) {
+        $used = $data.usage.fastRequestsUsed
+        $lim = $data.usage.fastRequestsLimit
+        if ($null -ne $data.usage.fastRequestsRemaining -and $null -ne $lim) {
+            $usageRow = "| Fast requests ($ostatok) | $($data.usage.fastRequestsRemaining) / $lim |"
+        }
+        elseif ($null -ne $used) {
+            $limText = if ($null -ne $lim) { $lim } else { $em }
+            $usageRow = "| Fast requests ($ostatok) | $used / $limText |"
+        }
+    }
+
+    $p3 = Chars @(0x0422, 0x0430, 0x0440, 0x0438, 0x0444)
+    $p4 = Chars @(0x0421, 0x0442, 0x0430, 0x0442, 0x0443, 0x0441, 0x0020, 0x043F, 0x043E, 0x0434, 0x043F, 0x0438, 0x0441, 0x043A, 0x0438)
+    $p5 = Chars @(0x0414, 0x0430, 0x0442, 0x0430, 0x0020, 0x043E, 0x043A, 0x043E, 0x043D, 0x0447, 0x0430, 0x043D, 0x0438, 0x044F, 0x0020, 0x002F, 0x0020, 0x043F, 0x0440, 0x043E, 0x0434, 0x043B, 0x0435, 0x043D, 0x0438, 0x044F)
+    $p6 = Chars @(0x041F, 0x0435, 0x0440, 0x0438, 0x043E, 0x0434, 0x0020, 0x0075, 0x0073, 0x0061, 0x0067, 0x0065)
+    $p7 = Chars @(0x041E, 0x043F, 0x043B, 0x0430, 0x0442, 0x0430)
+    $p8 = Chars @(0x0438, 0x0437, 0x0020, 0x0053, 0x0074, 0x0072, 0x0069, 0x0070, 0x0065, 0x0020, 0x043F, 0x0440, 0x0438, 0x0020, 0x043D, 0x0435, 0x043E, 0x0431, 0x0445, 0x043E, 0x0434, 0x0438, 0x043C, 0x043E, 0x0441, 0x0442, 0x0438)
+    $pEmailAcc = Chars @(0x0430, 0x043A, 0x043A, 0x0430, 0x0443, 0x043D, 0x0442, 0x0430)
+    $pSync = Chars @(0x041F, 0x043E, 0x0441, 0x043B, 0x0435, 0x0434, 0x043D, 0x044F, 0x044F, 0x0020, 0x0441, 0x0438, 0x043D, 0x0445, 0x0440, 0x043E, 0x043D, 0x0438, 0x0437, 0x0430, 0x0446, 0x0438, 0x044F)
+    $p10 = Chars @(0x0430, 0x0432, 0x0442, 0x043E, 0x003A)
+    $p11 = Chars @(0x0414, 0x0430, 0x0442, 0x0430, 0x0020, 0x043F, 0x043E, 0x0441, 0x043B, 0x0435, 0x0434, 0x043D, 0x0435, 0x0439, 0x0020, 0x043F, 0x0440, 0x043E, 0x0432, 0x0435, 0x0440, 0x043A, 0x0438, 0x0020, 0x0075, 0x0073, 0x0061, 0x0067, 0x0065)
+    $p12 = Chars @(0x0418, 0x0441, 0x0442, 0x043E, 0x0447, 0x043D, 0x0438, 0x043A, 0x0020, 0x0434, 0x0430, 0x043D, 0x043D, 0x044B, 0x0445)
+    $limTitle = Chars @(0x041B, 0x0438, 0x043C, 0x0438, 0x0442, 0x044B, 0x0020, 0x0028, 0x0437, 0x0430, 0x043F, 0x043E, 0x043B, 0x043D, 0x044F, 0x0442, 0x044C, 0x0020, 0x043F, 0x043E, 0x0020, 0x0436, 0x0435, 0x043B, 0x0430, 0x043D, 0x0438, 0x044E, 0x0029)
+
+    $subBlock = @"
 | $p1 | $p2 |
 |----------|----------|
 | $p3 | **$plan** ($planType) |
@@ -156,7 +200,7 @@ $subBlock = @"
 | $pSync | $checked |
 "@
 
-$limitsBlock = @"
+    $limitsBlock = @"
 ## $limTitle
 
 | $p1 | $p2 |
@@ -166,15 +210,14 @@ $usageRow
 | $p12 | $source |
 "@
 
-$subPattern = Chars @(0x041F, 0x043E, 0x0434, 0x043F, 0x0438, 0x0441, 0x043A, 0x0430)
-$ctx = [regex]::Replace($ctx, "(?s)## $subPattern\r?\n\r?\n.*?(?=\r?\n## )", "## $subPattern`n`n$subBlock`n")
-
-$sredaHeader = "## " + (Chars @(0x0421, 0x0440, 0x0435, 0x0434, 0x0430))
-$vpnHeader = "## VPN (Happ)"
-$vpnHeaderEsc = [regex]::Escape($vpnHeader)
-$sredaHeaderEsc = [regex]::Escape($sredaHeader)
-$ctx = [regex]::Replace($ctx, "(?s)## $limTitle.*?(?=\r?\n$vpnHeaderEsc)", $limitsBlock)
-$ctx = [regex]::Replace($ctx, "(?s)$vpnHeaderEsc.*?(?=\r?\n$sredaHeaderEsc)", ($vpnBlock.TrimEnd() + "`n"))
+    $subPattern = Chars @(0x041F, 0x043E, 0x0434, 0x043F, 0x0438, 0x0441, 0x043A, 0x0430)
+    $ctx = [regex]::Replace($ctx, "(?s)## $subPattern\r?\n\r?\n.*?(?=\r?\n## )", "## $subPattern`n`n$subBlock`n")
+    $ctx = [regex]::Replace($ctx, "(?s)## $limTitle.*?(?=\r?\n$vpnHeaderEsc)", $limitsBlock)
+}
 
 [System.IO.File]::WriteAllText($ContextFile, $ctx, [System.Text.UTF8Encoding]::new($true))
-Write-Output "OK"
+
+$cacheNote = @()
+if ($subFetched) { $cacheNote += "sub=fetch" } else { $cacheNote += "sub=skip" }
+if ($vpnFresh) { $cacheNote += "vpn=cache" } else { $cacheNote += "vpn=fetch" }
+Write-Output ("OK ({0})" -f ($cacheNote -join ", "))

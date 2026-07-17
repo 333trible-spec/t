@@ -1,0 +1,10 @@
+.vercel
+.env
+.env.*
+node_modules
+export
+docs/screenshots
+*.bpt
+*.decoded.txt
+.DS_Store
+*.log
