@@ -961,6 +961,131 @@
     return list.map((c) => Object.assign({}, c, byId[c.id] || {}));
   }
 
+  function phoneSearchVariants(raw) {
+    const d = String(raw || '').replace(/\D/g, '');
+    if (!d) return [];
+    const out = [d];
+    if (d.length === 11 && (d[0] === '7' || d[0] === '8')) {
+      out.push(d.slice(1), '7' + d.slice(1), '8' + d.slice(1));
+    } else if (d.length === 10) {
+      out.push('7' + d, '8' + d);
+    }
+    return out.filter((v, i, arr) => arr.indexOf(v) === i);
+  }
+
+  function pushUniqueId(ids, id) {
+    const n = Number(id);
+    if (n > 0 && ids.indexOf(n) === -1) ids.push(n);
+  }
+
+  function normalizeSearchText(s) {
+    return String(s || '')
+      .toLowerCase()
+      .replace(/ё/g, 'е')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function contactMatchesQuery(record, query) {
+    if (!record || !record.id) return false;
+    const q = normalizeSearchText(query);
+    if (!q) return false;
+    const digitsQ = q.replace(/\D/g, '');
+
+    if (/^\d{1,9}$/.test(q)) {
+      return String(record.id) === q;
+    }
+
+    if (digitsQ.length >= 10) {
+      // Телефонный поиск идёт через findbycomm — ID уже релевантны.
+      return true;
+    }
+
+    const title = normalizeSearchText(record.title);
+    if (!title) return false;
+    const tokens = q.split(' ').filter(Boolean);
+    if (!tokens.length) return false;
+    return tokens.every((t) => title.indexOf(t) !== -1);
+  }
+
+  async function listContactsByNameFilter(call, filter) {
+    if (!filter) return [];
+    try {
+      const rows = await call('crm.contact.list', {
+        filter: filter,
+        select: ['ID', 'NAME', 'LAST_NAME', 'SECOND_NAME', 'PHONE', 'EMAIL'],
+        order: { LAST_NAME: 'ASC' },
+        start: 0,
+      });
+      return Array.isArray(rows) ? rows : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  /** Поиск существующих контактов: ID, телефон или ФИО (без создания). */
+  async function searchContacts(call, query) {
+    const q = String(query || '').trim();
+    if (!q || !call) return [];
+
+    const foundIds = [];
+    const digits = q.replace(/\D/g, '');
+    const isNumericId = /^\d{1,9}$/.test(q);
+    const isPhone = digits.length >= 10;
+    const hasLetters = /[A-Za-zА-Яа-яЁё]/.test(q);
+    const letterCount = (q.match(/[A-Za-zА-Яа-яЁё]/g) || []).length;
+
+    if (isNumericId) {
+      try {
+        const c = await call('crm.contact.get', {
+          id: Number(q),
+          select: ['ID', 'NAME', 'LAST_NAME', 'SECOND_NAME', 'PHONE', 'EMAIL'],
+        });
+        if (c && c.ID) pushUniqueId(foundIds, c.ID);
+      } catch (_) {}
+    }
+
+    if (isPhone) {
+      try {
+        const dup = await call('crm.duplicate.findbycomm', {
+          entity_type: 'CONTACT',
+          type: 'PHONE',
+          values: phoneSearchVariants(digits),
+        });
+        const list = (dup && dup.CONTACT) || [];
+        list.forEach((id) => pushUniqueId(foundIds, id));
+      } catch (_) {}
+    }
+
+    // ФИО: минимум 2 буквы, без «широкого» OR — иначе Б24 отдаёт первую страницу А→Я.
+    if (hasLetters && letterCount >= 2 && !isPhone) {
+      const parts = q.split(/\s+/).filter(Boolean);
+      let rows = [];
+      if (parts.length >= 2 && !/^\d+$/.test(parts[0])) {
+        rows = await listContactsByNameFilter(call, {
+          '%LAST_NAME': parts[0],
+          '%NAME': parts[1],
+        });
+      } else if (parts[0] && !/^\d+$/.test(parts[0])) {
+        const term = parts[0];
+        rows = await listContactsByNameFilter(call, { '%LAST_NAME': term });
+        if (!rows.length) {
+          rows = await listContactsByNameFilter(call, { '%NAME': term });
+        }
+        if (!rows.length) {
+          rows = await listContactsByNameFilter(call, { '%SECOND_NAME': term });
+        }
+      }
+      rows.forEach((c) => {
+        if (c && c.ID) pushUniqueId(foundIds, c.ID);
+      });
+    }
+
+    if (!foundIds.length) return [];
+    const details = await fetchContactDetails(call, foundIds.slice(0, 20));
+    return details.filter((c) => contactMatchesQuery(c, q));
+  }
+
   async function applyCrmPrefill(form) {
     window.BP608Form.syncOwnershipContacts(form);
   }
@@ -975,6 +1100,9 @@
     },
     enrichContacts: function (call, contacts) {
       return hydrateContactList(call, contacts);
+    },
+    searchContacts: function (call, query) {
+      return searchContacts(call, query);
     },
     isDealCompletedStage: isDealCompletedStage,
     isDealCompletedById: isDealCompletedById,

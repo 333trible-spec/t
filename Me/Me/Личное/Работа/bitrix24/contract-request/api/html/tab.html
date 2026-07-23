@@ -560,6 +560,7 @@
     }
     .contact-card-wrap {
       min-width: 0;
+      position: relative;
     }
     .contact-alert {
       position: absolute;
@@ -615,6 +616,123 @@
       font-size: 13px;
       font-style: italic;
       grid-column: 1 / -1;
+    }
+    .contact-id {
+      display: block;
+      font-size: 12px;
+      font-weight: 450;
+      margin-top: 2px;
+    }
+    .contact-remove {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--nd-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      z-index: 2;
+    }
+    .contact-remove:hover {
+      color: #fff;
+      background: #e11d48;
+      border-color: #e11d48;
+    }
+    .ownership-search {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+      width: 100%;
+      max-width: 100%;
+    }
+    .ownership-search.hidden { display: none !important; }
+    .ownership-search-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+      width: 100%;
+    }
+    /* Поле = ширина «Тип договора»; кнопка «Найти» рядом сверх этой ширины */
+    .ownership-search-input {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+    @media (min-width: 720px) {
+      .ownership-search-input {
+        flex: 0 0 calc((100% - 14px) / 2);
+        width: calc((100% - 14px) / 2);
+        max-width: calc((100% - 14px) / 2);
+      }
+      .ownership-search-status,
+      .ownership-search-results {
+        width: calc((100% - 14px) / 2);
+        max-width: calc((100% - 14px) / 2);
+      }
+    }
+    .ownership-search-btn {
+      flex: 0 0 auto;
+      min-height: 2.5rem;
+      padding: 0 14px;
+    }
+    .ownership-search-status {
+      margin: 0;
+      min-height: 1.2em;
+    }
+    .ownership-search-results {
+      display: grid;
+      gap: 6px;
+      width: 100%;
+    }
+    .ownership-result {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border: 1px solid var(--nd-border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+    }
+    .ownership-result-body {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+    .ownership-result-name {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ownership-result-meta {
+      font-size: 12px;
+    }
+    .ownership-result-add {
+      flex: 0 0 auto;
+      min-height: 2rem;
+      padding: 0 12px;
+      font-size: 13px;
+    }
+    .ownership-result-added {
+      flex: 0 0 auto;
+      font-size: 12px;
+      font-style: italic;
+    }
+    .form-readonly .ownership-search,
+    .form-readonly .contact-remove {
+      display: none !important;
     }
     .contact-prompt {
       margin: 4px 0 0;

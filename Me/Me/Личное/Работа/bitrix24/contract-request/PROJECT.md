@@ -12,7 +12,7 @@
 | **Шаблон БП** | [CRM_DEAL / edit / 608](https://ik-navigator.bitrix24.ru/crm/configs/bp/CRM_DEAL/edit/608/) |
 | **Образец placement** | [[../deal-card-bg/PROJECT\|deal-card-bg]] — `CRM_DEAL_DETAIL_TAB` |
 | **Статус** | ✅ Vercel; установка на ik-navigator |
-| **Версия** | `v 0.6` — см. [[docs/VERSIONING]] |
+| **Версия** | `v 1.05` — см. [[docs/VERSIONING]] |
 
 ## Решение
 

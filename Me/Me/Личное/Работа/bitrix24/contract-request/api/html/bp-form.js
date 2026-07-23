@@ -60,6 +60,8 @@
     JOINT: 'Общая совместная собственность',
   };
 
+  let lastOwnershipSearchResults = [];
+
   function contactDetailUrl(contactId) {
     const id = Number(contactId);
     if (!id) return '#';
@@ -107,12 +109,28 @@
     );
   }
 
-  function renderOwnershipCards(contacts) {
+  function ownershipAllowsPick(type) {
+    return type === OWNERSHIP.SHARED || type === OWNERSHIP.JOINT;
+  }
+
+  function ownershipEditable(form) {
+    return !(window.__bp608ViewOnly || (form && form.classList.contains('form-readonly')));
+  }
+
+  function renderOwnershipCards(contacts, options) {
+    const opts = options || {};
+    const canRemove = !!opts.canRemove;
     if (!contacts || !contacts.length) {
-      return '<p class="contact-empty muted">Контакты не указаны в сделке</p>';
+      return '<p class="contact-empty muted">Контакты не указаны — найдите и добавьте ниже</p>';
     }
     return contacts.map((c) => {
       const title = String(c.title || '').trim() || ('Контакт #' + c.id);
+      const removeBtn = canRemove
+        ? (
+          '<button type="button" class="contact-remove" data-ownership-remove="' + esc(c.id) + '"' +
+          ' title="Убрать из участников" aria-label="Убрать ' + esc(title) + '">×</button>'
+        )
+        : '';
       return (
       '<div class="contact-card-wrap">' +
       '<a class="contact-card contact-card-link" href="' + esc(contactDetailUrl(c.id)) + '" target="_blank" rel="noopener noreferrer" data-id="' + esc(c.id) + '" title="Открыть контакт: ' + esc(title) + '">' +
@@ -122,6 +140,7 @@
       '<span class="contact-name">' + esc(title) + '</span>' +
       '</div>' +
       '</a>' +
+      removeBtn +
       '</div>'
       );
     }).join('');
@@ -137,6 +156,15 @@
       '<div class="field ownership-contact-field" data-field="ownership_contact">' +
       '<label class="lbl ownership-lbl" data-ownership-label>Контакт</label>' +
       '<div class="contact-cards" data-ownership-display aria-live="polite"></div>' +
+      '<div class="ownership-search hidden" data-ownership-search>' +
+      '<div class="ownership-search-row">' +
+      '<input class="inp ownership-search-input" type="search" data-ownership-query' +
+      ' placeholder="добавить участника" autocomplete="off" enterkeyhint="search">' +
+      '<button type="button" class="btn secondary ownership-search-btn" data-ownership-search-btn>Найти</button>' +
+      '</div>' +
+      '<p class="hint ownership-search-status" data-ownership-search-status></p>' +
+      '<div class="ownership-search-results" data-ownership-results></div>' +
+      '</div>' +
       '<p class="hint ownership-hint" data-ownership-hint></p>' +
       '<div class="ownership-hidden">' + hidden + '</div>' +
       '</div>'
@@ -160,6 +188,25 @@
     return '';
   }
 
+  function clearOwnershipSearchResults(form) {
+    lastOwnershipSearchResults = [];
+    const results = form.querySelector('[data-ownership-results]');
+    const status = form.querySelector('[data-ownership-search-status]');
+    const input = form.querySelector('[data-ownership-query]');
+    if (results) results.innerHTML = '';
+    if (status) status.textContent = '';
+    if (input) input.value = '';
+  }
+
+  function syncOwnershipSearchUi(form) {
+    const search = form.querySelector('[data-ownership-search]');
+    if (!search) return;
+    const type = propertyTypeSelected(form)[0];
+    const show = ownershipAllowsPick(type) && ownershipEditable(form);
+    search.classList.toggle('hidden', !show);
+    if (!show) clearOwnershipSearchResults(form);
+  }
+
   function renderOwnershipDisplay(form, contacts) {
     const box = form.querySelector('[data-ownership-display]');
     const hint = form.querySelector('[data-ownership-hint]');
@@ -179,6 +226,7 @@
         hint.classList.remove('hidden');
         hint.textContent = 'Выберите тип собственности';
       }
+      syncOwnershipSearchUi(form);
       return;
     }
 
@@ -187,12 +235,134 @@
       lbl.textContent = ownershipFieldLabel(type, contacts);
     }
     if (field) field.classList.remove('ownership-awaiting-type');
-    box.innerHTML = renderOwnershipCards(contacts);
+    const emptyMsg = ownershipAllowsPick(type)
+      ? 'Контакты не указаны — найдите и добавьте ниже'
+      : 'Контакты не указаны в сделке';
+    if (!contacts || !contacts.length) {
+      box.innerHTML = '<p class="contact-empty muted">' + esc(emptyMsg) + '</p>';
+    } else {
+      box.innerHTML = renderOwnershipCards(contacts, {
+        canRemove: ownershipAllowsPick(type) && ownershipEditable(form),
+      });
+    }
     if (hint) {
       const text = ownershipHintText(type);
       hint.textContent = text;
       hint.classList.toggle('hidden', !text);
     }
+    syncOwnershipSearchUi(form);
+  }
+
+  function setActiveOwnershipContacts(form, contacts) {
+    const type = propertyTypeSelected(form)[0];
+    if (!ownershipAllowsPick(type)) return;
+    const list = mergeContactFlags(contacts);
+    const stash = Object.assign({}, getDealContactStash());
+    if (type === OWNERSHIP.JOINT) {
+      stash.parameter1 = list;
+      setCrmField(form, 'Parameter1', list);
+      setCrmField(form, 'Parameter2', []);
+    } else {
+      stash.parameter2 = list;
+      setCrmField(form, 'Parameter2', list);
+      setCrmField(form, 'Parameter1', []);
+    }
+    window.__bp608DealContacts = stash;
+    window.__bp608CrmPrefill = {
+      Parameter1: (stash.parameter1 || []).slice(),
+      Parameter2: (stash.parameter2 || []).slice(),
+    };
+    renderOwnershipDisplay(form, list);
+    refreshFilledState(form);
+  }
+
+  function renderOwnershipSearchResults(form, contacts) {
+    const box = form.querySelector('[data-ownership-results]');
+    const status = form.querySelector('[data-ownership-search-status]');
+    if (!box) return;
+    const existing = new Set(crmContactIds(getActiveOwnershipContacts(form)));
+    const list = contacts || [];
+    if (!list.length) {
+      box.innerHTML = '';
+      if (status) status.textContent = 'Ничего не найдено';
+      return;
+    }
+    if (status) status.textContent = '';
+    box.innerHTML = list.map((c) => {
+      const title = String(c.title || '').trim() || ('Контакт #' + c.id);
+      const already = existing.has(Number(c.id));
+      const btn = already
+        ? '<span class="ownership-result-added muted">Уже добавлен</span>'
+        : '<button type="button" class="btn secondary ownership-result-add" data-ownership-add="' + esc(c.id) + '">Добавить</button>';
+      return (
+        '<div class="ownership-result" data-result-id="' + esc(c.id) + '">' +
+        '<div class="ownership-result-body">' +
+        '<span class="ownership-result-name">' + esc(title) + '</span>' +
+        '</div>' +
+        btn +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  async function runOwnershipContactSearch(form) {
+    const input = form.querySelector('[data-ownership-query]');
+    const status = form.querySelector('[data-ownership-search-status]');
+    const btn = form.querySelector('[data-ownership-search-btn]');
+    const results = form.querySelector('[data-ownership-results]');
+    const q = input ? String(input.value || '').trim() : '';
+    if (!q) {
+      if (results) results.innerHTML = '';
+      if (status) status.textContent = 'Ничего не найдено';
+      return;
+    }
+    const call = window.__bp608Call;
+    if (!call || !window.BP608DealPrefill || !window.BP608DealPrefill.searchContacts) {
+      if (status) status.textContent = 'Поиск доступен только во вкладке сделки на портале';
+      return;
+    }
+    if (btn) btn.disabled = true;
+    if (status) status.textContent = 'Ищу…';
+    if (results) results.innerHTML = '';
+    try {
+      const found = await window.BP608DealPrefill.searchContacts(call, q);
+      lastOwnershipSearchResults = found || [];
+      renderOwnershipSearchResults(form, lastOwnershipSearchResults);
+    } catch (e) {
+      lastOwnershipSearchResults = [];
+      if (results) results.innerHTML = '';
+      if (status) status.textContent = e.message || String(e);
+    } finally {
+      if (btn) btn.disabled = !ownershipEditable(form);
+    }
+  }
+
+  async function addOwnershipContactById(form, contactId) {
+    const id = Number(contactId);
+    if (!(id > 0)) return;
+    const current = getActiveOwnershipContacts(form);
+    if (crmContactIds(current).indexOf(id) !== -1) {
+      clearOwnershipSearchResults(form);
+      return;
+    }
+    let record = lastOwnershipSearchResults.find((c) => Number(c.id) === id)
+      || { id: id, title: 'Контакт #' + id };
+    const call = window.__bp608Call;
+    if (call && window.BP608DealPrefill && window.BP608DealPrefill.enrichContacts) {
+      try {
+        const hydrated = await window.BP608DealPrefill.enrichContacts(call, [record]);
+        if (hydrated && hydrated[0]) record = hydrated[0];
+      } catch (_) {}
+    }
+    setActiveOwnershipContacts(form, current.concat([record]));
+    clearOwnershipSearchResults(form);
+  }
+
+  function removeOwnershipContactById(form, contactId) {
+    const id = Number(contactId);
+    if (!(id > 0)) return;
+    const next = getActiveOwnershipContacts(form).filter((c) => Number(c.id) !== id);
+    setActiveOwnershipContacts(form, next);
   }
 
   function getDealContactStash() {
@@ -514,14 +684,17 @@
         })).filter((c) => c.id > 0);
         if (!field.multiple && picked.length > 1) picked.length = 1;
         const apply = (list) => {
-          setCrmField(form, field.code, field.multiple ? list : list.slice(0, 1));
           if (field.code === 'Parameter1' || field.code === 'Parameter2') {
             const type = propertyTypeSelected(form)[0];
             const active =
               (type === OWNERSHIP.JOINT && field.code === 'Parameter1') ||
               (type === OWNERSHIP.SHARED && field.code === 'Parameter2');
-            if (active) renderOwnershipDisplay(form, getCrmField(form, field.code));
+            if (active) {
+              setActiveOwnershipContacts(form, field.multiple ? list : list.slice(0, 1));
+              return;
+            }
           }
+          setCrmField(form, field.code, field.multiple ? list : list.slice(0, 1));
         };
         const call = window.__bp608Call;
         if (call && window.BP608DealPrefill && window.BP608DealPrefill.enrichContacts) {
@@ -1034,16 +1207,53 @@
         const code = wrap.getAttribute('data-crm');
         const id = Number(rm.dataset.id);
         const next = getCrmField(form, code).filter((c) => Number(c.id) !== id);
-        setCrmField(form, code, next);
         if (code === 'Parameter1' || code === 'Parameter2') {
           const type = propertyTypeSelected(form)[0];
           const active =
             (type === OWNERSHIP.JOINT && code === 'Parameter1') ||
             (type === OWNERSHIP.SHARED && code === 'Parameter2');
-          if (active) renderOwnershipDisplay(form, next);
+          if (active) {
+            setActiveOwnershipContacts(form, next);
+            return;
+          }
         }
+        setCrmField(form, code, next);
       });
     });
+
+    const ownershipField = form.querySelector('.ownership-contact-field');
+    if (ownershipField) {
+      ownershipField.addEventListener('click', (e) => {
+        if (!ownershipEditable(form)) return;
+        const searchBtn = e.target.closest('[data-ownership-search-btn]');
+        if (searchBtn) {
+          e.preventDefault();
+          runOwnershipContactSearch(form);
+          return;
+        }
+        const addBtn = e.target.closest('[data-ownership-add]');
+        if (addBtn) {
+          e.preventDefault();
+          addOwnershipContactById(form, addBtn.getAttribute('data-ownership-add'));
+          return;
+        }
+        const rmBtn = e.target.closest('[data-ownership-remove]');
+        if (rmBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          removeOwnershipContactById(form, rmBtn.getAttribute('data-ownership-remove'));
+        }
+      });
+      const queryInput = ownershipField.querySelector('[data-ownership-query]');
+      if (queryInput) {
+        queryInput.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+          if (!ownershipEditable(form)) return;
+          runOwnershipContactSearch(form);
+        });
+      }
+    }
 
     const propertyTypeSel = form.querySelector('select[name="property_type"]');
     if (propertyTypeSel) {
@@ -1365,6 +1575,8 @@
       if (readOnly) lbl.removeAttribute('for');
       else if (lbl.dataset.fileFor) lbl.setAttribute('for', lbl.dataset.fileFor);
     });
+    const ownContacts = getActiveOwnershipContacts(form);
+    renderOwnershipDisplay(form, ownContacts.length ? ownContacts : contactsForOwnershipType(propertyTypeSelected(form)[0]));
     const bar = document.getElementById('form-actions-bar');
     if (bar) {
       bar.classList.toggle('hidden', (!!readOnly && !viewOnly) || !!opts.hideActions);
