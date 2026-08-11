@@ -40,9 +40,9 @@ Skill для проектирования и отладки БП (bizproc) на 
 
 | REST и scope | `../b24-rest-api/SKILL.md` |
 
-| Скрипты разбора `.bpt` | `Me/Me/Личное/Работа/bitrix24/contract-request/scripts/parse-bpt.js`, `analyze-bpt-export.js` |
+| Скрипты разбора `.bpt` | `Me/Me/Личное/Работа/bitrix24/заявка-на-договор/scripts/parse-bpt.js`, `analyze-bpt-export.js` |
 
-| UF-поля сделки (код → название) | `Me/Me/Личное/Работа/bitrix24/contract-request/export/bp-608-fields-table.md` |
+| UF-поля сделки (код → название) | `Me/Me/Личное/Работа/bitrix24/заявка-на-договор/export/bp-608-fields-table.md` |
 
 
 

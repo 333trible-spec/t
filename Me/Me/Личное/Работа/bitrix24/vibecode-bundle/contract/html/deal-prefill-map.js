@@ -1,0 +1,43 @@
+/* Сопоставление параметров БП 608 ↔ UF-поля сделки (ik-navigator) */
+window.BP608_DEAL_PREFILL_MAP = [
+  { param: 'type_doc', deal: 'UF_CRM_1722938526204', label: 'Тип договора' },
+  { param: 'property_type', deal: 'UF_CRM_1722231570', label: 'Тип собственности', single: true },
+  { param: 'Parameter1', deal: 'UF_CRM_1722231741', label: 'Участники общей собственности', kind: 'crm' },
+  { param: 'Parameter2', deal: 'UF_CRM_1722231954', label: 'Участники долевой собственности', kind: 'crm' },
+  { param: 'form_payment', deal: 'UF_CRM_1514285621', label: 'Форма оплаты' },
+  { param: 'initial_fee', deal: 'UF_CRM_1619419271478', label: 'Первоначальный взнос' },
+  { param: 'down_payment_period', deal: 'UF_CRM_1722843190', label: 'Срок первоначального взноса' },
+  { param: 'summ_MSK', deal: 'UF_CRM_1723030206', label: 'Тип сертификата', multi: true },
+  { param: 'summ_sotrudnichestva', deal: 'UF_CRM_1722232687', label: 'Сумма сертификата' },
+  { param: 'bank', deal: 'UF_CRM_1514285671', label: 'Банк' },
+  { param: 'commit_deal', deal: 'UF_CRM_64E70EC90D28E', label: 'Комментарий по сделке' },
+  { param: 'type_registr', deal: 'UF_CRM_1685943769', label: 'Вид регистрации' },
+  { param: 'sber', deal: 'UF_CRM_1722941445', label: 'Приложение СБЕР', yesNo: ['Да', 'Нет'] },
+  { param: 'repid_sale', deal: 'UF_CRM_1674214850', label: 'Повторная продажа', yesNo: ['Да', 'Нет'], altDeal: 'UF_CRM_649BDC6DEBD51' },
+  { param: 'link_deal', deal: 'UF_CRM_1664775392', label: 'Ссылка на предыдущую сделку' },
+  { param: 'age', deal: 'UF_CRM_1659005409074', label: 'Возраст' },
+  { param: 'city', deal: 'UF_CRM_1659007926721', label: 'Город обращения' },
+  { param: 'sex', deal: 'UF_CRM_1659005450720', label: 'Пол' },
+  { param: 'target', deal: 'UF_CRM_1659008047015', label: 'Цель покупки' },
+  { param: 'famStatus', deal: 'UF_CRM_1659009682372', label: 'Семейное положение' },
+  { param: 'kindOfActivity', deal: 'UF_CRM_1659074512261', label: 'Вид деятельности' },
+  { param: 'kids', deal: 'UF_CRM_1659074341994', label: 'Наличие детей' },
+  { param: 'attraction', deal: 'UF_CRM_1659074620049', label: 'Что привлекло' },
+  { param: 'animals', deal: 'UF_CRM_1668572647', label: 'Наличие животных' },
+  { param: 'pasport', deal: 'UF_CRM_1722839839', label: 'Паспорт', kind: 'file' },
+  { param: 'snils', deal: 'UF_CRM_1722839884', label: 'СНИЛС', kind: 'file' },
+  { param: 'inn', deal: 'UF_CRM_1722851893', label: 'ИНН', kind: 'file' },
+  { param: 'marriage_certificate', deal: 'UF_CRM_1722839925', label: 'Свидетельство о браке', kind: 'file' },
+  { param: 'birth_certificate', deal: 'UF_CRM_1722839965', label: 'Свидетельство о рождении', kind: 'file' },
+  { param: 'adress_kids', deal: 'UF_CRM_1722840010', label: 'Адрес регистрации ребенка', kind: 'file' },
+  { param: 'math_capital', deal: 'UF_CRM_1722840057', label: 'Сертификат мат. капитал', kind: 'file' },
+  { param: 'ostatok_capital', deal: 'UF_CRM_1722840095', label: 'Выписка мат. капитал', kind: 'file' },
+  { param: 'sertifikat_sotrudnichestva', deal: 'UF_CRM_1722840150', label: 'Сертификат Сотрудничество', kind: 'file' },
+  { param: 'notarised', deal: 'UF_CRM_1722840210', label: 'Нотариальная доверенность', kind: 'file' },
+  { param: 'other_docs', deal: 'UF_CRM_1726038020', label: 'Прочие документы', kind: 'file' },
+];
+
+/* Параметры БП без одноимённого UF на сделке */
+window.BP608_DEAL_PREFILL_UNMAPPED = [
+  { param: 'Parameter3', label: 'ЗАПОЛНИ ФИО КЛИЕНТА', reason: 'флаг БП (bool); при Отправить = Y, если ФИО+почта+реквизиты контакта заполнены' },
+];

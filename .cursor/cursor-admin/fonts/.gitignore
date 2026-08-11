@@ -1,0 +1,4 @@
+# Keep downloaded Amiri woff2 in git for offline Sheikh styling
+*
+!.gitignore
+!*.woff2

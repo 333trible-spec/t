@@ -22,6 +22,7 @@ is_background: false
 | REST, вебхуки, OAuth, placement, batch, ошибки API | `b24-rest-api` |
 | Бизнес-процессы, роботы vs БП, `bizproc.*`, разбор `.bpt` | `b24-bizproc` (+ `bp-analysis-methods.md` при анализе БП) |
 | ЛК агентов, фиксации, сделки агентств | `b24-agent-lk` |
+| Сквозная аналитика, call/email-tracking, UTM, ROI, тесты | `b24-analytics` |
 
 Короткий FAQ без кода — skill можно не тянуть. Не открывай все три «на всякий случай».
 
@@ -29,8 +30,8 @@ is_background: false
 
 1. Skill по таблице выше (если нужен).
 2. `Me/Me/Личное/Работа/bitrix24/context.md`, если есть — **включая «Журнал работ»**.
-3. Разбор `.bpt`: `contract-request/scripts/analyze-bpt-export.js` — сам, без запроса разрешения.
-4. UF-поля: `contract-request/export/bp-608-fields-table.md`.
+3. Разбор `.bpt`: `заявка-на-договор/scripts/analyze-bpt-export.js` — сам, без запроса разрешения.
+4. UF-поля: `заявка-на-договор/export/bp-608-fields-table.md`.
 
 ## Журнал работ
 

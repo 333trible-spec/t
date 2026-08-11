@@ -1,0 +1,402 @@
+{
+  "portal": "https://ik-navigator.bitrix24.ru",
+  "source": "UI Глобальные константы (скрины 2026-07-17)",
+  "screenshots": [
+    "docs/screenshots/01-constants.png",
+    "docs/screenshots/02-constants.png",
+    "docs/screenshots/03-constants.png"
+  ],
+  "note": "ID из export/bp-2784.bpt (LogActivity). userId пока null. Запись на портал — отдельно.",
+  "expressionUiFormat": "{{Константы глобальные: {name}}}",
+  "expressionBptFormat": "{=GlobalConst:{id}}",
+  "totals": {
+    "all": 46,
+    "userBinding": 42,
+    "string": 4,
+    "excludedNeverChange": 5,
+    "inScopeForApp": 37
+  },
+  "excludedNeverChange": [
+    "Аналитик 1С",
+    "Разраб 1С",
+    "Разраб БИТ",
+    "Аналитик BI",
+    "Директор IT"
+  ],
+  "constants": [
+    {
+      "name": "Таргет Юзер",
+      "type": "string",
+      "value": "{=Template:TargetUser}",
+      "inScope": false,
+      "id": "Constant1712814542981",
+      "userId": null
+    },
+    {
+      "name": "Технический директор",
+      "type": "user",
+      "value": "Татьяна Григорьева",
+      "inScope": true,
+      "id": "Constant1722429563729",
+      "userId": null
+    },
+    {
+      "name": "Исполнительный директор",
+      "type": "user",
+      "value": "Татьяна Григорьева",
+      "inScope": true,
+      "id": "Constant1722429582043",
+      "userId": null
+    },
+    {
+      "name": "Офис-менеджер АХО",
+      "type": "user",
+      "value": "Мария Ошуркова",
+      "inScope": true,
+      "id": "Constant1722490486936",
+      "userId": null
+    },
+    {
+      "name": "Рук. Маркетинг",
+      "type": "user",
+      "value": "Татьяна Югова",
+      "inScope": true,
+      "id": "Constant1722597512309",
+      "userId": null
+    },
+    {
+      "name": "Директор продаж",
+      "type": "user",
+      "value": "Ирина Прокудина",
+      "inScope": true,
+      "id": "Constant1723447028192",
+      "userId": null
+    },
+    {
+      "name": "HR кадры",
+      "type": "user",
+      "value": "Полина Топорченко",
+      "inScope": true,
+      "id": "Constant1724237239249",
+      "userId": null
+    },
+    {
+      "name": "HR рекрутинг",
+      "type": "user",
+      "value": "Полина Топорченко",
+      "inScope": true,
+      "id": "Constant1724237292545",
+      "userId": null
+    },
+    {
+      "name": "Разраб Б24",
+      "type": "user",
+      "value": "Станислав Малышев",
+      "inScope": true,
+      "id": "Constant1726726631370",
+      "userId": null
+    },
+    {
+      "name": "Проджект Б24",
+      "type": "user",
+      "value": "Станислав Малышев",
+      "inScope": true,
+      "id": "Constant1726726681045",
+      "userId": null
+    },
+    {
+      "name": "Главный Админ",
+      "type": "user",
+      "value": "Никита Ивановский",
+      "inScope": true,
+      "id": "Constant1726726719451",
+      "userId": null
+    },
+    {
+      "name": "Админ",
+      "type": "user",
+      "value": "Никита Ивановский",
+      "inScope": true,
+      "id": "Constant1726726744865",
+      "userId": null
+    },
+    {
+      "name": "Аналитик 1С",
+      "type": "user",
+      "value": "Анастасия Агеева",
+      "inScope": false,
+      "excludeReason": "never-change",
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Разраб 1С",
+      "type": "user",
+      "value": "Вадим Добротворский",
+      "inScope": false,
+      "excludeReason": "never-change",
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Разраб БИТ",
+      "type": "user",
+      "value": "Ярослав Царегородцев",
+      "inScope": false,
+      "excludeReason": "never-change",
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Аналитик BI",
+      "type": "user",
+      "value": "Ольга Федорова",
+      "inScope": false,
+      "excludeReason": "never-change",
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Директор IT",
+      "type": "user",
+      "value": "Дмитрий Фуров",
+      "inScope": false,
+      "excludeReason": "never-change",
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "РП",
+      "type": "user",
+      "value": "Арсений Речкин",
+      "inScope": true,
+      "id": "Constant1726729093663",
+      "userId": null
+    },
+    {
+      "name": "ФЭС",
+      "type": "user",
+      "value": "Зинаида Мартемьянова",
+      "inScope": true,
+      "id": "Constant1729482851515",
+      "userId": null
+    },
+    {
+      "name": "ОКС",
+      "type": "user",
+      "value": "Арсений Речкин",
+      "inScope": true,
+      "id": "Constant1729490616354",
+      "userId": null
+    },
+    {
+      "name": "ЮД",
+      "type": "user",
+      "value": "Любовь Майер",
+      "inScope": true,
+      "id": "Constant1729490721446",
+      "userId": null
+    },
+    {
+      "name": "Бухгалтер: Увол/Прием",
+      "type": "user",
+      "value": "Оксана Жетикова",
+      "inScope": true,
+      "id": "Constant1730188226382",
+      "userId": null
+    },
+    {
+      "name": "Кадр. юрист",
+      "type": "user",
+      "value": "Алексей Пшеничников",
+      "inScope": true,
+      "id": "Constant1730188476253",
+      "userId": null
+    },
+    {
+      "name": "Бухгалтер: Отпуска",
+      "type": "user",
+      "value": "Мария Остякова",
+      "inScope": true,
+      "id": "Constant1730195477501",
+      "userId": null
+    },
+    {
+      "name": "ОРБ",
+      "type": "user",
+      "value": "Надежда Шаврина",
+      "inScope": true,
+      "id": "Constant1732877054306",
+      "userId": null
+    },
+    {
+      "name": "ПТО",
+      "type": "user",
+      "value": "Елена Шпакович",
+      "inScope": true,
+      "id": "Constant1732877098326",
+      "userId": null
+    },
+    {
+      "name": "КСП",
+      "type": "user",
+      "value": "Илья Пахомов",
+      "inScope": true,
+      "id": "Constant1732877176930",
+      "userId": null
+    },
+    {
+      "name": "Бухгалтер",
+      "type": "user",
+      "value": "Оксана Жетикова",
+      "inScope": true,
+      "id": "Constant1732877215307",
+      "userId": null
+    },
+    {
+      "name": "ПО",
+      "type": "user",
+      "value": "Игорь Юрчишен",
+      "inScope": true,
+      "id": "Constant1733805570770",
+      "userId": null
+    },
+    {
+      "name": "Энергетик",
+      "type": "user",
+      "value": "Денис Московский",
+      "inScope": true,
+      "id": "Constant1734409419574",
+      "userId": null
+    },
+    {
+      "name": "idApp",
+      "type": "string",
+      "value": "local.67b2ac8d3fa1d7.64875035",
+      "inScope": false,
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Кнопка Внесите данные по звонку",
+      "type": "string",
+      "value": "https://rest.potokbit.ru/app/vnesite_dannie_po_z.png",
+      "inScope": false,
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Кнопка Внесите данные",
+      "type": "string",
+      "value": "https://rest.potokbit.ru/app/vnesite_dannie.png",
+      "inScope": false,
+      "id": null,
+      "userId": null
+    },
+    {
+      "name": "Утверждающий",
+      "type": "user",
+      "value": "Solutions BOS",
+      "inScope": true,
+      "id": "Constant1739763773373",
+      "userId": null
+    },
+    {
+      "name": "ГИП",
+      "type": "user",
+      "value": "Игорь Юрчишен",
+      "inScope": true,
+      "id": "Constant1739854537818",
+      "userId": null
+    },
+    {
+      "name": "ВИП",
+      "type": "user",
+      "value": "Игорь Юрчишен",
+      "inScope": true,
+      "id": "Constant1740383574482",
+      "userId": null
+    },
+    {
+      "name": "Оформитель ОП",
+      "type": "user",
+      "value": "Ирина Прокудина",
+      "inScope": true,
+      "id": "Constant1742547778400",
+      "userId": null
+    },
+    {
+      "name": "Маркетолог",
+      "type": "user",
+      "value": "Татьяна Югова",
+      "inScope": true,
+      "id": "Constant1742547805269",
+      "userId": null
+    },
+    {
+      "name": "Юрист Документооборота",
+      "type": "user",
+      "value": "Алексей Пшеничников",
+      "inScope": true,
+      "id": "Constant1743058283714",
+      "userId": null
+    },
+    {
+      "name": "Рук. Гарантии",
+      "type": "user",
+      "value": "Кирилл Лейбгам",
+      "inScope": true,
+      "id": "Constant1743058596050",
+      "userId": null
+    },
+    {
+      "name": "Глав Бух",
+      "type": "user",
+      "value": "Оксана Образцова",
+      "inScope": true,
+      "id": "Constant1743058702463",
+      "userId": null
+    },
+    {
+      "name": "HR рук",
+      "type": "user",
+      "value": "Полина Топорченко",
+      "inScope": true,
+      "id": "Constant1743058781408",
+      "userId": null
+    },
+    {
+      "name": "ОМТО",
+      "type": "user",
+      "value": "Артём Сагитов",
+      "inScope": true,
+      "id": "Constant1743059005834",
+      "userId": null
+    },
+    {
+      "name": "Охрана труда",
+      "type": "user",
+      "value": "Алексей Моисеев",
+      "inScope": true,
+      "id": "Constant1743059086869",
+      "userId": null
+    },
+    {
+      "name": "Дир. по строительству(НУ)",
+      "type": "user",
+      "value": "Юрий Хохряков",
+      "inScope": true,
+      "id": "Constant1751874549586",
+      "userId": null
+    },
+    {
+      "name": "МОП НДР",
+      "type": "user",
+      "value": "Светлана Бабий",
+      "inScope": true,
+      "id": "Constant1756356946885",
+      "userId": null
+    }
+  ],
+  "idSource": "export/bp-2784.bpt"
+}

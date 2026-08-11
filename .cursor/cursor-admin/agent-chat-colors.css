@@ -1,4 +1,43 @@
 /* Agent colors by class — titles **Имя**, strokes *курсив* only (no links). */
+/* AGENT_FONTS_DIR → file:///.../Cursor/User/fonts (подставляет reapply-agent-chat-colors.ps1) */
+
+@font-face {
+  font-family: "SheikhAmiri";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("AGENT_FONTS_DIR/Amiri-Arabic-Regular.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "SheikhAmiri";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("AGENT_FONTS_DIR/Amiri-Arabic-Bold.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "SheikhAmiri";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("AGENT_FONTS_DIR/Amiri-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SheikhAmiri";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("AGENT_FONTS_DIR/Amiri-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SheikhAmiri";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("AGENT_FONTS_DIR/Amiri-Italic.woff2") format("woff2");
+}
 
 .cursor-agent-title-garri,
 .cursor-agent-title-garri * { color: #7c3aed !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
@@ -12,6 +51,24 @@
 .cursor-agent-title-designer-navigator,
 .cursor-agent-title-designer-navigator * { color: #88c276 !important; font-weight: 700 !important; font-size: 1.15em !important; text-decoration: none !important; }
 
+/* Sheikh — только арабское شيخ (Naskh Amiri), кириллицу в заголовке не показываем */
+.cursor-agent-title-sheikh,
+.cursor-agent-title-sheikh * {
+  color: transparent !important;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+}
+.cursor-agent-title-sheikh::before {
+  content: "\0634\064A\062E";
+  color: #f59e0b !important;
+  font-family: "SheikhAmiri", "Traditional Arabic", "Arabic Typesetting", serif !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+  letter-spacing: 0.04em !important;
+}
+
 .cursor-agent-stroke-garri,
 .cursor-agent-stroke-garri * { color: #7c3aed !important; font-style: italic !important; text-decoration: none !important; }
 .cursor-agent-stroke-vitek,
@@ -22,12 +79,22 @@
 .cursor-agent-stroke-baza-znaniy * { color: #a3a3a3 !important; font-style: italic !important; text-decoration: none !important; }
 .cursor-agent-stroke-designer-navigator,
 .cursor-agent-stroke-designer-navigator * { color: #88c276 !important; font-style: italic !important; text-decoration: none !important; }
+.cursor-agent-stroke-sheikh,
+.cursor-agent-stroke-sheikh * {
+  color: #f59e0b !important;
+  font-family: "SheikhAmiri", "Traditional Arabic", "Arabic Typesetting", "Palatino Linotype", "Book Antiqua", serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  text-decoration: none !important;
+}
 
 a.cursor-agent-title-garri,
 a.cursor-agent-title-vitek,
 a.cursor-agent-title-gena,
 a.cursor-agent-title-baza-znaniy,
-a.cursor-agent-title-designer-navigator {
+a.cursor-agent-title-designer-navigator,
+a.cursor-agent-title-sheikh {
   pointer-events: none !important;
   cursor: default !important;
   text-decoration: none !important;

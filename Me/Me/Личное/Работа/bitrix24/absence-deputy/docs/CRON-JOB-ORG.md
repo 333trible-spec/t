@@ -23,7 +23,7 @@
 Проверка (подставь секрет):
 
 ```bash
-curl -X POST "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/api/dismissal-cron" \
+curl -X POST "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/deputy/api/dismissal-cron" \
   -H "Authorization: Bearer ТВОЙ_СЕКРЕТ"
 ```
 
@@ -52,7 +52,7 @@ npm run setup:cron
 | Поле | Значение |
 |------|----------|
 | Title | `6 кадров — увольнения (02:00 YEKT)` |
-| URL | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/api/dismissal-cron` |
+| URL | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/deputy/api/dismissal-cron` |
 | Request method | **POST** |
 | Schedule | Every day at **02:00** |
 | Timezone | **Asia/Yekaterinburg** (UTC+5) |
@@ -103,7 +103,7 @@ npm run setup:delegation-cron
 
 | Поле | Значение |
 |------|----------|
-| **URL** | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/api/delegation-cron` |
+| **URL** | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/deputy/api/delegation-cron` |
 | **Request method** | **POST** |
 | **Timezone** | **Asia/Yekaterinburg** |
 | **Enabled** | ✅ |

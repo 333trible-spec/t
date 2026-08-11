@@ -1,0 +1,24 @@
+{
+  "portal": "https://ik-navigator.bitrix24.ru",
+  "source": "bizproc.workflow.template.list TEMPLATE field, template 2784",
+  "checkedAt": "2026-07-20",
+  "templateId": 2784,
+  "templateName": "ТЕСТОВЫЙ",
+  "modified": "2026-07-20T09:47:27+03:00",
+  "variables": [
+    {
+      "name": "Проджект Б24 (6 кадров)",
+      "id": "Variable1784529983017",
+      "expression": "{=GlobalVar:Variable1784529983017}",
+      "defaultUserId": 18900,
+      "defaultUserName": "Станислав Малышев",
+      "pairedConstant": "Проджект Б24",
+      "pairedConstantId": "Constant1726726681045"
+    }
+  ],
+  "notes": [
+    "Шаблон 2784 (2026-07-20): SetGlobalVariableActivity A16674 меняет Variable1784529983017 := TargetUser.",
+    "Порядок: отчёт 0 (константы) → отчёт 1 (var до) → изменение var → отчёт 2 (var после).",
+    "REST PARAMETERS[] пустой — TargetUser всё равно используется в {=Template:TargetUser}; проверить имя при workflow.start."
+  ]
+}

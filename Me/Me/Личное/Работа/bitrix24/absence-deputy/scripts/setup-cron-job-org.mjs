@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ENDPOINT = 'https://api.cron-job.org';
-const CRON_URL = 'https://app-d561d9d4f2bd.vibecode.bitrix24.tech/api/dismissal-cron';
+const CRON_URL = 'https://app-d561d9d4f2bd.vibecode.bitrix24.tech/deputy/api/dismissal-cron';
 const TIMEZONE = 'Asia/Yekaterinburg';
 
 const JOBS = [

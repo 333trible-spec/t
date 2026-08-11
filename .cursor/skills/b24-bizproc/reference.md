@@ -134,7 +134,7 @@ Webhook или приложение должно иметь право **`bizpro
 ## Экспорт `.bpt` (локальный разбор)
 
 ```bash
-node Me/Me/Личное/Работа/bitrix24/contract-request/scripts/analyze-bpt-export.js "path/to/export.bpt"
+node Me/Me/Личное/Работа/bitrix24/заявка-на-договор/scripts/analyze-bpt-export.js "path/to/export.bpt"
 ```
 
 Формат файла: **zlib deflate** поверх PHP-serialized шаблона (не ZIP, не `Expand-Archive`).

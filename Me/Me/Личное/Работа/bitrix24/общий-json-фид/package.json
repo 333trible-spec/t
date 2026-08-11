@@ -1,0 +1,15 @@
+{
+  "name": "obshchiy-json-feed",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "probe": "node scripts/probe-merge.mjs",
+    "deploy": "npx --yes vercel deploy --prod --yes --scope 333trible-specs-projects",
+    "setup:cron": "node scripts/setup-feed-cron-job-org.mjs"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.38.2"
+  }
+}

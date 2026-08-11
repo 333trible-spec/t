@@ -63,8 +63,9 @@ _Список подключённых MCP и статус auth_
 | Гена | `/gena` | Безопасность (только по просьбе) |
 | База знаний | `/baza-znaniy` | Google Drive → база знаний Б24 |
 | Дизайнер | `/designer-navigator` | UX/UI Б24, брендбук, UI/CSS |
+| Шейх | `/sheikh` | Нефть Brent/Urals; MOEX + Yahoo |
 
-Других агентов нет. См. `.cursor/rules/agents-allowlist.mdc`.
+См. `.cursor/rules/agents-allowlist.mdc`.
 
 ## Напоминания для Гарри
 

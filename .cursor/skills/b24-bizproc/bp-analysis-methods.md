@@ -12,7 +12,7 @@
 | Журнал БП на документе | Фактический путь выполнения, логи, время стартов |
 | Поля CRM-документа | Почему сработало/не сработало условие |
 | `bizproc.workflow.instances` (REST) | Активные экземпляры, дубли |
-| Справочник UF | `contract-request/export/bp-608-fields-table.md` — код → русское имя |
+| Справочник UF | `заявка-на-договор/export/bp-608-fields-table.md` — код → русское имя |
 
 **Правило:** шаблон + журнал + поля сделки. Один экспорт без журнала — неполная картина.
 
@@ -24,11 +24,11 @@
 |------|--------|
 | **Не ZIP** | `zlib deflate` + PHP serialize |
 | Распаковка | `zlib.inflateSync(fs.readFileSync(path)).toString('utf8')` |
-| Скрипт | `Me/Me/Личное/Работа/bitrix24/contract-request/scripts/analyze-bpt-export.js` |
+| Скрипт | `Me/Me/Личное/Работа/bitrix24/заявка-на-договор/scripts/analyze-bpt-export.js` |
 | Полный разбор | `parse-bpt.js` → summary в `export/` |
 
 ```bash
-node Me/Me/Личное/Работа/bitrix24/contract-request/scripts/analyze-bpt-export.js "path/to/export.bpt"
+node Me/Me/Личное/Работа/bitrix24/заявка-на-договор/scripts/analyze-bpt-export.js "path/to/export.bpt"
 ```
 
 **PowerShell:** не использовать `$var` в однострочниках через агента — переменные съедаются. Писать `.js`-скрипт в workspace.

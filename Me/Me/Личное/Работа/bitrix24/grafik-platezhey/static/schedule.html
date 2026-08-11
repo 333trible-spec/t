@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>График платежей</title>
+<link rel="icon" type="image/jpeg" href="/static/favicon.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://api.bitrix24.com/api/v1/"></script>
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f7f9fb; --surface2:#f2f5f7; --border:#e4e8eb;
+    --text:#333a44; --text-muted:#828b95;
+    --green:#3d9140; --green-bg:#edf7ec; --red:#e5594f; --red-bg:#fcecea;
+    --yellow:#c98a00; --yellow-bg:#fbf3e0;
+    --accent:#159fe3; --accent-bg:#e6f4fd; --radius:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);
+       font-family:'Open Sans',-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:14px;padding:18px}
+  .nums{font-variant-numeric:tabular-nums}
+  #app{max-width:100%}
+  .top{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+  .top h1{font-size:18px;font-weight:700;line-height:1.3;color:#1a2026}
+  .top .meta{font-size:12px;color:var(--text-muted);margin-top:5px}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:14px 16px;margin-bottom:16px}
+  .row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+  .fld{display:flex;flex-direction:column;gap:5px}
+  .fld label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+  input,select{font-family:inherit;font-size:13px;border:1px solid #c6cdd3;border-radius:var(--radius);
+    padding:0 10px;height:36px;line-height:34px;color:var(--text);background:#fff}
+  input:focus,select:focus{outline:none;border-color:var(--accent)}
+  input[type=number]{text-align:right;width:140px;font-variant-numeric:tabular-nums}
+  .sum-badge{font-size:20px;font-weight:700;color:#1a2026}
+
+  .btn{padding:8px 15px;border-radius:var(--radius);border:1px solid #c6cdd3;background:#fff;
+    color:#535c69;cursor:pointer;font-size:13px;font-weight:600}
+  .btn:hover{background:#f0f2f4}
+  .btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-accent:hover{filter:brightness(.96);background:var(--accent)}
+  .btn:disabled{opacity:.55;cursor:default}
+
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;min-width:560px;background:#fff}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+  th{background:var(--surface);font-size:11px;color:var(--text-muted);text-transform:uppercase;
+    letter-spacing:.5px;font-weight:600}
+  td.r,th.r{text-align:right}
+  tr:hover td{background:#f5f9fb}
+  tfoot td{font-weight:700;background:var(--surface);border-top:2px solid var(--border);color:#1a2026}
+  .cell-date input{padding:5px 8px;width:220px}
+  .cell-amt input{width:200px}
+  th,td{padding:9px 14px}
+  td.acc a{color:var(--accent);text-decoration:none;border-bottom:1px dashed transparent}
+  td.acc a:hover{border-bottom-color:var(--accent)}
+  /* просторные колонки слева, лишняя ширина — в трейлинг-распорку */
+  .tbl-wrap th:last-child,.tbl-wrap td:last-child{width:100%}
+  .badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600}
+  .b-paid{background:var(--green-bg);color:var(--green)}
+  .b-new{background:var(--accent-bg);color:var(--accent)}
+  /* оплаченные строки — без заливки, отличаются зелёным бейджем «Оплачен» */
+  .del{color:var(--red);cursor:pointer;font-weight:700;border:none;background:none;font-size:15px;line-height:1}
+  .add-row td{padding:0}
+  .add-row:hover td{background:transparent}
+  .add-link{width:100%;text-align:left;padding:11px 14px;background:none;border:none;
+    color:var(--accent);cursor:pointer;font-weight:600;font-size:13px}
+  .add-link:hover{background:var(--surface)}
+  .del:hover{opacity:.7}
+
+  .barfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .status{font-size:13px;font-weight:600}
+  .status.ok{color:var(--green)} .status.bad{color:var(--red)}
+  .tbl-toolbar{display:flex;margin-bottom:8px}
+  .sched-footer{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
+  .foot-total{font-size:14px;font-weight:700;color:#1a2026;display:flex;align-items:center;gap:12px}
+  .note{font-size:12px;color:var(--text-muted);margin:10px 0;line-height:1.5}
+  .msg{font-size:13px;font-weight:600;padding:2px 0}
+  .msg.ok{color:var(--green)} .msg.err{color:var(--red)}
+  .center{text-align:center;padding:60px 20px;color:var(--text-muted)}
+  .hidden{display:none!important}
+  .spacer{flex:1}
+  .dealsum{text-align:right;white-space:nowrap}
+  .dealsum span{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px}
+  .dealsum b{font-size:20px;color:#1a2026;font-weight:700}
+  .params{max-width:none;background:#fff}
+  .prow{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+  .prow .fld{flex:1 1 150px;display:flex;flex-direction:column;gap:5px;min-width:0}
+  .prow .type-fld{flex:2 1 240px}
+  .prow .freqn-fld{flex:0 0 90px}
+  .prow input,.prow select{width:100%}
+  .prow .btn-fld{flex:0 0 auto}
+  .btn-fld .btn{height:36px;padding:0 18px;white-space:nowrap;font-weight:600}
+
+  @media(max-width:640px){body{padding:12px}}
+
+  /* Инлайн-блок в карточке — компактнее, без названия сделки, поля в 2 колонки */
+  body.inline{padding:0;max-width:600px;background:transparent;font-size:13px}
+  body.inline #app{border:1px solid var(--border);border-radius:8px;padding:14px;background:#fff;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  body.inline .top{margin-bottom:12px;align-items:center}
+  body.inline .top .meta{display:none}
+  body.inline .top h1{font-size:14px}
+  body.inline .dealsum b{font-size:15px}
+  body.inline .dealsum span{font-size:10px}
+  body.inline .card{padding:12px}
+  body.inline .params label,body.inline th{font-size:10px}
+  body.inline .type-fld{max-width:none}
+  body.inline th,body.inline td{padding:7px 8px}
+  body.inline table{min-width:0}
+  body.inline .barfoot{flex-wrap:nowrap;gap:8px}
+  body.inline .barfoot .btn{flex:1 1 0;min-width:0;padding:9px 6px;font-size:12px;white-space:nowrap;text-align:center}
+</style>
+</head>
+<body>
+<div id="app"><div class="center">Загрузка…</div></div>
+
+<script>
+function resolveDeal(){
+  if(window.DEAL_ID) return String(window.DEAL_ID);
+  const q = new URLSearchParams(location.search).get('deal');
+  if(q) return q;
+  if(window.BX24 && BX24.placement && BX24.placement.info){
+    try{ const i=BX24.placement.info(); if(i&&i.options) return String(i.options.ID||i.options.id||''); }catch(e){}
+  }
+  return '';
+}
+const DEAL_ID = resolveDeal();
+// Режим отображения: обычная вкладка (по умолчанию) или инлайн-блок в карточке (?view=inline)
+if(new URLSearchParams(location.search).get('view')==='inline') document.body.classList.add('inline');
+let state = null;         // ответ /api/schedule
+let rows = [];            // [{seq, due_date, amount, invoice_id, paid}]
+let kind = 'equal';
+let form = {count:6, advance:0, first_date:'', freq_sel:'1', freq_n:2};  // значения формы (переживают перерисовку)
+
+function syncForm(){
+  const c=document.getElementById('p_count'); if(c) form.count=Math.max(1,parseInt(c.value||'1',10));
+  const a=document.getElementById('p_advance'); if(a) form.advance=round2(a.value);
+  const f=document.getElementById('p_first'); if(f) form.first_date=f.value||todayISO();
+  const fs=document.getElementById('p_freq'); if(fs) form.freq_sel=fs.value;
+  const fn=document.getElementById('p_freqn'); if(fn) form.freq_n=Math.max(1,parseInt(fn.value||'1',10));
+}
+function freqMonths(){ return form.freq_sel==='custom' ? form.freq_n : parseInt(form.freq_sel,10); }
+
+const round2 = x => Math.round((+x||0)*100)/100;
+const money = n => (n||0).toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2})+' ₽';
+const PORTAL = 'https://dm-tmn.bitrix24.ru';
+const invoiceUrl = id => `${PORTAL}/crm/type/31/details/${id}/`;
+// Для полей ввода: число с разделением разрядов ("1 000 000" / "143 461,54"), без «₽»
+const numFmt = n => (n||0).toLocaleString('ru-RU',{maximumFractionDigits:2});
+// Разобрать введённую строку: убрать пробелы (в т.ч. неразрывные), запятую → точку
+const parseNum = s => parseFloat(String(s).replace(/[\s ]/g,'').replace(',','.')) || 0;
+const esc = s => (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const toISO = d => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function fmtDate(s){ if(!s) return '—'; const [y,m,d]=s.slice(0,10).split('-'); return `${d}.${m}.${y}`; }
+function addMonths(iso, n){
+  const d = new Date(iso+'T00:00:00'); const day = d.getDate();
+  const t = new Date(d.getFullYear(), d.getMonth()+n, 1);
+  const last = new Date(t.getFullYear(), t.getMonth()+1, 0).getDate();
+  t.setDate(Math.min(day, last)); return toISO(t);
+}
+function todayISO(){ return toISO(new Date()); }
+function fitWindow(){ try{ if(window.BX24 && BX24.fitWindow) BX24.fitWindow(); }catch(e){} }
+
+async function getJSON(u){ const r = await fetch(u); return r.json(); }
+async function postJSON(u,b){ const r = await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}); return r.json(); }
+
+async function load(){
+  if(!DEAL_ID){ document.getElementById('app').innerHTML='<div class="center">Откройте вкладку в карточке сделки.</div>'; return; }
+  const d = await getJSON('/api/schedule?deal='+encodeURIComponent(DEAL_ID));
+  if(!d.ok){ document.getElementById('app').innerHTML='<div class="center">Ошибка: '+esc(d.error||'')+'</div>'; return; }
+  state = d;
+  if(d.schedule){
+    const s = d.schedule;
+    kind = s.kind || 'custom';
+    rows = s.items.map(it=>({seq:it.seq,due_date:it.due_date,amount:it.amount,invoice_id:it.invoice_id,paid:!!it.paid}));
+    const fq = s.freq_months;
+    form = {
+      count: s.count || rows.length || 6,
+      advance: s.advance != null ? s.advance : 0,
+      first_date: s.first_date || (rows[0] && rows[0].due_date) || todayISO(),
+      freq_sel: (fq===1||fq===3) ? String(fq) : (fq ? 'custom' : '1'),
+      freq_n: (fq && fq!==1 && fq!==3) ? fq : 2,
+    };
+  } else {
+    kind = 'equal'; rows = [];
+    form = {count:6, advance:0, first_date:todayISO(), freq_sel:'1', freq_n:2};
+  }
+  render();
+}
+
+function hasPaid(){ return rows.some(r=>r.paid); }
+
+// Пересчёт: строки после изменённой (неоплаченные) делят остаток так, чтобы Σ = сумме сделки
+function redistributeAfter(idx){
+  const after = [];
+  for(let i=idx+1;i<rows.length;i++) if(!rows[i].paid) after.push(rows[i]);
+  if(!after.length) return;
+  let fixed = 0;
+  rows.forEach((r,i)=>{ if(i<=idx || r.paid) fixed += (+r.amount||0); });
+  let rem = round2(state.deal_sum - fixed);
+  const share = round2(rem/after.length);
+  after.forEach(r=> r.amount = share);
+  const diff = round2(state.deal_sum - rows.reduce((s,r)=>s+(+r.amount||0),0));
+  if(diff) after[after.length-1].amount = round2(after[after.length-1].amount + diff);
+}
+
+function fillFromParams(){
+  syncForm();
+  if(hasPaid()){ showMsg('Есть оплаченные счета — авто-заполнение недоступно, отредактируйте таблицу вручную.','err'); return; }
+  const total = state.deal_sum;
+  const first = form.first_date || todayISO();
+  if(kind==='full'){ rows=[{seq:1,due_date:first,amount:round2(total),invoice_id:null,paid:false}]; render(); return; }
+  const count = Math.max(1, form.count);
+  const advance = round2(form.advance);
+  const freq = freqMonths();
+  const out=[];
+  if(count<=1){ out.push({seq:1,due_date:first,amount:round2(total)}); }
+  else {
+    let restCount, startSeq, remaining;
+    if(advance>0){ out.push({seq:1,due_date:first,amount:advance}); remaining=round2(total-advance); restCount=count-1; startSeq=2; }
+    else { remaining=total; restCount=count; startSeq=1; }
+    const share=round2(remaining/restCount);
+    for(let i=0;i<restCount;i++){ const seq=startSeq+i; out.push({seq, due_date:addMonths(first,(seq-1)*freq), amount:share}); }
+    const diff=round2(total - out.reduce((s,r)=>s+r.amount,0));
+    if(diff) out[out.length-1].amount = round2(out[out.length-1].amount + diff);
+  }
+  rows = out.map(r=>({...r, invoice_id:null, paid:false}));
+  render();
+}
+
+function addRow(){
+  const last = rows[rows.length-1];
+  const nd = last ? addMonths(last.due_date, 1) : todayISO();
+  rows.push({seq: rows.length+1, due_date:nd, amount:0, invoice_id:null, paid:false});
+  render();
+}
+function delRow(i){ if(rows[i].paid) return; rows.splice(i,1); rows.forEach((r,ix)=>r.seq=ix+1); render(); }
+
+function sumRows(){ return round2(rows.reduce((s,r)=>s+(+r.amount||0),0)); }
+
+function paramsHtml(){
+  const custom = form.freq_sel==='custom';
+  const isFull = kind==='full';
+  return `
+  <div class="card params">
+    <div class="prow">
+      <div class="fld type-fld">
+        <label>Тип графика</label>
+        <select id="p_kind">
+          <option value="equal">Оплата равными частями</option>
+          <option value="full">Полная оплата</option>
+          <option value="custom">Индивидуальный график</option>
+        </select>
+      </div>
+      <div id="eqparams" style="display:contents">
+        <div class="fld ${isFull?'hidden':''}"><label>Первый платёж, ₽</label><input type="number" step="100000" min="0" id="p_advance" value="${form.advance}"></div>
+        <div class="fld"><label>${isFull?'Дата платежа':'Дата первого платежа'}</label><input type="date" id="p_first" value="${form.first_date||todayISO()}"></div>
+        <div class="fld ${isFull?'hidden':''}"><label>Частота</label>
+          <select id="p_freq">
+            <option value="1"${form.freq_sel==='1'?' selected':''}>Ежемесячно</option>
+            <option value="3"${form.freq_sel==='3'?' selected':''}>Раз в квартал</option>
+            <option value="custom"${custom?' selected':''}>Каждые N месяцев</option>
+          </select>
+        </div>
+        <div class="fld freqn-fld ${(custom&&!isFull)?'':'hidden'}" id="freqn_fld"><label>N мес.</label><input type="number" id="p_freqn" min="1" value="${form.freq_n}"></div>
+        <div class="fld ${isFull?'hidden':''}"><label>Кол-во платежей</label><input type="number" id="p_count" min="1" value="${form.count}"></div>
+        <div class="fld btn-fld"><button class="btn btn-accent" id="btn_fill">Сформировать график</button></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  syncForm();   // сохранить текущие значения формы перед перерисовкой
+  const app = document.getElementById('app');
+  const total = state.deal_sum, sum = sumRows();
+  const diff = round2(sum - total);
+  const ok = Math.abs(diff) < 0.01 && rows.length>0;
+
+  let trs = rows.map((r,i)=>`
+    <tr class="${r.paid?'paid':''}">
+      <td class="nums">${r.seq}</td>
+      <td class="cell-date">${r.paid
+          ? fmtDate(r.due_date)
+          : `<input type="date" value="${r.due_date}" onchange="rows[${i}].due_date=this.value;render()">`}</td>
+      <td class="cell-amt r">${r.paid
+          ? '<span class="nums">'+money(r.amount)+'</span>'
+          : `<input type="number" step="100000" min="0" value="${r.amount}" onchange="rows[${i}].amount=round2(this.value);redistributeAfter(${i});render()">`}</td>
+      <td>${r.paid ? '<span class="badge b-paid">Оплачен</span>' : '<span class="badge b-new">Новый</span>'}</td>
+      <td class="acc">${r.invoice_id ? `<a href="${invoiceUrl(r.invoice_id)}" target="_blank">Счёт №${r.invoice_id}</a>` : '<span class="muted">—</span>'}</td>
+      <td class="r">${r.paid ? '' : `<button class="del" title="Удалить" onclick="delRow(${i})">×</button>`}</td>
+      <td class="spacer"></td>
+    </tr>`).join('');
+
+  app.innerHTML = `
+    <div class="top">
+      <div class="ttl">
+        <h1>График платежей</h1>
+        <div class="meta">${esc(state.deal_title||'')}</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="dealsum"><span>Сумма сделки</span><b class="nums">${money(state.deal_sum)}</b></div>
+    </div>
+    ${paramsHtml()}
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>№</th><th>Срок оплаты</th><th class="r">Сумма</th><th>Статус</th><th></th><th></th><th class="spacer"></th></tr></thead>
+        <tbody>
+          ${trs || '<tr><td colspan="7" class="center" style="padding:24px">Сформируйте график выше или добавьте платежи вручную</td></tr>'}
+          <tr class="add-row"><td colspan="7"><button class="add-link" id="btn_add">+ Добавить платёж</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sched-footer">
+      <div class="foot-total">Итого по графику: <b class="nums">${money(sum)}</b>
+        <span class="status ${ok?'ok':'bad'}">${ok?'✓ совпадает с суммой сделки'
+          : (diff>0?('превышает на '+money(diff)):('не хватает '+money(-diff)))}</span></div>
+      <div class="spacer"></div>
+      <button class="btn btn-accent" id="btn_save" ${ok?'':'disabled'}>Сохранить и создать счета</button>
+      <button class="btn" id="btn_doc" ${rows.length?'':'disabled'}>Сформировать документ</button>
+    </div>
+    <div class="msg" id="msg"></div>
+    <div class="note">Оплату отмечайте штатно — переводом счёта на стадию «Оплачен». Оплаченные счета график не меняет.</div>
+  `;
+
+  // навесить обработчики
+  const ksel = document.getElementById('p_kind'); ksel.value = kind;
+  ksel.onchange = ()=>{ kind = ksel.value; render(); };
+  document.getElementById('eqparams').classList.toggle('hidden', kind==='custom');
+  const fsel = document.getElementById('p_freq');
+  if(fsel){ fsel.onchange = ()=>document.getElementById('freqn_fld').classList.toggle('hidden', fsel.value!=='custom'); }
+  const fill = document.getElementById('btn_fill'); if(fill) fill.onclick = fillFromParams;
+  document.getElementById('btn_add').onclick = addRow;
+  document.getElementById('btn_save').onclick = save;
+  document.getElementById('btn_doc').onclick = genDoc;
+  fitWindow();
+}
+
+function showMsg(t, cls){ const m=document.getElementById('msg'); if(m){ m.textContent=t; m.className='msg '+(cls||''); } }
+
+function payload(){
+  syncForm();
+  return {
+    deal: DEAL_ID, kind, total: state.deal_sum,
+    advance: kind==='equal' ? form.advance : null,
+    count: kind==='equal' ? form.count : null,
+    freq_months: kind==='equal' ? freqMonths() : null,
+    first_date: form.first_date || null,
+    rows: rows.map(r=>({seq:r.seq, due_date:r.due_date, amount:round2(r.amount), invoice_id:r.invoice_id||null})),
+  };
+}
+
+async function save(){
+  showMsg('Проверяю…','');
+  const body = payload();
+  const pv = await postJSON('/api/schedule/preview', body);
+  if(!pv.ok){ showMsg(pv.error||'Ошибка проверки','err'); return; }
+  const q = `Будет создано счетов: ${pv.create}\nИзменено: ${pv.update}\nУдалено: ${pv.delete}`
+          + (pv.paid_kept?`\nОплаченных сохранится: ${pv.paid_kept}`:'') + `\n\nПродолжить?`;
+  if(!confirm(q)){ showMsg('',''); return; }
+  showMsg('Создаю счета…','');
+  const res = await postJSON('/api/schedule/apply', body);
+  if(!res.ok){ showMsg(res.error||'Ошибка','err'); return; }
+  showMsg(`Готово: создано ${res.created.length}, изменено ${res.updated.length}, удалено ${res.deleted.length}.`,'ok');
+  await load();
+}
+
+async function genDoc(){
+  if(!rows.length){ showMsg('График пуст','err'); return; }
+  showMsg('Формирую документ…','');
+  const res = await postJSON('/api/schedule/document', payload());
+  if(!res.ok){ showMsg(res.error||'Ошибка','err'); return; }
+  showMsg('Документ сформирован и прикреплён к сделке (лента).','ok');
+}
+
+load();
+</script>
+</body>
+</html>

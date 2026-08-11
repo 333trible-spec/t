@@ -1,0 +1,10 @@
+{
+  "name": "b24-vibecode-bundle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "6 кадров + Заявка на договор — bundle для VibeCode",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@upstash/redis": "^1.38.0"
+  }
+}

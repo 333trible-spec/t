@@ -3,7 +3,7 @@
   "npm.exclude": [
     "**/kb-migration",
     "**/kb-migration/**",
-    "**/contract-request",
-    "**/contract-request/**"
+    "**/заявка-на-договор",
+    "**/заявка-на-договор/**"
   ]
 }

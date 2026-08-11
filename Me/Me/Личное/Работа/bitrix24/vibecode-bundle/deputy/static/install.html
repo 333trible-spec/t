@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Установка — 6 кадров</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; padding: 24px; max-width: 640px; margin: 0 auto; color: #333; background: #fff; }
+    h1 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
+    .muted { color: #828282; font-size: 14px; }
+    .ok { color: #7bd500; } .err { color: #ff5752; }
+    code { font-size: 13px; word-break: break-all; background: #f5f7f8; padding: 2px 6px; border-radius: 4px; border: 1px solid #e0e0e0; }
+    ul { padding-left: 20px; }
+    li { margin: 6px 0; font-size: 14px; }
+    a { color: #2067b0; }
+    .scopes { margin: 16px 0; padding: 12px 14px; background: #f5f7f8; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>6 кадров — установка</h1>
+  <p class="muted">Локальное приложение: отпуск и увольнение с учётом глобальных констант.</p>
+  <p>URL: <code id="base"></code></p>
+  <div class="scopes">
+    <strong>Scopes (hint):</strong> <code>user</code>, <code>bizproc</code>
+  </div>
+  <p id="status">Инициализация BX24…</p>
+  <ul id="log"></ul>
+  <p><a id="app-link" href="/app.html">Открыть приложение →</a></p>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script src="/version.js?v=0.8.8"></script>
+  <script>
+    function log(msg, ok) {
+      var li = document.createElement('li');
+      li.textContent = msg;
+      if (ok === true) li.className = 'ok';
+      if (ok === false) li.className = 'err';
+      document.getElementById('log').appendChild(li);
+    }
+
+    document.getElementById('base').textContent = location.origin;
+    document.getElementById('app-link').href = '/app.html';
+
+    function finishInstall() {
+      var status = document.getElementById('status');
+      status.textContent = 'Установка завершена.';
+      status.className = 'ok';
+      log('installComplete', true);
+      log('Версия: ' + (window.APP_VERSION || '0.1.0'), true);
+      if (typeof BX24 !== 'undefined' && typeof BX24.installFinish === 'function') {
+        BX24.installFinish();
+      }
+    }
+
+    if (typeof BX24 !== 'undefined') {
+      BX24.init(function () {
+        finishInstall();
+      });
+    } else {
+      document.getElementById('status').textContent = 'BX24 недоступен (локальный просмотр).';
+      log('Откройте через портал Б24 для полной установки', null);
+    }
+  </script>
+</body>
+</html>

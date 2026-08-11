@@ -1,0 +1,108 @@
+{
+  "iblockTypeId": "lists",
+  "iblockId": 276,
+  "iblockCode": "SIX_STAFF_RECORDS",
+  "name": "6 кадров — записи",
+  "allowedUserId": 24880,
+  "rights": {
+    "U24880": "X",
+    "*": "D"
+  },
+  "properties": {
+    "recordType": {
+      "id": 1208,
+      "code": "RECORD_TYPE",
+      "key": "PROPERTY_1208",
+      "label": "Тип",
+      "visible": true,
+      "enum": {
+        "vacation": "484",
+        "dismissal": "486"
+      }
+    },
+    "employeeName": {
+      "id": 1210,
+      "code": "EMPLOYEE_NAME",
+      "key": "PROPERTY_1210",
+      "label": "ФИО",
+      "visible": true
+    },
+    "status": {
+      "id": 1212,
+      "code": "STATUS",
+      "key": "PROPERTY_1212",
+      "label": "Статус",
+      "visible": true,
+      "enum": {
+        "planned": "488",
+        "done": "490",
+        "cancelled": "492",
+        "error": "494"
+      }
+    },
+    "replacementName": {
+      "id": 1214,
+      "code": "REPLACEMENT_NAME",
+      "key": "PROPERTY_1214",
+      "label": "Замещающий",
+      "visible": true
+    },
+    "comment": {
+      "id": 1230,
+      "code": "COMMENT",
+      "key": "PROPERTY_1230",
+      "label": "Комментарий",
+      "visible": true
+    },
+    "employeeId": {
+      "id": 1216,
+      "code": "EMPLOYEE_ID",
+      "key": "PROPERTY_1216",
+      "label": "ID сотрудника (служебное)",
+      "visible": false
+    },
+    "dateMain": {
+      "id": 1218,
+      "code": "DATE_MAIN",
+      "key": "PROPERTY_1218",
+      "label": "Дата с (служебное)",
+      "visible": false
+    },
+    "dateTo": {
+      "id": 1220,
+      "code": "DATE_TO",
+      "key": "PROPERTY_1220",
+      "label": "Дата по (служебное)",
+      "visible": false
+    },
+    "replacementId": {
+      "id": 1222,
+      "code": "REPLACEMENT_ID",
+      "key": "PROPERTY_1222",
+      "label": "ID замещающего (служебное)",
+      "visible": false
+    },
+    "executedAt": {
+      "id": 1224,
+      "code": "EXECUTED_AT",
+      "key": "PROPERTY_1224",
+      "label": "Выполнено (служебное)",
+      "visible": false
+    },
+    "requestedBy": {
+      "id": 1226,
+      "code": "REQUESTED_BY",
+      "key": "PROPERTY_1226",
+      "label": "Создал (служебное)",
+      "visible": false
+    },
+    "metaJson": {
+      "id": 1228,
+      "code": "META_JSON",
+      "key": "PROPERTY_1228",
+      "label": "Meta (служебное)",
+      "visible": false
+    }
+  },
+  "setupAt": "2026-07-23T11:03:57.806Z"
+}

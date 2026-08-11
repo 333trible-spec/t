@@ -4,13 +4,13 @@
     "sessionStart": [
       {
         "command": ".cursor/hooks/ensure-agent-colors.cmd",
-        "timeout": 5
+        "timeout": 30
       }
     ],
     "stop": [
       {
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \".cursor/hooks/play-chime.ps1\"",
-        "timeout": 8,
+        "timeout": 15,
         "loop_limit": null
       }
     ]
