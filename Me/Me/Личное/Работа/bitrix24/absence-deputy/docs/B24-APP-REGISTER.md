@@ -2,12 +2,12 @@
 
 Портал: **https://ik-navigator.bitrix24.ru/**
 
-Production (Vercel): см. [[../static-urls.json|static-urls.json]]
+Production (VibeCode): см. [[../static-urls.json|static-urls.json]]
 
 | Страница | URL |
 |----------|-----|
-| **Обработчик** | https://b24-six-staff.vercel.app/app.html |
-| **Установка** | https://b24-six-staff.vercel.app/install.html |
+| **Обработчик** | https://app-d561d9d4f2bd.vibecode.bitrix24.tech/app.html |
+| **Установка** | https://app-d561d9d4f2bd.vibecode.bitrix24.tech/install.html |
 
 ## 1. Создать локальное приложение
 
@@ -18,8 +18,8 @@ Production (Vercel): см. [[../static-urls.json|static-urls.json]]
 | Поле | Значение |
 |------|----------|
 | Название | **6 кадров** |
-| **Путь вашего обработчика** | `https://b24-six-staff.vercel.app/app.html` |
-| **Путь для первоначальной установки** | `https://b24-six-staff.vercel.app/install.html` |
+| **Путь вашего обработчика** | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/app.html` |
+| **Путь для первоначальной установки** | `https://app-d561d9d4f2bd.vibecode.bitrix24.tech/install.html` |
 | Использует только API | Нет |
 
 4. **Права (scope):**
@@ -30,6 +30,26 @@ Production (Vercel): см. [[../static-urls.json|static-urls.json]]
 | **bizproc** | позже — запись GlobalConst через служебный БП |
 
 На старте достаточно **user**. `bizproc` добавь, когда подключим запись констант.
+
+**Webhook `B24_NAV_WEBHOOK`** (сервер, env на VibeCode/mts) для увольнений:
+
+| Scope | Зачем |
+|-------|--------|
+| **user** | деактивация сотрудника (`user.update`) |
+| **intranet** | отмена приглашения (если появится в REST) |
+| **lists** | универсальный список «6 кадров — записи» (`lists.element.*`) |
+
+Смарт-процесс HR **не используется**. Планы увольнений — **Redis** (Upstash) на сервере VibeCode.
+
+### Redis (env на VibeCode)
+
+На сервере `mts` должны быть `UPSTASH_REDIS_REST_URL` и `UPSTASH_REDIS_REST_TOKEN` (не на Vercel).
+
+Без Redis API увольнений вернёт ошибку с подсказкой.
+
+Таблица «Отпуска» читает HR (смарт-процесс, стадия «Оформление») — endpoint `/api/hr-vacations`, scope **crm** нужен только webhook для отпусков. Env `B24_NAV_WEBHOOK` на VibeCode (не коммитить).
+
+**Cron** (запланированные увольнения): внешний [cron-job.org](https://cron-job.org) → `POST /api/dismissal-cron` в **02:00** и **03:30 YEKT**. Обязательно env `DISMISSAL_CRON_SECRET` на VibeCode. Пошагово: [[CRON-JOB-ORG.md]].
 
 5. **Сохранить** → **Установить** / **Переустановить** → дождись страницы install.
 
@@ -47,7 +67,5 @@ Production (Vercel): см. [[../static-urls.json|static-urls.json]]
 
 ## Деплой обновлений
 
-```powershell
-cd "Me/Me/Личное/Работа/bitrix24/absence-deputy"
-npx vercel deploy --prod --yes
-```
+Production — **VibeCode** (`mts`), не Vercel. Обновляй бандл `vibecode-bundle` / деплой на `mts`.
+Vercel-проект **b24-six-staff** снят.

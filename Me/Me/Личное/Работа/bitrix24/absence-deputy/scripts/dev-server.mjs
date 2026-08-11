@@ -21,6 +21,7 @@ const REWRITES = {
   '/constants-registry.js': 'constants-registry.js',
   '/img/footer-die.png': 'img/footer-die.png',
   '/img/deny-key.png': 'img/deny-key.png',
+  '/img/console-1001.png': 'img/console-1001.png',
 };
 
 function createVercelRes(res) {
@@ -40,11 +41,56 @@ function createVercelRes(res) {
 }
 
 const serve = require(path.join(root, 'api', 'serve.js'));
+const { getHandler } = require(path.join(root, 'lib', 'route-handlers.js'));
+
+function readRequestBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', (chunk) => chunks.push(chunk));
+    req.on('end', () => {
+      const raw = Buffer.concat(chunks).toString('utf8').trim();
+      if (!raw) {
+        resolve(undefined);
+        return;
+      }
+      try {
+        resolve(JSON.parse(raw));
+      } catch (err) {
+        reject(err);
+      }
+    });
+    req.on('error', reject);
+  });
+}
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url || '/', `http://127.0.0.1:${PORT}`);
   const pathname = url.pathname.replace(/\/$/, '') || '/';
   const file = REWRITES[pathname];
+
+  const apiMatch = pathname.match(/^\/api\/([^/]+)$/);
+  if (apiMatch) {
+    const handler = getHandler(apiMatch[1]);
+    if (handler) {
+      readRequestBody(req)
+        .then((body) => {
+          const fakeReq = {
+            method: req.method || 'GET',
+            url: req.url,
+            query: Object.fromEntries(url.searchParams),
+            body: body,
+            headers: req.headers,
+          };
+          return handler(fakeReq, createVercelRes(res));
+        })
+        .catch((err) => {
+          if (res.headersSent) return;
+          res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ ok: false, error: err && err.message ? err.message : String(err) }));
+        });
+      return;
+    }
+  }
 
   if (file) {
     const fakeReq = {

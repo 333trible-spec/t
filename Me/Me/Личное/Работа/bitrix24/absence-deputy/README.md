@@ -3,9 +3,9 @@
 Локальное приложение Битрикс24 для портала [ik-navigator.bitrix24.ru](https://ik-navigator.bitrix24.ru): подмена сотрудников в глобальных константах на время отпуска и подготовка к увольнению.
 
 Техническая папка: `absence-deputy`.  
-Версия: **0.1.10** — UI picker + иллюстрации + ACL (user 24880) + деплой Vercel.
+Версия: **0.8.24** — UI + ACL (user 24880) + production на VibeCode.
 
-**Production:** https://b24-six-staff.vercel.app  
+**Production:** https://app-d561d9d4f2bd.vibecode.bitrix24.tech (VibeCode)  
 Регистрация на портале: [[docs/B24-APP-REGISTER]]
 
 - Описание: [[PROJECT]]

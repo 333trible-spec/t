@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Версия** | **0.1.10** (picker UI, deny-key/footer-die, ACL, Vercel) |
+| **Версия** | **0.8.24** (VibeCode / mts) |
 | **Папка в vault** | `bitrix24/absence-deputy/` |
 | **Портал** | [ik-navigator.bitrix24.ru](https://ik-navigator.bitrix24.ru) |
 | **Реестр констант** | [[data/global-constants\|global-constants]] · `data/global-constants.json` |
@@ -12,7 +12,7 @@
 | **UX** | [[docs/UX-B24\|UX-B24]] |
 | **Регистрация Б24** | [[docs/B24-APP-REGISTER\|B24-APP-REGISTER]] |
 | **npm name** | `b24-six-staff` |
-| **Vercel** | [b24-six-staff](https://vercel.com/333trible-specs-projects/b24-six-staff) · https://b24-six-staff.vercel.app |
+| **Production** | [VibeCode](https://app-d561d9d4f2bd.vibecode.bitrix24.tech) · Vercel снят |
 
 ## Структура app (v0.1)
 
@@ -38,7 +38,8 @@ absence-deputy/
 ```
 
 **Хранение v0.1:** `localStorage` ключ `six_staff_v01`.  
-**Запись GlobalConst / cron:** заглушки TODO (не пишут на портал).
+**Запись GlobalConst:** [[docs/GLOBALCONST-STRATEGY]] — приоритет **3** (PHP в БП), запас **5**, fallback **6/7**.  
+**Cron:** заглушка TODO.
 
 ## Экраны
 
@@ -77,8 +78,8 @@ absence-deputy/
 - [x] Выбрать название → **6 кадров**
 - [x] Каркас app UI + install (v0.1)
 - [x] ACL: только user ID 24880 на портале
-- [x] Деплой Vercel → https://b24-six-staff.vercel.app
+- [x] Деплой → VibeCode `https://app-d561d9d4f2bd.vibecode.bitrix24.tech` (Vercel снят)
 - [ ] Регистрация локального приложения на ik-navigator
 - [ ] Системные ID констант
-- [ ] Действие записи GlobalConst
+- [ ] Действие записи GlobalConst (вариант 3: [[docs/GLOBALCONST-BP-PHP]])
 - [ ] Cron / backend хранения

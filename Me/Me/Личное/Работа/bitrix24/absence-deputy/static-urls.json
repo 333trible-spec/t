@@ -1,11 +1,11 @@
 {
-  "install": "https://b24-six-staff.vercel.app/install.html",
-  "app": "https://b24-six-staff.vercel.app/app.html",
-  "publishedAt": "2026-07-17T10:56:43.000Z",
-  "host": "vercel",
-  "domain": "b24-six-staff.vercel.app",
-  "b24HandlerUrl": "https://b24-six-staff.vercel.app/app.html",
-  "b24InstallUrl": "https://b24-six-staff.vercel.app/install.html",
-  "project": "b24-six-staff",
-  "version": "0.1.10"
+  "install": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/install.html",
+  "app": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/app.html",
+  "publishedAt": "2026-07-29T09:57:03.995Z",
+  "host": "vibecode",
+  "domain": "app-d561d9d4f2bd.vibecode.bitrix24.tech",
+  "b24HandlerUrl": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/app.html",
+  "b24InstallUrl": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/install.html",
+  "project": "b24-vibecode-bundle",
+  "version": "0.8.24"
 }

@@ -1,0 +1,13 @@
+{
+  "portal": "https://ik-navigator.bitrix24.ru",
+  "index": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/contract/index.html",
+  "install": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/contract/install.html",
+  "tab": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/contract/tab.html",
+  "publishedAt": "2026-08-11T04:57:38.463Z",
+  "host": "vibecode",
+  "domain": "app-d561d9d4f2bd.vibecode.bitrix24.tech",
+  "b24HandlerUrl": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/contract/index.html",
+  "b24InstallUrl": "https://app-d561d9d4f2bd.vibecode.bitrix24.tech/contract/install.html",
+  "b24AppId": 388,
+  "serverId": "dcec6d80-368e-4cdf-9258-cb49fe6fef53"
+}

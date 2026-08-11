@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6 кадров</title>
+  <link rel="stylesheet" href="/app.css?v=0.8.24">
+</head>
+<body>
+  <div class="access-gate" id="access-gate">
+    <div class="access-gate-inner">
+      <p class="access-gate-text" id="access-gate-text">Загрузка…</p>
+      <img class="brand-art access-deny-art" id="access-deny-art" src="/img/deny-key.png?v=0.8.24" alt="" hidden>
+    </div>
+  </div>
+
+  <div class="app" id="app" hidden>
+    <header class="app-header">
+      <nav class="tabs" role="tablist">
+        <button type="button" class="tab is-active" role="tab" data-tab="vacation" aria-selected="true">Отпуск</button>
+        <button type="button" class="tab" role="tab" data-tab="dismissal" aria-selected="false">Увольнение</button>
+        <button type="button" class="tab console-toggle" role="tab" data-tab="cron" id="cron-toggle" aria-selected="false" title="Console" aria-label="Console" aria-controls="panel-cron">
+          <span class="console-toggle-clock" aria-hidden="true">10<br>01</span>
+        </button>
+        <button type="button" class="tab tab--help" role="tab" data-tab="help" aria-selected="false" title="Инструкция">?</button>
+      </nav>
+    </header>
+
+    <!-- Отпуск -->
+    <section class="panel is-active" id="panel-vacation" role="tabpanel">
+      <div class="card">
+        <div class="card-head">
+          <h2 class="card-title">Новый отпуск 🏝️</h2>
+          <button type="button" class="btn btn-plain" id="vac-reset">Сбросить</button>
+        </div>
+
+        <div class="form-grid">
+          <div class="field" id="field-vac-employee">
+            <label class="label">Сотрудник <span class="req">*</span></label>
+            <div class="user-picker-row">
+              <div class="user-picker" data-picker="vac-employee">
+                <button type="button" class="btn btn-outline picker-btn">Выбрать сотрудника</button>
+                <span class="picker-value" hidden></span>
+                <button type="button" class="btn btn-plain picker-clear" hidden title="Очистить">×</button>
+              </div>
+            </div>
+            <div class="field-error" hidden></div>
+          </div>
+
+          <div class="field" id="field-vac-deputy">
+            <label class="label">Заместитель <span class="req">*</span></label>
+            <div class="user-picker-row">
+              <div class="user-picker" data-picker="vac-deputy">
+                <button type="button" class="btn btn-outline picker-btn">Выбрать замещающего</button>
+                <span class="picker-value" hidden></span>
+                <button type="button" class="btn btn-plain picker-clear" hidden title="Очистить">×</button>
+              </div>
+            </div>
+            <div class="field-error" hidden></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="field-vac-from">
+              <label class="label" for="vac-from">С <span class="req">*</span></label>
+              <input type="date" class="input" id="vac-from">
+              <div class="field-error" hidden></div>
+            </div>
+            <div class="field" id="field-vac-to">
+              <label class="label" for="vac-to">До <span class="req">*</span></label>
+              <input type="date" class="input" id="vac-to">
+              <div class="field-error" hidden></div>
+            </div>
+          </div>
+
+          <p class="hint" id="vac-date-hint">
+            Подмена действует с даты «С» включительно. Если «С» — сегодня, она включится сразу после сохранения. В дату «До» выполняется автовозврат: в этот день в константах уже снова сотрудник, а не заместитель.
+          </p>
+
+          <div class="alert alert-info" id="vac-today-info" hidden>
+            Подмена включится сразу после сохранения (дата «С» — сегодня).
+          </div>
+
+          <div class="roles-block" id="vac-roles">
+            <div class="roles-title">Затронутые роли</div>
+            <div class="roles-body muted">Выберите сотрудника</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary" id="vac-submit">Запланировать отпуск</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title">
+          <span>Отпуска</span>
+          <button type="button" class="icon-action icon-action--refresh" id="vac-refresh" title="Обновить список" aria-label="Обновить список">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+          </button>
+          <button type="button" class="icon-action icon-action--run" id="vac-run-delegation" title="Запустить делегирование заданий БП" aria-label="Запустить делегирование">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M9.5 7.5v9l7.5-4.5-7.5-4.5z"/>
+            </svg>
+          </button>
+        </h2>
+      </div>
+      <div class="delegation-run-status" id="vac-delegation-status" hidden></div>
+      <div class="table-wrap">
+        <table class="table" id="vac-table">
+          <thead>
+            <tr>
+              <th>Сотрудник</th>
+              <th>Период</th>
+              <th>Заместитель</th>
+              <th>Статус</th>
+              <th>Делегирование</th>
+              <th>Константа</th>
+            </tr>
+          </thead>
+          <tbody id="vac-tbody"></tbody>
+        </table>
+        <div class="empty" id="vac-empty">Нет отпусков на стадии «Оформление»</div>
+      </div>
+    </section>
+
+    <!-- Увольнение -->
+    <section class="panel" id="panel-dismissal" role="tabpanel" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2 class="card-title">Увольнение ❌</h2>
+          <button type="button" class="btn btn-plain" id="dis-reset">Сбросить</button>
+        </div>
+
+        <div class="form-grid">
+          <div class="field" id="field-dis-user">
+            <label class="label">Пользователь <span class="req">*</span></label>
+            <div class="user-picker-row dis-user-controls">
+              <div class="user-picker" data-picker="dis-user">
+                <button type="button" class="btn btn-outline picker-btn">Выбрать пользователя</button>
+                <span class="picker-value" hidden></span>
+                <button type="button" class="btn btn-plain picker-clear" hidden title="Очистить">×</button>
+              </div>
+              <div class="user-id-inline" id="field-dis-user-id">
+                <input type="text" class="input user-id-input" id="dis-user-id" inputmode="numeric" autocomplete="off" placeholder="ID" title="ID пользователя">
+                <button type="button" class="btn btn-outline" id="dis-user-id-find">Найти</button>
+              </div>
+            </div>
+            <div class="field-error" hidden></div>
+            <div class="field-error user-id-field-error" id="field-dis-user-id-error" hidden></div>
+            <p class="hint">Приглашённые, не принявшие регистрацию, в поиске не отображаются — укажите ID из URL профиля.</p>
+            <p class="hint" id="dis-bp-hint" hidden>
+              Перед увольнением рекомендуется проверить задания бизнес-процессов
+            </p>
+          </div>
+
+          <div class="field" id="field-dis-mode">
+            <label class="label">Когда <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio"><input type="radio" name="dis-mode" value="now" checked> Уволить сейчас</label>
+              <label class="radio"><input type="radio" name="dis-mode" value="date"> Уволить с даты</label>
+            </div>
+          </div>
+
+          <div class="field" id="field-dis-date" hidden>
+            <label class="label" for="dis-date">Дата <span class="req">*</span></label>
+            <input type="date" class="input" id="dis-date">
+            <div class="field-error" hidden></div>
+          </div>
+
+          <div class="field" id="field-dis-replacement">
+            <label class="label">Замена в константах <span class="optional">(необязательно)</span></label>
+            <div class="user-picker-row">
+              <div class="user-picker" data-picker="dis-replacement">
+                <button type="button" class="btn btn-outline picker-btn">Выбрать замещающего</button>
+                <span class="picker-value" hidden></span>
+                <button type="button" class="btn btn-plain picker-clear" hidden title="Очистить">×</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="roles-block" id="dis-preview">
+            <div class="roles-title">Влияние на константы</div>
+            <div class="roles-body muted">Выберите пользователя</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-danger" id="dis-submit">Уволить</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title">
+          <span>Увольнения</span>
+          <button type="button" class="icon-refresh" id="dis-refresh" title="Обновить список" aria-label="Обновить список">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+          </button>
+        </h2>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="dis-table">
+          <thead>
+            <tr>
+              <th>Сотрудник</th>
+              <th>Дата увольнения</th>
+              <th>Статус</th>
+              <th>Константа</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="dis-tbody"></tbody>
+        </table>
+        <div class="empty" id="dis-empty">Нет записей об увольнениях</div>
+      </div>
+    </section>
+
+    <!-- Инструкция -->
+    <section class="panel" id="panel-help" role="tabpanel" hidden>
+      <div class="card help-card">
+        <div class="card-head">
+          <h2 class="card-title">Инструкция</h2>
+        </div>
+        <div class="help-doc">
+          <p class="help-lead">Приложение <strong>6 кадров</strong> — отпуска с заместителем и увольнения. Доступ только у Интегратора (id 24880).</p>
+
+          <h3>Отпуск</h3>
+          <ol>
+            <li>Выберите <strong>сотрудника</strong> и <strong>замещающего</strong> (разные люди).</li>
+            <li>Укажите период <strong>С</strong> / <strong>До</strong>.</li>
+            <li>Нажмите <strong>«Запланировать отпуск»</strong>.</li>
+          </ol>
+          <p><strong>Даты:</strong> подмена с «С» включительно. Если «С» — сегодня, отпуск сразу активен. День «До» в период <em>не входит</em> (уже возврат). «До» должна быть позже «С».</p>
+
+          <h3>Таблица отпусков</h3>
+          <ul>
+            <li><strong>Запланирован</strong> — ещё не наступила дата «С».</li>
+            <li><strong>Активен</strong> — сегодня в периоде подмены.</li>
+            <li><strong>Делегирование:</strong> <code>—</code> ещё не проверяли; <strong>ок</strong> — у отпускника нет открытых заданий БП; красный текст — задания остались (наведите курсор).</li>
+          </ul>
+          <p><strong>↻</strong> — обновить список. <strong>▶</strong> — запустить делегирование заданий вручную сейчас.</p>
+          <p>Автоматически делегирование идёт в <strong>08:00, 11:00, 14:00, 17:00</strong> (Екб). «ок» — результат последнего прогона.</p>
+
+          <h3>Увольнение</h3>
+          <ol>
+            <li>Выберите пользователя (или введите <strong>ID</strong> и нажмите «Найти»).</li>
+            <li>Режим: <strong>сейчас</strong> или <strong>с даты</strong>.</li>
+            <li>При необходимости укажите замещающего в константах.</li>
+            <li>Нажмите <strong>«Уволить»</strong> и подтвердите.</li>
+          </ol>
+          <p>Сотрудник на портале деактивируется. Отменить можно только <strong>запланированное</strong> увольнение кнопкой «Отменить» в таблице (до исполнения).</p>
+          <p>Планируемые увольнения на дату выполняются около <strong>02:00</strong> и страховка <strong>03:30</strong> (Екб).</p>
+
+          <h3>10/01 — Console</h3>
+          <p>Кнопка <strong>10/01</strong> слева от «?» — только по нажатию, без кэша.</p>
+          <p><strong>Сервер</strong> — версия, webhook Б24, Redis, УС #276, cron-secret, ключ cron-job.org.</p>
+          <p><strong>Cron</strong> — расписание заданий с cron-job.org (увольнения и делегирование).</p>
+
+          <h3>Частые вопросы</h3>
+          <p><strong>«Доступа нет»</strong> — вы вошли не тем пользователем.</p>
+          <p><strong>«ок», но задание ещё у отпускника</strong> — задание появилось после проверки или крон ещё не сработал. Нажмите ▶ или дождитесь слота.</p>
+          <p><strong>Уже уволенного</strong> через приложение вернуть нельзя — нужна реактивация в Б24.</p>
+
+          <h3>Если ошибка</h3>
+          <p>Сообщите администратору: вкладку и действие, ФИО/ID, время, текст ошибки или скрин, версию из футера (<span id="help-version">6 кадров</span>).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Расписание cron -->
+    <section class="panel" id="panel-cron" role="tabpanel" hidden>
+      <div class="card cron-card">
+        <div class="card-head">
+          <h2 class="card-title">Console</h2>
+          <button type="button" class="btn btn-plain" id="cron-refresh" title="Обновить">Обновить</button>
+        </div>
+        <div class="cron-status" id="cron-status" hidden></div>
+
+        <section class="ops-block">
+          <h3 class="ops-block-title">Сервер</h3>
+          <div class="server-status" id="server-status" hidden></div>
+        </section>
+
+        <div class="ops-divider" aria-hidden="true"></div>
+
+        <section class="ops-block">
+          <h3 class="ops-block-title">Cron</h3>
+          <div class="cron-list" id="cron-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <div class="footer-brand">
+        <img class="brand-art footer-art" src="/img/footer-die.png?v=0.8.24" alt="">
+        <span id="footer-version">6 кадров · v0.8.24</span>
+      </div>
+    </footer>
+
+    <aside class="app-console" id="app-console" hidden aria-label="Консоль приложения">
+      <div class="app-console-head">
+        <span class="app-console-title">Консоль</span>
+        <div class="app-console-actions">
+          <button type="button" class="btn btn-plain btn-sm" id="console-clear">Очистить</button>
+          <button type="button" class="btn btn-plain btn-sm" id="console-close" title="Закрыть">×</button>
+        </div>
+      </div>
+      <pre class="app-console-body" id="console-body"></pre>
+    </aside>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 class="modal-title" id="modal-title"></h3>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script src="/version.js?v=0.8.24"></script>
+  <script src="/constants-registry.js?v=0.8.24"></script>
+  <script src="/app.js?v=0.8.24"></script>
+</body>
+</html>

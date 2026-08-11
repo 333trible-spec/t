@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const HTML_DIR = path.join(__dirname, 'html');
+const HTML_DIR = path.join(__dirname, '..', 'static');
 
 /** Публичное имя → файл на диске (уникальные basenames для Vercel) */
 const FILE_MAP = {
@@ -18,6 +18,7 @@ const FILE_MAP = {
   'constants-registry.js': 'constants-registry.js',
   'img/footer-die.png': 'img/footer-die.png',
   'img/deny-key.png': 'img/deny-key.png',
+  'img/console-1001.png': 'img/console-1001.png',
 };
 
 const MIME = {

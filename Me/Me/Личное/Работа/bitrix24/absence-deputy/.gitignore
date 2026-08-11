@@ -1,7 +1,10 @@
 node_modules/
 .env
 .env.local
+.env*.tmp
+.env.vercel.tmp
 .vercel/
+data/dismissal-plans.json
 *.log
 .DS_Store
 .vercel

@@ -1,0 +1,15 @@
+{
+  "name": "b24-contract-request",
+  "version": "1.08.0",
+  "private": true,
+  "description": "Заявка на договор - placement на ik-navigator",
+  "scripts": {
+    "deploy": "node -e \"console.error('Деплой только на VibeCode (mts) /contract/, не Vercel'); process.exit(1)\"",
+    "version:save": "node scripts/version-save.js",
+    "version:rollback": "node scripts/version-rollback.js",
+    "version:bump": "node scripts/version-bump.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

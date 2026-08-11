@@ -95,6 +95,82 @@
 > Витёк читает этот блок в начале сессии и **дописывает** после значимых шагов.  
 > Формат записи: дата → задача → действие → результат → открыто.
 
+### 2026-08-11 — 6 кадров + Заявка: VibeCode only, Vercel снят
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Локальные URL/доки | Vercel → VibeCode (`app-d561d9d4f2bd…`) в 6 кадров и заявке | static-urls уже VibeCode; cron/docs обновлены | ✅ |
+| 2 | Git | коммит/push в origin | — | ⏳ |
+| 3 | Удалить Vercel | `b24-six-staff`, `b24-contract-request` | — | ⏳ |
+
+### 2026-08-11 — общий-json-фид (Venus → один v:2 на Vercel)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Новый проект | `bitrix24/общий-json-фид/`: merge 3 фидов, порядок квартиры→кладовые→коммерция | `v:2`, probe: 1391 units (1006+366+19), 3 projects | ✅ каркас |
+| 2 | Деплой Vercel | — | Нужен `vercel` deploy | ⏳ |
+
+### 2026-08-11 — Заявка на договор: дубль вкладки → VibeCode /contract
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Диагностика двух вкладок | iframe src в сделке | Дубль: `…vibecode…/tab.html` (без `/contract/`) + `b24-contract-request.vercel.app/tab.html` | ✅ |
+| 2 | Fix install + deploy mts | `install.html`: unbind старых + bind `…/contract/tab.html`; deploy v5, preserveEnv | health OK; install на проде с `clearTabBindings` | ✅ |
+| 3 | Переустановка app 388 | Пользователь: URL VibeCode + переустановка | ✅ одна вкладка, `/contract/tab.html` | ✅ |
+
+### 2026-08-10 — VibeCode / grafik-platezhey: исследование деплоя (без выкладки)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Как деплоят contract/deputy на `mts` | Разбор `vibecode-bundle/server.js`, static-urls, доки VibeCode | Один Node-процесс (`runtime=node20`, `node server.js`, порт 3000, `/opt/app`); URL `app-d561d9d4f2bd…`; маршруты `/contract/*`, корень/`/deputy/*`, `/api/*`. Отдельного deploy-скрипта в repo нет — zip + `POST …/deploy` | ✅ |
+| 2 | Место для grafik-platezhey на `mts` | Поиск `/schedule`, папки в bundle, план в docs | В бандле места нет; `paysched-app-design` — переезд в Маркет отменён (22.07); экспорт `grafik-platezhey/` неполный (без Flask-монолита) | ✅ |
+| 3 | Можно ли «просто положить» Flask | Совместимость рантаймов | На том же сервере без смены runtime нельзя (сейчас Node). Платформа умеет `python311`, но это отдельный сервер/полный редеплой. Деплой экспорта «как есть» невозможен | ✅ исследование |
+
+### 2026-07-29 — 6 кадров: prod deploy 0.8.6 (консоль в стиле табов Б24)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` (static: main/styles/client — кнопка консоли как табы Б24) | READY; **0.8.6**; dpl_CoBTXMFs8fcrPmtVj9nfJfZzv9ft | ✅ |
+
+### 2026-07-23 — 6 кадров: анализ альтернативы (cron → bizproc.task.delegate)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Разбор идеи «константы не трогаем, cron переназначает задания с отпускника» | Сверка с REST (`bizproc.task.list` / `delegate` / `complete`), целью «6 кадров», списком 276, dismissal-cron | **Не основной путь** вместо GlobalConst upsert: покрывает только ожидающие задания БП; критичный блокер — `delegate` только «своё» задание; окно 3–9 ч; CRM/уведомления/роботы без задания не затрагиваются. Допустимо как **доп. слой** после записи констант | ✅ |
+| 2 | Probe на портале | Чеклист: list по USER_ID админ-webhook; delegate чужого FROM_USER_ID; настройки DelegationType в активити | ⏳ не гоняли | ⏳ |
+
+### 2026-07-20 — 6 кадров: стратегия GlobalConst (варианты 3 / 5 / 6·7)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Зафиксировать допустимые пути записи | `docs/GLOBALCONST-STRATEGY.md`, `docs/GLOBALCONST-BP-PHP.md`, context/PROJECT | приоритет **3** PHP в БП; **5** маркет; fallback **6/7**; отказ от 1,2,4,8 | ✅ |
+| 2 | Старт варианта 3 | PHP `GlobalConst::upsert`, параметры `ConstId`/`NewUserId`, REST `workflow.start` | инструкция сборки шаблона на портале | ⏳ |
+
+### 2026-07-20 — 6 кадров: redeploy 0.1.10 (~10:44 YEKT, без bump)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; без «ID сотрудника» / fallback-user | ✅ |
+
+### 2026-07-20 — 6 кадров: redeploy 0.1.10 (~10:36 YEKT, без bump)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; `/api/hr-vacations` ok **8**; `/api/hr-dismissals` ok **10** | ✅ |
+
+### 2026-07-20 — 6 кадров: prod deploy 0.1.10 (HR API + env)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | Env Production | `B24_NAV_WEBHOOK` → Vercel `b24-six-staff` (Sensitive) | добавлен | ✅ |
+| 2 | Деплой production | `npm run deploy` → alias `b24-six-staff.vercel.app` | READY; version.js **0.1.10**; app.html 200; `/api/hr-vacations` ok **8** (без returned); `/api/hr-dismissals` ok **10** (Уволен/В работе) | ✅ |
+
+### 2026-07-20 — 6 кадров: таблица отпусков из HR (read-only)
+
+| # | Задача | Что сделали | Результат | Статус |
+|---|--------|-------------|-----------|--------|
+| 1 | HR → UI таблица | `api/hr-vacations.js` (`crm.item.list` entityTypeId 136, category 16, стадия Оформление); роут в `dev-server.mjs`; `client.js`/`main.html` — fetch, без кнопок действий; docs + context | Локально **10** items; версия **0.1.10** без bump; деплой не делали. На Vercel нужен env `B24_NAV_WEBHOOK` | ✅ |
+
 ### 2026-07-17 — 6 кадров: redeploy 0.1.10 (calendar-picker inset)
 
 | # | Задача | Что сделали | Результат | Статус |
